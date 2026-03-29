@@ -12,6 +12,7 @@ namespace DLSample.Gameplay.Behaviours
         [Space(10)]
         [SerializeField] private GameObject triggerEffectPrefab;
         [SerializeField] private Renderer mRenderer;
+        public Transform segments;
 
         public event Action OnCollect;
         public string TypeId => "Collectables.HintBox";
@@ -21,6 +22,7 @@ namespace DLSample.Gameplay.Behaviours
 
         private GameplayTimer _timer;
         private GameplayPlayerController _playerController;
+        private BacktrackablesHandler _backtrack;
 
         private IPlayerMove _player;
 
@@ -34,16 +36,19 @@ namespace DLSample.Gameplay.Behaviours
         {
             _timer = GameplayEntry.Instance.ServiceLocator.Get<GameplayTimer>();
             _playerController = GameplayEntry.Instance.ServiceLocator.Get<GameplayPlayerController>();
+            _backtrack = GameplayEntry.Instance.ServiceLocator.Get<BacktrackablesHandler>();
             _player = _playerController.MainPlayer;
 
             _player.OnTurn += OnPlayerTurn;
 
             _minTime = StandardTime - DLSampleConsts.Gameplay.HINT_BOX_TRIGGER_INTERVAL;
             _maxTime = StandardTime + DLSampleConsts.Gameplay.HINT_BOX_TRIGGER_INTERVAL;
+            _backtrack.Register(this);
         }
         protected override void OnExit()
         {
             _player.OnTurn -= OnPlayerTurn;
+            _backtrack?.Unregister(this);
         }
 
         private void OnTriggerEnter(Collider other)
@@ -74,10 +79,13 @@ namespace DLSample.Gameplay.Behaviours
 
         public void Collect()
         {
+            if (IsCollected) return;
+
             IsCollected = true;
             OnCollect?.Invoke();
 
             mRenderer.enabled = false;
+            if(segments) segments.gameObject.SetActive(false);
 
             if (_currentEffect)
             {
@@ -88,13 +96,22 @@ namespace DLSample.Gameplay.Behaviours
         }
         public void Backtrack()
         {
-            IsCollected = false;
-
-            mRenderer.enabled = true;
-
-            if (_currentEffect)
+            if (StandardTime > _timer.CurrentTime)
             {
-                Destroy(_currentEffect);
+                IsCollected = false;
+                mRenderer.enabled = true;
+                if (segments) segments.gameObject.SetActive(true);
+
+                if (_currentEffect)
+                {
+                    Destroy(_currentEffect);
+                }
+            }
+            else
+            {
+                IsCollected = true;
+                mRenderer.enabled = false;
+                if (segments) segments.gameObject.SetActive(false);
             }
         }
     }

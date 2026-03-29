@@ -23,7 +23,8 @@ namespace DLSample.Editor.PathBuilder
         private Button _generatePathBtn;
 
         private ObjectField _hintBoxPrefabField;
-        private Button _generateHintBoxBtn;
+        private ObjectField _hintSegPrefabField;
+        private Button _generateHintLineBtn;
 
         private readonly string _class_pathGrapherAssetField = "source-pathgrapherasset-field";
 
@@ -33,7 +34,8 @@ namespace DLSample.Editor.PathBuilder
         private readonly string _class_generatePathBtn = "path-generate-btn";
 
         private readonly string _class_hintBoxPrefabField = "hintline-hintboxprefab-field";
-        private readonly string _class_generateHintBoxBtn = "hintline-generate-box-field";
+        private readonly string _class_hintSegPrefabField = "hintline-hintsegprefab-field";
+        private readonly string _class_generateHintLineBtn = "hintline-generate-btn";
 
         public PathBuilderController(VisualTreeAsset visualTree, VisualElement root)
         {
@@ -63,7 +65,8 @@ namespace DLSample.Editor.PathBuilder
             _generatePathBtn = _root.Q<Button>(className: _class_generatePathBtn);
 
             _hintBoxPrefabField = _root.Q<ObjectField>(className: _class_hintBoxPrefabField);
-            _generateHintBoxBtn = _root.Q<Button>(className: _class_generateHintBoxBtn);
+            _hintSegPrefabField = _root.Q<ObjectField>(className: _class_hintSegPrefabField);
+            _generateHintLineBtn = _root.Q<Button>(className: _class_generateHintLineBtn);
 
             _pathGrapherAssetField.objectType = typeof(PathGrapherAsset);
             _pathPrefabField.objectType = typeof(GameObject);
@@ -72,12 +75,12 @@ namespace DLSample.Editor.PathBuilder
         private void SubscribeEvents()
         {
             _generatePathBtn.RegisterCallback<ClickEvent>(OnGeneratePathBtnClicked);
-            _generateHintBoxBtn.RegisterCallback<ClickEvent>(OnGenerateHintBoxClicked);
+            _generateHintLineBtn.RegisterCallback<ClickEvent>(OnGenerateHintLineClicked);
         }
         private void UnsubscribeEvents()
         {
             _generatePathBtn.UnregisterCallback<ClickEvent>(OnGeneratePathBtnClicked);
-            _generateHintBoxBtn.UnregisterCallback<ClickEvent>(OnGenerateHintBoxClicked);
+            _generateHintLineBtn.UnregisterCallback<ClickEvent>(OnGenerateHintLineClicked);
         }
 
         private void OnGeneratePathBtnClicked(ClickEvent _)
@@ -90,12 +93,13 @@ namespace DLSample.Editor.PathBuilder
             PathBuilderHelper.GeneratePath(asset.pathData, type, pathPrefab, pathWidth);
         }
 
-        private void OnGenerateHintBoxClicked(ClickEvent _)
+        private void OnGenerateHintLineClicked(ClickEvent evt)
         {
             PathGrapherAsset asset = _pathGrapherAssetField.value as PathGrapherAsset;
+            GameObject hintSeg = _hintSegPrefabField.value as GameObject;
             GameObject hintBox = _hintBoxPrefabField.value as GameObject;
 
-            PathBuilderHelper.GenerateHintBox(asset.pathData, hintBox);
+            PathBuilderHelper.GenerateHintLine(asset.pathData, hintSeg, hintBox);
         }
     }
 }

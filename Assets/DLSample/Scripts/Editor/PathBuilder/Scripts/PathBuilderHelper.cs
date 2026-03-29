@@ -1,15 +1,16 @@
 using UnityEngine;
-using DLSample.Editor.PathGrapher;
 using DLSample.Gameplay.Behaviours;
+using DLSample.Editor.PathGrapher;
+using System.Linq;
 
 namespace DLSample.Editor.PathBuilder
 {
     public static class PathBuilderHelper
     {
         #region Path
-        public static Transform GeneratePath(PathData pathData, PathGenerateType type, GameObject prefab, float width)
+        public static bool GeneratePath(PathData pathData, PathGenerateType type, GameObject prefab, float width)
         {
-            if (pathData == null || prefab == null) return null;
+            if (pathData == null || prefab == null) return false;
 
             Transform pathRoot = new GameObject("PathContainer").transform;
 
@@ -73,35 +74,100 @@ namespace DLSample.Editor.PathBuilder
         #endregion
 
         #region Hint
-        public static void GenerateHintBox(PathData pathData, GameObject prefab)
+        public static bool GenerateHintLine(PathData pathData, GameObject segmentPrefab, GameObject boxPrefab)
         {
-            if (pathData == null || prefab == null) return;
+            if (pathData == null || boxPrefab == null || segmentPrefab == null) return false;
 
-            Transform boxRoot = new GameObject("HintBoxes").transform;
+            Transform guidanceContainer = new GameObject("HintLines").transform;
 
             foreach (var segment in pathData.generatedSegments)
             {
                 if (!segment.IsValid) continue;
 
-                foreach (var section in segment.sections)
-                {
-                    if (section.isTeleport || section.isJump) continue;
+                var wp = segment.startWaypoint;
 
-                    CreateHintBox(section, section.upDir, prefab, boxRoot);
+                GameObject hintBox = Object.Instantiate(boxPrefab, wp.position, wp.rotation, guidanceContainer);
+                hintBox.name = $"HintBox_{wp.beatIndex}";
+
+                var component = hintBox.GetComponent<HintBox>();
+
+                if (component)
+                {
+                    component.StandardTime = (float)wp.time;
+
+                    GameObject lineGroup = new($"HintLineGroup_{wp.beatIndex}");
+                    lineGroup.transform.SetParent(hintBox.transform);
+                    lineGroup.transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
+                    component.segments = lineGroup.transform;
+
+                    if (segment.IsSimpleStright || !segment.containedEvents.Any(e => e is SegmentPathEvent))
+                    {
+                        SpawnSegments(segment.startWaypoint.position, segment.endWaypoint.position, segment.sections[0].upDir, lineGroup.transform, segmentPrefab);
+                    }
+                    else
+                    {
+                        foreach (var section in segment.sections)
+                        {
+                            if (section.isJump || section.isTeleport) continue;
+
+                            if (section.points.Length >= 2)
+                            {
+                                for (int i = 0; i < section.points.Length - 1; i++)
+                                {
+                                    SpawnSegments(section.points[i], section.points[^1], section.upDir, lineGroup.transform, segmentPrefab);
+                                }
+                            }
+                        }
+                    }
                 }
             }
+
+            return guidanceContainer;
         }
-
-        private static void CreateHintBox(PathSection section, Vector3 upwards, GameObject prefab, Transform root)
+        private static void SpawnSegments(Vector3 start, Vector3 end, Vector3 upDir, Transform parent, GameObject linePrefab)
         {
-            GameObject go = Object.Instantiate(prefab, root);
+            Vector3 dir = end - start;
 
-            Quaternion rotation = Quaternion.LookRotation(Vector3.forward, upwards);
-            go.transform.SetLocalPositionAndRotation(section.points[0], rotation);
+            float dist = dir.magnitude;
+            if (dist < 0.1f) return;
 
-            if(go.TryGetComponent(out HintBox comp))
+            Vector3 dirNormalized = dir.normalized;
+
+            float offsetStart = 1.0f;
+            float totalDistance = dist - offsetStart - 1f;
+
+            if (totalDistance <= Mathf.Epsilon) return;
+
+            Vector3 currentPos = start + dirNormalized * offsetStart;
+            float remainingDistance = totalDistance;
+            bool isLongSegment = true;
+
+            while (remainingDistance > 0)
             {
-                comp.StandardTime = (float)section.startTime;
+                float currentLength = isLongSegment ? 2 : 0.3f;
+                currentLength = Mathf.Min(currentLength, remainingDistance);
+
+                Vector3 segmentEnd = currentPos + dirNormalized * currentLength;
+
+                if (linePrefab != null)
+                {
+                    GameObject line = Object.Instantiate(linePrefab, parent);
+                    line.transform.SetPositionAndRotation((currentPos + segmentEnd) / 2, Quaternion.LookRotation(dir, upDir));
+
+                    Vector3 scale = linePrefab.transform.localScale;
+                    line.transform.localScale = new Vector3(0.15f, scale.y, currentLength);
+                }
+
+                currentPos = segmentEnd;
+                remainingDistance -= currentLength;
+                isLongSegment = !isLongSegment;
+
+                if (remainingDistance > 0)
+                {
+                    float actualGap = Mathf.Min(0.2f, remainingDistance);
+                    currentPos += dirNormalized * actualGap;
+                    remainingDistance -= actualGap;
+                }
             }
         }
         #endregion

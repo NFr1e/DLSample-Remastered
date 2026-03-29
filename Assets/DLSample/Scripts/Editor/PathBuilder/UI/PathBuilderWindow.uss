@@ -3,3 +3,12 @@
     -unity-font-style: bold;
     color: rgb(68, 138, 255);
 }
+
+.hintline-generate-box-btn {
+}
+
+.hintline-generate-btn {
+}
+
+.hintline-generate-box-field {
+}

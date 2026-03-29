@@ -62,7 +62,7 @@ namespace DLSample.Editor.PathGrapher
             Vector3 segmentStartPos = matrix.MultiplyPoint(segment.startWaypoint.position);
             if (!IsWithinDrawDistance(profile.pathDrawDistance, segmentStartPos)) return;
 
-            if (segment.IsStright)
+            if (segment.IsSimpleStright)
             {
                 DrawStrightLine();
             }

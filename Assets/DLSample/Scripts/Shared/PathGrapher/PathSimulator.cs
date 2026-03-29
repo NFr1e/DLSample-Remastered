@@ -65,14 +65,14 @@ namespace DLSample.Editor.PathGrapher
             Waypoint prevWaypoint = CreateWaypoint(state, -1);
             asset.pathData.generatedWaypoints.Add(prevWaypoint);
 
-
             List<PathSection> currentSections = new();
 
             for (int i = 0; i < timePoints.Count - 1; i++)
             {
+                var currTimePoint = timePoints[i];
                 var nextTimePoint = timePoints[i + 1];
 
-                double timeStart = timePoints[i].time;
+                double timeStart = currTimePoint.time;
                 double timeEnd = nextTimePoint.time;
 
                 float deltaTime = (float)(timeEnd - timeStart);
@@ -117,6 +117,7 @@ namespace DLSample.Editor.PathGrapher
                         upDir = state.rotation * Vector3.up,
                         isJump = isJump,
                     });
+
                     state.isTeleport = false;
                 }
 
@@ -124,7 +125,7 @@ namespace DLSample.Editor.PathGrapher
 
                 ApplyEvents(nextTimePoint, ref state);
 
-                switch(nextTimePoint.type)
+                switch (nextTimePoint.type)
                 {
                     case TimePointInfo.TimePointType.Beat:
                         state.rotation = state.currentDirecion.MoveNext();
@@ -141,10 +142,10 @@ namespace DLSample.Editor.PathGrapher
 
                         currentSections.Clear();
                         prevWaypoint = nextWaypoint;
-                        break;
+                    break;
 
                     default:
-                        if(state.isTeleport)
+                        if (state.isTeleport)
                         {
                             currentSections.Add(new PathSection
                             {
@@ -157,7 +158,7 @@ namespace DLSample.Editor.PathGrapher
                             });
                             state.isTeleport = false;
                         }
-                        break;
+                    break;
                 }
             }
         }

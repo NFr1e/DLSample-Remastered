@@ -14,6 +14,7 @@ namespace DLSample.Shared
 
         public bool IsValid => directionsSequence.Count >= 2;
         public int CurrentIndex => _currentIndex;
+        public Vector3 Upwards => upwards;
 
         public PlayerDirections()
         {

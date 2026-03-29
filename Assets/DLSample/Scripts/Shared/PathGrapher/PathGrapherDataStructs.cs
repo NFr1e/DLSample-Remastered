@@ -26,7 +26,7 @@ namespace DLSample.Editor.PathGrapher
         public List<PathSection> sections;
 
         public readonly bool IsValid => sections != null && sections.Count > 0 && sections[0].points.Length >= 2;
-        public readonly bool IsStright => IsValid && sections.Count == 1 && sections[0].points.Length == 2 && !sections[0].isJump && !sections[0].isTeleport;
+        public readonly bool IsSimpleStright => IsValid && sections.Count == 1 && sections[0].points.Length == 2 && !sections[0].isJump && !sections[0].isTeleport;
     }
 
     [Serializable]

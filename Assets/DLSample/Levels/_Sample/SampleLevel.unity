@@ -173,6 +173,8 @@ MonoBehaviour:
   _colors:
   - material: {fileID: 2100000, guid: 6acbcdfedda1b3a4ab0b94e2c2785f0a, type: 2}
     color: {r: 1, g: 0.75904495, b: 0, a: 1}
+  - material: {fileID: 2100000, guid: fa690902b36519d4595ac1cc66f9b4f1, type: 2}
+    color: {r: 1, g: 0.91810924, b: 0.7905661, a: 1}
 --- !u!1 &375920629
 GameObject:
   m_ObjectHideFlags: 0

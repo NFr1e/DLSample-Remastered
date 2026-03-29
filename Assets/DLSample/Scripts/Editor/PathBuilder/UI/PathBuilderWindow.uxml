@@ -32,10 +32,9 @@
             </ui:VisualElement>
             <ui:VisualElement name="Content" style="flex-grow: 1; background-color: rgb(50, 50, 50); border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px; padding-left: 2px;">
                 <uie:ObjectField label="HintBoxPrefab" name="HintBoxPrefabField" type="UnityEngine.GameObject, UnityEngine.CoreModule" class="hintline-hintboxprefab-field" />
-                <uie:ObjectField label="HintSegmentPrefab" name="HintSegmentPrefabField" type="UnityEngine.GameObject, UnityEngine.CoreModule" style="display: none;" />
+                <uie:ObjectField label="HintSegmentPrefab" name="HintSegmentPrefabField" type="UnityEngine.GameObject, UnityEngine.CoreModule" class="hintline-hintsegprefab-field" style="display: flex;" />
                 <ui:VisualElement name="Buttons" style="flex-grow: 1; flex-direction: row-reverse;">
-                    <ui:Button text="Generate" parse-escape-sequences="true" display-tooltip-when-elided="true" name="GeneratePathButton" style="margin-top: 2px; margin-right: 2px; margin-bottom: 2px; margin-left: 2px; flex-grow: 1; border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px; display: none; visibility: visible;" />
-                    <ui:Button text="GenerateBox" parse-escape-sequences="true" display-tooltip-when-elided="true" name="GeneratePathButton" class="hintline-generate-box-field" style="margin-top: 2px; margin-right: 2px; margin-bottom: 2px; margin-left: 2px; flex-grow: 1; border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px;" />
+                    <ui:Button text="Generate" parse-escape-sequences="true" display-tooltip-when-elided="true" name="GenerateHintLineBtn" class="hintline-generate-btn" style="margin-top: 2px; margin-right: 2px; margin-bottom: 2px; margin-left: 2px; flex-grow: 1; border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px; display: flex; visibility: visible;" />
                 </ui:VisualElement>
             </ui:VisualElement>
         </ui:VisualElement>
