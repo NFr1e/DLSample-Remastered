@@ -62,6 +62,7 @@ namespace DLSample.Shared
             public const int BACKTRACK_PRIORITY_TIMER = 0;
             public const int BACKTRACK_PRIORITY_PLAYER_CONTROLLER = 0;
             public const int BACKTRACK_PRIORITY_SOUNDTRACK_DIRECTOR = 0;
+            public const int BACKTRACK_PRIORITY_TIMER_DIRECTOR = 0;
 
             public const int BACKTRACK_PRIORITY_COLLECTABLE = 10;
 

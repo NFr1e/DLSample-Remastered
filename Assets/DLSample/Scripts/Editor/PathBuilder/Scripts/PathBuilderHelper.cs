@@ -102,7 +102,13 @@ namespace DLSample.Editor.PathBuilder
 
                     if (segment.IsSimpleStright || !segment.containedEvents.Any(e => e is SegmentPathEvent))
                     {
-                        SpawnSegments(segment.startWaypoint.position, segment.endWaypoint.position, segment.sections[0].upDir, lineGroup.transform, segmentPrefab);
+                        SpawnSegments(segment.startWaypoint.position,
+                                      segment.endWaypoint.position,
+                                      segment.sections[0].upDir,
+                                      (float)segment.startWaypoint.time,
+                                      (float)segment.endWaypoint.time,
+                                      lineGroup.transform,
+                                      segmentPrefab);
                     }
                     else
                     {
@@ -114,7 +120,13 @@ namespace DLSample.Editor.PathBuilder
                             {
                                 for (int i = 0; i < section.points.Length - 1; i++)
                                 {
-                                    SpawnSegments(section.points[i], section.points[^1], section.upDir, lineGroup.transform, segmentPrefab);
+                                    SpawnSegments(section.points[i],
+                                                  section.points[i + 1],
+                                                  section.upDir,
+                                                  GetPointTime(section, i),
+                                                  GetPointTime(section, i + 1),
+                                                  lineGroup.transform,
+                                                  segmentPrefab);
                                 }
                             }
                         }
@@ -124,7 +136,7 @@ namespace DLSample.Editor.PathBuilder
 
             return guidanceContainer;
         }
-        private static void SpawnSegments(Vector3 start, Vector3 end, Vector3 upDir, Transform parent, GameObject linePrefab)
+        private static void SpawnSegments(Vector3 start, Vector3 end, Vector3 upDir, float startTime, float endTime, Transform parent, GameObject linePrefab)
         {
             Vector3 dir = end - start;
 
@@ -156,6 +168,15 @@ namespace DLSample.Editor.PathBuilder
 
                     Vector3 scale = linePrefab.transform.localScale;
                     line.transform.localScale = new Vector3(0.15f, scale.y, currentLength);
+
+                    float distanceToMidPoint = Vector3.Distance(start, (currentPos + segmentEnd) / 2f);
+                    float timeFactor = dist <= Mathf.Epsilon ? 0f : distanceToMidPoint / dist;
+                    float disappearTime = Mathf.Lerp(startTime, endTime, Mathf.Clamp01(timeFactor));
+
+                    if(line.TryGetComponent<HintLineSegment>(out var hintSegment))
+                    {
+                        hintSegment.Initialize(disappearTime);
+                    }
                 }
 
                 currentPos = segmentEnd;
@@ -169,6 +190,17 @@ namespace DLSample.Editor.PathBuilder
                     remainingDistance -= actualGap;
                 }
             }
+        }
+
+        private static float GetPointTime(PathSection section, int pointIndex, float samplingInterval = 0.1f)
+        {
+            if (section.points == null || section.points.Length == 0) return (float)section.startTime;
+            if (section.points.Length == 1) return (float)section.startTime;
+            if (pointIndex <= 0) return (float)section.startTime;
+            if (pointIndex >= section.points.Length - 1) return (float)section.endTime;
+            if (section.points.Length == 2) return Mathf.Lerp((float)section.startTime, (float)section.endTime, pointIndex);
+
+            return (float)section.startTime + pointIndex * samplingInterval;
         }
         #endregion
     }

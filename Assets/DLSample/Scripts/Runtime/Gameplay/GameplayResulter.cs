@@ -47,12 +47,14 @@ namespace DLSample.Gameplay
         public void OnInit()
         {
             _eventBus.Subscribe<OnCollectEventArgs>(OnCollectCollectable);
+            _eventBus.Subscribe<CheckpointEventParams.OnCheckpointed>(OnCheckpointed);
             _eventBus.Subscribe<OnConsumeCheckpoint>(OnConsumeCheckpoint);
             _eventBus.Subscribe<GameplayEventParams.BacktrackGameRequest>(OnBacktrack);
         }
         public void OnShutdown()
         {
             _eventBus.Unsubscribe<OnCollectEventArgs>(OnCollectCollectable);
+            _eventBus.Unsubscribe<CheckpointEventParams.OnCheckpointed>(OnCheckpointed);
             _eventBus.Unsubscribe<OnConsumeCheckpoint>(OnConsumeCheckpoint);
             _eventBus.Subscribe<GameplayEventParams.BacktrackGameRequest>(OnBacktrack);
         }
@@ -64,10 +66,16 @@ namespace DLSample.Gameplay
                     if(!_collectedGems.Contains(gem))
                         _collectedGems.Add(gem);
                     break;
-                case Crown crown:
-                    if(!_collectedCrowns.Contains(crown))
-                        _collectedCrowns.Add(crown);
-                    break;
+            }
+        }
+        private void OnCheckpointed(CheckpointEventParams.OnCheckpointed args)
+        {
+            if(args.Checkpoint is CrownCheckpoint crownCp)
+            {
+                var crown = crownCp.Crown;
+
+                if (!_collectedCrowns.Contains(crown))
+                    _collectedCrowns.Add(crown);
             }
         }
         private void OnConsumeCheckpoint(OnConsumeCheckpoint args)

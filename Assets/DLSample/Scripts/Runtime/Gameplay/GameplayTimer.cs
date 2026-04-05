@@ -9,8 +9,15 @@ namespace DLSample.Gameplay.Stream
         public bool IsPlaying { get; private set; } = false;
         public double CurrentTime { get; private set; } = 0;
 
-        private double _lastProcessTime = 0;
+        public void Tick(float deltaTime)
+        {
+            if (!IsPlaying) return;
 
+            CurrentTime += deltaTime;
+            ProcessTickEvents(CurrentTime);
+        }
+
+        #region Playback
         public void Play()
         {
             if (IsPlaying) return;
@@ -25,32 +32,17 @@ namespace DLSample.Gameplay.Stream
 
         public void Seek(double timeSecond)
         {
-            timeSecond = Math.Max(0.0, timeSecond);
-            CurrentTime = timeSecond;
+            CurrentTime = Math.Max(0.0, timeSecond);
 
-            _lastProcessTime = timeSecond;
+            ResetCursor();
         }
-
-        public void Tick(float deltaTime)
-        {
-            if (IsPlaying)
-            {
-                double startTime = _lastProcessTime;
-                CurrentTime += deltaTime;
-
-                ProcessTickEvents(startTime, CurrentTime);
-                _lastProcessTime = CurrentTime;
-            }
-        }
+        #endregion
 
         #region TickEventSystem
-
-        private readonly List<TickEvent> _tickEvents = new();
-
-        public class TickEvent
+        public struct TickEvent
         {
-            public double Time { get; }
-            public Action Callback { get; }
+            public double Time { get; set; }
+            public Action Callback { get; set; }
 
             public TickEvent(double time, Action callback)
             {
@@ -59,52 +51,41 @@ namespace DLSample.Gameplay.Stream
             }
         }
 
+        private readonly List<TickEvent> _tickEvents = new();
+        private int _pendingEventIndex = 0;
+
         public TickEvent RegisterTickEvent(TickEvent tickEvent)
         {
-            Debug.Log($"TickEvent[{tickEvent.Time},{tickEvent.Callback.Method.Name}] Registered");
-
             int index = _tickEvents.BinarySearch(tickEvent, Comparer<TickEvent>.Create((a, b) => a.Time.CompareTo(b.Time)));
-
-            if (index < 0)
-                index = ~index;
+            if (index < 0) index = ~index;
 
             _tickEvents.Insert(index, tickEvent);
+
+            ResetCursor();
+
             return tickEvent;
         }
 
         public bool UnregisterTickEvent(TickEvent tickEvent)
         {
-            return _tickEvents.Remove(tickEvent);
+            bool removed = _tickEvents.Remove(tickEvent);
+            if (removed)
+            {
+                ResetCursor();
+            }
+            return removed;
         }
 
-        private void ProcessTickEvents(double lastTime, double currentTime)
+        private void ProcessTickEvents(double currentTime)
         {
-            int count = _tickEvents.Count;
-            if (count == 0) return;
-
-            int left = 0;
-            int right = count - 1;
-            int startIndex = count;
-
-            while (left <= right)
+            while (_pendingEventIndex < _tickEvents.Count)
             {
-                int mid = left + (right - left) / 2;
-                if (_tickEvents[mid].Time > lastTime)
-                {
-                    startIndex = mid;
-                    right = mid - 1;
-                }
-                else
-                {
-                    left = mid + 1;
-                }
-            }
+                if (_tickEvents[_pendingEventIndex].Time > currentTime)
+                    break;
 
-            for (int i = startIndex; i < count; i++)
-            {
-                var evt = _tickEvents[i];
+                var evt = _tickEvents[_pendingEventIndex];
 
-                if (evt.Time > currentTime) break;
+                _pendingEventIndex++;
 
                 try
                 {
@@ -117,6 +98,28 @@ namespace DLSample.Gameplay.Stream
             }
         }
 
+        private void ResetCursor()
+        {
+            int left = 0;
+            int right = _tickEvents.Count - 1;
+            int resultIndex = _tickEvents.Count;
+
+            while (left <= right)
+            {
+                int mid = left + (right - left) / 2;
+
+                if (_tickEvents[mid].Time >= CurrentTime)
+                {
+                    resultIndex = mid;
+                    right = mid - 1;
+                }
+                else
+                {
+                    left = mid + 1;
+                }
+            }
+            _pendingEventIndex = resultIndex;
+        }
         #endregion
     }
 }

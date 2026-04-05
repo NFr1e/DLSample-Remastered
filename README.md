@@ -26,8 +26,8 @@
 ### DLSample工作流
 DLSample内置编辑器拓展，计划实现完整便捷的关卡设计工作流。
 
-#### TrackGrapher (Rescripting)
-- TrackGrapher是DLSample实现的音频可视化+踩音辅助工具，可以实现更方便且精确的关卡踩音工作，并将踩音结果保存到BeatmapData。
+<!-- #### TrackGrapher (Rescripting)
+- TrackGrapher是DLSample实现的音频可视化+踩音辅助工具，可以实现更方便且精确的关卡踩音工作，并将踩音结果保存到BeatmapData。 -->
 
 #### PathGrapher
 - PathGrapher是DLSample提供的通过BeatmapData传入时间数据源，并根据时间数据模拟出关卡标准路径的可视化工具。设计师可在路径时间点上增删改路径事件(PathEvent)实现路径变换等。路径事件包含点性事件和段性事件。点性事件如SpeedChangeEvent, GravityChangeEvent等，只需提供起点。段性事件如JumpEvent，需要提供起点和终点。
@@ -40,7 +40,7 @@ DLSample内置编辑器拓展，计划实现完整便捷的关卡设计工作流
 ### 框架
  DLSample实现了一个简易的Gameplay生命周期管理框架。该框架将游戏中各模块抽象出```IModule```接口, 并由ModulesManager根据各模块的```Priority```值实现各模块的统一有序管理。模块管理器生命周期通过所在领域的Entry对象（如Gameplay -> GameplayEntry）桥接。
 #### 模块注册和访问需要遵守以下开发规范:
-1. 各模块实例需通过继承```GameplayObject```并覆写其```OnStart()```方法，并在该方法中将模块注册到ModulesManager(使用```GameplayEntry.Instance.ModulesManager.Register<T>(IModule module)```)
+1. 各模块实例需通过继承```GameplayObject```并覆写其```OnStart()```方法，在该方法中将模块实例注册到ModulesManager(使用```GameplayEntry.Instance.ModulesManager.Register<T>(IModule module)```)
 2. 必须模块，即Gameplay必不可少的模块(如GameplayPlayerController)通过其构造函数或其他绑定方法直接注入依赖的模块实例
 3. 可选模块，即非必须的模块(如CameraFollowerController)，通过实现接口```IModuleRequire<T>```,由ModulesManager通过反射自动注入模块。
 4. 其余非模块杂项通过```GameplayEntry.Instance.ServiceLocator```的```Get<T>()```或```TryGet<T>(out service)```方法获取。
@@ -58,8 +58,10 @@ DLSample内置编辑器拓展，计划实现完整便捷的关卡设计工作流
 3. PathGrapherAsset配置
 4. 创建基础关卡
 
-### [三. Player设置]()
+To be continued...
+
+<!-- ### [三. Player设置]()
 
 1. 关卡基础配置
 2. Player移动
-3. Player死亡
+3. Player死亡 -->

@@ -10,6 +10,7 @@ namespace DLSample.Gameplay
     {
         public struct OnCheckpointed : IEventArg
         {
+            public Checkpoint Checkpoint { get; set; }
             public double CheckTime { get; set; }
         }
         public struct OnConsumeCheckpoint : IEventArg
@@ -54,9 +55,13 @@ namespace DLSample.Gameplay
             if (checkpoint != null)
             {
                 IsCheckpointed = true;
+
+                if (_currentCheckpoint == checkpoint) return;
+
                 _currentCheckpoint = checkpoint;
 
                 _onCheckpointedCtx.CheckTime = checkpoint.CheckTime;
+                _onCheckpointedCtx.Checkpoint = checkpoint;
                 _evBus?.Invoke(this, _onCheckpointedCtx);
             }
         }
