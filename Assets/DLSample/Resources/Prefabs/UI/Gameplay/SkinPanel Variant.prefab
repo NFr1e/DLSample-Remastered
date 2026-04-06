@@ -1216,6 +1216,10 @@ PrefabInstance:
       propertyPath: m_Color.a
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 825497809028024263, guid: 11ac6748d108ab14d9a6090f89894014, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2168807217085773033, guid: 11ac6748d108ab14d9a6090f89894014, type: 3}
       propertyPath: animations.pauseAnimation.animationSequencer
       value: 

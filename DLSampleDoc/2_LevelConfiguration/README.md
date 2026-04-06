@@ -15,14 +15,11 @@
 
 ## (二) 如何填入BeatmapData？ 🤔
 
-DLSample提供了三种填入BeatmapData的方法
+DLSample提供了两种填入BeatmapData的方法
 
-### 1. 通过TrackGrapher踩音
-1. 找到Unity顶部工具栏中的DLSample，点击Tools -> TrackGrapher
-
-### 2. 通过OSU谱面文件导入(Rescripting)
+### 1. 通过OSU谱面文件导入(Rescripting)
 1. 找到Unity顶部工具栏中的DLSample，点击Tools -> BeatmapFromOsu
-### 3.通过BeatmapCreator踩音
+### 2.通过BeatmapCreator踩音
 - 见下文
 
 ## (三) PathGrapherAsset配置 ✏️
@@ -44,4 +41,5 @@ JumpEvent：赋予角色向上初速度（相对于角色局部坐标系），�
 TeleportEvent：切断当前连续路径，在目标位置重新生成坐标起点。
 
 如图所示，PathGrapherAsset需要用户填入BeatmapData以及初始状态信息
+
 ## (四) 创建基础关卡

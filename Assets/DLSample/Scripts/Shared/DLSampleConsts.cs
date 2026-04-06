@@ -39,6 +39,7 @@ namespace DLSample.Shared
         public struct Gameplay
         {
             #region Module Priority
+            // 升序优先级，数值越小优先级越高
             public const int PRIORITY_BACKTRACKABLES_HANDLER = 0;
 
             public const int PRIORITY_PLAYER_CONTROLLER = 1;
@@ -61,6 +62,7 @@ namespace DLSample.Shared
             #endregion
 
             #region BacktrackPriority
+            // 升序优先级，数值越小优先级越高
             public const int BACKTRACK_PRIORITY_TIMER = 0;
             public const int BACKTRACK_PRIORITY_PLAYER_CONTROLLER = 0;
             public const int BACKTRACK_PRIORITY_SOUNDTRACK_DIRECTOR = 0;
@@ -82,9 +84,10 @@ namespace DLSample.Shared
         }
         public struct Input
         {
-            public const int INPUT_PRIORITY_SYSTEM = 0;
+            // 降序优先级，数值越大优先级越高
+            public const int INPUT_PRIORITY_SYSTEM = 20;
             public const int INPUT_PRIORITY_UI = 10;
-            public const int INPUT_PRIORITY_GAMEPLAY = 20;
+            public const int INPUT_PRIORITY_GAMEPLAY = 0;
         }
     }
 }
