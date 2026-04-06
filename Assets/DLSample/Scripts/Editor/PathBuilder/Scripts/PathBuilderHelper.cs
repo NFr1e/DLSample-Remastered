@@ -1,4 +1,5 @@
 using UnityEngine;
+using DLSample.Gameplay;
 using DLSample.Gameplay.Behaviours;
 using DLSample.Editor.PathGrapher;
 using System.Linq;
@@ -173,7 +174,12 @@ namespace DLSample.Editor.PathBuilder
                     float timeFactor = dist <= Mathf.Epsilon ? 0f : distanceToMidPoint / dist;
                     float disappearTime = Mathf.Lerp(startTime, endTime, Mathf.Clamp01(timeFactor));
 
-                    if(line.TryGetComponent<HintLineSegment>(out var hintSegment))
+                    if(!line.TryGetComponent<HintLineSegment>(out var hintSegment))
+                    {
+                        hintSegment = line.AddComponent<HintLineSegment>();
+                    }
+
+                    if(hintSegment != null)
                     {
                         hintSegment.Initialize(disappearTime);
                     }

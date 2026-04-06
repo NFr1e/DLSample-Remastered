@@ -7,9 +7,11 @@ using DLSample.Gameplay.Stream;
 
 namespace DLSample.Gameplay.Behaviours
 {
-    public class HintBox : GameplayObject, ICollectable, IBacktrackable
+    public class HintBox : GameplayObject, IBacktrackable
     {
         public float StandardTime;
+        public float RelevantEndTime { get; private set; }
+        public bool IsRuntimeLoaded { get; private set; } = true;
 
         [Space(10)]
         [SerializeField] private GameObject triggerEffectPrefab;
@@ -17,8 +19,6 @@ namespace DLSample.Gameplay.Behaviours
 
         public Transform segments;
 
-        public event Action OnCollect;
-        public string TypeId => "Collectables.HintBox";
         public bool IsCollected { get; private set; } = false;
 
         public int BacktrackPriority => DLSampleConsts.Gameplay.BACKTRACK_PRIORITY_COLLECTABLE;
@@ -95,15 +95,15 @@ namespace DLSample.Gameplay.Behaviours
             if (IsCollected) return;
 
             IsCollected = true;
-            OnCollect?.Invoke();
-
-            mRenderer.enabled = false;
+            RefreshRendererVisibility();
 
             PlayEffect();
         }
 
         private void PlayEffect()
         {
+            if (triggerEffectPrefab == null || mRenderer == null) return;
+
             if (_currentEffect)
             {
                 Destroy(_currentEffect);
@@ -118,12 +118,17 @@ namespace DLSample.Gameplay.Behaviours
         private void CacheSegments()
         {
             _hintSegments.Clear();
+            RelevantEndTime = StandardTime;
 
             if (!segments) return;
 
             _hintSegments.AddRange(segments
                 .GetComponentsInChildren<HintLineSegment>(true)
                 .OrderBy(segment => segment.DisappearTime));
+
+            RelevantEndTime = _hintSegments.Count > 0
+                ? Mathf.Max(StandardTime, _hintSegments[^1].DisappearTime)
+                : StandardTime;
         }
 
         private void RegisterSegmentTickEvents()
@@ -154,10 +159,8 @@ namespace DLSample.Gameplay.Behaviours
             hintSegment.SetVisible(false);
         }
 
-        private void RefreshSegmentsVisibility()
+        private void RefreshSegmentsVisibility(double currentTime)
         {
-            double currentTime = _timer.CurrentTime;
-
             foreach (var hintSegment in _hintSegments)
             {
                 if (hintSegment == null) continue;
@@ -165,25 +168,68 @@ namespace DLSample.Gameplay.Behaviours
                 hintSegment.RefreshVisibility(currentTime);
             }
         }
+
+        private void RefreshRendererVisibility()
+        {
+            if (mRenderer == null) return;
+
+            mRenderer.enabled = IsRuntimeLoaded && !IsCollected;
+        }
         #endregion
 
         public void Backtrack()
         {
-            bool hide = StandardTime <= _timer.CurrentTime;
-            IsCollected = hide;
-            mRenderer.enabled = !hide;
+            _isTriggering = false;
+            RefreshByTime(_timer.CurrentTime);
+
+            if (_currentEffect)
+            {
+                Destroy(_currentEffect);
+            }
+        }
+
+        public void SetRuntimeLoaded(bool loaded)
+        {
+            if (IsRuntimeLoaded == loaded)
+            {
+                if (gameObject.activeSelf != loaded)
+                {
+                    gameObject.SetActive(loaded);
+                }
+                return;
+            }
+
+            IsRuntimeLoaded = loaded;
+
+            if (!loaded && _currentEffect)
+            {
+                Destroy(_currentEffect);
+            }
+
+            if (!loaded)
+            {
+                _isTriggering = false;
+            }
+
+            gameObject.SetActive(loaded);
+
+            if (loaded)
+            {
+                RefreshByTime(_timer != null ? _timer.CurrentTime : 0);
+            }
+        }
+
+        public void RefreshByTime(double currentTime)
+        {
+            IsCollected = StandardTime <= currentTime;
+            RefreshRendererVisibility();
 
             if (segments && !segments.gameObject.activeSelf)
             {
                 segments.gameObject.SetActive(true);
             }
 
-            RefreshSegmentsVisibility();
-
-            if (_currentEffect)
-            {
-                Destroy(_currentEffect);
-            }
+            RefreshSegmentsVisibility(currentTime);
         }
     }
 }

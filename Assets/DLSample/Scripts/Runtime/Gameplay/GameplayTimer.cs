@@ -1,11 +1,15 @@
+using DLSample.Framework;
+using DLSample.Shared;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace DLSample.Gameplay.Stream
 {
-    public class GameplayTimer : IStreamPlayer
+    public class GameplayTimer : IModule, IStreamPlayer
     {
+        int IModule.Priority => DLSampleConsts.Gameplay.PRIORITY_GAMEPLAY_TIMER;
+
         public bool IsPlaying { get; private set; } = false;
         public double CurrentTime { get; private set; } = 0;
 

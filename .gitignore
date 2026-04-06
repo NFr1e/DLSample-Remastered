@@ -2,7 +2,8 @@
 #
 # Get latest from https://github.com/github/gitignore/blob/main/Unity.gitignore
 #
-/UIElementsSchema/
+
+/UIElementsSchema
 .utmp/
 /[Ll]ibrary/
 /[Tt]emp/
@@ -76,7 +77,7 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 
 # PaidPlugins
-/Assets/Plugins/Sirenix/
+/Assets/Plugins/Sirenix
 
 #DevAssets
-/Assets/DLSample/Levels/DevDebug/
+/Assets/DLSample/Levels/DevDebug

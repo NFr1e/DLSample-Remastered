@@ -77,6 +77,7 @@ namespace DLSample.Gameplay.Behaviours
             modulesManager.Register(_stateHandler);
             modulesManager.Register(_backtrackHandler);
             modulesManager.Register(_checkpointHandler);
+            modulesManager.Register(_timer);
             modulesManager.Register(_timerDirector);
             modulesManager.Register(_playerController);
             modulesManager.Register(_inputHandler);

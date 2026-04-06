@@ -11,6 +11,7 @@ namespace DLSample.Gameplay.Phase
         private readonly EventBus _evtBus;
 
         public bool IsGameStarted { get; private set; } = false;
+        public bool IsGameWin { get; private set; } = false;
 
         public int Priority => DLSampleConsts.Gameplay.PRIORITY_STATE_HANDLER;
 
@@ -40,6 +41,7 @@ namespace DLSample.Gameplay.Phase
             _evtBus.Subscribe<GameplayEventParams.PauseGameRequest>(OnRequestGamePause);
             _evtBus.Subscribe<GameplayEventParams.RespawnGameRequest>(OnRequestRespawn);
             _evtBus.Subscribe<GameplayEventParams.ExitGameRequest>(OnRequestExit);
+            _evtBus.Subscribe<GameplayEventParams.WinGameRequest>(OnRequestWin);
             _evtBus.Subscribe<PlayerEventsParams.PlayerDieArg>(OnPlayerDie);
         }
         private void UnregisterEvents()
@@ -50,6 +52,7 @@ namespace DLSample.Gameplay.Phase
             _evtBus.Unsubscribe<GameplayEventParams.PauseGameRequest>(OnRequestGamePause);
             _evtBus.Unsubscribe<GameplayEventParams.RespawnGameRequest>(OnRequestRespawn);
             _evtBus.Unsubscribe<GameplayEventParams.ExitGameRequest>(OnRequestExit);
+            _evtBus.Unsubscribe<GameplayEventParams.WinGameRequest>(OnRequestWin);
             _evtBus.Unsubscribe<PlayerEventsParams.PlayerDieArg>(OnPlayerDie);
         }
 
@@ -77,6 +80,11 @@ namespace DLSample.Gameplay.Phase
         private void OnRequestExit(GameplayEventParams.ExitGameRequest request)
         {
             _fsm.SetCurrentState<GameplayStates.Exiting>();
+        }
+        private void OnRequestWin(GameplayEventParams.WinGameRequest request)
+        {
+            IsGameWin = true;
+            _fsm.SetCurrentState<GameplayStates.OverState>();
         }
         private void OnPlayerDie(PlayerEventsParams.PlayerDieArg arg)
         {

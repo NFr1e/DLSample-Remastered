@@ -11,6 +11,7 @@ namespace DLSample.Gameplay
         public struct PauseGameRequest : IEventArg { }
         public struct RespawnGameRequest : IEventArg { }
         public struct BacktrackGameRequest : IEventArg { }
+        public struct WinGameRequest : IEventArg { }
         public struct ExitGameRequest : IEventArg { }
 
         public struct GameplayStateChangeCtx : IEventArg

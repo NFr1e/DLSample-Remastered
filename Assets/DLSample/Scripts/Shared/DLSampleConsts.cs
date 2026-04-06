@@ -46,10 +46,12 @@ namespace DLSample.Shared
             public const int PRIORITY_STATE_HANDLER = 1;
             public const int PRIORITY_CHECKPOINT_HANDLER = 1;
             public const int PRIORITY_SOUNDTRACK_DIRECTOR = 1;
+            public const int PRIORITY_GAMEPLAY_TIMER = 1;
             public const int PRIORITY_TIMER_DIRECTOR = 1;
             public const int PRIORITY_UI_HANDLER = 1;
             public const int PRIORITY_RESULTER = 1;
 
+            public const int PRIORITY_HINT_LINE_MANAGER = 2;
             public const int PRIORITY_SKIN_HANDLER = 2;
             public const int PRIORITY_SKIN_CHANGER = 2;
 
@@ -64,6 +66,7 @@ namespace DLSample.Shared
             public const int BACKTRACK_PRIORITY_SOUNDTRACK_DIRECTOR = 0;
             public const int BACKTRACK_PRIORITY_TIMER_DIRECTOR = 0;
 
+            public const int BACKTRACK_PRIORITY_HINT_LINE_MANAGER = 5;
             public const int BACKTRACK_PRIORITY_COLLECTABLE = 10;
 
             public const int BACKTRACK_PRIORITY_CAMERA_FOLLOWER = 10;

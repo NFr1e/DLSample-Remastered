@@ -7,7 +7,7 @@ using DLSample.Shared.UI;
 
 namespace DLSample.Gameplay
 {
-    public class GameplayUIHandler : IModule, IModuleRequire<CheckpointHandler>
+    public class GameplayUIHandler : IModule, IModuleRequire<CheckpointHandler>, IModuleRequire<GameplayStateHandler>
     {
         public int Priority => DLSampleConsts.Gameplay.PRIORITY_UI_HANDLER;
 
@@ -16,6 +16,7 @@ namespace DLSample.Gameplay
         private readonly GameplayUIMapper _mapper;
 
         private CheckpointHandler _checkpointHandler;
+        private GameplayStateHandler _stateHandler;
 
         private Panel _preparingPanel;
 
@@ -45,9 +46,10 @@ namespace DLSample.Gameplay
                     break;
 
                 case GameplayStates.OverState:
+
                     if(_checkpointHandler is not null)
                     {
-                        if(_checkpointHandler.IsCheckpointed)
+                        if(_checkpointHandler.IsCheckpointed && !_stateHandler.IsGameWin)
                         {
                             _ = await _uiManager.OpenPanel(_mapper.RespawnPanelId);
                             return;
@@ -61,17 +63,21 @@ namespace DLSample.Gameplay
                     _ = await _uiManager.OpenPanel(_mapper.PausePanelId);
                     break;
 
-                //case GameplayStates.WaitingState:
-                //    break;
-
                 default:
                     await _uiManager.CloseAllFullscreenPanel();
                     break;
             }
         }
+
+        #region DI
         public void SetModule(CheckpointHandler cpHandler)
         {
             _checkpointHandler = cpHandler;
         }
+        public void SetModule(GameplayStateHandler stateHandler)
+        {
+            _stateHandler = stateHandler;
+        }
+        #endregion
     }
 }
