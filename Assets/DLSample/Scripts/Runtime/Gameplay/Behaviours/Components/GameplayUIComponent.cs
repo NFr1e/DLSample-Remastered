@@ -16,7 +16,7 @@ namespace DLSample.Gameplay.Behaviours
         protected override void OnInit()
         {
             var uiManager = AppEntry.UIManager;
-            _handler = new(GameplayEntry.Instance.EventBus, GameplayEntry.Instance.ServiceLocator, uiManager, gameplayUIMapper);
+            _handler = new(GameplayEntry.Instance.EventBus, uiManager, gameplayUIMapper);
 
             uiManager.SetupConfigs(panelsConfig);
             uiManager.SetupCamera(uiCamera);

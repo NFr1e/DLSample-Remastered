@@ -1,4 +1,3 @@
-using DLSample.Facility;
 using DLSample.Facility.UI;
 using DLSample.Facility.Events;
 using DLSample.Gameplay.Phase;
@@ -8,28 +7,26 @@ using DLSample.Shared.UI;
 
 namespace DLSample.Gameplay
 {
-    public class GameplayUIHandler : IModule
+    public class GameplayUIHandler : IModule, IModuleRequire<CheckpointHandler>
     {
         public int Priority => DLSampleConsts.Gameplay.PRIORITY_UI_HANDLER;
 
         private readonly EventBus _evtBus;
-        private readonly ServiceLocator _serviceLocator;
         private readonly UIElementManager _uiManager;
         private readonly GameplayUIMapper _mapper;
 
         private CheckpointHandler _checkpointHandler;
 
-        public GameplayUIHandler(EventBus eventBus, ServiceLocator serviceLocator, UIElementManager uiManager, GameplayUIMapper mapper)
+        private Panel _preparingPanel;
+
+        public GameplayUIHandler(EventBus eventBus, UIElementManager uiManager, GameplayUIMapper mapper)
         {
             _evtBus = eventBus;
-            _serviceLocator = serviceLocator;
             _uiManager = uiManager;
             _mapper = mapper;
         }
         public void OnInit()
         {
-            _checkpointHandler = _serviceLocator.Get<CheckpointHandler>();
-
             _evtBus.Subscribe<GameplayEventParams.GameplayStateChangeCtx>(OnStateChange);
         }
         public void OnShutdown()
@@ -40,8 +37,11 @@ namespace DLSample.Gameplay
         {
             switch(ctx.CurrentState)
             {
-                case GameplayStates.PreparingState:
-                    _ = await _uiManager.OpenPanel(_mapper.PreparePanelId);
+                case GameplayStates.PreparingState or GameplayStates.WaitingState:
+                    if (_preparingPanel == null)
+                    {
+                        _preparingPanel = await _uiManager.OpenPanel(_mapper.PreparePanelId);
+                    }
                     break;
 
                 case GameplayStates.OverState:
@@ -61,13 +61,17 @@ namespace DLSample.Gameplay
                     _ = await _uiManager.OpenPanel(_mapper.PausePanelId);
                     break;
 
-                case GameplayStates.WaitingState:
-                    break;
+                //case GameplayStates.WaitingState:
+                //    break;
 
                 default:
                     await _uiManager.CloseAllFullscreenPanel();
                     break;
             }
+        }
+        public void SetModule(CheckpointHandler cpHandler)
+        {
+            _checkpointHandler = cpHandler;
         }
     }
 }

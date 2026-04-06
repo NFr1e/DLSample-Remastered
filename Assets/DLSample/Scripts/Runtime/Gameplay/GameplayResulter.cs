@@ -56,7 +56,7 @@ namespace DLSample.Gameplay
             _eventBus.Unsubscribe<OnCollectEventArgs>(OnCollectCollectable);
             _eventBus.Unsubscribe<CheckpointEventParams.OnCheckpointed>(OnCheckpointed);
             _eventBus.Unsubscribe<OnConsumeCheckpoint>(OnConsumeCheckpoint);
-            _eventBus.Subscribe<GameplayEventParams.BacktrackGameRequest>(OnBacktrack);
+            _eventBus.Unsubscribe<GameplayEventParams.BacktrackGameRequest>(OnBacktrack);
         }
         private void OnCollectCollectable(OnCollectEventArgs args)
         {

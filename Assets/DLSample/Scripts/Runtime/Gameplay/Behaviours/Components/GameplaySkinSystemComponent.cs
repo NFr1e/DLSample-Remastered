@@ -17,12 +17,14 @@ namespace DLSample.Gameplay.Behaviours
             _changer = new SkinChanger(skinsData, skinsContainer);
             _handler = new SkinsHandler(_changer);
 
+            GameplayEntry.Instance.ServiceLocator.Register<SkinChanger>(_changer);
+            GameplayEntry.Instance.ServiceLocator.Register<SkinsHandler>(_handler);
+        }
+        protected override void OnStart() 
+        {
             GameplayEntry.Instance.ModulesManager.Register(_changer);
             GameplayEntry.Instance.ModulesManager.Register(_handler);
-
-            GameplayEntry.Instance.ServiceLocator.Register<SkinChanger>(_changer);
         }
-
         protected override void OnExit() 
         {
             GameplayEntry.Instance.ServiceLocator.Unregister<SkinChanger>();

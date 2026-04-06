@@ -2,6 +2,7 @@ using DLSample.App;
 using DLSample.Shared;
 using DLSample.Framework;
 using DLSample.Facility.Events;
+using UnityEngine;
 
 namespace DLSample.Gameplay.Skin
 {
@@ -11,11 +12,13 @@ namespace DLSample.Gameplay.Skin
     }
 
     /// <summary>
-    /// 通过全局事件系统（切换时）和[TODO:持久化系统（初始化时）]持有当前皮肤状态信息，根据皮肤状态信息通过SkinChanger实例实现实时切换皮肤
+    /// 通过全局事件系统（切换时）和持久化系统持有当前皮肤状态信息，根据皮肤状态信息通过SkinChanger实例实现实时切换皮肤
     /// </summary>
     public class SkinsHandler : IModule
     {
         public int Priority => DLSampleConsts.Gameplay.PRIORITY_SKIN_HANDLER;
+
+        public string CurrentSkinId { get; private set; }
 
         private readonly SkinChanger _skinChanger;
         
@@ -31,7 +34,9 @@ namespace DLSample.Gameplay.Skin
             _globalEvtBus = AppEntry.EventBus;
             _globalEvtBus.Subscribe<ChangeSkinRequest>(OnSkinChangeRequested);
 
-            _skinChanger.ChangeSkin(string.Empty);//TODO : Load from save
+            var savedSkin = PlayerPrefs.GetString(DLSampleConsts.SaveAndLoad.ID_SKIN);
+            _skinChanger.ChangeSkin(savedSkin);
+            CurrentSkinId = savedSkin;
         }
         public void OnShutdown()
         {
@@ -40,7 +45,11 @@ namespace DLSample.Gameplay.Skin
 
         private void OnSkinChangeRequested(ChangeSkinRequest request)
         {
+            CurrentSkinId = request.SkinId;
+
             _skinChanger.ChangeSkin(request.SkinId);
+
+            PlayerPrefs.SetString(DLSampleConsts.SaveAndLoad.ID_SKIN, request.SkinId);
         }
     }
 }

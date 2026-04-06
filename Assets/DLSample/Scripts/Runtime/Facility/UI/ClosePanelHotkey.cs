@@ -25,7 +25,7 @@ namespace DLSample.Facility.UI
 
             _panel = GetComponent<Panel>();
 
-            _closePanelInputTask = new(ClosePanel, _inputManager.GetInputLayer<InputLayers.UIInputLayer>());
+            _closePanelInputTask = new InputTask(ClosePanel, _inputManager.GetInputLayer<InputLayers.UIInputLayer>());
         }
 
         private void OnEnable()

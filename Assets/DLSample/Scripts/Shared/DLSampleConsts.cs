@@ -73,6 +73,10 @@ namespace DLSample.Shared
 
             public const float HINT_BOX_TRIGGER_INTERVAL = 0.1f;
         }
+        public struct SaveAndLoad
+        {
+            public const string ID_SKIN = "SAVE_SKIN_ID";
+        }
         public struct Input
         {
             public const int INPUT_PRIORITY_SYSTEM = 0;

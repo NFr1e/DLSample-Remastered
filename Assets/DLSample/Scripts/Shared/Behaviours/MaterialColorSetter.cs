@@ -15,7 +15,7 @@ namespace DLSample.Shared
             public Material material;
             public Color color = Color.white;
 
-            [Button("GetColor", ButtonHeight = 20)]
+            [Button("GetColor", ButtonHeight = 30)]
             private void GetColor()
             {
                 if(material)
