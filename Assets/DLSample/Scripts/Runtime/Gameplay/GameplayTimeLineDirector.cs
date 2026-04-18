@@ -15,7 +15,6 @@ namespace DLSample.Gameplay.Stream
         private readonly IStreamPlayer _timelinePlayer;
 
         private EventBus _evtBus;
-        private ServiceLocator _serviceLocator;
         private BacktrackablesHandler _backtrackablesHandler;
 
         private bool _synced = false;
@@ -28,8 +27,6 @@ namespace DLSample.Gameplay.Stream
         public void OnInit()
         {
             _evtBus = GameplayEntry.Instance.EventBus;
-            _serviceLocator = GameplayEntry.Instance.ServiceLocator;
-
             Subscribe();
 
             _timelinePlayer.Seek(_timelinePlayer.CurrentTime);

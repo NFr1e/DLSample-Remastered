@@ -1,4 +1,3 @@
-using System;
 using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
@@ -29,7 +28,7 @@ namespace DLSample.Gameplay.Behaviours
 
         private IPlayerMove _player;
 
-        private float _minTime, _maxTime;
+        private float _minJudgeTime, _maxJudgeTime;
 
         private bool _isTriggering = false;
 
@@ -46,8 +45,8 @@ namespace DLSample.Gameplay.Behaviours
 
             _player.OnTurn += OnPlayerTurn;
 
-            _minTime = StandardTime - DLSampleConsts.Gameplay.HINT_BOX_TRIGGER_INTERVAL;
-            _maxTime = StandardTime + DLSampleConsts.Gameplay.HINT_BOX_TRIGGER_INTERVAL;
+            _minJudgeTime = StandardTime - DLSampleConsts.Gameplay.HINT_BOX_TRIGGER_INTERVAL;
+            _maxJudgeTime = StandardTime + DLSampleConsts.Gameplay.HINT_BOX_TRIGGER_INTERVAL;
 
             CacheSegments();
             RegisterSegmentTickEvents();
@@ -79,7 +78,7 @@ namespace DLSample.Gameplay.Behaviours
 
         private bool Judged()
         {
-            return _timer.CurrentTime >= _minTime && _timer.CurrentTime <= _maxTime;
+            return _timer.CurrentTime >= _minJudgeTime && _timer.CurrentTime <= _maxJudgeTime;
         }
 
         private void OnPlayerTurn(PlayerMovingArgs _)

@@ -9,7 +9,13 @@ namespace DLSample.Shared
             public const int MENU_ITEM_CREATE_LEVEL_PRIORITY = 1;
 
             public const string MENU_ITEM_PATH_BUILDER = "DLSample/PathBuilder";
-            public const int MENU_ITEM_PATH_BUILDER_PRIORITY = 2;
+            public const int MENU_ITEM_PATH_BUILDER_PRIORITY = 1;
+
+            public const string MENU_ITEM_CHART_READER = "DLSample/ChartReader";
+            public const int MENU_ITEM_CHART_READER_PRIORITY = 1;
+
+            public const string MENU_ITEM_TUTORIAL = "DLSample/Tutorial";
+            public const int MENU_ITEM_TUTORIAL_PRIORITY = 12;
             #endregion
 
             #region CreateMenu
@@ -52,7 +58,7 @@ namespace DLSample.Shared
             public const int PRIORITY_UI_HANDLER = 1;
             public const int PRIORITY_RESULTER = 1;
 
-            public const int PRIORITY_HINT_LINE_MANAGER = 2;
+            public const int PRIORITY_HINT_LINE_CONTROLLER = 2;
             public const int PRIORITY_SKIN_HANDLER = 2;
             public const int PRIORITY_SKIN_CHANGER = 2;
 
@@ -81,6 +87,7 @@ namespace DLSample.Shared
         public struct SaveAndLoad
         {
             public const string ID_SKIN = "SAVE_SKIN_ID";
+            public const string ID_HINTLINE_STATE = "SAVE_HINTLINE_STATE";
         }
         public struct Input
         {
@@ -88,6 +95,10 @@ namespace DLSample.Shared
             public const int INPUT_PRIORITY_SYSTEM = 20;
             public const int INPUT_PRIORITY_UI = 10;
             public const int INPUT_PRIORITY_GAMEPLAY = 0;
+        }
+        public struct Others
+        {
+            public const string URL_TUTORIAL = "https://nfr1e.github.io/docs/dl-sample/";
         }
     }
 }

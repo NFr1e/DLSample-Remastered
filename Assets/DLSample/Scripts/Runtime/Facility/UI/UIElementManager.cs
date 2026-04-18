@@ -171,8 +171,6 @@ namespace DLSample.Facility.UI
                 {
                     await UniTask.SwitchToMainThread();
                     prevPanel.Resume();
-
-                    Debug.Log($"Close panel:[{closingPanelData.ItemId}] and resume panel:[{prevPanelData.ItemId}]");
                 }
                 _currentFullscreenPanelData = prevPanelData;
             }

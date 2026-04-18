@@ -1,0 +1,28 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
+    <Style src="project://database/Assets/DLSample/Scripts/Editor/ChartReader/UI/ChartReaderWindow.uss?fileID=7433441132597879392&amp;guid=eb7b78ec161bfc2449bf79d834b11942&amp;type=3#ChartReaderWindow" />
+    <ui:VisualElement name="Root" style="flex-grow: 1; padding-top: 5px; padding-right: 5px; padding-bottom: 5px; padding-left: 5px;">
+        <ui:VisualElement name="Header" style="flex-grow: 0; margin-bottom: 5px;">
+            <ui:Label tabindex="-1" text="ChartReader" parse-escape-sequences="true" display-tooltip-when-elided="true" name="HeaderText" style="font-size: 14px; -unity-font-style: bold;" />
+            <ui:Label tabindex="-1" text="Read osu chart file to generate beatmap data" parse-escape-sequences="true" display-tooltip-when-elided="true" name="SubtitleText" style="color: rgba(210, 210, 210, 0.49);" />
+        </ui:VisualElement>
+        <ui:VisualElement name="Source" style="flex-grow: 0; background-color: rgb(75, 75, 75); padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px; border-left-color: rgb(75, 75, 75); border-right-color: rgb(75, 75, 75); border-top-color: rgb(75, 75, 75); border-bottom-color: rgb(75, 75, 75); border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; -unity-background-image-tint-color: rgba(0, 0, 0, 0); margin-bottom: 5px;">
+            <ui:VisualElement name="Title" style="flex-grow: 1; border-bottom-width: 0; border-left-color: rgba(0, 0, 0, 0); border-right-color: rgba(0, 0, 0, 0); border-top-color: rgba(0, 0, 0, 0); border-bottom-color: rgba(0, 0, 0, 0); padding-top: 2px; padding-right: 2px; padding-bottom: 2px; padding-left: 2px; border-top-width: 0; border-right-width: 0; border-left-width: 0;">
+                <ui:Label tabindex="-1" text="Source" parse-escape-sequences="true" display-tooltip-when-elided="true" name="TitleLabel" style="font-size: 12px; -unity-font-style: bold;" />
+            </ui:VisualElement>
+            <ui:VisualElement name="Content" style="flex-grow: 1; background-color: rgb(50, 50, 50); border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px; padding-left: 2px;">
+                <uie:ObjectField label="ChartFile" name="SourceField" type="UnityEngine.TextAsset, UnityEngine.CoreModule" class="source-chartfile-field" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="Output" style="flex-grow: 0; background-color: rgb(75, 75, 75); padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px; border-left-color: rgb(75, 75, 75); border-right-color: rgb(75, 75, 75); border-top-color: rgb(75, 75, 75); border-bottom-color: rgb(75, 75, 75); border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; -unity-background-image-tint-color: rgba(0, 0, 0, 0); margin-bottom: 5px;">
+            <ui:VisualElement name="Title" style="flex-grow: 1; border-bottom-width: 0; border-left-color: rgba(0, 0, 0, 0); border-right-color: rgba(0, 0, 0, 0); border-top-color: rgba(0, 0, 0, 0); border-bottom-color: rgba(0, 0, 0, 0); padding-top: 2px; padding-right: 2px; padding-bottom: 2px; padding-left: 2px; border-top-width: 0; border-right-width: 0; border-left-width: 0;">
+                <ui:Label tabindex="-1" text="Output" parse-escape-sequences="true" display-tooltip-when-elided="true" name="TitleLabel" style="font-size: 12px; -unity-font-style: bold;" />
+            </ui:VisualElement>
+            <ui:VisualElement name="Content" style="flex-grow: 1; background-color: rgb(50, 50, 50); border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px; padding-left: 2px;">
+                <uie:ObjectField label="BeatmapData" name="BeatmapdataField" type="DLSample.Shared.BeatmapDataScriptable, DLSample" class="output-beatmapdata-field" />
+                <ui:VisualElement name="Buttons" style="flex-grow: 1; flex-direction: row-reverse;">
+                    <ui:Button text="Read" parse-escape-sequences="true" display-tooltip-when-elided="true" name="GenerateHintLineBtn" class="output_read-btn" style="margin-top: 2px; margin-right: 2px; margin-bottom: 2px; margin-left: 2px; flex-grow: 1; border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px; display: flex; visibility: visible;" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

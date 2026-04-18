@@ -77,10 +77,10 @@ namespace DLSample.Gameplay
         {
             InitGameplayObjects();
 
+            _started = true;
+
             ModulesManager.Init();
             ModulesManager.Start();
-
-            _started = true;
         }
 
         private void OnUpdate()
@@ -116,13 +116,13 @@ namespace DLSample.Gameplay
         }
         private void InitGameplayObjects()
         {
-            foreach (var obj in _gameplayObjects)
+            foreach (var gameplayObject in _gameplayObjects)
             {
-                if (obj != null)
+                if (gameplayObject != null)
                 {
                     try
                     {
-                        obj.DoStart();
+                        gameplayObject.DoStart();
                     } 
                     catch(System.Exception e)
                     {
