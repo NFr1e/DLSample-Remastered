@@ -23,12 +23,13 @@ namespace DLSample.Shared
         order = DLSampleConsts.Editor.CREATE_MENU_BEATMAPDATA_ORDER)]
     public class BeatmapDataScriptable : ScriptableObject
     {
-        [SerializeField] private List<Beat> beats;
+        [SerializeField] private List<Beat> beats = new();
 
         public IReadOnlyList<Beat> Beats => beats.AsReadOnly();
 
         public void SetBeats(IReadOnlyList<Beat> beats)
         {
+            this.beats ??= new();
             this.beats.Clear();
             this.beats.AddRange(beats);
         }

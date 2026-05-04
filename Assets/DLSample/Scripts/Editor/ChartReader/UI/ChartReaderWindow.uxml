@@ -20,7 +20,7 @@
             <ui:VisualElement name="Content" style="flex-grow: 1; background-color: rgb(50, 50, 50); border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px; padding-left: 2px;">
                 <uie:ObjectField label="BeatmapData" name="BeatmapdataField" type="DLSample.Shared.BeatmapDataScriptable, DLSample" class="output-beatmapdata-field" />
                 <ui:VisualElement name="Buttons" style="flex-grow: 1; flex-direction: row-reverse;">
-                    <ui:Button text="Read" parse-escape-sequences="true" display-tooltip-when-elided="true" name="GenerateHintLineBtn" class="output_read-btn" style="margin-top: 2px; margin-right: 2px; margin-bottom: 2px; margin-left: 2px; flex-grow: 1; border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px; display: flex; visibility: visible;" />
+                    <ui:Button text="Read" parse-escape-sequences="true" display-tooltip-when-elided="true" name="GenerateHintLineBtn" class="output-read-btn" style="margin-top: 2px; margin-right: 2px; margin-bottom: 2px; margin-left: 2px; flex-grow: 1; border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px; display: flex; visibility: visible;" />
                 </ui:VisualElement>
             </ui:VisualElement>
         </ui:VisualElement>

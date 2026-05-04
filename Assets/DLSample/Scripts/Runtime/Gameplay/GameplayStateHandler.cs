@@ -71,6 +71,8 @@ namespace DLSample.Gameplay.Phase
         }
         private void OnRequestGamePause(GameplayEventParams.PauseGameRequest request)
         {
+            if (_fsm.CurrentState is not GameplayStates.GamingState) return;
+
             _fsm.SetCurrentState<GameplayStates.PauseState>();
         }
         private void OnRequestRespawn(GameplayEventParams.RespawnGameRequest request)

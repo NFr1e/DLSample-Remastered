@@ -16,6 +16,10 @@ namespace DLSample.Gameplay.Stream
         private readonly EventBus _evtBus;
 
         private bool _synced = false;
+        private int _playRequestVersion = 0;
+        private bool _isPreparingStart = false;
+        private GameplayStateBase _currentState;
+        private readonly GameplayEventParams.StartGameRequest _startGameRequest = new();
 
         public int BacktrackPriority => DLSampleConsts.Gameplay.BACKTRACK_PRIORITY_SOUNDTRACK_DIRECTOR;
         
@@ -44,15 +48,22 @@ namespace DLSample.Gameplay.Stream
         private void SubscribeEvents()
         {
             _evtBus?.Subscribe<GameplayEventParams.GameplayStateChangeCtx>(OnStateChange);
+            _evtBus?.Subscribe<GameplayEventParams.PrepareGameplayStartRequest>(OnPrepareGameplayStart);
         }
         private void UnsubscribeEvents()
         {
             _evtBus?.Unsubscribe<GameplayEventParams.GameplayStateChangeCtx>(OnStateChange);
+            _evtBus?.Unsubscribe<GameplayEventParams.PrepareGameplayStartRequest>(OnPrepareGameplayStart);
         }
         private void OnStateChange(GameplayEventParams.GameplayStateChangeCtx ctx)
         {
+            _currentState = ctx.CurrentState;
+
             switch(ctx.CurrentState)
             {
+                case GameplayStates.PreparingState:
+                    Prepare();
+                    break;
                 case GameplayStates.GamingState:
                     Play();
                     break;
@@ -65,19 +76,47 @@ namespace DLSample.Gameplay.Stream
             }
         }
 
+        private async void OnPrepareGameplayStart(GameplayEventParams.PrepareGameplayStartRequest request)
+        {
+            if (_isPreparingStart) return;
+            if (_currentState is not (GameplayStates.PreparingState or GameplayStates.PauseState)) return;
+
+            _isPreparingStart = true;
+            await PrepareAsync();
+            _isPreparingStart = false;
+
+            if (_currentState is not (GameplayStates.PreparingState or GameplayStates.PauseState)) return;
+
+            _evtBus?.Invoke(this, _startGameRequest);
+        }
+
+        private void Prepare()
+        {
+            _soundtrackPlayer?.PrepareAsync().Forget();
+        }
+        private UniTask PrepareAsync()
+        {
+            return _soundtrackPlayer?.PrepareAsync() ?? UniTask.CompletedTask;
+        }
         private async void Play()
         {
+            int requestVersion = ++_playRequestVersion;
+
             if(!_synced)
                 await SyncDelay();
+
+            if (requestVersion != _playRequestVersion) return;
 
             _soundtrackPlayer?.Play();
         }
         private void Stop()
         {
+            _playRequestVersion++;
             _soundtrackPlayer?.Stop();
         }
         private void Fadeout()
         {
+            _playRequestVersion++;
             _soundtrackPlayer?.Fadeout();
         }
         public async UniTask SyncDelay()

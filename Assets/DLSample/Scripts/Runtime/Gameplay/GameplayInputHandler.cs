@@ -21,7 +21,7 @@ namespace DLSample.Gameplay
         private InputManager _inputManager;
 
         private GameplayStateBase _currentState;
-        private readonly GameplayEventParams.StartGameRequest _startRequest = new();
+        private readonly GameplayEventParams.PrepareGameplayStartRequest _prepareStartRequest = new();
         private readonly GameplayEventParams.PauseGameRequest _pauseRequest = new();
 
         private InputTask _pauseInputTask = new();
@@ -84,7 +84,7 @@ namespace DLSample.Gameplay
             }
             if (_currentState is GameplayStates.PreparingState || _currentState is GameplayStates.PauseState)
             {
-                _evtBus.Invoke<GameplayEventParams.StartGameRequest>(this, _startRequest);
+                _evtBus.Invoke<GameplayEventParams.PrepareGameplayStartRequest>(this, _prepareStartRequest);
             }
         }
         private void OnPauseInputed(InputAction.CallbackContext ctx)

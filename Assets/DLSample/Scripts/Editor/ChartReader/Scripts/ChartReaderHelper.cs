@@ -1,4 +1,5 @@
 using DLSample.Shared;
+using UnityEditor;
 using UnityEngine;
 
 namespace DLSample.Editor.ChartReader
@@ -9,25 +10,26 @@ namespace DLSample.Editor.ChartReader
     }
     public static class ChartReaderHelper
     {
-        public static void ReadAndApply(BeatmapDataScriptable target, TextAsset chartFile, float offset = 0, ChartType type = ChartType.Osu)
+        public static int ReadAndApply(BeatmapDataScriptable target, TextAsset chartFile, float offset = 0, ChartType type = ChartType.Osu)
         {
             if (target == null)
             {
-                return;
+                return 0;
             }
 
             if (chartFile == null)
             {
-                return;
+                return 0;
             }
 
             IChartReader reader = new OsuChartReader();
             Beat[] beats = reader.Read(chartFile.text, offset);
+            Undo.RecordObject(target, "Read Chart");
             target.SetBeats(beats);
 
-#if UNITY_EDITOR
-            UnityEditor.EditorUtility.SetDirty(target);
-#endif
+            EditorUtility.SetDirty(target);
+            AssetDatabase.SaveAssets();
+            return beats.Length;
         }
     }
 }

@@ -37,6 +37,8 @@ namespace DLSample.Facility.UI
         {
             _panel.Callbacks.onLoaded.RemoveListener(Register);
             _panel.Callbacks.onUnload.RemoveListener(Unregister);
+
+            Unregister();
         }
 
         private void Register() => _inputManager.RegisterInputTask(_gameInput.App.Cancel, _closePanelInputTask);
@@ -45,6 +47,7 @@ namespace DLSample.Facility.UI
         private async void ClosePanel(InputAction.CallbackContext _)
         {
             await _uiManager.CloseCurrentFullScreenPanel();
+            Unregister();
         }
     }
 }

@@ -1,4 +1,4 @@
-using UnityEditor;
+锘縰sing UnityEditor;
 using UnityEngine;
 using UnityEngine.UIElements;
 using UnityEditor.UIElements;
@@ -11,7 +11,6 @@ namespace DLSample.Editor.ChartReader
         [SerializeField]
         private VisualTreeAsset m_VisualTreeAsset = default;
 
-        // UI 元素引用
         private ObjectField beatmapDataField;
         private ObjectField chartFileField;
         private Button readButton;
@@ -29,9 +28,9 @@ namespace DLSample.Editor.ChartReader
         {
             m_VisualTreeAsset.CloneTree(rootVisualElement);
 
-            beatmapDataField = rootVisualElement.Q<ObjectField>(className: "output-beatmapdata-field");
-            chartFileField = rootVisualElement.Q<ObjectField>(className: "source-chartfile-field");
-            readButton = rootVisualElement.Q<Button>(className: "output-read-btn");
+            beatmapDataField = rootVisualElement.Q<ObjectField>("BeatmapdataField");
+            chartFileField = rootVisualElement.Q<ObjectField>("SourceField");
+            readButton = rootVisualElement.Q<Button>("GenerateHintLineBtn");
 
             if (beatmapDataField != null)
                 beatmapDataField.objectType = typeof(BeatmapDataScriptable);
@@ -50,19 +49,18 @@ namespace DLSample.Editor.ChartReader
 
             if (beatmapData == null)
             {
-                EditorUtility.DisplayDialog("错误", "请先选择一个 BeatmapDataScriptable 资源。", "确定");
+                EditorUtility.DisplayDialog("Error", "Please select a BeatmapDataScriptable asset first.", "OK");
                 return;
             }
 
             if (chartFile == null)
             {
-                EditorUtility.DisplayDialog("错误", "请先选择一个谱面文本文件。", "确定");
+                EditorUtility.DisplayDialog("Error", "Please select a chart text file first.", "OK");
                 return;
             }
-            ChartReaderHelper.ReadAndApply(beatmapData, chartFile);
 
-            EditorUtility.SetDirty(beatmapData);
-            AssetDatabase.SaveAssets();
+            int beatCount = ChartReaderHelper.ReadAndApply(beatmapData, chartFile);
+            EditorUtility.DisplayDialog("Read Complete", $"Wrote {beatCount} beats.", "OK");
         }
     }
 }

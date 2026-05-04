@@ -7,6 +7,7 @@ namespace DLSample.Gameplay
     {
         public struct WaitingGameRequest : IEventArg { }
         public struct PrepareGameRequest : IEventArg { }
+        public struct PrepareGameplayStartRequest : IEventArg { }
         public struct StartGameRequest : IEventArg { }
         public struct PauseGameRequest : IEventArg { }
         public struct RespawnGameRequest : IEventArg { }
