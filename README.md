@@ -18,19 +18,12 @@ git clone https://github.com/NFr1e/DLSample-Rematered.git
 - 最低版本 Unity 2019.4
 
 - **推荐使用Unity2022.3 LTS**
-  
-##### 已知兼容问题
-- `LevelRestarter`中使用的`UnityEngine.SceneManagement`中的`SceneManager.loadedSceneCount`API在旧版本中未被加入。
-- 在旧版本Unit中打开项目，有时部分碰撞器会发生大小与预期不一致的问题。
+
 
 #### 使用的插件
 - [UniTask](https://github.com/Cysharp/UniTask) 异步编程插件
 - [DOTween](https://dotween.demigiant.com/) 补间动画插件
 - [Odin Inspector](https://odininspector.com/) 编辑器拓展
-
-#### 默认输入
-- `Mouse Left / Space / Enter`：玩家输入
-- `P / Esc`：暂停
 
 ## 二.项目内容📜
 
@@ -90,33 +83,4 @@ PathGrapher 中配置的事件可以通过 `PathGrapherEventsSyncer` 同步到�
 - 持久化、对象池等通用能力
 
 ## 三.文档✨
-
-### 基础
-#### [一. 创建关卡](./DLSampleDoc/1_CreateLevel/README.md)
-
-1. 手动创建
-2. 快捷创建(TODO)
-
-<!-- #### [二. 关卡基础配置](./DLSampleDoc/2_LevelConfiguration/README.md)
-
-1. LevelData配置
-2. 如何填入BeatmapData？
-3. PathGrapherAsset配置
-4. 创建基础关卡 -->
-   
-<!-- ### [三. Player设置]()
-
-1. 关卡基础配置
-2. Player移动
-3. Player死亡 -->
-
-To be continued...
-
-### 进阶
-#### 一. 代码规范
-
-#### 模块注册和访问:
-1. 各模块实例需通过继承`GameplayObject`并覆写其`OnInit()`，`OnStart()`等方法，在`OnInit()`方法中创建模块和注册到`ServiceLocator`，在`OnStart()`将模块实例注册到ModulesManager(使用`GameplayEntry.Instance.ModulesManager.Register<T>(IModule module)`)
-2. 必须模块，即Gameplay必不可少的模块(如GameplayPlayerController)通过其构造函数或其他绑定方法直接注入依赖的模块实例
-3. 可选模块，即非必须的模块(如CameraFollowerController)，通过实现接口```IModuleRequire<T>```,由ModulesManager通过反射自动注入模块。
-4. 其余杂项通过```GameplayEntry.Instance.ServiceLocator```的```Get<T>()```或```TryGet<T>(out service)```方法获取。
+教程文档:[DLSample文档站](https://nfr1e.github.io/docs/dl-sample/)
