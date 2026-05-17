@@ -17,8 +17,14 @@ namespace DLSample.Gameplay
 
         public struct GameplayStateChangeCtx : IEventArg
         {
-            public GameplayStateBase CurrentState { get; set; }
-            public GameplayStateBase PrevState { get; set; }
+            public GameplayStateBase CurrentState { get; }
+            public GameplayStateBase PrevState { get; }
+
+            public GameplayStateChangeCtx(GameplayStateBase currentState, GameplayStateBase prevState)
+            {
+                CurrentState = currentState;
+                PrevState = prevState;
+            }
         }
     }
 }

@@ -3,7 +3,6 @@ using DLSample.Gameplay.Phase;
 using DLSample.Facility.Events;
 using DLSample.Framework;
 using DLSample.Shared;
-using DLSample.Facility;
 
 namespace DLSample.Gameplay.Stream
 {

@@ -1,4 +1,5 @@
 using UnityEngine;
+using DLSample.Facility.Events;
 
 namespace DLSample.Gameplay.Behaviours
 {

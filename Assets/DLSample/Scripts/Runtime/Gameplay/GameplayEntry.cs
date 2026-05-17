@@ -113,6 +113,9 @@ namespace DLSample.Gameplay
             AsyncEventBus = new AsyncEventBus();
             ServiceLocator = new ServiceLocator();
             ModulesManager = new ModulesManager();
+
+            ServiceLocator.Register(EventBus);
+            ServiceLocator.Register(AsyncEventBus);
         }
         private void InitGameplayObjects()
         {

@@ -27,7 +27,7 @@ namespace DLSample.Editor.PathGrapher
                 var gameplayEvent = evt.ResolveToGameplayEvent();
                 _tickEvents.Add(new GameplayTimer.TickEvent(evt.GlobalTime, () =>
                 {
-                    evtBus.Invoke(this, gameplayEvent.ToEventArg());
+                    gameplayEvent.Trigger(evtBus);
                 }));
             }
             foreach (var tEvt in _tickEvents)

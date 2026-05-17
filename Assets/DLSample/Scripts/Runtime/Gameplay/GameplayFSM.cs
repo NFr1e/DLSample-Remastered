@@ -12,7 +12,6 @@ namespace DLSample.Gameplay.Phase
         private GameplayStateBase _currentState;
 
         private readonly EventBus _evtBus;
-        private GameplayEventParams.GameplayStateChangeCtx _stateChangeCtx = new();
 
         public GameplayStateBase CurrentState => _currentState;
         public EventBus EventBus => _evtBus;
@@ -58,9 +57,8 @@ namespace DLSample.Gameplay.Phase
 
             Debug.Log($"[GameplayFSM] State changed from {prevState?.ToString() ?? "null"} to {_currentState?.ToString() ?? "null"}");
 
-            _stateChangeCtx.CurrentState = state;
-            _stateChangeCtx.PrevState = prevState;
-            _evtBus.Invoke(this, _stateChangeCtx);
+            var stateChangeCtx = new GameplayEventParams.GameplayStateChangeCtx(state, prevState);
+            _evtBus.Invoke(this, stateChangeCtx);
         }
         #endregion
 

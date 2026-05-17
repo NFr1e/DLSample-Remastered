@@ -1,6 +1,7 @@
 using UnityEngine;
 using DLSample.Shared;
 using DLSample.Facility.Events;
+using DLSample.Gameplay.Behaviours;
 
 namespace DLSample.Gameplay
 {
@@ -48,9 +49,9 @@ namespace DLSample.Gameplay
             public float Speed { get; set; } = 12;
             public double InvokeTime { get; set; } = 0;
 
-            public IEventArg ToEventArg()
+            public void Trigger(EventBus evtBus)
             {
-                return new PlayerEventsParams.SpeedChangeRequest { Speed = Speed };
+                evtBus.Invoke(this, new PlayerEventsParams.SpeedChangeRequest { Speed = Speed });
             }
         }
 
@@ -59,9 +60,9 @@ namespace DLSample.Gameplay
             public Vector3 Gravity { get; set; }
             public double InvokeTime { get; set; } = 0;
 
-            public IEventArg ToEventArg()
+            public void Trigger(EventBus evtBus)
             {
-                return new PlayerEventsParams.GravityChangeRequest { Gravity = Gravity };
+                evtBus.Invoke(this, new PlayerEventsParams.GravityChangeRequest { Gravity = Gravity });
             }
         }
 
@@ -70,9 +71,9 @@ namespace DLSample.Gameplay
             public PlayerDirections Directions { get; set; }
             public double InvokeTime { get; set; } = 0;
 
-            public IEventArg ToEventArg()
+            public void Trigger(EventBus evtBus)
             {
-                return new PlayerEventsParams.DirectionChangeRequest { Directions = Directions };
+                evtBus.Invoke(this, new PlayerEventsParams.DirectionChangeRequest { Directions = Directions });
             }
         }
 
@@ -80,9 +81,9 @@ namespace DLSample.Gameplay
         {
             public double InvokeTime { get; set; } = 0;
 
-            public IEventArg ToEventArg()
+            public void Trigger(EventBus evtBus)
             {
-                return new PlayerEventsParams.ForceTurnRequest();
+                evtBus.Invoke(this, new PlayerEventsParams.ForceTurnRequest());
             }
         }
 
@@ -91,9 +92,9 @@ namespace DLSample.Gameplay
             public Vector3 Position { get; set; }
             public double InvokeTime { get; set; } = 0;
 
-            public IEventArg ToEventArg()
+            public void Trigger(EventBus evtBus)
             {
-                return new PlayerEventsParams.TeleportRequest { Position = Position };
+                evtBus.Invoke(this, new PlayerEventsParams.TeleportRequest { Position = Position });
             }
         }
 
@@ -102,9 +103,9 @@ namespace DLSample.Gameplay
             public Vector3 Velocity { get; set; }
             public double InvokeTime { get; set; } = 0;
 
-            public IEventArg ToEventArg()
+            public void Trigger(EventBus evtBus)
             {
-                return new PlayerEventsParams.VelocityChangeRequest { Velocity = Velocity };
+                evtBus.Invoke(this, new PlayerEventsParams.VelocityChangeRequest { Velocity = Velocity });
             }
         }
     }

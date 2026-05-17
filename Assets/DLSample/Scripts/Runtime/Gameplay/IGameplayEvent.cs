@@ -6,6 +6,6 @@ namespace DLSample.Gameplay
     {
         double InvokeTime { get; }
 
-        IEventArg ToEventArg();
+        void Trigger(EventBus evtBus);
     }
 }
