@@ -2,6 +2,9 @@ using UnityEngine;
 
 namespace DLSample.Shared
 {
+    /// <summary>
+    /// 基础碰撞体绘制器，在Scene视图中绘制碰撞体的轮廓和填充
+    /// </summary>
     [ExecuteAlways][RequireComponent(typeof(Collider))]
     public class BasicColliderDrawer : MonoBehaviour
     {

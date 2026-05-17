@@ -6,6 +6,9 @@ using DLSample.Facility.SceneManage;
 
 namespace DLSample.App
 {
+    /// <summary>
+    /// 应用程序入口类，负责在启动时初始化全局事件总线、输入系统、UI 管理器及场景管理器。
+    /// </summary>
     public class AppEntry
     {
         public static EventBus EventBus { get; private set; }
@@ -14,7 +17,6 @@ namespace DLSample.App
         public static InputManager InputManager { get; private set; }
         public static UIElementManager UIManager { get; private set; }
         public static ScenesManager SceneManager { get; private set; }
-
 
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSplashScreen)]
         private static void Enter()

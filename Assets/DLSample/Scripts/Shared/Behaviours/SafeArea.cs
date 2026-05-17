@@ -1,8 +1,11 @@
-//ScriptFrom Internet
+// Script from Internet
 using UnityEngine;
 
 namespace Plugins
 {
+    /// <summary>
+    /// 安全区域适配组件，处理刘海屏和底部指示条的安全区域
+    /// </summary>
     public class SafeArea : MonoBehaviour
     {
         #region Simulations
@@ -98,27 +101,27 @@ namespace Plugins
         private Vector2Int _lastScreenSize = new(0, 0);
         private ScreenOrientation _lastOrientation = ScreenOrientation.AutoRotation;
 
-        private void Awake ()
+        private void Awake()
         {
-            _panel = GetComponent<RectTransform> ();
+            _panel = GetComponent<RectTransform>();
 
             if (_panel == null)
             {
-                Debug.LogError ("Cannot apply safe area - no RectTransform found on " + name);
-                Destroy (gameObject);
+                Debug.LogError("Cannot apply safe area - no RectTransform found on " + name);
+                Destroy(gameObject);
             }
 
-            Refresh ();
+            Refresh();
         }
 
-        private void Update ()
+        private void Update()
         {
-            Refresh ();
+            Refresh();
         }
 
-        private void Refresh ()
+        private void Refresh()
         {
-            Rect safeArea = GetSafeArea ();
+            Rect safeArea = GetSafeArea();
 
             if (safeArea != _lastSafeArea
                 || Screen.width != _lastScreenSize.x
@@ -131,11 +134,11 @@ namespace Plugins
                 _lastScreenSize.y = Screen.height;
                 _lastOrientation = Screen.orientation;
 
-                ApplySafeArea (safeArea);
+                ApplySafeArea(safeArea);
             }
         }
 
-        Rect GetSafeArea ()
+        Rect GetSafeArea()
         {
             Rect safeArea = Screen.safeArea;
 
@@ -173,13 +176,13 @@ namespace Plugins
                         break;
                 }
 
-                safeArea = new Rect (Screen.width * nsa.x, Screen.height * nsa.y, Screen.width * nsa.width, Screen.height * nsa.height);
+                safeArea = new Rect(Screen.width * nsa.x, Screen.height * nsa.y, Screen.width * nsa.width, Screen.height * nsa.height);
             }
 
             return safeArea;
         }
 
-        void ApplySafeArea (Rect r)
+        void ApplySafeArea(Rect r)
         {
             _lastSafeArea = r;
 

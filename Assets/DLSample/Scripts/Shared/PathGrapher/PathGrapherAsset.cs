@@ -9,8 +9,11 @@ using Sirenix.OdinInspector;
 
 namespace DLSample.Editor.PathGrapher
 {
+    /// <summary>
+    /// 路径图资产，保存路径模拟的源数据和生成结果
+    /// </summary>
     [CreateAssetMenu(
-        menuName = DLSampleConsts.Editor.CREATE_MENU_PATHGRAPHERASSET_MENU_NAME, 
+        menuName = DLSampleConsts.Editor.CREATE_MENU_PATHGRAPHERASSET_MENU_NAME,
         fileName = DLSampleConsts.Editor.CREATE_MENU_PATHGRAPHERASSET_FILE_NAME,
         order = DLSampleConsts.Editor.CREATE_MENU_PATHGRAPHERASSET_ORDER)]
     public class PathGrapherAsset : ScriptableObject
@@ -27,6 +30,9 @@ namespace DLSample.Editor.PathGrapher
         public PathData pathData = new();
     }
 
+    /// <summary>
+    /// 路径数据，包含全局事件、生成的路点和路径段
+    /// </summary>
     [Serializable]
     public class PathData
     {

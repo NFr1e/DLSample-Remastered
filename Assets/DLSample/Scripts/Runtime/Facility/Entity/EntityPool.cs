@@ -4,30 +4,37 @@ using UnityEngine;
 
 namespace DLSample.Facility.EnityFramework
 {
+    /// <summary>
+    /// 泛型实体对象池，管理 IPoolabelEntity 实体的出池、归还和销毁
+    /// </summary>
+    /// <typeparam name="T">实体组件类型，必须实现 IPoolabelEntity</typeparam>
     public class EntityPool<T> where T : Component, IPoolabelEntity
     {
-        private readonly GameObject _prefab;
-        private readonly Transform _container;
+        readonly GameObject _prefab;
+        readonly Transform _container;
 
-        private readonly Queue<T> _pooledObjects = new();
-        private readonly List<T> _unpooledObjects = new();
+        readonly Queue<T> _pooledObjects = new();
+        readonly List<T> _unpooledObjects = new();
 
-        private readonly int _maxCapacity;
+        readonly int _maxCapacity;
 
-        private bool _prewarmed = false;
-        private int _currentSize = 0;
+        bool _prewarmed;
+        int _currentSize;
 
+        /// <summary>
+        /// 初始化实体对象池
+        /// </summary>
+        /// <param name="prefab">实体预制体</param>
+        /// <param name="maxCapacity">最大容量，0 或负数表示无限制</param>
+        /// <param name="container">实例化父节点</param>
+        /// <exception cref="ArgumentNullException">prefab 缺少所需组件时抛出</exception>
         public EntityPool(GameObject prefab, int maxCapacity = 0, Transform container = default)
         {
             _prefab = prefab;
             _container = container;
 
-            _pooledObjects ??= new();
-            _unpooledObjects ??= new();
-
             _maxCapacity = maxCapacity < 0 ? 0 : maxCapacity;
             _currentSize = 0;
-
             _prewarmed = false;
 
             if (!_prefab.TryGetComponent<T>(out _))
@@ -36,9 +43,16 @@ namespace DLSample.Facility.EnityFramework
             }
         }
 
+        /// <summary>
+        /// 预热对象池，提前创建指定数量的实例
+        /// </summary>
+        /// <param name="count">预热数量，会被限制在 [0, maxCapacity] 范围内</param>
         public void Prewarm(int count)
         {
-            if (_prewarmed) return;
+            if (_prewarmed)
+            {
+                return;
+            }
 
             count = Mathf.Clamp(count, 0, _maxCapacity);
 
@@ -52,11 +66,15 @@ namespace DLSample.Facility.EnityFramework
             _prewarmed = true;
         }
 
+        /// <summary>
+        /// 从对象池获取一个实体实例
+        /// </summary>
+        /// <returns>可用实体实例</returns>
         public virtual T Get()
         {
             if (!_prewarmed)
             {
-                Debug.LogWarning($"[EntityPool<{typeof(T).Name}>] has not been prewarmed!");
+                Debug.LogWarning($"[EntityPool<{typeof(T).Name}>] 尚未预热，自动预热中");
                 Prewarm(_maxCapacity);
             }
 
@@ -82,29 +100,44 @@ namespace DLSample.Facility.EnityFramework
             return instance;
         }
 
+        /// <summary>
+        /// 将实体归还到对象池
+        /// </summary>
+        /// <param name="instance">要归还的实体实例</param>
         public virtual void Return(T instance)
         {
             if (instance == null)
+            {
                 return;
+            }
 
             _unpooledObjects.Remove(instance);
             _pooledObjects.Enqueue(instance);
             instance.OnEnpool();
         }
 
+        /// <summary>
+        /// 归还所有已取出的实体
+        /// </summary>
         public virtual void ReturnAll()
         {
-            foreach(var e in _unpooledObjects.ToArray())
+            foreach (var instance in _unpooledObjects.ToArray())
             {
-                Return(e);
+                Return(instance);
             }
         }
+
+        /// <summary>
+        /// 销毁对象池，释放所有实例
+        /// </summary>
         public virtual void Dispose()
         {
             foreach (var instance in _pooledObjects)
             {
-                if(instance)
+                if (instance)
+                {
                     GameObject.Destroy(instance.gameObject);
+                }
             }
 
             _pooledObjects.Clear();
@@ -114,7 +147,7 @@ namespace DLSample.Facility.EnityFramework
             _prewarmed = false;
         }
 
-        private T CreateInstance()
+        T CreateInstance()
         {
             var go = GameObject.Instantiate(_prefab, _container);
 

@@ -118,7 +118,7 @@ namespace DLSample.Gameplay.Behaviours.Skin
         {
             _tailStartPos = position;
 
-            if(_tailContainer == null)
+            if (_tailContainer == null)
             {
                 _tailContainer = new GameObject("Tail").transform;
                 _tailContainer.SetParent(transform);

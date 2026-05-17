@@ -2,6 +2,9 @@ using UnityEngine;
 
 namespace DLSample.Gameplay.Behaviours
 {
+    /// <summary>
+    /// Gameplay å¯¹è±¡æŠ½è±¡åŸºç±»ï¼Œç®¡ç†åœ¨ GameplayEntry ä¸­çš„æ³¨å†Œä¸æ³¨é”€ç”Ÿå‘½å‘¨æœŸã€‚
+    /// </summary>
     public abstract class GameplayObject : MonoBehaviour
     {
         private bool _isDestroyed = false;
@@ -14,6 +17,7 @@ namespace DLSample.Gameplay.Behaviours
             _entry = GameplayEntry.Instance;
             _entry.RegisterGameplayObject(this);
         }
+
         private void OnDestroy()
         {
             if (!_isDestroyed)
@@ -29,20 +33,23 @@ namespace DLSample.Gameplay.Behaviours
             _isDestroyed = true;
         }
 
+        /// <summary>
+        /// ç”± GameplayEntry è°ƒç”¨çš„å¯åŠ¨æ–¹æ³•ã€‚
+        /// </summary>
         public void DoStart() => OnStart();
 
         /// <summary>
-        /// ÔÚÕâÀï½øĞĞÄ£¿é´´½¨µÈ×ÔÉí³õÊ¼»¯¹¤×÷
+        /// Awake æ—¶è°ƒç”¨ï¼Œç”¨äºåˆå§‹åŒ–æ“ä½œã€‚
         /// </summary>
         protected virtual void OnInit() { }
 
         /// <summary>
-        /// ´ËÊ±GameplayEntryÒÑÍê³É×¼±¸¹¤×÷,ÆäÓàÄ£¿éÒÑÍê³É´´½¨ºÍ·şÎñ×¢²á£¬ÔÚÕâÀï¿ÉÒÔ°²È«Ö´ĞĞÄ£¿é¹ÜÀíÆ÷×¢²áºÍ·ÃÎÊÆäËûÄ£¿éµÈ¹¤×÷
+        /// å½“ GameplayEntry å‡†å¤‡å°±ç»ªæ—¶è°ƒç”¨ï¼Œæ‰€æœ‰æ¨¡å—å·²å®Œæˆåˆ›å»ºå’Œæ³¨å†Œï¼Œæ­¤æ—¶å¯ä»¥å®‰å…¨æ‰§è¡Œæ¨¡å—é—´æ³¨å†Œå’Œè®¿é—®å…¶ä»–æ¨¡å—ç­‰å·¥ä½œã€‚
         /// </summary>
         protected virtual void OnStart() { }
 
         /// <summary>
-        /// ÔÚÕâÀï×ö¹Ø±Õ²Ù×÷
+        /// å¯¹è±¡é”€æ¯æ—¶è°ƒç”¨ï¼Œç”¨äºæ‰§è¡Œæ¸…ç†æ“ä½œã€‚
         /// </summary>
         protected virtual void OnExit() { }
     }

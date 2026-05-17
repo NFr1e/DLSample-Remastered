@@ -6,13 +6,13 @@ using UnityEngine;
 
 namespace DLSample.Gameplay.Skin
 {
-    public struct ChangeSkinRequest : IEventArg 
-    { 
+    public struct ChangeSkinRequest : IEventArg
+    {
         public string SkinId { get; set; }
     }
 
     /// <summary>
-    /// 通过全局事件系统（切换时）和持久化系统持有当前皮肤状态信息，根据皮肤状态信息通过SkinChanger实例实现实时切换皮肤
+    /// 閫氳繃鍏ㄥ眬浜嬩欢绯荤粺锛堝垏鎹㈡椂锛夊拰鎸佷箙鍖栫郴缁熸寔鏈夊綋鍓嶇毊鑲ょ姸鎬佷俊鎭紝鏍规嵁鐨偆鐘舵�佷俊鎭�氳繃SkinChanger瀹炰緥瀹炵幇瀹炴椂鍒囨崲鐨偆
     /// </summary>
     public class SkinsHandler : IModule
     {
@@ -21,7 +21,7 @@ namespace DLSample.Gameplay.Skin
         public string CurrentSkinId { get; private set; }
 
         private readonly SkinChanger _skinChanger;
-        
+
         private EventBus _globalEvtBus;
 
         public SkinsHandler(SkinChanger skinChanger)

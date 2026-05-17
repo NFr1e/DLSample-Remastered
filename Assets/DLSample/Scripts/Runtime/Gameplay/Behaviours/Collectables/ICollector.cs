@@ -7,6 +7,7 @@ namespace DLSample.Gameplay.Behaviours
         public ICollectable collectable;
         public ICollector collector;
     }
+
     public interface ICollector
     {
         public interface ICollector

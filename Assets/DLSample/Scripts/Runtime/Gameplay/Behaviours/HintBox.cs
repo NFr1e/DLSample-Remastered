@@ -6,6 +6,9 @@ using DLSample.Gameplay.Stream;
 
 namespace DLSample.Gameplay.Behaviours
 {
+    /// <summary>
+    /// 提示盒，在玩家处于触发区域且节拍判定正确时收集，管理提示线分段的可见性，支持回溯。
+    /// </summary>
     public class HintBox : GameplayObject, IBacktrackable
     {
         public float StandardTime;
@@ -53,6 +56,7 @@ namespace DLSample.Gameplay.Behaviours
 
             _backtrack.Register(this);
         }
+
         protected override void OnExit()
         {
             _player.OnTurn -= OnPlayerTurn;
@@ -62,15 +66,16 @@ namespace DLSample.Gameplay.Behaviours
             _backtrack?.Unregister(this);
         }
 
-        #region Judge&Collect
         private void OnTriggerEnter(Collider other)
         {
             _isTriggering = true;
         }
+
         private void OnTriggerStay(Collider other)
         {
             _isTriggering = true;
         }
+
         private void OnTriggerExit(Collider other)
         {
             _isTriggering = false;
@@ -83,12 +88,15 @@ namespace DLSample.Gameplay.Behaviours
 
         private void OnPlayerTurn(PlayerMovingArgs _)
         {
-            if(_isTriggering && Judged())
+            if (_isTriggering && Judged())
             {
                 Collect();
             }
         }
 
+        /// <summary>
+        /// 收集提示盒，标记已收集并更新渲染与特效。
+        /// </summary>
         public void Collect()
         {
             if (IsCollected) return;
@@ -111,9 +119,7 @@ namespace DLSample.Gameplay.Behaviours
             _currentEffect = Instantiate(triggerEffectPrefab, mRenderer.transform.position, transform.rotation, transform);
             Destroy(_currentEffect, 1f);
         }
-        #endregion
 
-        #region HandleSegments
         private void CacheSegments()
         {
             _hintSegments.Clear();
@@ -174,8 +180,10 @@ namespace DLSample.Gameplay.Behaviours
 
             mRenderer.enabled = IsRuntimeLoaded && !IsCollected;
         }
-        #endregion
 
+        /// <summary>
+        /// 回溯恢复，根据当前时间刷新所有状态。
+        /// </summary>
         public void Backtrack()
         {
             _isTriggering = false;
@@ -187,6 +195,10 @@ namespace DLSample.Gameplay.Behaviours
             }
         }
 
+        /// <summary>
+        /// 设置运行时加载状态，控制对象的激活与刷新。
+        /// </summary>
+        /// <param name="loaded">是否加载。</param>
         public void SetRuntimeLoaded(bool loaded)
         {
             if (IsRuntimeLoaded == loaded)
@@ -218,6 +230,10 @@ namespace DLSample.Gameplay.Behaviours
             }
         }
 
+        /// <summary>
+        /// 根据给定时间刷新收集状态与分段可见性。
+        /// </summary>
+        /// <param name="currentTime">当前游戏时间。</param>
         public void RefreshByTime(double currentTime)
         {
             IsCollected = StandardTime <= currentTime;

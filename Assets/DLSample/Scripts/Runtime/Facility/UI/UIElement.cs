@@ -23,66 +23,74 @@ namespace DLSample.Facility.UI
 
         public UIElementCallbacks Callbacks = new();
 
-        public bool IsActive => isActive;
-        private bool isActive = false;
-        protected bool isDestroyed = false;
+        public bool IsActive => _isActive;
 
-        private CancellationTokenSource loadCts = new(), unloadCts = new(), pauseCts = new(), resumeCts = new();
+        bool _isActive = false;
+        protected bool _isDestroyed = false;
+
+        CancellationTokenSource _loadCts = new();
+        CancellationTokenSource _unloadCts = new();
+        CancellationTokenSource _pauseCts = new();
+        CancellationTokenSource _resumeCts = new();
 
         public async void Load()
         {
-            isActive = true;
+            _isActive = true;
 
-            loadCts?.Cancel();
-            loadCts = new();
+            _loadCts?.Cancel();
+            _loadCts = new();
 
             Callbacks.onLoad?.Invoke();
 
-            await OnLoadAsync(loadCts.Token);
+            await OnLoadAsync(_loadCts.Token);
             OnLoaded();
         }
         public async void Unload()
         {
-            isActive = false;
+            _isActive = false;
 
-            unloadCts?.Cancel();
-            unloadCts = new();
+            _unloadCts?.Cancel();
+            _unloadCts = new();
 
             Callbacks.onUnload?.Invoke();
 
-            await OnUnloadAsync(unloadCts.Token);
+            await OnUnloadAsync(_unloadCts.Token);
             OnUnloaded();
         }
         public async void Pause()
         {
-            if (!isActive) return;
-            isActive = false;
+            if (!_isActive)
+                return;
 
-            pauseCts?.Cancel();
-            pauseCts = new();
+            _isActive = false;
+
+            _pauseCts?.Cancel();
+            _pauseCts = new();
 
             Callbacks.onPause?.Invoke();
 
-            await OnPauseAsync(pauseCts.Token);
+            await OnPauseAsync(_pauseCts.Token);
             OnPaused();
         }
         public async void Resume()
         {
-            if (isActive) return;
-            isActive = true;
+            if (_isActive)
+                return;
 
-            resumeCts?.Cancel();
-            resumeCts = new();
+            _isActive = true;
+
+            _resumeCts?.Cancel();
+            _resumeCts = new();
 
             Callbacks.onResume?.Invoke();
 
-            await OnResumeAsync(resumeCts.Token);
+            await OnResumeAsync(_resumeCts.Token);
             OnResumed();
         }
 
         public void Update()
         {
-            if (isActive)
+            if (_isActive)
             {
                 OnUpdate();
             }
@@ -96,9 +104,9 @@ namespace DLSample.Facility.UI
         {
             Callbacks.onUnloaded?.Invoke();
 
-            if (!isDestroyed)
+            if (!_isDestroyed)
             {
-                isDestroyed = true;
+                _isDestroyed = true;
 
                 if (gameObject != null)
                 {

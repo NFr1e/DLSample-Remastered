@@ -5,11 +5,11 @@ namespace DLSample.Facility.UI
 {
     public class PanelOpener : MonoBehaviour
     {
-        [SerializeField] private string panelId = string.Empty;
+        [SerializeField] string panelId = string.Empty;
 
         public async void OpenPanel()
         {
-             await AppEntry.UIManager.OpenPanel(panelId);
+            await AppEntry.UIManager.OpenPanel(panelId);
         }
     }
 }

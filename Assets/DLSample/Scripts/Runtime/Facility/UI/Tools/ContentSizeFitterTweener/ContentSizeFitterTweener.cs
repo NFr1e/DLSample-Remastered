@@ -10,7 +10,7 @@ using Sirenix.OdinInspector;
 namespace DLSample.Facility.UI
 {
     /// <summary>
-    ///   ≈‰ƒ⁄»›≥ﬂ¥Á≤¢÷¥––≤πº‰∂Øª≠
+    /// Ê£ÄÊµãÂÜÖÂÆπÂ∞∫ÂØ∏Âπ∂ÊâßË°åË°•Èó¥ÈÄÇÈÖçÂä®Áîª
     /// </summary>
     public class ContentSizeFitterTweener : MonoBehaviour
     {
@@ -19,25 +19,25 @@ namespace DLSample.Facility.UI
         public float tweenDuration = 0.6f;
         public Ease easeType = Ease.OutExpo;
 
-        [HorizontalGroup] public bool horizentalFit = true,verticalFit = true;
+        [HorizontalGroup] public bool horizentalFit = true, verticalFit = true;
 
-        public UnityEvent onFit,onFitted;
+        public UnityEvent onFit, onFitted;
 
-        protected RectTransform m_rectTrans;
+        protected RectTransform _rectTrans;
 
-        private Tween m_sizeFitterTweener;
-        private List<ContentSizeFitter> m_childSizeFitters = new();
+        Tween _sizeFitterTweener;
+        List<ContentSizeFitter> _childSizeFitters = new();
 
         public void DoFit()
         {
             StartCoroutine(FitContentSize());
         }
-        
+
         protected void RebuildLayouts()
         {
-            foreach (var fitter in m_childSizeFitters)
+            foreach (var fitter in _childSizeFitters)
             {
-                if(fitter != null)
+                if (fitter != null)
                     LayoutRebuilder.ForceRebuildLayoutImmediate(fitter.GetComponent<RectTransform>());
             }
         }
@@ -50,16 +50,16 @@ namespace DLSample.Facility.UI
 
             yield return new WaitForEndOfFrame();
 
-            m_sizeFitterTweener?.Kill();
+            _sizeFitterTweener?.Kill();
 
             onFit?.Invoke();
 
             Vector2 targetSize = new Vector2
-                (horizentalFit ? ContentSize(m_rectTrans).x : m_rectTrans.sizeDelta.x,
-                verticalFit ? ContentSize(m_rectTrans).y : m_rectTrans.sizeDelta.y);
+                (horizentalFit ? ContentSize(_rectTrans).x : _rectTrans.sizeDelta.x,
+                verticalFit ? ContentSize(_rectTrans).y : _rectTrans.sizeDelta.y);
 
-            m_sizeFitterTweener = m_rectTrans
-                .DOSizeDelta(targetSize,tweenDuration)
+            _sizeFitterTweener = _rectTrans
+                .DOSizeDelta(targetSize, tweenDuration)
                 .SetEase(easeType)
                 .SetUpdate(true)
                 .OnComplete(OnTweenComplete);
@@ -79,16 +79,16 @@ namespace DLSample.Facility.UI
 
         protected virtual void Start()
         {
-            if(targetSizeFitter == null)
+            if (targetSizeFitter == null)
             {
                 Debug.LogError($"{gameObject.name}: targetSizeFitter is null");
                 return;
             }
 
-            m_childSizeFitters.Clear();
+            _childSizeFitters.Clear();
 
-            m_rectTrans = targetSizeFitter.GetComponent<RectTransform>();
-            m_childSizeFitters = targetSizeFitter.GetComponentsInChildren<ContentSizeFitter>(true).ToList();
+            _rectTrans = targetSizeFitter.GetComponent<RectTransform>();
+            _childSizeFitters = targetSizeFitter.GetComponentsInChildren<ContentSizeFitter>(true).ToList();
         }
     }
 }

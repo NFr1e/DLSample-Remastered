@@ -7,6 +7,9 @@ using UnityEngine.UIElements;
 
 namespace DLSample.Editor.LevelCreator
 {
+    /// <summary>
+    /// 关卡创建窗口的控制器，负责管理 UI 元素生命周期、事件订阅与数据绑定。
+    /// </summary>
     public class LevelCreatorController
     {
         private readonly VisualTreeAsset _visualTree;
@@ -40,12 +43,21 @@ namespace DLSample.Editor.LevelCreator
         #endregion
         #endregion
 
+        /// <summary>
+        /// 初始化关卡创建控制器。
+        /// </summary>
+        /// <param name="visualTree">UI 布局模板</param>
+        /// <param name="window">所属的编辑器窗口实例</param>
         public LevelCreatorController(VisualTreeAsset visualTree, LevelCreatorWindow window)
         {
             _visualTree = visualTree;
             _window = window;
         }
 
+        /// <summary>
+        /// 初始化 UI 元素并绑定事件回调。
+        /// </summary>
+        /// <param name="root">UI 根元素</param>
         public void Init(VisualElement root)
         {
             if (_visualTree == null) return;
@@ -59,6 +71,9 @@ namespace DLSample.Editor.LevelCreator
             SetDefaultPath();
         }
 
+        /// <summary>
+        /// 释放控制器资源，取消所有事件订阅。
+        /// </summary>
         public void Dispose()
         {
             UnsubscribeEvents();
@@ -100,9 +115,9 @@ namespace DLSample.Editor.LevelCreator
 
         private void SetDefaultPath()
         {
-            string defaultPath = "Assets/DLSample/Levels";
-            
-            string fullPath = Path.Combine(Application.dataPath, "DLSample/Levels").Replace('\\', '/');
+            var defaultPath = "Assets/DLSample/Levels";
+
+            var fullPath = Path.Combine(Application.dataPath, "DLSample/Levels").Replace('\\', '/');
             if (Directory.Exists(fullPath))
             {
                 _selectedBasePath = defaultPath;
@@ -117,56 +132,56 @@ namespace DLSample.Editor.LevelCreator
 
         private void OnPathSelectClicked(ClickEvent _)
         {
-            string initialPath = Application.dataPath;
+            var initialPath = Application.dataPath;
             if (!string.IsNullOrEmpty(_selectedBasePath) && _selectedBasePath.StartsWith("Assets"))
             {
-                string relative = _selectedBasePath.Substring("Assets".Length);
-                string testPath = Application.dataPath + relative;
+                var relative = _selectedBasePath.Substring("Assets".Length);
+                var testPath = Application.dataPath + relative;
                 if (Directory.Exists(testPath))
                 {
                     initialPath = testPath;
                 }
             }
 
-            string selectedFolder = EditorUtility.OpenFolderPanel("ѡ��ؿ�����λ��", initialPath, "");
+            var selectedFolder = EditorUtility.OpenFolderPanel("选择关卡保存位置", initialPath, "");
             if (string.IsNullOrEmpty(selectedFolder))
                 return;
 
-            string dataPath = Application.dataPath;
+            var dataPath = Application.dataPath;
             if (!selectedFolder.StartsWith(dataPath))
             {
-                EditorUtility.DisplayDialog("����", "��ѡ�� Assets Ŀ¼�µ��ļ���", "ȷ��");
+                EditorUtility.DisplayDialog("错误", "请选择 Assets 目录下的文件夹", "确定");
                 return;
             }
 
-            string relativePath = "Assets" + selectedFolder.Substring(dataPath.Length).Replace('\\', '/');
+            var relativePath = "Assets" + selectedFolder.Substring(dataPath.Length).Replace('\\', '/');
             _selectedBasePath = relativePath;
             _pathDisplayLabel.text = _selectedBasePath;
         }
 
         private void OnConfirmClicked(ClickEvent _)
         {
-            string levelName = _levelNameField.value?.Trim();
-            string soundtrackInfo = _soundtrackInfoField.value;
-            int gemCount = _gemCountField.value;
-            AudioClip soundtrackClip = _soundtrackField.value as AudioClip;
+            var levelName = _levelNameField.value?.Trim();
+            var soundtrackInfo = _soundtrackInfoField.value;
+            var gemCount = _gemCountField.value;
+            var soundtrackClip = _soundtrackField.value as AudioClip;
 
             if (string.IsNullOrEmpty(_selectedBasePath))
             {
-                EditorUtility.DisplayDialog("����", "����ѡ�񱣴�·��", "ȷ��");
+                EditorUtility.DisplayDialog("错误", "请选择保存路径", "确定");
                 return;
             }
 
             if (string.IsNullOrEmpty(levelName))
             {
-                EditorUtility.DisplayDialog("����", "������ؿ�����", "ȷ��");
+                EditorUtility.DisplayDialog("错误", "请输入关卡名称", "确定");
                 return;
             }
 
-            char[] invalidChars = Path.GetInvalidFileNameChars();
+            var invalidChars = Path.GetInvalidFileNameChars();
             if (levelName.IndexOfAny(invalidChars) >= 0)
             {
-                EditorUtility.DisplayDialog("����", "�ؿ����ư����Ƿ��ַ�", "ȷ��");
+                EditorUtility.DisplayDialog("错误", "关卡名称包含非法字符", "确定");
                 return;
             }
 

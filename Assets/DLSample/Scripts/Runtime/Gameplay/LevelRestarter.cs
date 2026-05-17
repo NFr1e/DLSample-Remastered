@@ -27,7 +27,7 @@ namespace DLSample.Gameplay.Behaviours
         }
         private async void Reload()
         {
-            if(SceneManager.loadedSceneCount <= 1)
+            if (SceneManager.loadedSceneCount <= 1)
             {
                 _sceneManager.LoadScene(_sceneName);
             }

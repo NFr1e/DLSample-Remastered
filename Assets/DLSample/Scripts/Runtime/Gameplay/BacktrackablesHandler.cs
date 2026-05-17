@@ -51,7 +51,7 @@ namespace DLSample.Gameplay
         }
 
         /// <summary>
-        /// ×¢²áIBacktrackable¶ÔÏó
+        /// æ³¨å†ŒIBacktrackableå¯¹è±¡
         /// </summary>
         public void Register(IBacktrackable backtrackable)
         {
@@ -62,7 +62,7 @@ namespace DLSample.Gameplay
         }
 
         /// <summary>
-        /// ×¢ÏúBacktrackable¶ÔÏó
+        /// æ³¨é”€Backtrackableå¯¹è±¡
         /// </summary>
         public void Unregister(IBacktrackable backtrackable)
         {

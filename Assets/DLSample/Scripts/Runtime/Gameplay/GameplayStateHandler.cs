@@ -28,8 +28,8 @@ namespace DLSample.Gameplay.Phase
         {
             UnregisterEvents();
         }
-        public void OnUpdate(float deltaTime) 
-        { 
+        public void OnUpdate(float deltaTime)
+        {
             _fsm.Update(deltaTime);
         }
 

@@ -5,11 +5,17 @@ using DLSample.Editor.PathGrapher;
 
 namespace DLSample.Editor.PathBuilder
 {
+    /// <summary>
+    /// 路径生成方式：Connected 为连接模式，Disconnected 为断开模式。
+    /// </summary>
     public enum PathGenerateType
     {
         Connected,
         Disconnected
     }
+    /// <summary>
+    /// 路径构建控制器，负责管理 UI 元素、处理用户输入并调用路径生成逻辑。
+    /// </summary>
     public class PathBuilderController
     {
         private readonly VisualTreeAsset _visualTree;
@@ -37,6 +43,11 @@ namespace DLSample.Editor.PathBuilder
         private readonly string _class_hintSegPrefabField = "hintline-hintsegprefab-field";
         private readonly string _class_generateHintLineBtn = "hintline-generate-btn";
 
+        /// <summary>
+        /// 初始化路径构建控制器并克隆 UI 模板。
+        /// </summary>
+        /// <param name="visualTree">UI 布局模板</param>
+        /// <param name="root">UI 根元素</param>
         public PathBuilderController(VisualTreeAsset visualTree, VisualElement root)
         {
             _visualTree = visualTree;
@@ -45,11 +56,17 @@ namespace DLSample.Editor.PathBuilder
             _visualTree.CloneTree(_root);
         }
 
+        /// <summary>
+        /// 初始化 UI 元素并绑定事件回调。
+        /// </summary>
         public void Init()
         {
             GetElements();
             SubscribeEvents();
         }
+        /// <summary>
+        /// 释放控制器资源，取消所有事件订阅。
+        /// </summary>
         public void Dispose()
         {
             UnsubscribeEvents();
@@ -85,19 +102,23 @@ namespace DLSample.Editor.PathBuilder
 
         private void OnGeneratePathBtnClicked(ClickEvent _)
         {
-            PathGrapherAsset asset = _pathGrapherAssetField.value as PathGrapherAsset;
-            GameObject pathPrefab = _pathPrefabField.value as GameObject;
-            float pathWidth = _pathWidthField.value;
-            PathGenerateType type = (PathGenerateType)_pathTypeEnum.value;
+            var asset = _pathGrapherAssetField.value as PathGrapherAsset;
+            var pathPrefab = _pathPrefabField.value as GameObject;
+            var pathWidth = _pathWidthField.value;
+            var type = (PathGenerateType)_pathTypeEnum.value;
+
+            if (asset == null) return;
 
             PathBuilderHelper.GeneratePath(asset.pathData, type, pathPrefab, pathWidth);
         }
 
-        private void OnGenerateHintLineClicked(ClickEvent evt)
+        private void OnGenerateHintLineClicked(ClickEvent _)
         {
-            PathGrapherAsset asset = _pathGrapherAssetField.value as PathGrapherAsset;
-            GameObject hintSeg = _hintSegPrefabField.value as GameObject;
-            GameObject hintBox = _hintBoxPrefabField.value as GameObject;
+            var asset = _pathGrapherAssetField.value as PathGrapherAsset;
+            var hintSeg = _hintSegPrefabField.value as GameObject;
+            var hintBox = _hintBoxPrefabField.value as GameObject;
+
+            if (asset == null) return;
 
             PathBuilderHelper.GenerateHintLine(asset.pathData, hintSeg, hintBox);
         }

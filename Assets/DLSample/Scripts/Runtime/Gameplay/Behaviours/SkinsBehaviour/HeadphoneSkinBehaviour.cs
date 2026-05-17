@@ -1,10 +1,11 @@
 using DLSample.Facility.EnityFramework;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace DLSample.Gameplay.Behaviours.Skin
 {
+    /// <summary>
+    /// 耳机皮肤行为，在转向时播放射击粒子特效。
+    /// </summary>
     public class HeadphoneSkinBehaviour : StretchTailSkinBehaviour
     {
         [SerializeField] private GameObject turnEffectPrefab;

@@ -1,7 +1,13 @@
 namespace DLSample.Shared
 {
+    /// <summary>
+    /// DLSample å…¨å±€å¸¸é‡å®šä¹‰
+    /// </summary>
     public struct DLSampleConsts
     {
+        /// <summary>
+        /// ç¼–è¾‘å™¨ç›¸å…³å¸¸é‡
+        /// </summary>
         public struct Editor
         {
             #region MenuItem
@@ -19,7 +25,7 @@ namespace DLSample.Shared
             #endregion
 
             #region CreateMenu
-            //Level
+            // Level
             public const string CREATE_MENU_LEVELDATA_MENU_NAME = "DLSample/Level/LevelData";
             public const string CREATE_MENU_LEVELDATA_FILE_NAME = "LevelData";
             public const int CREATE_MENU_LEVELDATA_ORDER = 1;
@@ -32,7 +38,7 @@ namespace DLSample.Shared
             public const string CREATE_MENU_PATHGRAPHERASSET_FILE_NAME = "PathGrapherAsset";
             public const int CREATE_MENU_PATHGRAPHERASSET_ORDER = 3;
 
-            //Global
+            // Global
             public const string CREATE_MENU_PANELS_MENU_NAME = "DLSample/Config/UI/PanelsData";
             public const string CREATE_MENU_PANELS_FILE_NAME = "UIPanelsData";
             public const int CREATE_MENU_PANELS_ORDER = 1;
@@ -42,10 +48,14 @@ namespace DLSample.Shared
             public const int CREATE_MENU_SKINDATA_ORDER = 1;
             #endregion
         }
+
+        /// <summary>
+        /// æ¸¸æˆç©æ³•ç›¸å…³å¸¸é‡
+        /// </summary>
         public struct Gameplay
         {
             #region Module Priority
-            // ÉıĞòÓÅÏÈ¼¶£¬ÊıÖµÔ½Ğ¡ÓÅÏÈ¼¶Ô½¸ß
+            // æ¨¡å—ä¼˜å…ˆçº§ï¼Œæ•°å€¼è¶Šå°ä¼˜å…ˆçº§è¶Šé«˜
             public const int PRIORITY_BACKTRACKABLES_HANDLER = 0;
 
             public const int PRIORITY_PLAYER_CONTROLLER = 1;
@@ -53,6 +63,7 @@ namespace DLSample.Shared
             public const int PRIORITY_STATE_HANDLER = 1;
             public const int PRIORITY_CHECKPOINT_HANDLER = 1;
             public const int PRIORITY_SOUNDTRACK_DIRECTOR = 1;
+            public const int PRIORITY_READINESS_COORDINATOR = 1;
             public const int PRIORITY_GAMEPLAY_TIMER = 1;
             public const int PRIORITY_TIMER_DIRECTOR = 1;
             public const int PRIORITY_UI_HANDLER = 1;
@@ -68,7 +79,7 @@ namespace DLSample.Shared
             #endregion
 
             #region BacktrackPriority
-            // ÉıĞòÓÅÏÈ¼¶£¬ÊıÖµÔ½Ğ¡ÓÅÏÈ¼¶Ô½¸ß
+            // å›æº¯ä¼˜å…ˆçº§ï¼Œæ•°å€¼è¶Šå°ä¼˜å…ˆçº§è¶Šé«˜
             public const int BACKTRACK_PRIORITY_TIMER = 0;
             public const int BACKTRACK_PRIORITY_PLAYER_CONTROLLER = 0;
             public const int BACKTRACK_PRIORITY_SOUNDTRACK_DIRECTOR = 0;
@@ -84,18 +95,30 @@ namespace DLSample.Shared
 
             public const float HINT_BOX_TRIGGER_INTERVAL = 0.1f;
         }
+
+        /// <summary>
+        /// å­˜æ¡£ä¸è¯»æ¡£ç›¸å…³å¸¸é‡
+        /// </summary>
         public struct SaveAndLoad
         {
             public const string ID_SKIN = "SAVE_SKIN_ID";
             public const string ID_HINTLINE_STATE = "SAVE_HINTLINE_STATE";
         }
+
+        /// <summary>
+        /// è¾“å…¥ç³»ç»Ÿç›¸å…³å¸¸é‡
+        /// </summary>
         public struct Input
         {
-            // ½µĞòÓÅÏÈ¼¶£¬ÊıÖµÔ½´óÓÅÏÈ¼¶Ô½¸ß
+            // è¾“å…¥ä¼˜å…ˆçº§ï¼Œæ•°å€¼è¶Šå¤§ä¼˜å…ˆçº§è¶Šé«˜
             public const int INPUT_PRIORITY_SYSTEM = 20;
             public const int INPUT_PRIORITY_UI = 10;
             public const int INPUT_PRIORITY_GAMEPLAY = 0;
         }
+
+        /// <summary>
+        /// å…¶ä»–å¸¸é‡
+        /// </summary>
         public struct Others
         {
             public const string URL_TUTORIAL = "https://nfr1e.github.io/docs/dl-sample/";

@@ -2,19 +2,22 @@ using UnityEngine;
 
 namespace DLSample.Shared
 {
+    /// <summary>
+    /// 运行时将自身Renderer设为不可见
+    /// </summary>
     [RequireComponent(typeof(Renderer))]
     public class RuntimeInvisible : MonoBehaviour
     {
-        private Renderer m_Renderer;
+        private Renderer _renderer;
 
         private void Awake()
         {
-            m_Renderer = GetComponent<Renderer>();
+            _renderer = GetComponent<Renderer>();
         }
 
-        private void Start () 
+        private void Start()
         {
-            m_Renderer.enabled = false;
+            _renderer.enabled = false;
         }
     }
 }

@@ -90,7 +90,7 @@ namespace DLSample.Gameplay
 
             if (_currentState is GameplayStates.PreparingState or GameplayStates.WaitingState)
             {
-                if(!_stateHandler.IsGameStarted)
+                if (!_stateHandler.IsGameStarted)
                     _evtBus.Invoke(this, _riseRequest);
             }
         }

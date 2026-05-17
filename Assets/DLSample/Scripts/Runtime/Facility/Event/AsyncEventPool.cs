@@ -5,18 +5,27 @@ using UnityEngine;
 
 namespace DLSample.Facility.Events
 {
+    /// <summary>
+    /// å¼‚æ­¥äº‹ä»¶æ± ï¼Œç®¡ç†åŒä¸€äº‹ä»¶ç±»å‹çš„æ‰€æœ‰å¼‚æ­¥è®¢é˜…è€…ï¼Œæ”¯æŒå¹¶è¡Œæ‰§è¡Œ
+    /// </summary>
     public class AsyncEventPool
     {
-        // ´æ´¢Òì²½Î¯ÍĞ
-        private readonly List<object> _subscribers = new();
-        private readonly object _lock = new();
+        /// <summary>å­˜å‚¨å¼‚æ­¥å§”æ‰˜</summary>
+        readonly List<object> _subscribers = new();
+        readonly object _lock = new();
 
         /// <summary>
-        /// Ìí¼ÓÒì²½¶©ÔÄÕß
+        /// æ·»åŠ å¼‚æ­¥è®¢é˜…è€…
         /// </summary>
+        /// <typeparam name="TArg">äº‹ä»¶å‚æ•°ç±»å‹</typeparam>
+        /// <param name="action">å¼‚æ­¥äº‹ä»¶å¤„ç†å›è°ƒï¼Œè¿”å› UniTask</param>
+        /// <exception cref="ArgumentNullException">action ä¸º null æ—¶æŠ›å‡º</exception>
         public void AddSubscriber<TArg>(Func<TArg, UniTask> action) where TArg : IEventArg
         {
-            if (action == null) throw new ArgumentNullException(nameof(action));
+            if (action == null)
+            {
+                throw new ArgumentNullException(nameof(action));
+            }
 
             lock (_lock)
             {
@@ -28,11 +37,17 @@ namespace DLSample.Facility.Events
         }
 
         /// <summary>
-        /// ÒÆ³ıÒì²½¶©ÔÄÕß
+        /// ç§»é™¤å¼‚æ­¥è®¢é˜…è€…
         /// </summary>
+        /// <typeparam name="TArg">äº‹ä»¶å‚æ•°ç±»å‹</typeparam>
+        /// <param name="action">è¦ç§»é™¤çš„å¼‚æ­¥äº‹ä»¶å¤„ç†å›è°ƒ</param>
+        /// <exception cref="ArgumentNullException">action ä¸º null æ—¶æŠ›å‡º</exception>
         public void RemoveSubscriber<TArg>(Func<TArg, UniTask> action) where TArg : IEventArg
         {
-            if (action == null) throw new ArgumentNullException(nameof(action));
+            if (action == null)
+            {
+                throw new ArgumentNullException(nameof(action));
+            }
 
             lock (_lock)
             {
@@ -44,21 +59,30 @@ namespace DLSample.Facility.Events
         }
 
         /// <summary>
-        /// ´¥·¢Òì²½ÊÂ¼ş
-        /// ²¢·¢Ö´ĞĞËùÓĞ¶©ÔÄÕß£¬²¢µÈ´ıËüÃÇÈ«²¿Íê³É
+        /// è§¦å‘å¼‚æ­¥äº‹ä»¶ï¼Œå¹¶è¡Œæ‰§è¡Œæ‰€æœ‰è®¢é˜…è€…ï¼Œå¹¶ç­‰å¾…å…¶å…¨éƒ¨å®Œæˆ
         /// </summary>
+        /// <typeparam name="TArg">äº‹ä»¶å‚æ•°ç±»å‹</typeparam>
+        /// <param name="sender">äº‹ä»¶å‘é€è€…</param>
+        /// <param name="args">äº‹ä»¶å‚æ•°</param>
+        /// <exception cref="ArgumentNullException">args ä¸º null æ—¶æŠ›å‡º</exception>
         public async UniTask TriggerAsync<TArg>(object sender, TArg args) where TArg : IEventArg
         {
-            if (args == null) throw new ArgumentNullException(nameof(args));
+            if (args == null)
+            {
+                throw new ArgumentNullException(nameof(args));
+            }
 
-            // ¿ìÕÕ¸´ÖÆ£¬·ÀÖ¹±éÀú¹ı³ÌÖĞ¼¯ºÏ±»ĞŞ¸Ä
+            // å¿«ç…§å¤åˆ¶ï¼Œé˜²æ­¢åœ¨éå†è¿‡ç¨‹ä¸­é›†åˆè¢«ä¿®æ”¹
             object[] copySubscribers;
             lock (_lock)
             {
                 copySubscribers = _subscribers.ToArray();
             }
 
-            if (copySubscribers.Length == 0) return;
+            if (copySubscribers.Length == 0)
+            {
+                return;
+            }
 
             var tasks = new List<UniTask>(copySubscribers.Length);
 
@@ -68,14 +92,14 @@ namespace DLSample.Facility.Events
                 {
                     if (subscriber is Func<TArg, UniTask> asyncAction)
                     {
-                        // Æô¶¯ÈÎÎñµ«²»Á¢¼´ await£¬ÒÔ±ã²¢·¢Ö´ĞĞ
+                        // å¯åŠ¨ä»»åŠ¡ä½†ä¸ä½¿ç”¨ awaitï¼Œä»¥ä¾¿å¹¶è¡Œæ‰§è¡Œ
                         tasks.Add(asyncAction(args));
                     }
                 }
                 catch (Exception ex)
                 {
-                    // ²¶»ñÍ¬²½½×¶ÎÅ×³öµÄÒì³££¨ÀıÈçÔÚ¹¹½¨ Task Ê±£©
-                    UnityEngine.Debug.LogError($"[AsyncEventPool] ¶©ÔÄÕßÆô¶¯Òì³£ ({typeof(TArg).Name}): {ex.Message}");
+                    // æ•è·åŒæ­¥å§”æ‰˜æŠ›å‡ºçš„å¼‚å¸¸ï¼Œå‘ç”Ÿåœ¨åˆ›å»º Task æ—¶
+                    Debug.LogError($"[AsyncEventPool] è®¢é˜…è€…æŠ›å‡ºå¼‚å¸¸ ({typeof(TArg).Name}): {ex.Message}");
                 }
             }
 
@@ -83,18 +107,21 @@ namespace DLSample.Facility.Events
             {
                 try
                 {
-                    // µÈ´ıËùÓĞÈÎÎñÍê³É
+                    // ç­‰å¾…æ‰€æœ‰ä»»åŠ¡å®Œæˆ
                     await UniTask.WhenAll(tasks);
                 }
                 catch (Exception ex)
                 {
-                    // Task.WhenAll »áÅ×³ö¾ÛºÏÒì³£ÖĞµÄµÚÒ»¸ö£¬»òÕßÈç¹ûÊÇµ¥¸öÈÎÎñÊ§°ÜÔòÖ±½ÓÅ×³ö
-                    // ÕâÀïÍ³Ò»²¶»ñ£¬·ÀÖ¹Î´¹Û²ìµ½µÄÒì³£µ¼ÖÂ³ÌĞò±ÀÀ£
-                    Debug.LogError($"[AsyncEventPool] ÊÂ¼şÖ´ĞĞÒì³£ ({typeof(TArg).Name}): {ex.Message}");
+                    // Task.WhenAll åªä¼šæŠ›å‡ºèšåˆå¼‚å¸¸ä¸­çš„ç¬¬ä¸€ä¸ªï¼Œå…¶ä»–å¼‚å¸¸ä¼šä¸¢å¤±
+                    // è¿™é‡Œç»Ÿä¸€æ•è·ï¼Œé˜²æ­¢æœªè§‚å¯Ÿåˆ°çš„å¼‚å¸¸å¯¼è‡´ç¨‹åºå´©æºƒ
+                    Debug.LogError($"[AsyncEventPool] äº‹ä»¶æ‰§è¡Œå¼‚å¸¸ ({typeof(TArg).Name}): {ex.Message}");
                 }
             }
         }
 
+        /// <summary>
+        /// æ¸…é™¤æ‰€æœ‰è®¢é˜…è€…
+        /// </summary>
         public void Clear()
         {
             lock (_lock)

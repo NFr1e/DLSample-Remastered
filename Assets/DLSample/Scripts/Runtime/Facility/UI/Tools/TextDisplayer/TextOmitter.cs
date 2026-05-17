@@ -8,19 +8,20 @@ namespace DLSample.Facility.UI
     {
         public bool manualSetUpComponent = false;
 
-        [SerializeField, ShowIf(nameof(manualSetUpComponent))] private Text _childText;
-        [SerializeField, ShowIf(nameof(manualSetUpComponent))] private RectTransform _container;
+        [SerializeField, ShowIf(nameof(manualSetUpComponent))] Text _childText;
+        [SerializeField, ShowIf(nameof(manualSetUpComponent))] RectTransform _container;
 
         public string ellipsis = "...";
 
-        private void Awake()
+        void Awake()
         {
             SetupComponents();
         }
 
         void SetupComponents()
         {
-            if (manualSetUpComponent) return;
+            if (manualSetUpComponent)
+                return;
 
             _container = GetComponent<RectTransform>();
             _childText = GetComponentInChildren<Text>();
@@ -34,7 +35,7 @@ namespace DLSample.Facility.UI
             _childText.text = content;
             LayoutRebuilder.ForceRebuildLayoutImmediate(_childText.rectTransform);
 
-            float containerWidth = _container.rect.width;
+            var containerWidth = _container.rect.width;
 
             if (_childText.preferredWidth <= containerWidth)
                 return;

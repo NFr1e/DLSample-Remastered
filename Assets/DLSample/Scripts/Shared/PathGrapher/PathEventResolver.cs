@@ -2,8 +2,16 @@ using DLSample.Gameplay;
 
 namespace DLSample.Editor.PathGrapher
 {
+    /// <summary>
+    /// 路径事件解析器，将路径事件转换为游戏玩法事件
+    /// </summary>
     public static class PathEventResolver
     {
+        /// <summary>
+        /// 将路径事件解析为游戏玩法事件
+        /// </summary>
+        /// <param name="evt">要解析的路径事件</param>
+        /// <returns>对应的游戏玩法事件</returns>
         public static IGameplayEvent ResolveToGameplayEvent(this IPathEvent evt)
         {
             IGameplayEvent gameplayEvt;

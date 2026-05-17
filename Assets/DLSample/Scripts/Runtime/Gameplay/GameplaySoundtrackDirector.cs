@@ -6,7 +6,7 @@ using DLSample.Shared;
 
 namespace DLSample.Gameplay.Stream
 {
-    public class GameplaySoundtrackDirector : IModule, ISyncable, IBacktrackable
+    public class GameplaySoundtrackDirector : IModule, ISyncable, IBacktrackable, IPrepareAsync
     {
         public int Priority => DLSampleConsts.Gameplay.PRIORITY_SOUNDTRACK_DIRECTOR;
 
@@ -17,12 +17,10 @@ namespace DLSample.Gameplay.Stream
 
         private bool _synced = false;
         private int _playRequestVersion = 0;
-        private bool _isPreparingStart = false;
         private GameplayStateBase _currentState;
-        private readonly GameplayEventParams.StartGameRequest _startGameRequest = new();
 
         public int BacktrackPriority => DLSampleConsts.Gameplay.BACKTRACK_PRIORITY_SOUNDTRACK_DIRECTOR;
-        
+
         public GameplaySoundtrackDirector(EventBus eventBus, GameplaySoundtrackPlayer player, BacktrackablesHandler backtrackHandler)
         {
             _evtBus = eventBus;
@@ -48,18 +46,16 @@ namespace DLSample.Gameplay.Stream
         private void SubscribeEvents()
         {
             _evtBus?.Subscribe<GameplayEventParams.GameplayStateChangeCtx>(OnStateChange);
-            _evtBus?.Subscribe<GameplayEventParams.PrepareGameplayStartRequest>(OnPrepareGameplayStart);
         }
         private void UnsubscribeEvents()
         {
             _evtBus?.Unsubscribe<GameplayEventParams.GameplayStateChangeCtx>(OnStateChange);
-            _evtBus?.Unsubscribe<GameplayEventParams.PrepareGameplayStartRequest>(OnPrepareGameplayStart);
         }
         private void OnStateChange(GameplayEventParams.GameplayStateChangeCtx ctx)
         {
             _currentState = ctx.CurrentState;
 
-            switch(ctx.CurrentState)
+            switch (ctx.CurrentState)
             {
                 case GameplayStates.PreparingState:
                     Prepare();
@@ -76,25 +72,12 @@ namespace DLSample.Gameplay.Stream
             }
         }
 
-        private async void OnPrepareGameplayStart(GameplayEventParams.PrepareGameplayStartRequest request)
-        {
-            if (_isPreparingStart) return;
-            if (_currentState is not (GameplayStates.PreparingState or GameplayStates.PauseState)) return;
-
-            _isPreparingStart = true;
-            await PrepareAsync();
-            _isPreparingStart = false;
-
-            if (_currentState is not (GameplayStates.PreparingState or GameplayStates.PauseState)) return;
-
-            _evtBus?.Invoke(this, _startGameRequest);
-        }
-
         private void Prepare()
         {
             _soundtrackPlayer?.PrepareAsync().Forget();
         }
-        private UniTask PrepareAsync()
+
+        UniTask IPrepareAsync.PrepareAsync()
         {
             return _soundtrackPlayer?.PrepareAsync() ?? UniTask.CompletedTask;
         }
@@ -102,7 +85,7 @@ namespace DLSample.Gameplay.Stream
         {
             int requestVersion = ++_playRequestVersion;
 
-            if(!_synced)
+            if (!_synced)
                 await SyncDelay();
 
             if (requestVersion != _playRequestVersion) return;

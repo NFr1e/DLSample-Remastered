@@ -6,6 +6,9 @@ using UnityEngine;
 
 namespace DLSample.Editor.PathGrapher
 {
+    /// <summary>
+    /// PathGrapherBehaviour 的自定义 Inspector 编辑器，提供路径事件创建、编辑与可视化功能。
+    /// </summary>
     [CustomEditor(typeof(PathGrapherBehaviour))]
     public class PathGrapherBehaviourEditor : UnityEditor.Editor
     {
@@ -14,11 +17,11 @@ namespace DLSample.Editor.PathGrapher
         private static readonly PathGrapherDrawer _drawer = new();
 
         public IPathEvent SelectedEvent;
-        private static bool enableEventCreation = false;
+        private static bool _enableEventCreation;
 
         #region Caches
         private readonly GUIContent _menuSpeedChangeLabel = new("Add SpeedChange");
-        private readonly GUIContent _menuGravityChangeLable = new("Add GravityChange");
+        private readonly GUIContent _menuGravityChangeLabel = new("Add GravityChange");
         private readonly GUIContent _menuDirectionChangeLabel = new("Add DirectionChange");
         private readonly GUIContent _menuForceTurnLabel = new("Add ForceTurn");
         private readonly GUIContent _menuJumpLabel = new("Add Jump");
@@ -31,6 +34,7 @@ namespace DLSample.Editor.PathGrapher
         {
             _target = (PathGrapherBehaviour)target;
         }
+
         private void OnDestroy()
         {
             _drawer?.Dispose();
@@ -86,12 +90,11 @@ namespace DLSample.Editor.PathGrapher
             _drawer?.DrawPath(beh.asset.pathData, beh.transform, beh.profile);
         }
 
-
         #region Inspector
         private void DrawOperations()
         {
             EditorGUILayout.BeginHorizontal();
-            if(GUILayout.Button("ForceRebuild"))
+            if (GUILayout.Button("ForceRebuild"))
             {
                 _target.RequestRebuild();
             }
@@ -101,8 +104,8 @@ namespace DLSample.Editor.PathGrapher
         private void DrawEventCreationToggle()
         {
             EditorGUILayout.BeginVertical(EditorStyles.helpBox);
-            EditorGUILayout.LabelField($"EventsCreator: {(enableEventCreation ? "ON" : "Off")}", EditorStyles.boldLabel);
-            enableEventCreation = EditorGUILayout.Toggle("Enable Event Creator", enableEventCreation);
+            EditorGUILayout.LabelField($"EventsCreator: {(_enableEventCreation ? "ON" : "Off")}", EditorStyles.boldLabel);
+            _enableEventCreation = EditorGUILayout.Toggle("Enable Event Creator", _enableEventCreation);
             EditorGUILayout.EndVertical();
         }
 
@@ -178,11 +181,11 @@ namespace DLSample.Editor.PathGrapher
                         case JumpEvent j:
                             EditorGUILayout.BeginHorizontal();
                             segE.EndTime = EditorGUILayout.DoubleField("End Time", segE.EndTime);
-                            if(GUILayout.Button("+ 0.1s"))
+                            if (GUILayout.Button("+ 0.1s"))
                             {
                                 segE.EndTime += 0.1f;
                             }
-                            if(GUILayout.Button("- 0.1s"))
+                            if (GUILayout.Button("- 0.1s"))
                             {
                                 segE.EndTime -= 0.1f;
                             }
@@ -226,7 +229,7 @@ namespace DLSample.Editor.PathGrapher
         #region CreateEvent
         private void HandleEventPlaceholder()
         {
-            if (!enableEventCreation) return;
+            if (!_enableEventCreation) return;
 
             Event e = Event.current;
 
@@ -251,33 +254,33 @@ namespace DLSample.Editor.PathGrapher
 
         private void ShowContextMenu(double time)
         {
-            GenericMenu _genericMenu = new();
-            _genericMenu.AddItem(_menuSpeedChangeLabel, false, () => CreatePointEvent<SpeedChangeEvent>(time));
-            _genericMenu.AddItem(_menuGravityChangeLable, false, () => CreatePointEvent<GravityChangeEvent>(time));
-            _genericMenu.AddItem(_menuDirectionChangeLabel, false, () => CreatePointEvent<DirectionChangeEvent>(time));
-            _genericMenu.AddItem(_menuForceTurnLabel, false, () => CreatePointEvent<ForceTurnEvent>(time));
-            _genericMenu.AddSeparator("");
-            _genericMenu.AddItem(_menuJumpLabel, false, () => CreateSegmentEvent<JumpEvent>(time));
-            _genericMenu.AddItem(_menuTeleport, false, () => CreateSegmentEvent<TeleportEvent>(time));
-            _genericMenu.ShowAsContext();
+            var genericMenu = new GenericMenu();
+            genericMenu.AddItem(_menuSpeedChangeLabel, false, () => CreatePointEvent<SpeedChangeEvent>(time));
+            genericMenu.AddItem(_menuGravityChangeLabel, false, () => CreatePointEvent<GravityChangeEvent>(time));
+            genericMenu.AddItem(_menuDirectionChangeLabel, false, () => CreatePointEvent<DirectionChangeEvent>(time));
+            genericMenu.AddItem(_menuForceTurnLabel, false, () => CreatePointEvent<ForceTurnEvent>(time));
+            genericMenu.AddSeparator("");
+            genericMenu.AddItem(_menuJumpLabel, false, () => CreateSegmentEvent<JumpEvent>(time));
+            genericMenu.AddItem(_menuTeleport, false, () => CreateSegmentEvent<TeleportEvent>(time));
+            genericMenu.ShowAsContext();
         }
 
         private void CreatePointEvent<T>(double time) where T : PointPathEvent, new()
         {
             Undo.RecordObject(_target.asset, "Add Point Event");
 
-            T evt = new() 
-            { 
-                GlobalTime = time 
+            T evt = new()
+            {
+                GlobalTime = time
             };
 
-            switch(evt)
+            switch (evt)
             {
                 case SpeedChangeEvent s:
                     s.newSpeed = 12;
                     break;
             }
-            
+
             OnEventCreated(evt);
         }
 
@@ -285,8 +288,8 @@ namespace DLSample.Editor.PathGrapher
         {
             Undo.RecordObject(_target.asset, "Add Segment Event");
 
-            T evt = new() 
-            { 
+            T evt = new()
+            {
                 StartTime = startTime
             };
 
@@ -325,7 +328,7 @@ namespace DLSample.Editor.PathGrapher
         {
             var asset = _target.asset;
 
-            foreach(var evt in asset.pathData.globalEvents)
+            foreach (var evt in asset.pathData.globalEvents)
             {
                 switch (evt)
                 {

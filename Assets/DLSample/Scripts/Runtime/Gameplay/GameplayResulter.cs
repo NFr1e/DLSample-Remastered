@@ -60,17 +60,17 @@ namespace DLSample.Gameplay
         }
         private void OnCollectCollectable(OnCollectEventArgs args)
         {
-            switch(args.collectable)
+            switch (args.collectable)
             {
                 case Gem gem:
-                    if(!_collectedGems.Contains(gem))
+                    if (!_collectedGems.Contains(gem))
                         _collectedGems.Add(gem);
                     break;
             }
         }
         private void OnCheckpointed(CheckpointEventParams.OnCheckpointed args)
         {
-            if(args.Checkpoint is CrownCheckpoint crownCp)
+            if (args.Checkpoint is CrownCheckpoint crownCp)
             {
                 var crown = crownCp.Crown;
 
@@ -95,7 +95,7 @@ namespace DLSample.Gameplay
             if (_timer is null) return 0;
             if (_levelLengthSecond == 0) return 0;
 
-            return Mathf.Clamp((int)(100 * _timer.CurrentTime / LevelLengthSecond), 0, 100); 
+            return Mathf.Clamp((int)(100 * _timer.CurrentTime / LevelLengthSecond), 0, 100);
         }
 
         public int GetGemsCount() => _collectedGems.Count;

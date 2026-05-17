@@ -33,7 +33,7 @@ namespace DLSample.Gameplay
 
         public bool IsCheckpointed { get; private set; } = false;
         public Checkpoint CurrentCheckpoint => _currentCheckpoint;
-        
+
         public CheckpointHandler(EventBus eventBus)
         {
             _evBus = eventBus;
@@ -81,7 +81,7 @@ namespace DLSample.Gameplay
         }
         private void OnStateChange(GameplayEventParams.GameplayStateChangeCtx ctx)
         {
-            switch(ctx.CurrentState)
+            switch (ctx.CurrentState)
             {
                 case GameplayStates.GamingState:
                     if (IsCheckpointed && isRespawned)

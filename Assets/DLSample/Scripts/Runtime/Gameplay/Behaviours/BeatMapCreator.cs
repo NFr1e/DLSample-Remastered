@@ -7,6 +7,9 @@ using UnityEngine;
 
 namespace DLSample.Gameplay.Behaviours
 {
+    /// <summary>
+    /// 节拍图谱创建器，在玩家转向时记录时间戳生成节拍数据。
+    /// </summary>
     public class BeatMapCreator : MonoBehaviour
     {
         public GameplayPlayerMove playerMove;
@@ -21,10 +24,12 @@ namespace DLSample.Gameplay.Behaviours
         {
             playerMove.OnTurn += Record;
         }
+
         private void OnDisable()
         {
             playerMove.OnTurn -= Record;
         }
+
         private void Start()
         {
             GameplayEntry.Instance.ServiceLocator.TryGet<GameplayTimer>(out _timer);
@@ -34,7 +39,6 @@ namespace DLSample.Gameplay.Behaviours
         {
             if (_timer is not null)
             {
-
                 var beat = new Beat(_timer.CurrentTime);
                 _beats.Add(beat);
             }

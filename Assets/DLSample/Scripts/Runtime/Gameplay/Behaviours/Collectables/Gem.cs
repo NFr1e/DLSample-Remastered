@@ -5,6 +5,9 @@ using DLSample.Shared;
 
 namespace DLSample.Gameplay.Behaviours
 {
+    /// <summary>
+    /// 宝石可收集物品，支持收集动画与回溯恢复。
+    /// </summary>
     public class Gem : GameplayObject, ICollectable, IBacktrackable
     {
         [SerializeField] private Renderer mRenderer;
@@ -22,16 +25,21 @@ namespace DLSample.Gameplay.Behaviours
         {
             IsCollected = false;
         }
+
         protected override void OnStart()
         {
             _backtrackablesHandler = GameplayEntry.Instance.ServiceLocator.Get<BacktrackablesHandler>();
             RegisterBacktrack();
         }
+
         protected override void OnExit()
         {
             UnregisterBacktrack();
         }
 
+        /// <summary>
+        /// 收集宝石，隐藏渲染并播放收集特效。
+        /// </summary>
         public void Collect()
         {
             if (IsCollected) return;
@@ -41,6 +49,7 @@ namespace DLSample.Gameplay.Behaviours
             OnCollect?.Invoke();
             IsCollected = true;
         }
+
         private void OnCollected()
         {
             mRenderer.enabled = false;
@@ -53,8 +62,11 @@ namespace DLSample.Gameplay.Behaviours
             Destroy(_currentEffectInstance, effectLifetime);
         }
 
-        #region Backtrack
         public int BacktrackPriority => DLSampleConsts.Gameplay.BACKTRACK_PRIORITY_COLLECTABLE;
+
+        /// <summary>
+        /// 回溯恢复，重置收集状态与渲染可见性。
+        /// </summary>
         public void Backtrack()
         {
             IsCollected = false;
@@ -67,10 +79,10 @@ namespace DLSample.Gameplay.Behaviours
         {
             _backtrackablesHandler.Register(this);
         }
+
         private void UnregisterBacktrack()
         {
             _backtrackablesHandler.Unregister(this);
         }
-        #endregion
     }
 }

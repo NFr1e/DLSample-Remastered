@@ -5,7 +5,7 @@ namespace DLSample.Facility.UI
 {
     public class DefaultText : Label
     {
-        [SerializeField] private Text text;
+        [SerializeField] Text text;
 
         public override void SetText(string content)
         {

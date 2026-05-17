@@ -1,7 +1,7 @@
 namespace DLSample.Facility.Persist
 {
     /// <summary>
-    /// »Ö¸´Êı¾İ
+    /// æ¢å¤æ•°æ®
     /// </summary>
     public interface IRestorer
     {

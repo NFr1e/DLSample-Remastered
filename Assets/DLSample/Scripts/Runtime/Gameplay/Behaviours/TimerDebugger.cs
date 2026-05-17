@@ -1,25 +1,30 @@
 using DLSample.Gameplay;
-using DLSample.Gameplay.Behaviours;
 using DLSample.Gameplay.Stream;
 using UnityEngine;
 using UnityEngine.UI;
 
-[RequireComponent(typeof(Text))]
-public class TimerDebugger : GameplayObject
+namespace DLSample.Gameplay.Behaviours
 {
-    public Text timeText;
-    private GameplayTimer timer;
-
-    protected override void OnStart()
+    /// <summary>
+    /// 计时器调试显示组件，实时更新计时器文本。
+    /// </summary>
+    [RequireComponent(typeof(Text))]
+    public class TimerDebugger : GameplayObject
     {
-        timer = GameplayEntry.Instance.ServiceLocator.Get<GameplayTimer>();
-    }
+        public Text timeText;
+        private GameplayTimer _timer;
 
-    private void Update()
-    {
-        if (timer != null)
+        protected override void OnStart()
         {
-            timeText.text = timer.CurrentTime.ToString();
+            _timer = GameplayEntry.Instance.ServiceLocator.Get<GameplayTimer>();
+        }
+
+        private void Update()
+        {
+            if (_timer != null)
+            {
+                timeText.text = _timer.CurrentTime.ToString();
+            }
         }
     }
 }

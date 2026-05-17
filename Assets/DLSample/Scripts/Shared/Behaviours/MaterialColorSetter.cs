@@ -1,11 +1,13 @@
 using Sirenix.OdinInspector;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace DLSample.Shared
 {
+    /// <summary>
+    /// 材质颜色设置器，在启用时批量设置材质颜色
+    /// </summary>
     [ExecuteAlways]
     public class MaterialColorSetter : MonoBehaviour
     {
@@ -18,7 +20,7 @@ namespace DLSample.Shared
             [Button("GetColor", ButtonHeight = 30)]
             private void GetColor()
             {
-                if(material)
+                if (material)
                     color = material.color;
             }
 

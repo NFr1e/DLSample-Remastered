@@ -7,7 +7,7 @@ using DLSample.Framework;
 namespace DLSample.Gameplay.Skin
 {
     /// <summary>
-    /// Í¨¹ıÊµÀı»¯SkinBehaviour¶ÔÏó²¢´«²Î¸øSkinAdapterÊµÏÖÆ¤·ôÇĞ»»¹¦ÄÜ
+    /// é€šè¿‡å®ä¾‹åŒ–SkinBehaviourå¯¹è±¡å¹¶ä¼ å‚ç»™SkinAdapterå®ç°çš®è‚¤åˆ‡æ¢åŠŸèƒ½
     /// </summary>
     public class SkinChanger : IModule
     {
@@ -20,7 +20,7 @@ namespace DLSample.Gameplay.Skin
 
         private SkinBehaviourBase _currentSkinBehaviour;
 
-        public SkinChanger(SkinDataScriptable skinData, Transform skinContainer) 
+        public SkinChanger(SkinDataScriptable skinData, Transform skinContainer)
         {
             _skinData = skinData;
             _skinContainer = skinContainer;
@@ -32,7 +32,7 @@ namespace DLSample.Gameplay.Skin
 
             if (skin.IsValid)
             {
-                if(_currentSkinBehaviour != null)
+                if (_currentSkinBehaviour != null)
                 {
                     _currentSkinBehaviour.OnDetach();
                     GameObject.Destroy(_currentSkinBehaviour.gameObject);
@@ -59,7 +59,7 @@ namespace DLSample.Gameplay.Skin
         }
 
         /// <summary>
-        /// Ìí¼ÓSkinAdapter£¬Í¬Ê±Ë¢ĞÂ×´Ì¬
+        /// æ·»åŠ SkinAdapterï¼ŒåŒæ—¶åˆ·æ–°çŠ¶æ€
         /// </summary>
         /// <param name="adapter"></param>
         public void AddAdapter(SkinAdapter adapter)
@@ -71,7 +71,7 @@ namespace DLSample.Gameplay.Skin
         }
 
         /// <summary>
-        /// ÒÆ³ıSkinAdapter£¬Í¬Ê±Ë¢ĞÂ×´Ì¬
+        /// ç§»é™¤SkinAdapterï¼ŒåŒæ—¶åˆ·æ–°çŠ¶æ€
         /// </summary>
         /// <param name="adapter"></param>
         public void RemoveAdapter(SkinAdapter adapter)

@@ -2,7 +2,6 @@ using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.UIElements;
 
 namespace DLSample.Facility.UI
 {
@@ -14,10 +13,10 @@ namespace DLSample.Facility.UI
         public Ease easeType = Ease.Linear;
         public bool autoPlay = true;
 
-        private Text contentText;
-        private RectTransform contentTransform;
-        private RectTransform containerTransform;
-        private Sequence scrollSequence;
+        Text _contentText;
+        RectTransform _contentTransform;
+        RectTransform _containerTransform;
+        Sequence _scrollSequence;
 
         void Awake()
         {
@@ -26,16 +25,16 @@ namespace DLSample.Facility.UI
 
         void SetupComponents()
         {
-            containerTransform = GetComponent<RectTransform>();
-            contentText = GetComponentInChildren<Text>();
+            _containerTransform = GetComponent<RectTransform>();
+            _contentText = GetComponentInChildren<Text>();
 
-            contentTransform = contentText.GetComponent<RectTransform>();
+            _contentTransform = _contentText.GetComponent<RectTransform>();
         }
 
         public async override void SetText(string text)
         {
-            scrollSequence?.Kill();
-            contentText.text = text;
+            _scrollSequence?.Kill();
+            _contentText.text = text;
 
             await UniTask.Yield();
 
@@ -44,12 +43,12 @@ namespace DLSample.Facility.UI
 
         public void RefreshLayout()
         {
-            scrollSequence?.Kill();
+            _scrollSequence?.Kill();
 
-            LayoutRebuilder.ForceRebuildLayoutImmediate(contentTransform);
+            LayoutRebuilder.ForceRebuildLayoutImmediate(_contentTransform);
 
-            float textWidth = contentText.preferredWidth;
-            float containerWidth = containerTransform.rect.width;
+            float textWidth = _contentText.preferredWidth;
+            float containerWidth = _containerTransform.rect.width;
 
             if (textWidth <= containerWidth)
             {
@@ -63,15 +62,15 @@ namespace DLSample.Facility.UI
 
         void SetStaticPosition(float textWidth, float containerWidth)
         {
-            contentTransform.DOAnchorPosX(startPosition.x, 0.3f).SetEase(Ease.OutQuad);
+            _contentTransform.DOAnchorPosX(startPosition.x, 0.3f).SetEase(Ease.OutQuad);
         }
 
         void CreateScrollSequence(float textWidth, float containerWidth)
         {
-            scrollSequence = DOTween.Sequence();
+            _scrollSequence = DOTween.Sequence();
 
             SetupCenterAlignedScroll(textWidth, containerWidth);
-            scrollSequence.SetLoops(-1, LoopType.Restart);
+            _scrollSequence.SetLoops(-1, LoopType.Restart);
         }
 
         void SetupCenterAlignedScroll(float textWidth, float containerWidth)
@@ -79,18 +78,18 @@ namespace DLSample.Facility.UI
             float offset = textWidth - containerWidth;
             float scrollDuration = offset / speed;
 
-            contentTransform.anchoredPosition = startPosition;
+            _contentTransform.anchoredPosition = startPosition;
 
-            scrollSequence.Append(contentTransform.DOAnchorPosX(-offset, scrollDuration).SetEase(easeType));
-            scrollSequence.AppendInterval(delay);
+            _scrollSequence.Append(_contentTransform.DOAnchorPosX(-offset, scrollDuration).SetEase(easeType));
+            _scrollSequence.AppendInterval(delay);
 
-            scrollSequence.Append(contentTransform.DOAnchorPosX(startPosition.x, scrollDuration).SetEase(easeType));
-            scrollSequence.AppendInterval(delay);
+            _scrollSequence.Append(_contentTransform.DOAnchorPosX(startPosition.x, scrollDuration).SetEase(easeType));
+            _scrollSequence.AppendInterval(delay);
         }
 
         void OnDestroy()
         {
-            scrollSequence?.Kill();
+            _scrollSequence?.Kill();
         }
     }
 }

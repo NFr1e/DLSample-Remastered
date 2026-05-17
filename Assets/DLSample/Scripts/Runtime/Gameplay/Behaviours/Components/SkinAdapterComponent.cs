@@ -3,6 +3,9 @@ using DLSample.Gameplay.Behaviours;
 
 namespace DLSample.Gameplay.Skin
 {
+    /// <summary>
+    /// 皮肤适配器组件，创建并初始化 GameplaySkinAdapter。
+    /// </summary>
     public class SkinAdapterComponent : GameplayObject
     {
         [SerializeField] private GameplayPlayerMove playerMove;

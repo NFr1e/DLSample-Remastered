@@ -46,9 +46,9 @@ namespace DLSample.Facility.SceneManage
 
         internal void SetResult(bool success, string error = null)
         {
-            if (success) 
+            if (success)
                 _tcs.TrySetResult();
-            else 
+            else
                 _tcs.TrySetException(new Exception(error ?? "Scene Operation Failed"));
         }
     }

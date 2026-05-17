@@ -4,11 +4,13 @@ using DLSample.App;
 
 namespace DLSample.Gameplay.Behaviours
 {
+    /// <summary>
+    /// 游戏UI组件，初始化UI管理器并注册UI处理器模块。
+    /// </summary>
     public class GameplayUIComponent : GameplayObject
     {
         [SerializeField] private UIPanelsDataScriptable panelsConfig;
         [SerializeField] private Camera uiCamera;
-
         [SerializeField] private GameplayUIMapper gameplayUIMapper;
 
         private GameplayUIHandler _handler;
@@ -21,6 +23,7 @@ namespace DLSample.Gameplay.Behaviours
             uiManager.SetupConfigs(panelsConfig);
             uiManager.SetupCamera(uiCamera);
         }
+
         protected override void OnStart()
         {
             GameplayEntry.Instance.ModulesManager.Register(_handler);

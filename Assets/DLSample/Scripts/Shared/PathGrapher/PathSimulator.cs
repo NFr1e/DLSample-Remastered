@@ -6,6 +6,9 @@ using DLSample.Shared;
 
 namespace DLSample.Editor.PathGrapher
 {
+    /// <summary>
+    /// 路径模拟器，根据路径图资产和节拍数据生成路径点及路径段
+    /// </summary>
     public static class PathSimulator
     {
         private struct SimulationStatus
@@ -23,6 +26,7 @@ namespace DLSample.Editor.PathGrapher
             public bool isJumping;
             public bool isTeleport;
         }
+
         private struct TimePointInfo
         {
             public enum TimePointType
@@ -40,7 +44,6 @@ namespace DLSample.Editor.PathGrapher
         public static void Simulate(PathGrapherAsset asset, float samplingInterval)
         {
             if (asset.beatMapData == null || asset.initialDirections == null) return;
-
 
             SimulationStatus state = new()
             {
@@ -97,7 +100,7 @@ namespace DLSample.Editor.PathGrapher
                             tempTime += samplingInterval;
                         }
 
-                        float remainingDt = (float)(timeEnd - tempTime);//ʣ��Ķ�
+                        float remainingDt = (float)(timeEnd - tempTime); // 剩余的delta
                         if (remainingDt > 0)
                             state = StepSimulateStatus(state, remainingDt);
 
@@ -221,11 +224,11 @@ namespace DLSample.Editor.PathGrapher
                 if (ev is SegmentPathEvent segEv)
                 {
                     points.Add(
-                        new TimePointInfo 
-                        { 
+                        new TimePointInfo
+                        {
                             type = TimePointInfo.TimePointType.Event,
-                            time = segEv.EndTime, 
-                            evt = ev 
+                            time = segEv.EndTime,
+                            evt = ev
                         });
                 }
             }
@@ -237,7 +240,7 @@ namespace DLSample.Editor.PathGrapher
         {
             if (timePoint.type is not TimePointInfo.TimePointType.Event) return;
 
-            switch(timePoint.evt)
+            switch (timePoint.evt)
             {
                 case SpeedChangeEvent s:
                     state.currentSpeed = s.newSpeed;
@@ -311,6 +314,7 @@ namespace DLSample.Editor.PathGrapher
         {
             directions.Reset();
         }
+
         private static bool DoubleEquals(double a, double b, double epsilon = 0.0001f)
         {
             return Math.Abs(a - b) < epsilon;

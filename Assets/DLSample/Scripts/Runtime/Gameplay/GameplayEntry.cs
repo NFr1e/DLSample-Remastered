@@ -123,8 +123,8 @@ namespace DLSample.Gameplay
                     try
                     {
                         gameplayObject.DoStart();
-                    } 
-                    catch(System.Exception e)
+                    }
+                    catch (System.Exception e)
                     {
                         Debug.LogException(e);
                     }
@@ -141,13 +141,13 @@ namespace DLSample.Gameplay
             if (_gameplayObjects.Contains(gameplayObject)) return;
             _gameplayObjects.Add(gameplayObject);
 
-            if(_started)
+            if (_started)
             {
                 try
                 {
                     gameplayObject.DoStart();
                 }
-                catch(System.Exception e)
+                catch (System.Exception e)
                 {
                     Debug.LogException(e);
                 }

@@ -7,8 +7,8 @@ namespace DLSample.Gameplay.Skin
     {
         public PlayerDamager _damager;
 
-        public GameplaySkinAdapter(IPlayerMove player, Transform headContainer, BacktrackablesHandler backtrackHandler, PlayerDamager damager) : base(player, headContainer, backtrackHandler) 
-        { 
+        public GameplaySkinAdapter(IPlayerMove player, Transform headContainer, BacktrackablesHandler backtrackHandler, PlayerDamager damager) : base(player, headContainer, backtrackHandler)
+        {
             _damager = damager;
         }
 
@@ -26,7 +26,7 @@ namespace DLSample.Gameplay.Skin
 
         private void OnPlayerDie(PlayerEventsParams.PlayerDieArg arg)
         {
-            if(_currentSkinBehaviour != null)
+            if (_currentSkinBehaviour != null)
                 _currentSkinBehaviour.OnPlayerDie(arg);
         }
     }

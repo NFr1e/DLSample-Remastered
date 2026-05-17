@@ -3,21 +3,21 @@ using UnityEngine.InputSystem;
 using DLSample.App;
 using DLSample.Facility.Input;
 
-namespace DLSample.Facility.UI 
+namespace DLSample.Facility.UI
 {
     [RequireComponent(typeof(Panel))]
     public class ClosePanelHotkey : MonoBehaviour
     {
-        private Panel _panel;
+        Panel _panel;
 
-        private UIElementManager _uiManager;
+        UIElementManager _uiManager;
 
-        private GameInput _gameInput;
-        private InputManager _inputManager;
+        GameInput _gameInput;
+        InputManager _inputManager;
 
-        private InputTask _closePanelInputTask;
+        InputTask _closePanelInputTask;
 
-        private void Awake()
+        void Awake()
         {
             _uiManager = AppEntry.UIManager;
             _gameInput = AppEntry.GameInput;
@@ -28,12 +28,13 @@ namespace DLSample.Facility.UI
             _closePanelInputTask = new InputTask(ClosePanel, _inputManager.GetInputLayer<InputLayers.UIInputLayer>());
         }
 
-        private void OnEnable()
+        void OnEnable()
         {
             _panel.Callbacks.onLoaded.AddListener(Register);
             _panel.Callbacks.onUnload.AddListener(Unregister);
         }
-        private void OnDisable()
+
+        void OnDisable()
         {
             _panel.Callbacks.onLoaded.RemoveListener(Register);
             _panel.Callbacks.onUnload.RemoveListener(Unregister);
@@ -41,10 +42,11 @@ namespace DLSample.Facility.UI
             Unregister();
         }
 
-        private void Register() => _inputManager.RegisterInputTask(_gameInput.App.Cancel, _closePanelInputTask);
-        private void Unregister() => _inputManager.UnregisterInputTask(_gameInput.App.Cancel, _closePanelInputTask);
+        void Register() => _inputManager.RegisterInputTask(_gameInput.App.Cancel, _closePanelInputTask);
 
-        private async void ClosePanel(InputAction.CallbackContext _)
+        void Unregister() => _inputManager.UnregisterInputTask(_gameInput.App.Cancel, _closePanelInputTask);
+
+        async void ClosePanel(InputAction.CallbackContext _)
         {
             await _uiManager.CloseCurrentFullScreenPanel();
             Unregister();

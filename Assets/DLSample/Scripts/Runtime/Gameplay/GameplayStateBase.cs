@@ -4,9 +4,9 @@ namespace DLSample.Gameplay.Phase
     {
         protected readonly GameplayFSM _fsm;
 
-        public GameplayStateBase(GameplayFSM fsm) 
-        { 
-            _fsm = fsm; 
+        public GameplayStateBase(GameplayFSM fsm)
+        {
+            _fsm = fsm;
         }
 
         public abstract void Enter();

@@ -43,11 +43,11 @@ namespace DLSample.Facility.SceneManage
                 {
                     await currentRequest.ExecuteAsync();
                 }
-                catch(OperationCanceledException)
+                catch (OperationCanceledException)
                 {
                     Debug.Log($"Operation Cancelled: {currentRequest.SceneName}");
                 }
-                catch(Exception e)
+                catch (Exception e)
                 {
                     Debug.LogError($"Operation Error: {e.Message}");
                     currentRequest.SetResult(false, e.Message);

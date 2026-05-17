@@ -9,6 +9,9 @@ using UnityEngine;
 
 namespace DLSample.Editor.PathGrapher
 {
+    /// <summary>
+    /// 路径图Transform移动器，用于在编辑器中根据路径时间设置Transform位置和旋转
+    /// </summary>
     public class PathGrapherTransformMover : MonoBehaviour
     {
         [SerializeField] private PathGrapherBehaviour behaviour;

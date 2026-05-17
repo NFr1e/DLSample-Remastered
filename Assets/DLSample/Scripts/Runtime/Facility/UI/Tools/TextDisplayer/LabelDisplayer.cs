@@ -9,7 +9,7 @@ namespace DLSample.Facility.UI
 
         public void SetText(string content, string defaultValue = "")
         {
-            if(string.IsNullOrEmpty(content))
+            if (string.IsNullOrEmpty(content))
             {
                 content = defaultValue;
             }

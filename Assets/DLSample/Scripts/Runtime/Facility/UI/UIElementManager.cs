@@ -7,29 +7,31 @@ namespace DLSample.Facility.UI
 {
     public class UIElementManager
     {
-        private readonly Stack<UIElementData<Panel>> _fullscreenPanelsStack = new();
-        private readonly Dictionary<UIElementData<Panel>, Panel> _fullscreenPanelsCache = new();
-        private UIElementData<Panel> _currentFullscreenPanelData = new();
+        readonly Stack<UIElementData<Panel>> _fullscreenPanelsStack = new();
+        readonly Dictionary<UIElementData<Panel>, Panel> _fullscreenPanelsCache = new();
+        UIElementData<Panel> _currentFullscreenPanelData = new();
 
-        private readonly Dictionary<string, Panel> _persistentPanelCache = new();
+        readonly Dictionary<string, Panel> _persistentPanelCache = new();
 
-        private UIPanelsDataScriptable _panelsConfig;
+        UIPanelsDataScriptable _panelsConfig;
 
-        private Camera _uiCamera;
+        Camera _uiCamera;
 
-        private Transform _root;
-        private Transform _fullscreenPanelsContainer;
-        private Transform _persistPanelsContainer;
+        Transform _root;
+        Transform _fullscreenPanelsContainer;
+        Transform _persistPanelsContainer;
 
         public void SetupConfigs(UIPanelsDataScriptable panelsConfig)
         {
             _panelsConfig = panelsConfig;
         }
+
         public void SetupCamera(Camera camera)
         {
             _uiCamera = camera;
         }
-        private void SetupContainers()
+
+        void SetupContainers()
         {
             if (!_root)
             {
@@ -56,6 +58,7 @@ namespace DLSample.Facility.UI
         {
             SetupContainers();
         }
+
         public void Dispose()
         {
             _uiCamera = null;
@@ -65,7 +68,7 @@ namespace DLSample.Facility.UI
             _fullscreenPanelsCache?.Clear();
             _persistentPanelCache?.Clear();
 
-            if(_root)
+            if (_root)
             {
                 GameObject.Destroy(_root.gameObject);
             }
@@ -76,7 +79,7 @@ namespace DLSample.Facility.UI
         #region OpenPanel
         public async UniTask<Panel> OpenPanel(string id)
         {
-            if(_panelsConfig.GetPanel(id, out var panelItem))
+            if (_panelsConfig.GetPanel(id, out var panelItem))
             {
                 var panelComp = panelItem.Item;
 
@@ -90,7 +93,8 @@ namespace DLSample.Facility.UI
 
             return null;
         }
-        private async UniTask<Panel> OpenFullScreenPanel(UIElementData<Panel> panelData)
+
+        async UniTask<Panel> OpenFullScreenPanel(UIElementData<Panel> panelData)
         {
             if (_fullscreenPanelsCache.TryGetValue(_currentFullscreenPanelData, out var currentPanel))
             {
@@ -127,7 +131,7 @@ namespace DLSample.Facility.UI
             return panel;
         }
 
-        private async UniTask<Panel> OpenPersistPanel(UIElementData<Panel> panelData)
+        async UniTask<Panel> OpenPersistPanel(UIElementData<Panel> panelData)
         {
             if (_persistentPanelCache.TryGetValue(panelData.ItemId, out var existing))
             {
@@ -175,16 +179,19 @@ namespace DLSample.Facility.UI
                 _currentFullscreenPanelData = prevPanelData;
             }
         }
+
         public async UniTask CloseAllFullscreenPanel()
         {
-            while(_fullscreenPanelsStack.Count > 0)
+            while (_fullscreenPanelsStack.Count > 0)
             {
                 await CloseCurrentFullScreenPanel();
             }
         }
+
         public async UniTask ClosePersistentPanel(string panelId)
         {
-            if (!_persistentPanelCache.TryGetValue(panelId, out var page)) return;
+            if (!_persistentPanelCache.TryGetValue(panelId, out var page))
+                return;
 
             await UniTask.SwitchToMainThread();
             page.Unload();

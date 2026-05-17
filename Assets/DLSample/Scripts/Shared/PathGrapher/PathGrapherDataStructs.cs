@@ -1,10 +1,12 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace DLSample.Editor.PathGrapher
 {
+    /// <summary>
+    /// 路径点数据结构
+    /// </summary>
     [Serializable]
     public struct Waypoint
     {
@@ -15,6 +17,9 @@ namespace DLSample.Editor.PathGrapher
         public int beatIndex;
     }
 
+    /// <summary>
+    /// 路径段数据结构，连接两个路径点
+    /// </summary>
     [Serializable]
     public struct PathSegment
     {
@@ -29,6 +34,9 @@ namespace DLSample.Editor.PathGrapher
         public readonly bool IsSimpleStright => IsValid && sections.Count == 1 && sections[0].points.Length == 2 && !sections[0].isJump && !sections[0].isTeleport;
     }
 
+    /// <summary>
+    /// 路径区间数据结构，表示路径段中的一段连续采样区间
+    /// </summary>
     [Serializable]
     public struct PathSection
     {

@@ -6,13 +6,13 @@ using UnityEngine.UI;
 namespace DLSample.Facility.UI
 {
     /// <summary>
-    /// 自动适配内容尺寸并执行补间动画
+    /// 鑷姩妫�娴嬪唴瀹瑰昂瀵稿彉鍖栧苟鎵ц琛ラ棿閫傞厤鍔ㄧ敾
     /// </summary>
     public class AutoContentSizeFitTweener : ContentSizeFitterTweener
     {
         public float sizeChangeThreshold = 0.5f;
 
-        private Vector2 m_lastRecordedSize,m_currentSize;
+        Vector2 _lastRecordedSize, _currentSize;
 
         protected override void Start()
         {
@@ -20,15 +20,15 @@ namespace DLSample.Facility.UI
 
             RebuildLayouts();
 
-            m_lastRecordedSize = ContentSize(m_rectTrans);
-            m_currentSize = ContentSize(m_rectTrans);
+            _lastRecordedSize = ContentSize(_rectTrans);
+            _currentSize = ContentSize(_rectTrans);
 
             targetSizeFitter.enabled = false;
         }
 
-        private void LateUpdate()
+        void LateUpdate()
         {
-            m_currentSize = ContentSize(m_rectTrans);
+            _currentSize = ContentSize(_rectTrans);
 
             CheckSizeChange();
         }
@@ -36,13 +36,14 @@ namespace DLSample.Facility.UI
         {
             onFitted?.Invoke();
         }
-        private void CheckSizeChange()
-        {
-            float sizeDiff = Vector2.Distance(m_lastRecordedSize,m_currentSize);
 
-            if(sizeDiff > sizeChangeThreshold)
+        void CheckSizeChange()
+        {
+            float sizeDiff = Vector2.Distance(_lastRecordedSize, _currentSize);
+
+            if (sizeDiff > sizeChangeThreshold)
             {
-                m_lastRecordedSize = m_currentSize;
+                _lastRecordedSize = _currentSize;
 
                 DoFit();
             }

@@ -3,35 +3,45 @@ using UnityEngine;
 
 namespace DLSample.Editor.PathGrapher
 {
+    /// <summary>
+    /// 路径绘制器，负责在 Scene 视图中渲染路径段、路径点以及事件标记。
+    /// </summary>
     public class PathGrapherDrawer
     {
         #region Configs
-        private static readonly Color speedChangeEvtColor = Color.green;
-        private static readonly Color gravityChangeEvtColor = Color.magenta;
-        private static readonly Color directionChangeEvtColor = Color.blue;
-        private static readonly Color forceTurnEvtColor = Color.gray;
-        private static readonly Color jumpEvtColor = Color.yellow;
-        private static readonly Color tpEvtColor = Color.red;
+        private static readonly Color SPEED_CHANGE_EVT_COLOR = Color.green;
+        private static readonly Color GRAVITY_CHANGE_EVT_COLOR = Color.magenta;
+        private static readonly Color DIRECTION_CHANGE_EVT_COLOR = Color.blue;
+        private static readonly Color FORCE_TURN_EVT_COLOR = Color.gray;
+        private static readonly Color JUMP_EVT_COLOR = Color.yellow;
+        private static readonly Color TP_EVT_COLOR = Color.red;
         #endregion
 
         private GUIStyle _labelStyle = new();
         private Texture2D _labelBgTex;
         private Camera _sceneCamera;
 
+        /// <summary>
+        /// 在 Scene 视图中绘制完整的路径，包括路径段、路径点和事件标记。
+        /// </summary>
+        /// <param name="pathData">路径数据</param>
+        /// <param name="origin">路径的 Transform 原点</param>
+        /// <param name="profile">路径绘制配置</param>
         public void DrawPath(PathData pathData, Transform origin, PathGrapherProfile profile = default)
         {
-            Matrix4x4 localToWorld = origin.localToWorldMatrix;
+            var localToWorld = origin.localToWorldMatrix;
 
             if (profile.zTest)
             {
-                var prevZtest = Handles.zTest;
+                var prevZTest = Handles.zTest;
 
                 Handles.zTest = UnityEngine.Rendering.CompareFunction.LessEqual;
                 Draw();
-                Handles.zTest = prevZtest;
+                Handles.zTest = prevZTest;
+                return;
             }
-            else
-                Draw();
+
+            Draw();
 
             void Draw()
             {
@@ -40,6 +50,10 @@ namespace DLSample.Editor.PathGrapher
                 DrawEventHandles(pathData, origin, profile);
             }
         }
+
+        /// <summary>
+        /// 释放绘制器持有的资源（相机引用、标签样式和背景纹理）。
+        /// </summary>
         public void Dispose()
         {
             _sceneCamera = null;
@@ -55,26 +69,25 @@ namespace DLSample.Editor.PathGrapher
                 DrawSegment(segment, matrix, profile);
             }
         }
-        private void DrawSegment( PathSegment segment, Matrix4x4 matrix, PathGrapherProfile profile)
+
+        private void DrawSegment(PathSegment segment, Matrix4x4 matrix, PathGrapherProfile profile)
         {
             if (!segment.IsValid) return;
 
-            Vector3 segmentStartPos = matrix.MultiplyPoint(segment.startWaypoint.position);
+            var segmentStartPos = matrix.MultiplyPoint(segment.startWaypoint.position);
             if (!IsWithinDrawDistance(profile.pathDrawDistance, segmentStartPos)) return;
 
             if (segment.IsSimpleStright)
             {
-                DrawStrightLine();
-            }
-            else
-            {
-                DrawSegmentDetailed();
+                DrawStraightLine();
+                return;
             }
 
-            #region ...
-            void DrawStrightLine()
+            DrawSegmentDetailed();
+
+            void DrawStraightLine()
             {
-                Vector3 endPos = matrix.MultiplyPoint(segment.endWaypoint.position);
+                var endPos = matrix.MultiplyPoint(segment.endWaypoint.position);
 
                 Handles.color = profile.pathColor;
                 Handles.DrawLine(segmentStartPos, endPos);
@@ -96,23 +109,20 @@ namespace DLSample.Editor.PathGrapher
 
                 void DrawCurve(PathSection section)
                 {
-                    int len = section.points.Length;
-                    Vector3[] points = new Vector3[len];
+                    var len = section.points.Length;
+                    var points = new Vector3[len];
 
                     for (int i = 0; i < len; i++)
                         points[i] = matrix.MultiplyPoint(section.points[i]);
 
-                    if (section.isJump)
-                        Handles.color = Color.red;
-                    else Handles.color = profile.pathColor;
+                    Handles.color = section.isJump ? Color.red : profile.pathColor;
 
                     Handles.DrawAAPolyLine(4f, points);
-                    //Handles.Label(points[0], "ThisSegmentIsDrawnAsCurve");
                 }
                 void DrawTeleport(PathSection section)
                 {
-                    int len = section.points.Length;
-                    Vector3[] points = new Vector3[len];
+                    var len = section.points.Length;
+                    var points = new Vector3[len];
 
                     for (int i = 0; i < len; i++)
                         points[i] = matrix.MultiplyPoint(section.points[i]);
@@ -121,7 +131,6 @@ namespace DLSample.Editor.PathGrapher
                     Handles.DrawDottedLine(points[0], points[^1], 4f);
                 }
             }
-            #endregion
         }
 
         private void DrawWaypoints(PathData pathData, Matrix4x4 matrix, PathGrapherProfile profile)
@@ -130,18 +139,17 @@ namespace DLSample.Editor.PathGrapher
 
             foreach (var wp in pathData.generatedWaypoints)
             {
-                Vector3 worldPos = matrix.MultiplyPoint(wp.position);
+                var worldPos = matrix.MultiplyPoint(wp.position);
 
                 if (!IsWithinDrawDistance(profile.pathDrawDistance, worldPos)) continue;
 
-                float size = 0.5f;
+                var size = 0.5f;
                 Handles.CubeHandleCap(0, worldPos, wp.rotation, size, EventType.Repaint);
-
 
                 if (!IsWithinDrawDistance(profile.labelDrawDistance, worldPos)) continue;
                 if (profile.drawWaypointLabel)
                 {
-                    GUIStyle style = GetLabelStyle(profile);
+                    var style = GetLabelStyle(profile);
                     Handles.Label(worldPos + 2 * size * Vector3.up, $"Beat: {wp.beatIndex} Time: {wp.time:F2}s", style);
                 }
             }
@@ -153,28 +161,27 @@ namespace DLSample.Editor.PathGrapher
 
             foreach (var ev in pathData.globalEvents)
             {
-                Vector3 worldPos = PathMappingUtility.GetWorldPosFromTime(ev.GlobalTime, pathData, origin, profile.samplingInterval);
+                var worldPos = PathMappingUtility.GetWorldPosFromTime(ev.GlobalTime, pathData, origin, profile.samplingInterval);
 
                 if (!IsWithinDrawDistance(profile.pathDrawDistance, worldPos)) continue;
 
-                float size = 1f;
+                var size = 1f;
                 Handles.color = GetEventColor(ev);
                 Handles.CubeHandleCap(0, worldPos, Quaternion.identity, size, EventType.Repaint);
 
                 if (ev is SegmentPathEvent segEv)
                 {
-                    Vector3 endWorldPos = PathMappingUtility.GetWorldPosFromTime(segEv.EndTime, pathData, origin, profile.samplingInterval);
+                    var endWorldPos = PathMappingUtility.GetWorldPosFromTime(segEv.EndTime, pathData, origin, profile.samplingInterval);
                     Handles.CubeHandleCap(0, endWorldPos, Quaternion.identity, size, EventType.Repaint);
                 }
 
-
-                string info = ev.GetType().Name.Replace("Event", "");
+                var info = ev.GetType().Name.Replace("Event", "");
 
                 if (!IsWithinDrawDistance(profile.labelDrawDistance, worldPos)) continue;
 
                 if (profile.drawEventLabel)
                 {
-                    GUIStyle style = GetLabelStyle(profile);
+                    var style = GetLabelStyle(profile);
                     Handles.Label(worldPos + Vector3.down * size, info, style);
                 }
             }
@@ -185,10 +192,10 @@ namespace DLSample.Editor.PathGrapher
             if (SceneView.lastActiveSceneView)
                 _sceneCamera = SceneView.lastActiveSceneView.camera;
 
-            if (_sceneCamera == null) 
+            if (_sceneCamera == null)
                 return true;
 
-            float sqrDist = (_sceneCamera.transform.position - worldPos).sqrMagnitude;
+            var sqrDist = (_sceneCamera.transform.position - worldPos).sqrMagnitude;
             return sqrDist <= dist * dist;
         }
 
@@ -196,15 +203,16 @@ namespace DLSample.Editor.PathGrapher
         {
             return ev switch
             {
-                SpeedChangeEvent => speedChangeEvtColor,
-                GravityChangeEvent => gravityChangeEvtColor,
-                DirectionChangeEvent => directionChangeEvtColor,
-                ForceTurnEvent => forceTurnEvtColor,
-                JumpEvent => jumpEvtColor,
-                TeleportEvent => tpEvtColor,
+                SpeedChangeEvent => SPEED_CHANGE_EVT_COLOR,
+                GravityChangeEvent => GRAVITY_CHANGE_EVT_COLOR,
+                DirectionChangeEvent => DIRECTION_CHANGE_EVT_COLOR,
+                ForceTurnEvent => FORCE_TURN_EVT_COLOR,
+                JumpEvent => JUMP_EVT_COLOR,
+                TeleportEvent => TP_EVT_COLOR,
                 _ => Color.white
             };
         }
+
         private GUIStyle GetLabelStyle(PathGrapherProfile profile)
         {
             _labelStyle ??= new GUIStyle();

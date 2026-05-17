@@ -23,13 +23,13 @@ namespace DLSample.Facility.UI
         }
 
         [SerializeField]
-        private Animations animations = new();
+        Animations animations = new();
 
         [SerializeField]
-        private PanelType panelType = PanelType.FullScreen;
+        PanelType panelType = PanelType.FullScreen;
 
-        [SerializeField] 
-        private List<Canvas> cameraSpaceCanvas;
+        [SerializeField]
+        List<Canvas> cameraSpaceCanvas;
 
         public PanelType Type
         {

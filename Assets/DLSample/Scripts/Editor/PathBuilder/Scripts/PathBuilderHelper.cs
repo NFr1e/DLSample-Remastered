@@ -6,14 +6,25 @@ using System.Linq;
 
 namespace DLSample.Editor.PathBuilder
 {
+    /// <summary>
+    /// 路径构建辅助类，根据 PathData 在场景中生成路径网格和提示线。
+    /// </summary>
     public static class PathBuilderHelper
     {
         #region Path
+        /// <summary>
+        /// 根据路径数据在场景中生成路径网格对象。
+        /// </summary>
+        /// <param name="pathData">路径数据</param>
+        /// <param name="type">路径生成方式（连接或断开）</param>
+        /// <param name="prefab">路径段预制体</param>
+        /// <param name="width">路径宽度</param>
+        /// <returns>是否成功生成路径</returns>
         public static bool GeneratePath(PathData pathData, PathGenerateType type, GameObject prefab, float width)
         {
             if (pathData == null || prefab == null) return false;
 
-            Transform pathRoot = new GameObject("PathContainer").transform;
+            var pathRoot = new GameObject("PathContainer").transform;
 
             foreach (var segment in pathData.generatedSegments)
             {
@@ -41,17 +52,17 @@ namespace DLSample.Editor.PathBuilder
 
         private static void CreatePathElement(Vector3 start, Vector3 end, Vector3 up, float width, PathGenerateType type, GameObject prefab, Transform parent)
         {
-            Vector3 direction = end - start;
-            float distance = direction.magnitude;
+            var direction = end - start;
+            var distance = direction.magnitude;
 
-            Vector3 position = (start + end) * 0.5f;
+            var position = (start + end) * 0.5f;
 
-            GameObject element = Object.Instantiate(prefab, parent);
+            var element = Object.Instantiate(prefab, parent);
 
-            Quaternion rotation = Quaternion.LookRotation(direction, up);
+            var rotation = Quaternion.LookRotation(direction, up);
             element.transform.SetLocalPositionAndRotation(position, rotation);
 
-            Vector3 scale = element.transform.localScale;
+            var scale = element.transform.localScale;
             scale.x = width;
 
             switch (type)
@@ -75,11 +86,18 @@ namespace DLSample.Editor.PathBuilder
         #endregion
 
         #region Hint
+        /// <summary>
+        /// 根据路径数据在场景中生成提示线对象（长线段和短线段交替排列）。
+        /// </summary>
+        /// <param name="pathData">路径数据</param>
+        /// <param name="segmentPrefab">提示线段预制体</param>
+        /// <param name="boxPrefab">提示盒预制体</param>
+        /// <returns>是否成功生成提示线</returns>
         public static bool GenerateHintLine(PathData pathData, GameObject segmentPrefab, GameObject boxPrefab)
         {
             if (pathData == null || boxPrefab == null || segmentPrefab == null) return false;
 
-            Transform guidanceContainer = new GameObject("HintLines").transform;
+            var guidanceContainer = new GameObject("HintLines").transform;
 
             foreach (var segment in pathData.generatedSegments)
             {
@@ -87,7 +105,7 @@ namespace DLSample.Editor.PathBuilder
 
                 var wp = segment.startWaypoint;
 
-                GameObject hintBox = Object.Instantiate(boxPrefab, wp.position, wp.rotation, guidanceContainer);
+                var hintBox = Object.Instantiate(boxPrefab, wp.position, wp.rotation, guidanceContainer);
                 hintBox.name = $"HintBox_{wp.beatIndex}";
 
                 var component = hintBox.GetComponent<HintBox>();
@@ -96,7 +114,7 @@ namespace DLSample.Editor.PathBuilder
                 {
                     component.StandardTime = (float)wp.time;
 
-                    GameObject lineGroup = new($"HintLineGroup_{wp.beatIndex}");
+                    var lineGroup = new GameObject($"HintLineGroup_{wp.beatIndex}");
                     lineGroup.transform.SetParent(hintBox.transform);
                     lineGroup.transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
                     component.segments = lineGroup.transform;
@@ -139,47 +157,46 @@ namespace DLSample.Editor.PathBuilder
         }
         private static void SpawnSegments(Vector3 start, Vector3 end, Vector3 upDir, float startTime, float endTime, Transform parent, GameObject linePrefab)
         {
-            Vector3 dir = end - start;
+            var dir = end - start;
 
-            float dist = dir.magnitude;
+            var dist = dir.magnitude;
             if (dist < 0.1f) return;
 
-            Vector3 dirNormalized = dir.normalized;
+            var dirNormalized = dir.normalized;
 
-            float offsetStart = 1.0f;
-            float totalDistance = dist - offsetStart - 1f;
+            var offsetStart = 1.0f;
+            var totalDistance = dist - offsetStart - 1f;
 
             if (totalDistance <= Mathf.Epsilon) return;
 
-            Vector3 currentPos = start + dirNormalized * offsetStart;
-            float remainingDistance = totalDistance;
-            bool isLongSegment = true;
+            var currentPos = start + dirNormalized * offsetStart;
+            var remainingDistance = totalDistance;
+            var isLongSegment = true;
 
             while (remainingDistance > 0)
             {
-                float currentLength = isLongSegment ? 2 : 0.3f;
-                currentLength = Mathf.Min(currentLength, remainingDistance);
+                var currentLength = Mathf.Min(isLongSegment ? 2f : 0.3f, remainingDistance);
 
-                Vector3 segmentEnd = currentPos + dirNormalized * currentLength;
+                var segmentEnd = currentPos + dirNormalized * currentLength;
 
                 if (linePrefab != null)
                 {
-                    GameObject line = Object.Instantiate(linePrefab, parent);
+                    var line = Object.Instantiate(linePrefab, parent);
                     line.transform.SetPositionAndRotation((currentPos + segmentEnd) / 2, Quaternion.LookRotation(dir, upDir));
 
-                    Vector3 scale = linePrefab.transform.localScale;
+                    var scale = linePrefab.transform.localScale;
                     line.transform.localScale = new Vector3(0.15f, scale.y, currentLength);
 
-                    float distanceToMidPoint = Vector3.Distance(start, (currentPos + segmentEnd) / 2f);
-                    float timeFactor = dist <= Mathf.Epsilon ? 0f : distanceToMidPoint / dist;
-                    float disappearTime = Mathf.Lerp(startTime, endTime, Mathf.Clamp01(timeFactor));
+                    var distanceToMidPoint = Vector3.Distance(start, (currentPos + segmentEnd) / 2f);
+                    var timeFactor = dist <= Mathf.Epsilon ? 0f : distanceToMidPoint / dist;
+                    var disappearTime = Mathf.Lerp(startTime, endTime, Mathf.Clamp01(timeFactor));
 
-                    if(!line.TryGetComponent<HintLineSegment>(out var hintSegment))
+                    if (!line.TryGetComponent<HintLineSegment>(out var hintSegment))
                     {
                         hintSegment = line.AddComponent<HintLineSegment>();
                     }
 
-                    if(hintSegment != null)
+                    if (hintSegment != null)
                     {
                         hintSegment.Initialize(disappearTime);
                     }
@@ -191,7 +208,7 @@ namespace DLSample.Editor.PathBuilder
 
                 if (remainingDistance > 0)
                 {
-                    float actualGap = Mathf.Min(0.2f, remainingDistance);
+                    var actualGap = Mathf.Min(0.2f, remainingDistance);
                     currentPos += dirNormalized * actualGap;
                     remainingDistance -= actualGap;
                 }

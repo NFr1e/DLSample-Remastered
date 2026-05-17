@@ -5,7 +5,7 @@ namespace DLSample.Facility.UI
 {
     public class PersistPanelCloser : MonoBehaviour
     {
-        [SerializeField] private string panelId = string.Empty;
+        [SerializeField] string panelId = string.Empty;
 
         public async void ClosePersistPanel()
         {

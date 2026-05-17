@@ -6,7 +6,7 @@ using UnityEngine;
 namespace DLSample.Gameplay.Skin
 {
     /// <summary>
-    /// 持有当前SkinBehaviour实例（通过SkinChanger注入），通过委托实现应用皮肤效果
+    /// 鎸佹湁褰撳墠SkinBehaviour瀹炰緥锛堥�氳繃SkinChanger娉ㄥ叆锛夛紝閫氳繃濮旀墭瀹炵幇搴旂敤鐨偆鏁堟灉
     /// </summary>
     public class SkinAdapter : IBacktrackable
     {
@@ -50,42 +50,42 @@ namespace DLSample.Gameplay.Skin
         {
             _currentSkinBehaviour = skinBehaviour;
 
-            if(_currentSkinBehaviour)
+            if (_currentSkinBehaviour)
                 _currentSkinBehaviour.SetHeadContainer(_headContainer);
         }
 
         private void OnStartMove(PlayerMovingArgs arg)
         {
-            if (_currentSkinBehaviour != null) 
+            if (_currentSkinBehaviour != null)
                 _currentSkinBehaviour.OnStartMove(arg);
         }
 
         private void OnStopMove(PlayerMovingArgs arg)
         {
-            if(_currentSkinBehaviour != null)
+            if (_currentSkinBehaviour != null)
                 _currentSkinBehaviour.OnStopMove(arg);
         }
 
         private void OnPlayerMoving(PlayerMovingArgs arg)
         {
-            if(_currentSkinBehaviour != null)
+            if (_currentSkinBehaviour != null)
                 _currentSkinBehaviour.OnPlayerMoving(arg);
         }
 
         private void OnPlayerLand(PlayerMovingArgs arg)
         {
-            if(_currentSkinBehaviour != null)
+            if (_currentSkinBehaviour != null)
                 _currentSkinBehaviour.OnPlayerLand(arg);
         }
 
         private void OnPlayerTurn(PlayerMovingArgs arg)
         {
-            if(_currentSkinBehaviour != null)
+            if (_currentSkinBehaviour != null)
                 _currentSkinBehaviour.OnPlayerTurn(arg);
         }
         public void Backtrack()
         {
-            if(_currentSkinBehaviour != null)
+            if (_currentSkinBehaviour != null)
                 _currentSkinBehaviour.OnReset();
         }
     }

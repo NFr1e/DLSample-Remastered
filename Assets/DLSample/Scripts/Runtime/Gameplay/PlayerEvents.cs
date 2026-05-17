@@ -26,7 +26,7 @@ namespace DLSample.Gameplay
         {
             public PlayerDirections Directions { get; set; }
         }
-        public struct ForceTurnRequest : IEventArg 
+        public struct ForceTurnRequest : IEventArg
         {
 
         }
@@ -58,12 +58,10 @@ namespace DLSample.Gameplay
             }
         }
 
-
         public class GravityChangeEvent : IGameplayEvent
         {
             public Vector3 Gravity { get; set; }
             public double InvokeTime { get; set; } = 0;
-
 
             private PlayerEventsParams.GravityChangeRequest _request = new();
 
@@ -78,7 +76,6 @@ namespace DLSample.Gameplay
         {
             public PlayerDirections Directions { get; set; }
             public double InvokeTime { get; set; } = 0;
-
 
             private PlayerEventsParams.DirectionChangeRequest _request = new();
 
@@ -105,7 +102,6 @@ namespace DLSample.Gameplay
         {
             public Vector3 Position { get; set; }
             public double InvokeTime { get; set; } = 0;
-
 
             private PlayerEventsParams.TeleportRequest _request = new();
 

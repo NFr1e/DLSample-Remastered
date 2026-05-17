@@ -1,10 +1,11 @@
 using DLSample.Facility.Events;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace DLSample.Gameplay.Behaviours
 {
+    /// <summary>
+    /// 胜利触发器，玩家进入触发区域时发送胜利请求。
+    /// </summary>
     public class WinGameTrigger : MonoBehaviour
     {
         private EventBus _eventBus;

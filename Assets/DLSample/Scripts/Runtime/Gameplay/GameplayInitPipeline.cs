@@ -21,8 +21,8 @@ namespace DLSample.Gameplay
         public GameplayInitPipeline(
             EventBus evtBus,
             GameplayPlayerController playerController, GameplayPlayerMove mainPlayer,
-            LevelDataScriptable levelData, GameplayResulter progressCounter) 
-        { 
+            LevelDataScriptable levelData, GameplayResulter progressCounter)
+        {
             _evtBus = evtBus;
             _playerController = playerController;
             _mainPlayer = mainPlayer;

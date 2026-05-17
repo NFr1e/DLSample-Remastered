@@ -24,7 +24,7 @@ namespace DLSample.Gameplay.Phase
             public override void Exit() { }
 
             public override string ToString() => $"\'<color=#FF6347>{GetType().Name}</color>\'";
-            
+
         }
 
         public class GamingState : GameplayStateBase
@@ -77,12 +77,12 @@ namespace DLSample.Gameplay.Phase
             private readonly EventBus _evtBus;
             private readonly GameplayEventParams.BacktrackGameRequest _backtrackRequest = new();
 
-            public RespawnState(GameplayFSM fsm) : base(fsm) 
+            public RespawnState(GameplayFSM fsm) : base(fsm)
             {
                 _evtBus = GameplayEntry.Instance.EventBus;
             }
 
-            public override void Enter() 
+            public override void Enter()
             {
                 ScreenHelper.FullScreenMaskAction(RequestBacktrack, _maskInDuration, _maskOutDuration);
             }

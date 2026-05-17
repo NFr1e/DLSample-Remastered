@@ -34,9 +34,9 @@ namespace DLSample.Gameplay
         {
             _evtBus.Unsubscribe<GameplayEventParams.GameplayStateChangeCtx>(OnStateChange);
         }
-        private async void OnStateChange(GameplayEventParams.GameplayStateChangeCtx ctx) 
+        private async void OnStateChange(GameplayEventParams.GameplayStateChangeCtx ctx)
         {
-            switch(ctx.CurrentState)
+            switch (ctx.CurrentState)
             {
                 case GameplayStates.PreparingState or GameplayStates.WaitingState:
                     if (_preparingPanel == null)
@@ -47,9 +47,9 @@ namespace DLSample.Gameplay
 
                 case GameplayStates.OverState:
 
-                    if(_checkpointHandler is not null)
+                    if (_checkpointHandler is not null)
                     {
-                        if(_checkpointHandler.IsCheckpointed && !_stateHandler.IsGameWin)
+                        if (_checkpointHandler.IsCheckpointed && !_stateHandler.IsGameWin)
                         {
                             _ = await _uiManager.OpenPanel(_mapper.RespawnPanelId);
                             return;

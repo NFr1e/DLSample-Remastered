@@ -4,6 +4,9 @@ using UnityEngine.UI;
 
 namespace DLSample.Gameplay.Behaviours.UI
 {
+    /// <summary>
+    /// 提示线开关视图，控制提示线的显示与隐藏。
+    /// </summary>
     public class HintLineToggleView : GameplayObject
     {
         [SerializeField] private Button button;

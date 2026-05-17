@@ -1,11 +1,16 @@
-using UnityEditor;
 using UnityEngine;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 namespace DLSample.Shared
 {
+    /// <summary>
+    /// 关卡数据配置，保存关卡场景、名称、音轨信息和统计数据
+    /// </summary>
     [CreateAssetMenu(
-        menuName = DLSampleConsts.Editor.CREATE_MENU_LEVELDATA_MENU_NAME, 
-        fileName = DLSampleConsts.Editor.CREATE_MENU_LEVELDATA_FILE_NAME, 
+        menuName = DLSampleConsts.Editor.CREATE_MENU_LEVELDATA_MENU_NAME,
+        fileName = DLSampleConsts.Editor.CREATE_MENU_LEVELDATA_FILE_NAME,
         order = DLSampleConsts.Editor.CREATE_MENU_LEVELDATA_ORDER)]
     public class LevelDataScriptable : ScriptableObject
     {

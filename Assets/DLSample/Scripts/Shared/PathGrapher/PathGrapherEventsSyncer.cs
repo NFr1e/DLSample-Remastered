@@ -6,6 +6,9 @@ using System.Collections.Generic;
 
 namespace DLSample.Editor.PathGrapher
 {
+    /// <summary>
+    /// 路径图事件同步器，将路径图资产中的事件注册到游戏计时器中
+    /// </summary>
     public class PathGrapherEventsSyncer : GameplayObject
     {
         [SerializeField] private PathGrapherAsset pathGrapherAsset;
@@ -28,7 +31,7 @@ namespace DLSample.Editor.PathGrapher
         }
         protected override void OnExit()
         {
-            foreach(var tEvt in _tickEvents)
+            foreach (var tEvt in _tickEvents)
             {
                 _gameplayTimer?.UnregisterTickEvent(tEvt);
             }

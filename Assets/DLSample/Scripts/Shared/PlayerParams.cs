@@ -3,6 +3,9 @@ using UnityEngine;
 
 namespace DLSample.Shared
 {
+    /// <summary>
+    /// 玩家参数配置，包含移动速度、重力、方向等参数
+    /// </summary>
     [Serializable]
     public class PlayerParams
     {
@@ -22,22 +25,41 @@ namespace DLSample.Shared
         public float CheckGroundDist => checkGroundDist;
         public PlayerDirections Directions => directions;
 
+        /// <summary>
+        /// 设置移动速度
+        /// </summary>
         public void SetSpeed(float speed)
         {
             moveSpeed = speed;
         }
+
+        /// <summary>
+        /// 设置是否强制着地
+        /// </summary>
         public void SetForceGrounded(bool force)
         {
             forceGrounded = force;
         }
+
+        /// <summary>
+        /// 设置是否使用重力
+        /// </summary>
         public void SetUseGravity(bool use)
         {
             useGravity = use;
         }
+
+        /// <summary>
+        /// 设置本地重力向量
+        /// </summary>
         public void SetLocalGravity(Vector3 gravity)
         {
             localGravity = gravity;
         }
+
+        /// <summary>
+        /// 设置方向序列并重置当前索引
+        /// </summary>
         public void SetDirection(PlayerDirections direction)
         {
             directions = direction;

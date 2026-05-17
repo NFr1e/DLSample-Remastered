@@ -4,6 +4,9 @@ using DLSample.Facility.Events;
 
 namespace DLSample.Gameplay.Behaviours.UI
 {
+    /// <summary>
+    /// 重生按钮，点击后向事件总线发送重生请求。
+    /// </summary>
     public class RespawnBtn : MonoBehaviour
     {
         [SerializeField] private Button button;
@@ -20,6 +23,7 @@ namespace DLSample.Gameplay.Behaviours.UI
         {
             button.onClick.AddListener(Respawn);
         }
+
         private void OnDisable()
         {
             button.onClick.RemoveListener(Respawn);

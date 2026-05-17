@@ -1,7 +1,7 @@
 namespace DLSample.Facility.Persist
 {
     /// <summary>
-    /// ÓÉ´æ´¢²ã¶Á£¬Ğ´Êı¾İ
+    /// ç”±å­˜å‚¨å±‚è¯»ï¼Œå†™æ•°æ®
     /// </summary>
     /// <typeparam name="TData"></typeparam>
     public interface IPersistor<TData> where TData : class

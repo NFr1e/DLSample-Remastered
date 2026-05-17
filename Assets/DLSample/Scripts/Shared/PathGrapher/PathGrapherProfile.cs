@@ -1,9 +1,11 @@
-using System;
 using UnityEngine;
 
 namespace DLSample.Editor.PathGrapher
 {
-    [Serializable]
+    /// <summary>
+    /// 路径绘制器配置，包含模拟参数和绘制选项
+    /// </summary>
+    [System.Serializable]
     public class PathGrapherProfile
     {
         [Header("Simulation")]

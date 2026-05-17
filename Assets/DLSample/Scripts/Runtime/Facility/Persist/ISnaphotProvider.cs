@@ -1,7 +1,7 @@
 namespace DLSample.Facility.Persist
 {
     /// <summary>
-    /// 获取数据快照
+    /// 鑾峰彇鏁版嵁蹇収
     /// </summary>
     /// <typeparam name="TData"></typeparam>
     public interface ISnaphotProvider<TData> where TData : class

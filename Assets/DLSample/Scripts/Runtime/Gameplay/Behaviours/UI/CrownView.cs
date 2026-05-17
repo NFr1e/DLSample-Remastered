@@ -6,6 +6,9 @@ using DLSample.Shared;
 
 namespace DLSample.Gameplay.Behaviours.UI
 {
+    /// <summary>
+    /// 皇冠视图，根据收集皇冠数量播放音效并显示皇冠图标。
+    /// </summary>
     public class CrownView : MonoBehaviour
     {
         [SerializeField] private List<Image> _images = new();
@@ -18,11 +21,12 @@ namespace DLSample.Gameplay.Behaviours.UI
             _resulter = GameplayEntry.Instance.ServiceLocator.Get<GameplayResulter>();
             Display();
         }
+
         private async void Display()
         {
             if (_resulter is null) return;
 
-            int crownCount = _resulter.GetCrownsCount();
+            var crownCount = _resulter.GetCrownsCount();
 
             if (crownCount > 0 && crownCount <= crownClips.Count)
             {

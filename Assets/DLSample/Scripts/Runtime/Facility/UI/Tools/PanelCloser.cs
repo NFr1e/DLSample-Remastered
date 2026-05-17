@@ -5,6 +5,6 @@ namespace DLSample.Facility.UI
 {
     public class PanelCloser : MonoBehaviour
     {
-        public async void ClosePanel() =>  await AppEntry.UIManager.CloseCurrentFullScreenPanel();
+        public async void ClosePanel() => await AppEntry.UIManager.CloseCurrentFullScreenPanel();
     }
 }

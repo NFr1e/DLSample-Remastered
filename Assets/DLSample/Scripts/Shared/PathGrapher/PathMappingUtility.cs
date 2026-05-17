@@ -3,12 +3,23 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-//!!AIºÚÏä´úÂë£¬´ıÕûÀí
+// AIè¾…åŠ©ç”Ÿæˆä»£ç ï¼Œä»…ä¾›å‚è€ƒ
 
 namespace DLSample.Editor.PathGrapher
 {
+    /// <summary>
+    /// è·¯å¾„æ˜ å°„å·¥å…·ç±»ï¼Œæä¾›æ—¶é—´ã€ä¸–ç•Œåæ ‡ã€å±å¹•åæ ‡ä¹‹é—´çš„è½¬æ¢åŠŸèƒ½
+    /// </summary>
     public static class PathMappingUtility
     {
+        /// <summary>
+        /// åœ¨ä¸–ç•Œç©ºé—´ä¸­æ‰¾åˆ°è·¯å¾„ä¸Šè·ç¦»ç»™å®šä½ç½®æœ€è¿‘çš„æ—¶é—´ç‚¹
+        /// </summary>
+        /// <param name="worldPos">ä¸–ç•Œç©ºé—´ä¸­çš„ä½ç½®</param>
+        /// <param name="pathData">è·¯å¾„æ•°æ®</param>
+        /// <param name="origin">åŸç‚¹çš„Transformï¼Œç”¨äºä¸–ç•Œåæ ‡ä¸æœ¬åœ°åæ ‡çš„è½¬æ¢</param>
+        /// <param name="samplingInterval">é‡‡æ ·é—´éš”</param>
+        /// <returns>æœ€è¿‘çš„æ—¶é—´ç‚¹</returns>
         public static double FindNearestTimeOnPath(Vector3 worldPos, PathData pathData, Transform origin, float samplingInterval = 0.1f)
         {
             if (pathData.generatedSegments.Count == 0) return 0;
@@ -34,7 +45,7 @@ namespace DLSample.Editor.PathGrapher
                         Vector3 p1 = section.points[i];
                         Vector3 p2 = section.points[i + 1];
 
-                        // 1. Í¶Ó°µãµ½Ïß¶Î p1-p2 ÉÏ
+                        // 1. æŠ•å½±ç‚¹åˆ°çº¿æ®µ p1-p2 ä¸Š
                         Vector3 nearestPointOnLine = ClosestPointOnSegment(p1, p2, localPos);
                         float sqrDist = (localPos - nearestPointOnLine).sqrMagnitude;
 
@@ -42,31 +53,31 @@ namespace DLSample.Editor.PathGrapher
                         {
                             minSqrDist = sqrDist;
 
-                            // 2. ¼ÆËãÍ¶Ó°µãÔÚÏß¶ÎÖĞµÄ±ÈÀı (0~1)
+                            // 2. è®¡ç®—æŠ•å½±ç‚¹åœ¨çº¿æ®µä¸­çš„æ¯”ä¾‹ (0-1)
                             float tFactor = GetProjectionFactor(p1, p2, nearestPointOnLine);
 
-                            // 3. ¼ÆËã¸ÃĞ¡¶ÎÏß¶Î [p1, p2] ¶ÔÓ¦µÄÆğÊ¼ºÍ½áÊøÊ±¼ä
+                            // 3. è·å–æœ€å°çº¿æ®µ [p1, p2] å¯¹åº”çš„å¼€å§‹å’Œç»“æŸæ—¶é—´
                             double timeAtP1, timeAtP2;
 
                             if (section.points.Length == 2)
                             {
-                                // Ö±Ïß¶Î£ºÖ±½ÓÓ³Éä Section µÄÊ±¼ä·¶Î§
+                                // ç›´çº¿æ®µï¼šç›´æ¥æ˜ å°„ Section çš„æ—¶é—´èŒƒå›´
                                 timeAtP1 = section.startTime;
                                 timeAtP2 = section.endTime;
                             }
                             else
                             {
-                                // ÇúÏß²ÉÑù¶Î£º¸ù¾İ²ÉÑùË÷Òı¼ÆËãÊ±¼ä
+                                // æ›²çº¿é‡‡æ ·æ®µï¼šæ ¹æ®é‡‡æ ·ç‡è®¡ç®—æ—¶é—´
                                 timeAtP1 = section.startTime + (i * samplingInterval);
 
-                                // ×îºóÒ»¸ö²ÉÑùµãµÄÊ±¼ä±ØĞëÑÏ¸ñµÈÓÚ Section µÄ endTime
+                                // æœ€åä¸€ä¸ªé‡‡æ ·ç‚¹çš„æ—¶é—´å¼ºåˆ¶å¯¹é½åˆ° Section çš„ endTime
                                 if (i == section.points.Length - 2)
                                     timeAtP2 = section.endTime;
                                 else
                                     timeAtP2 = section.startTime + ((i + 1) * samplingInterval);
                             }
 
-                            // 4. ²åÖµµÃµ½×îÖÕ¾«È·Ê±¼ä
+                            // 4. æ’å€¼å¾—åˆ°æœ€ç»ˆç²¾ç¡®æ—¶é—´
                             bestTime = timeAtP1 + (timeAtP2 - timeAtP1) * tFactor;
                         }
                     }
@@ -75,7 +86,9 @@ namespace DLSample.Editor.PathGrapher
             return bestTime;
         }
 
-        // ¸¨Öú£º¼ÆËãµãÔÚÏß¶ÎÉÏµÄÍ¶Ó°
+        /// <summary>
+        /// è®¡ç®—ç‚¹åœ¨çº¿æ®µä¸Šçš„æŠ•å½±ç‚¹
+        /// </summary>
         private static Vector3 ClosestPointOnSegment(Vector3 a, Vector3 b, Vector3 p)
         {
             Vector3 ap = p - a;
@@ -86,8 +99,9 @@ namespace DLSample.Editor.PathGrapher
             return (distance < 0) ? a : (distance > 1) ? b : a + ab * distance;
         }
 
-        // ¸¨Öú£º»ñÈ¡Í¶Ó°µãÔÚÏß¶ÎÉÏµÄ±ÈÀı (0-1)
-        // ¸üÎÈ½¡µÄÏßĞÔÍ¶Ó°±ÈÀı¼ÆËã
+        /// <summary>
+        /// è·å–æŠ•å½±ç‚¹åœ¨çº¿æ®µä¸Šçš„æ¯”ä¾‹ (0-1)
+        /// </summary>
         private static float GetProjectionFactor(Vector3 a, Vector3 b, Vector3 p)
         {
             Vector3 ab = b - a;
@@ -97,22 +111,30 @@ namespace DLSample.Editor.PathGrapher
             return Mathf.Clamp01(Vector3.Dot(ap, ab) / magSq);
         }
 
+        /// <summary>
+        /// æ ¹æ®æ—¶é—´è·å–è·¯å¾„ä¸Šçš„ä¸–ç•Œç©ºé—´ä½ç½®
+        /// </summary>
+        /// <param name="time">ç›®æ ‡æ—¶é—´</param>
+        /// <param name="pathData">è·¯å¾„æ•°æ®</param>
+        /// <param name="origin">åŸç‚¹çš„Transform</param>
+        /// <param name="samplingInterval">é‡‡æ ·é—´éš”</param>
+        /// <returns>ä¸–ç•Œç©ºé—´ä¸­çš„ä½ç½®</returns>
         public static Vector3 GetWorldPosFromTime(double time, PathData pathData, Transform origin, float samplingInterval = 0.1f)
         {
-            if(pathData.generatedSegments.Count == 0) return origin.transform.position;
+            if (pathData.generatedSegments.Count == 0) return origin.transform.position;
 
             var segments = pathData.generatedSegments;
             var waypoints = pathData.generatedWaypoints;
 
             foreach (var segment in segments)
             {
-                // Ê¹ÓÃÎ¢Ğ¡µÄÎó²îÈİÈÌ¶È´¦Àí±ß½çÎÊÌâ
+                // ä½¿ç”¨å¾®å°å®¹å·®å¤„ç†è¾¹ç•Œæƒ…å†µ
                 if (time >= segment.startWaypoint.time && time <= segment.endWaypoint.time)
                 {
                     if (!segment.IsValid)
                         return origin.transform.TransformPoint(segment.startWaypoint.position);
 
-                    // 2. ¶¨Î» PathSection
+                    // å®šä½ PathSection
                     foreach (var section in segment.sections)
                     {
                         if (time >= section.startTime && time <= section.endTime)
@@ -122,23 +144,23 @@ namespace DLSample.Editor.PathGrapher
                             Vector3 localPos;
                             double duration = section.endTime - section.startTime;
 
-                            // 3. ´¦Àí²åÖµÂß¼­
+                            // æ ¹æ®é‡‡æ ·ç‚¹æ•°é€‰æ‹©æ’å€¼é€»è¾‘
                             if (section.points.Length == 2)
                             {
-                                // --- Ö±Ïß/Ì®ËõÆ¬¶Î ---
+                                // --- ç›´çº¿/åç¼©ç‰‡æ®µ ---
                                 float t = duration > 0 ? (float)((time - section.startTime) / duration) : 0;
                                 localPos = Vector3.Lerp(section.points[0], section.points[1], t);
                             }
                             else
                             {
-                                // --- ÇúÏß²ÉÑùÆ¬¶Î ---
+                                // --- æ›²çº¿é‡‡æ ·ç‰‡æ®µ ---
                                 double relativeTime = time - section.startTime;
 
-                                // ¼ÆËã»ù´¡Ë÷Òı
+                                // å®šä½é‡‡æ ·åŒºé—´
                                 int index = Mathf.FloorToInt((float)(relativeTime / samplingInterval));
                                 index = Mathf.Clamp(index, 0, section.points.Length - 2);
 
-                                // ¼ÆËã¸ÃĞ¡²½ÄÚµÄ²åÖµ±ÈÀı
+                                // è®¡ç®—å°åŒºé—´çš„æ’å€¼å‚æ•°
                                 double tAtP1 = index * samplingInterval;
                                 double tAtP2 = (index == section.points.Length - 2)
                                                ? duration
@@ -156,7 +178,7 @@ namespace DLSample.Editor.PathGrapher
                 }
             }
 
-            // Èç¹ûÊ±¼ä³¬³ö·¶Î§£¬·µ»ØÆğµã»òÖÕµã×ø±ê
+            // å¦‚æœæ—¶é—´è¶…å‡ºèŒƒå›´ï¼Œè¿”å›æœ€è¿‘çš„è·¯ç‚¹ä½ç½®
             if (waypoints.Count > 0)
             {
                 var wp = time < waypoints[0].time ? waypoints[0] : waypoints[^1];
@@ -166,6 +188,12 @@ namespace DLSample.Editor.PathGrapher
             return origin.transform.position;
         }
 
+        /// <summary>
+        /// æ ¹æ®æ—¶é—´è·å–è·¯å¾„æ®µ
+        /// </summary>
+        /// <param name="time">ç›®æ ‡æ—¶é—´</param>
+        /// <param name="pathData">è·¯å¾„æ•°æ®</param>
+        /// <returns>åŒ…å«è¯¥æ—¶é—´çš„è·¯å¾„æ®µ</returns>
         public static PathSegment GetSegmentAtTime(double time, PathData pathData)
         {
             foreach (var seg in pathData.generatedSegments)
@@ -176,6 +204,14 @@ namespace DLSample.Editor.PathGrapher
             return default;
         }
 
+        /// <summary>
+        /// é€šè¿‡é¼ æ ‡ä½ç½®æ‰¾åˆ°è·¯å¾„ä¸Šæœ€è¿‘çš„ç‚¹
+        /// </summary>
+        /// <param name="mousePos">é¼ æ ‡å±å¹•åæ ‡</param>
+        /// <param name="pathData">è·¯å¾„æ•°æ®</param>
+        /// <param name="origin">åŸç‚¹çš„Transform</param>
+        /// <param name="samplingInterval">é‡‡æ ·é—´éš”</param>
+        /// <returns>åŒ…å«ä¸–ç•Œåæ ‡å’Œæ—¶é—´çš„å…ƒç»„</returns>
         public static (Vector3 worldPos, double time) FindNearestPointByMouse(Vector2 mousePos, PathData pathData, Transform origin, float samplingInterval = 0.1f)
         {
             if (pathData == null || pathData.generatedSegments.Count == 0)
@@ -187,11 +223,11 @@ namespace DLSample.Editor.PathGrapher
             double bestTime = 0;
             float minScreenDist = float.MaxValue;
 
-            // ÅäÖÃãĞÖµ (±£ÁôÄãµÄÉèÖÃ)
+            // è·ç¦»é˜ˆå€¼ï¼ˆå±å¹•åæ ‡ï¼‰
             const float BROAD_PHASE_THRESHOLD = 80f;
             const float NARROW_PHASE_THRESHOLD = 20f;
 
-            // --- 1. Broad Phase: ¿ìËÙÉ¸Ñ¡ Segment ---
+            // 1. Broad Phase: ç²—ç•¥ç­›é€‰ Segment
             List<PathSegment> candidates = new();
 
             foreach (var segment in pathData.generatedSegments)
@@ -199,7 +235,7 @@ namespace DLSample.Editor.PathGrapher
                 if (!segment.IsValid) continue;
 
                 bool isCandidate = false;
-                // ±éÀúËùÓĞ Section µÄËùÓĞµã½øĞĞ´ÖÉ¸
+                // éå†æ‰€æœ‰ Section çš„æ‰€æœ‰ç‚¹è¿›è¡Œç²—ç­›
                 foreach (var section in segment.sections)
                 {
                     for (int i = 0; i < section.points.Length; i++)
@@ -218,7 +254,7 @@ namespace DLSample.Editor.PathGrapher
                 if (isCandidate) candidates.Add(segment);
             }
 
-            // --- 2. Narrow Phase: ¾«ËãÍ¶Ó° ---
+            // 2. Narrow Phase: ç²¾ç¡®æŠ•å½±
             foreach (var segment in candidates)
             {
                 foreach (var section in segment.sections)
@@ -233,35 +269,35 @@ namespace DLSample.Editor.PathGrapher
                         Vector2 s1 = HandleUtility.WorldToGUIPoint(p1);
                         Vector2 s2 = HandleUtility.WorldToGUIPoint(p2);
 
-                        // ¼ÆËãÆÁÄ»¿Õ¼ä¾àÀëÏß¶ÎµÄ¾àÀë
+                        // è®¡ç®—å±å¹•ç©ºé—´ä¸­é¼ æ ‡åˆ°çº¿æ®µçš„è·ç¦»
                         float screenDist = HandleUtility.DistancePointLine(mousePos, s1, s2);
 
                         if (screenDist < minScreenDist && screenDist < NARROW_PHASE_THRESHOLD)
                         {
                             minScreenDist = screenDist;
 
-                            // ¼ÆËãÍ¶Ó°Òò×Ó (0-1)
+                            // è®¡ç®—æŠ•å½±æ¯”ä¾‹ (0-1)
                             float t2D = GetProjectionFactor(s1, s2, mousePos);
                             bestWorldPos = Vector3.Lerp(p1, p2, t2D);
 
-                            // ¼ÆËã¸ÃĞ¡¶ÎµÄÊ±¼ä·¶Î§
+                            // è·å–å°æ®µçš„æ—¶é—´èŒƒå›´
                             double timeAtP1, timeAtP2;
                             if (section.points.Length == 2)
                             {
-                                // Ö±Ïß¶Î
+                                // ç›´çº¿æ®µ
                                 timeAtP1 = section.startTime;
                                 timeAtP2 = section.endTime;
                             }
                             else
                             {
-                                // ÇúÏß²ÉÑù¶Î
+                                // æ›²çº¿é‡‡æ ·æ®µ
                                 timeAtP1 = section.startTime + (i * samplingInterval);
                                 timeAtP2 = (i == section.points.Length - 2)
                                            ? section.endTime
                                            : section.startTime + ((i + 1) * samplingInterval);
                             }
 
-                            // ×îÖÕ²åÖµµÃµ½Ê±¼ä
+                            // æœ€ç»ˆæ’å€¼å¾—åˆ°æ—¶é—´
                             bestTime = timeAtP1 + (timeAtP2 - timeAtP1) * (double)t2D;
                         }
                     }
@@ -276,6 +312,12 @@ namespace DLSample.Editor.PathGrapher
             return (Vector3.zero, 0);
         }
 
+        /// <summary>
+        /// æ ¹æ®æ—¶é—´è·å–è·¯å¾„ä¸Šçš„æ—‹è½¬è§’åº¦
+        /// </summary>
+        /// <param name="time">ç›®æ ‡æ—¶é—´</param>
+        /// <param name="data">è·¯å¾„æ•°æ®</param>
+        /// <returns>è¯¥æ—¶é—´ç‚¹çš„æ—‹è½¬é‡</returns>
         public static Quaternion GetRotationAtTime(double time, PathData data)
         {
             for (int i = 0; i < data.generatedWaypoints.Count - 1; i++)

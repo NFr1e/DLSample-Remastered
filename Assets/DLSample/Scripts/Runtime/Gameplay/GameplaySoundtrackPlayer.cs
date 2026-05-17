@@ -77,7 +77,7 @@ namespace DLSample.Gameplay.Stream
         public void Fadeout()
         {
             IsPlaying = false;
-            
+
             _fadeoutTween?.Kill();
             _fadeoutTween = _audioSource.DOFade(0, 3f).SetLink(_audioSource.gameObject);
         }

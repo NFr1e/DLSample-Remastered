@@ -6,20 +6,26 @@ using DLSample.Shared;
 
 namespace DLSample.Editor.ChartReader
 {
+    /// <summary>
+    /// 谱面读取器编辑器窗口，用于从外部谱面文件（如 osu 格式）读取节拍数据并写入 BeatmapDataScriptable。
+    /// </summary>
     public class ChartReaderWindow : EditorWindow
     {
         [SerializeField]
         private VisualTreeAsset m_VisualTreeAsset = default;
 
-        private ObjectField beatmapDataField;
-        private ObjectField chartFileField;
-        private Button readButton;
+        private ObjectField _beatmapDataField;
+        private ObjectField _chartFileField;
+        private Button _readButton;
 
+        /// <summary>
+        /// 打开谱面读取器窗口。
+        /// </summary>
         [MenuItem(DLSampleConsts.Editor.MENU_ITEM_CHART_READER,
             priority = DLSampleConsts.Editor.MENU_ITEM_CHART_READER_PRIORITY)]
         public static void Open()
         {
-            ChartReaderWindow wnd = GetWindow<ChartReaderWindow>();
+            var wnd = GetWindow<ChartReaderWindow>();
             wnd.titleContent = new GUIContent("Chart Reader");
             wnd.minSize = new Vector2(350, 150);
         }
@@ -28,24 +34,24 @@ namespace DLSample.Editor.ChartReader
         {
             m_VisualTreeAsset.CloneTree(rootVisualElement);
 
-            beatmapDataField = rootVisualElement.Q<ObjectField>("BeatmapdataField");
-            chartFileField = rootVisualElement.Q<ObjectField>("SourceField");
-            readButton = rootVisualElement.Q<Button>("GenerateHintLineBtn");
+            _beatmapDataField = rootVisualElement.Q<ObjectField>("BeatmapdataField");
+            _chartFileField = rootVisualElement.Q<ObjectField>("SourceField");
+            _readButton = rootVisualElement.Q<Button>("GenerateHintLineBtn");
 
-            if (beatmapDataField != null)
-                beatmapDataField.objectType = typeof(BeatmapDataScriptable);
+            if (_beatmapDataField != null)
+                _beatmapDataField.objectType = typeof(BeatmapDataScriptable);
 
-            if (chartFileField != null)
-                chartFileField.objectType = typeof(TextAsset);
+            if (_chartFileField != null)
+                _chartFileField.objectType = typeof(TextAsset);
 
-            if (readButton != null)
-                readButton.clicked += OnReadButtonClicked;
+            if (_readButton != null)
+                _readButton.clicked += OnReadButtonClicked;
         }
 
         private void OnReadButtonClicked()
         {
-            var beatmapData = beatmapDataField?.value as BeatmapDataScriptable;
-            var chartFile = chartFileField?.value as TextAsset;
+            var beatmapData = _beatmapDataField?.value as BeatmapDataScriptable;
+            var chartFile = _chartFileField?.value as TextAsset;
 
             if (beatmapData == null)
             {
@@ -59,7 +65,7 @@ namespace DLSample.Editor.ChartReader
                 return;
             }
 
-            int beatCount = ChartReaderHelper.ReadAndApply(beatmapData, chartFile);
+            var beatCount = ChartReaderHelper.ReadAndApply(beatmapData, chartFile);
             EditorUtility.DisplayDialog("Read Complete", $"Wrote {beatCount} beats.", "OK");
         }
     }

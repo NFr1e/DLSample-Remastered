@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 using DLSample.Shared;
 using DLSample.Gameplay.Phase;
 using DLSample.Gameplay.Stream;
@@ -8,6 +9,9 @@ using DLSample.Framework;
 
 namespace DLSample.Gameplay.Behaviours
 {
+    /// <summary>
+    /// 游戏管理器组件，负责创建并注册所有核心游戏系统（FSM、计时器、玩家控制、输入、音轨、结果器等）。
+    /// </summary>
     public class GameplayManagerComponent : GameplayObject
     {
         [SerializeField] private LevelDataScriptable levelData;
@@ -34,66 +38,72 @@ namespace DLSample.Gameplay.Behaviours
         private GameplaySoundtrackPlayer _soundtrackPlayer;
         private GameplaySoundtrackDirector _soundtrackDirector;
 
+        private GameplayReadinessCoordinator _readinessCoordinator;
+
         private GameplayResulter _resulter;
 
         private GameplayInitPipeline _initializer;
 
-        private EventBus eventBus;
-        private ServiceLocator serviceLocator;
-        private ModulesManager modulesManager;
+        private EventBus _eventBus;
+        private ServiceLocator _serviceLocator;
+        private ModulesManager _modulesManager;
 
         protected override void OnInit()
         {
-            eventBus = GameplayEntry.Instance.EventBus;
-            serviceLocator = GameplayEntry.Instance.ServiceLocator;
-            modulesManager = GameplayEntry.Instance.ModulesManager;
+            _eventBus = GameplayEntry.Instance.EventBus;
+            _serviceLocator = GameplayEntry.Instance.ServiceLocator;
+            _modulesManager = GameplayEntry.Instance.ModulesManager;
 
             _fsm = new GameplayFSM();
-            _stateHandler = new GameplayStateHandler(eventBus, _fsm);
+            _stateHandler = new GameplayStateHandler(_eventBus, _fsm);
 
             _backtrackHandler = new BacktrackablesHandler();
-            _checkpointHandler = new CheckpointHandler(eventBus);
+            _checkpointHandler = new CheckpointHandler(_eventBus);
 
             _timer = new GameplayTimer();
-            _timerDirector = new GameplayTimerDirector(eventBus, _timer, _backtrackHandler);
+            _timerDirector = new GameplayTimerDirector(_eventBus, _timer, _backtrackHandler);
 
-            _playerController = new GameplayPlayerController(eventBus, mainPlayer, _stateHandler, _checkpointHandler, _backtrackHandler);
-            _inputHandler = new GameplayInputHandler(eventBus, _playerController);
+            _playerController = new GameplayPlayerController(_eventBus, mainPlayer, _stateHandler, _checkpointHandler, _backtrackHandler);
+            _inputHandler = new GameplayInputHandler(_eventBus, _playerController);
 
             _soundtrackPlayer = new GameplaySoundtrackPlayer(audioClip, audioSource);
-            _soundtrackDirector = new GameplaySoundtrackDirector(eventBus, _soundtrackPlayer, _backtrackHandler);
+            _soundtrackDirector = new GameplaySoundtrackDirector(_eventBus, _soundtrackPlayer, _backtrackHandler);
+            _readinessCoordinator = new GameplayReadinessCoordinator(_eventBus, new List<IPrepareAsync> { _soundtrackDirector });
 
-            _resulter = new GameplayResulter(eventBus, levelData, _timer);
+            _resulter = new GameplayResulter(_eventBus, levelData, _timer);
 
-            serviceLocator.Register<BacktrackablesHandler>(_backtrackHandler);
-            serviceLocator.Register<CheckpointHandler>(_checkpointHandler);
-            serviceLocator.Register<GameplayTimer>(_timer);
-            serviceLocator.Register<GameplayPlayerController>(_playerController);
-            serviceLocator.Register<GameplayResulter>(_resulter);
-            serviceLocator.Register<LevelDataScriptable>(levelData);
+            _serviceLocator.Register<BacktrackablesHandler>(_backtrackHandler);
+            _serviceLocator.Register<CheckpointHandler>(_checkpointHandler);
+            _serviceLocator.Register<GameplayTimer>(_timer);
+            _serviceLocator.Register<GameplayPlayerController>(_playerController);
+            _serviceLocator.Register<GameplayResulter>(_resulter);
+            _serviceLocator.Register<LevelDataScriptable>(levelData);
         }
+
         protected override void OnStart()
         {
-            modulesManager.Register(_stateHandler);
-            modulesManager.Register(_backtrackHandler);
-            modulesManager.Register(_checkpointHandler);
-            modulesManager.Register(_timer);
-            modulesManager.Register(_timerDirector);
-            modulesManager.Register(_playerController);
-            modulesManager.Register(_inputHandler);
-            modulesManager.Register(_soundtrackDirector);
-            modulesManager.Register(_resulter);
+            _modulesManager.Register(_stateHandler);
+            _modulesManager.Register(_backtrackHandler);
+            _modulesManager.Register(_checkpointHandler);
+            _modulesManager.Register(_timer);
+            _modulesManager.Register(_timerDirector);
+            _modulesManager.Register(_playerController);
+            _modulesManager.Register(_inputHandler);
+            _modulesManager.Register(_soundtrackDirector);
+            _modulesManager.Register(_readinessCoordinator);
+            _modulesManager.Register(_resulter);
 
             CreateInitPipeline();
         }
+
         protected override void OnExit()
         {
-            serviceLocator?.Unregister<BacktrackablesHandler>();
-            serviceLocator?.Unregister<CheckpointHandler>();
-            serviceLocator?.Unregister<GameplayTimer>();
-            serviceLocator?.Unregister<GameplayPlayerController>();
-            serviceLocator?.Unregister<GameplayResulter>();
-            serviceLocator?.Unregister<LevelDataScriptable>();
+            _serviceLocator?.Unregister<BacktrackablesHandler>();
+            _serviceLocator?.Unregister<CheckpointHandler>();
+            _serviceLocator?.Unregister<GameplayTimer>();
+            _serviceLocator?.Unregister<GameplayPlayerController>();
+            _serviceLocator?.Unregister<GameplayResulter>();
+            _serviceLocator?.Unregister<LevelDataScriptable>();
 
             _fsm = null;
             _stateHandler = null;
@@ -103,6 +113,7 @@ namespace DLSample.Gameplay.Behaviours
             _inputHandler = null;
             _soundtrackPlayer = null;
             _soundtrackDirector = null;
+            _readinessCoordinator = null;
 
             _initializer = null;
         }
@@ -110,11 +121,11 @@ namespace DLSample.Gameplay.Behaviours
         private void CreateInitPipeline()
         {
             _initializer = new GameplayInitPipeline(
-                eventBus, 
+                _eventBus,
                 _playerController, mainPlayer,
                 levelData, _resulter);
 
-            modulesManager.Register(_initializer);
+            _modulesManager.Register(_initializer);
         }
     }
 }

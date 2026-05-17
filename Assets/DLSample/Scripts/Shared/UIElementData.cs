@@ -4,6 +4,10 @@ using UnityEngine;
 
 namespace DLSample.Shared.UI
 {
+    /// <summary>
+    /// UI元素数据泛型结构，包含元素ID和元素引用
+    /// </summary>
+    /// <typeparam name="T">UI元素类型</typeparam>
     [Serializable]
     public struct UIElementData<T> where T : UIElement
     {
@@ -28,7 +32,7 @@ namespace DLSample.Shared.UI
 
         public readonly override bool Equals(object obj)
         {
-            if(obj is UIElementData<T> element)
+            if (obj is UIElementData<T> element)
             {
                 return element.ItemId == ItemId;
             }
