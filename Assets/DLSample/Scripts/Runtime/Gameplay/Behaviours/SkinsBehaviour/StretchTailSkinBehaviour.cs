@@ -86,7 +86,7 @@ namespace DLSample.Gameplay.Behaviours.Skin
 
             if (arg.Velocity.magnitude >= 2 && landEffectPrefab != null)
             {
-                PlayShotParticle(_landEffectPool, arg.Position, arg.Rotation, 1.5f);
+                _ = PlayShotParticle(_landEffectPool, arg.Position, arg.Rotation, 1.5f);
             }
         }
 
@@ -141,7 +141,7 @@ namespace DLSample.Gameplay.Behaviours.Skin
 
             _tailInstance.position = (_tailStartPos + headPosition) / 2;
         }
-        protected async void PlayShotParticle(EntityPool<ShotParticleEffect> pool, Vector3 pos, Quaternion rotation, float lifeTime)
+        protected async UniTaskVoid PlayShotParticle(EntityPool<ShotParticleEffect> pool, Vector3 pos, Quaternion rotation, float lifeTime)
         {
             var effect = pool.Get();
 

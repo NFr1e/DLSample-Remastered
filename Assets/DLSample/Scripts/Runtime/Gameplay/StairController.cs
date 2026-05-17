@@ -74,24 +74,38 @@ namespace DLSample.Gameplay
 
         private async void OnPlayerInputed(InputAction.CallbackContext ctx)
         {
-            await UniTask.Yield();
-
-            if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject()) return;
-
-            if (_currentState is GameplayStates.WaitingState)
+            try
             {
-                _evtBus.Invoke<StairRequests.LandRequest>(this, _landRequest);
+                await UniTask.Yield();
+
+                if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject()) return;
+
+                if (_currentState is GameplayStates.WaitingState)
+                {
+                    _evtBus.Invoke<StairRequests.LandRequest>(this, _landRequest);
+                }
+            }
+            catch (System.Exception e)
+            {
+                UnityEngine.Debug.LogException(e);
             }
         }
         private async void OnCancelInputed(InputAction.CallbackContext ctx)
         {
-            await UniTask.Yield();
-            if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject()) return;
-
-            if (_currentState is GameplayStates.PreparingState or GameplayStates.WaitingState)
+            try
             {
-                if (!_stateHandler.IsGameStarted)
-                    _evtBus.Invoke(this, _riseRequest);
+                await UniTask.Yield();
+                if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject()) return;
+
+                if (_currentState is GameplayStates.PreparingState or GameplayStates.WaitingState)
+                {
+                    if (!_stateHandler.IsGameStarted)
+                        _evtBus.Invoke(this, _riseRequest);
+                }
+            }
+            catch (System.Exception e)
+            {
+                UnityEngine.Debug.LogException(e);
             }
         }
 

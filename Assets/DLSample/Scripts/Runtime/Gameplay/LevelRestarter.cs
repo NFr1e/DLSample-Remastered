@@ -1,4 +1,5 @@
 using UnityEngine.SceneManagement;
+using Cysharp.Threading.Tasks;
 using DLSample.App;
 using DLSample.Shared;
 using DLSample.Facility.Events;
@@ -23,9 +24,9 @@ namespace DLSample.Gameplay.Behaviours
         public void RestartLevel()
         {
             _eventBus?.Invoke(this, _exitRequest);
-            ScreenHelper.FullScreenMaskAction(Reload);
+            ScreenHelper.FullScreenMaskAction(() => Reload().Forget());
         }
-        private async void Reload()
+        private async UniTask Reload()
         {
             if (SceneManager.loadedSceneCount <= 1)
             {

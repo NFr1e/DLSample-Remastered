@@ -52,19 +52,28 @@ namespace DLSample.Gameplay
 
             _isPreparing = true;
 
-            var tasks = new UniTask[_prepSystems.Count];
-            for (int i = 0; i < _prepSystems.Count; i++)
+            try
             {
-                tasks[i] = _prepSystems[i].PrepareAsync();
+                var tasks = new UniTask[_prepSystems.Count];
+                for (int i = 0; i < _prepSystems.Count; i++)
+                {
+                    tasks[i] = _prepSystems[i].PrepareAsync();
+                }
+
+                await UniTask.WhenAll(tasks);
+
+                if (_currentState is not (GameplayStates.PreparingState or GameplayStates.PauseState)) return;
+
+                _evtBus.Invoke(this, _startGameRequest);
             }
-
-            await UniTask.WhenAll(tasks);
-
-            _isPreparing = false;
-
-            if (_currentState is not (GameplayStates.PreparingState or GameplayStates.PauseState)) return;
-
-            _evtBus.Invoke(this, _startGameRequest);
+            catch (System.Exception e)
+            {
+                UnityEngine.Debug.LogException(e);
+            }
+            finally
+            {
+                _isPreparing = false;
+            }
         }
     }
 }

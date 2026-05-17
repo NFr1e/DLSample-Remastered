@@ -36,36 +36,43 @@ namespace DLSample.Gameplay
         }
         private async void OnStateChange(GameplayEventParams.GameplayStateChangeCtx ctx)
         {
-            switch (ctx.CurrentState)
+            try
             {
-                case GameplayStates.PreparingState or GameplayStates.WaitingState:
-                    if (_preparingPanel == null)
-                    {
-                        _preparingPanel = await _uiManager.OpenPanel(_mapper.PreparePanelId);
-                    }
-                    break;
-
-                case GameplayStates.OverState:
-
-                    if (_checkpointHandler is not null)
-                    {
-                        if (_checkpointHandler.IsCheckpointed && !_stateHandler.IsGameWin)
+                switch (ctx.CurrentState)
+                {
+                    case GameplayStates.PreparingState or GameplayStates.WaitingState:
+                        if (_preparingPanel == null)
                         {
-                            _ = await _uiManager.OpenPanel(_mapper.RespawnPanelId);
-                            return;
+                            _preparingPanel = await _uiManager.OpenPanel(_mapper.PreparePanelId);
                         }
-                    }
+                        break;
 
-                    _ = await _uiManager.OpenPanel(_mapper.OverPanelId);
-                    break;
+                    case GameplayStates.OverState:
 
-                case GameplayStates.PauseState:
-                    _ = await _uiManager.OpenPanel(_mapper.PausePanelId);
-                    break;
+                        if (_checkpointHandler is not null)
+                        {
+                            if (_checkpointHandler.IsCheckpointed && !_stateHandler.IsGameWin)
+                            {
+                                _ = await _uiManager.OpenPanel(_mapper.RespawnPanelId);
+                                return;
+                            }
+                        }
 
-                default:
-                    await _uiManager.CloseAllFullscreenPanel();
-                    break;
+                        _ = await _uiManager.OpenPanel(_mapper.OverPanelId);
+                        break;
+
+                    case GameplayStates.PauseState:
+                        _ = await _uiManager.OpenPanel(_mapper.PausePanelId);
+                        break;
+
+                    default:
+                        await _uiManager.CloseAllFullscreenPanel();
+                        break;
+                }
+            }
+            catch (System.Exception e)
+            {
+                UnityEngine.Debug.LogException(e);
             }
         }
 

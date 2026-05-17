@@ -65,7 +65,7 @@ namespace DLSample.Gameplay.Behaviours
             return translation;
         }
 
-        public async void FocusTarget()
+        public async UniTaskVoid FocusTarget()
         {
             await UniTask.Yield(PlayerLoopTiming.PreLateUpdate);
             transform.position = target.position;

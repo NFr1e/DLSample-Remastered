@@ -31,7 +31,7 @@ namespace DLSample.Gameplay.Behaviours.Skin
         {
             base.OnPlayerTurn(arg);
 
-            PlayShotParticle(_turnEffectPool, arg.Position, Quaternion.identity, 1);
+            _ = PlayShotParticle(_turnEffectPool, arg.Position, Quaternion.identity, 1);
         }
     }
 }

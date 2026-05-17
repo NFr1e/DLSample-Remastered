@@ -61,7 +61,7 @@ namespace DLSample.Gameplay.Stream
                     Prepare();
                     break;
                 case GameplayStates.GamingState:
-                    Play();
+                    _ = Play();
                     break;
                 case GameplayStates.PauseState:
                     Stop();
@@ -81,7 +81,7 @@ namespace DLSample.Gameplay.Stream
         {
             return _soundtrackPlayer?.PrepareAsync() ?? UniTask.CompletedTask;
         }
-        private async void Play()
+        private async UniTaskVoid Play()
         {
             int requestVersion = ++_playRequestVersion;
 

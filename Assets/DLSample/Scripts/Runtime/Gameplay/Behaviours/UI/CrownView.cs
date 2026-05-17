@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
@@ -19,10 +20,10 @@ namespace DLSample.Gameplay.Behaviours.UI
         private void Start()
         {
             _resulter = GameplayEntry.Instance.ServiceLocator.Get<GameplayResulter>();
-            Display();
+            _ = Display();
         }
 
-        private async void Display()
+        private async UniTaskVoid Display()
         {
             if (_resulter is null) return;
 

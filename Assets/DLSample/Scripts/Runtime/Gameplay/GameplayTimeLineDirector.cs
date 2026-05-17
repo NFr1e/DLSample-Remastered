@@ -51,7 +51,7 @@ namespace DLSample.Gameplay.Stream
             switch (ctx.CurrentState)
             {
                 case GameplayStates.GamingState:
-                    Play();
+                    _ = Play();
                     break;
                 case GameplayStates.PauseState or GameplayStates.OverState:
                     Stop();
@@ -59,7 +59,7 @@ namespace DLSample.Gameplay.Stream
             }
         }
 
-        private async void Play()
+        private async UniTaskVoid Play()
         {
             if (!_synced)
                 await SyncDelay();

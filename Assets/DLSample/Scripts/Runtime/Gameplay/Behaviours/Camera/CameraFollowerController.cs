@@ -82,7 +82,7 @@ namespace DLSample.Gameplay.Behaviours
         /// </summary>
         public void Backtrack()
         {
-            _follower.FocusTarget();
+            _ = _follower.FocusTarget();
         }
 
         /// <summary>

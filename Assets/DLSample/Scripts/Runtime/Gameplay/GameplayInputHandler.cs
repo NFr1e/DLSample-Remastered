@@ -75,16 +75,23 @@ namespace DLSample.Gameplay
         }
         private async void OnPlayerInputed(InputAction.CallbackContext ctx)
         {
-            await UniTask.Yield();
-            if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject()) return;
+            try
+            {
+                await UniTask.Yield();
+                if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject()) return;
 
-            if (_currentState is GameplayStates.GamingState)
-            {
-                _playerController?.PlayerInput();
+                if (_currentState is GameplayStates.GamingState)
+                {
+                    _playerController?.PlayerInput();
+                }
+                if (_currentState is GameplayStates.PreparingState || _currentState is GameplayStates.PauseState)
+                {
+                    _evtBus.Invoke<GameplayEventParams.PrepareGameplayStartRequest>(this, _prepareStartRequest);
+                }
             }
-            if (_currentState is GameplayStates.PreparingState || _currentState is GameplayStates.PauseState)
+            catch (System.Exception e)
             {
-                _evtBus.Invoke<GameplayEventParams.PrepareGameplayStartRequest>(this, _prepareStartRequest);
+                UnityEngine.Debug.LogException(e);
             }
         }
         private void OnPauseInputed(InputAction.CallbackContext ctx)

@@ -34,7 +34,7 @@ namespace DLSample.Gameplay.Behaviours.UI
             _evtBus.Subscribe<ChangeSkinRequest>(OnSkinChanged);
 
             indicator.SetActive(false);
-            RefreshIndicator();
+            _ = RefreshIndicator();
         }
         protected override void OnExit()
         {
@@ -55,7 +55,7 @@ namespace DLSample.Gameplay.Behaviours.UI
             _evtBus.Invoke(this, _request);
         }
 
-        private async void RefreshIndicator()
+        private async UniTaskVoid RefreshIndicator()
         {
             await UniTask.Yield();
 
@@ -66,7 +66,7 @@ namespace DLSample.Gameplay.Behaviours.UI
         }
         private void OnSkinChanged(ChangeSkinRequest request)
         {
-            RefreshIndicator();
+            _ = RefreshIndicator();
         }
     }
 }

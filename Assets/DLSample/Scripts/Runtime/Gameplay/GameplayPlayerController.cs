@@ -105,7 +105,7 @@ namespace DLSample.Gameplay
                     }
                     break;
                 case GameplayStates.GamingState:
-                    StartPlayer();
+                    _ = StartPlayer();
                     break;
                 case GameplayStates.PauseState:
                     StopPlayer();
@@ -129,7 +129,7 @@ namespace DLSample.Gameplay
             _mainPlayer.Ready();
         }
 
-        private async void StartPlayer()
+        private async UniTaskVoid StartPlayer()
         {
             if (!_synced)
                 await SyncDelay();
