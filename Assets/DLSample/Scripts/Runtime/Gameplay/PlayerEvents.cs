@@ -1,7 +1,6 @@
 using UnityEngine;
 using DLSample.Shared;
 using DLSample.Facility.Events;
-using DLSample.Gameplay.Behaviours;
 
 namespace DLSample.Gameplay
 {
@@ -49,12 +48,9 @@ namespace DLSample.Gameplay
             public float Speed { get; set; } = 12;
             public double InvokeTime { get; set; } = 0;
 
-            private PlayerEventsParams.SpeedChangeRequest _request = new();
-
-            public void Trigger()
+            public IEventArg ToEventArg()
             {
-                _request.Speed = Speed;
-                GameplayEntry.Instance.EventBus.Invoke(this, _request);
+                return new PlayerEventsParams.SpeedChangeRequest { Speed = Speed };
             }
         }
 
@@ -63,12 +59,9 @@ namespace DLSample.Gameplay
             public Vector3 Gravity { get; set; }
             public double InvokeTime { get; set; } = 0;
 
-            private PlayerEventsParams.GravityChangeRequest _request = new();
-
-            public void Trigger()
+            public IEventArg ToEventArg()
             {
-                _request.Gravity = Gravity;
-                GameplayEntry.Instance.EventBus.Invoke(this, _request);
+                return new PlayerEventsParams.GravityChangeRequest { Gravity = Gravity };
             }
         }
 
@@ -77,24 +70,19 @@ namespace DLSample.Gameplay
             public PlayerDirections Directions { get; set; }
             public double InvokeTime { get; set; } = 0;
 
-            private PlayerEventsParams.DirectionChangeRequest _request = new();
-
-            public void Trigger()
+            public IEventArg ToEventArg()
             {
-                _request.Directions = Directions;
-                GameplayEntry.Instance.EventBus.Invoke(this, _request);
+                return new PlayerEventsParams.DirectionChangeRequest { Directions = Directions };
             }
         }
 
         public class ForceTurnEvent : IGameplayEvent
         {
-            public double InvokeTime{ get; set; } = 0;
+            public double InvokeTime { get; set; } = 0;
 
-            private PlayerEventsParams.ForceTurnRequest _request = new();
-
-            public void Trigger()
+            public IEventArg ToEventArg()
             {
-                GameplayEntry.Instance.EventBus.Invoke(this, _request);
+                return new PlayerEventsParams.ForceTurnRequest();
             }
         }
 
@@ -103,12 +91,9 @@ namespace DLSample.Gameplay
             public Vector3 Position { get; set; }
             public double InvokeTime { get; set; } = 0;
 
-            private PlayerEventsParams.TeleportRequest _request = new();
-
-            public void Trigger()
+            public IEventArg ToEventArg()
             {
-                _request.Position = Position;
-                GameplayEntry.Instance.EventBus.Invoke(this, _request);
+                return new PlayerEventsParams.TeleportRequest { Position = Position };
             }
         }
 
@@ -117,12 +102,9 @@ namespace DLSample.Gameplay
             public Vector3 Velocity { get; set; }
             public double InvokeTime { get; set; } = 0;
 
-            private PlayerEventsParams.VelocityChangeRequest _request = new();
-
-            public void Trigger()
+            public IEventArg ToEventArg()
             {
-                _request.Velocity = Velocity;
-                GameplayEntry.Instance.EventBus.Invoke(this, _request);
+                return new PlayerEventsParams.VelocityChangeRequest { Velocity = Velocity };
             }
         }
     }

@@ -1,6 +1,7 @@
 using UnityEngine;
 using DLSample.Shared.UI;
 using DLSample.App;
+using DLSample.Facility.Events;
 
 namespace DLSample.Gameplay.Behaviours
 {
@@ -18,7 +19,7 @@ namespace DLSample.Gameplay.Behaviours
         protected override void OnInit()
         {
             var uiManager = AppEntry.UIManager;
-            _handler = new(GameplayEntry.Instance.EventBus, uiManager, gameplayUIMapper);
+            _handler = new(GameplayEntry.Instance.ServiceLocator.Get<EventBus>(), uiManager, gameplayUIMapper);
 
             uiManager.SetupConfigs(panelsConfig);
             uiManager.SetupCamera(uiCamera);

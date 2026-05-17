@@ -18,7 +18,7 @@ namespace DLSample.Gameplay.Behaviours
         protected override void OnInit()
         {
             _player = new GameplayTimeLinePlayer(playableDirector);
-            _director = new GameplayTimeLineDirector(_player);
+            _director = new GameplayTimeLineDirector(_player, GameplayEntry.Instance.ServiceLocator.Get<EventBus>());
 
             GameplayEntry.Instance.ServiceLocator.Register(_player);
             GameplayEntry.Instance.ServiceLocator.Register(_director);

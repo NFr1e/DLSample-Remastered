@@ -1,6 +1,9 @@
 using UnityEngine;
 using UnityEngine.UI;
 using DLSample.Shared;
+using DLSample.App;
+using DLSample.Facility.Events;
+using DLSample.Facility.SceneManage;
 
 namespace DLSample.Gameplay.Behaviours.UI
 {
@@ -15,7 +18,10 @@ namespace DLSample.Gameplay.Behaviours.UI
 
         private void Awake()
         {
-            _levelRestarter = new(GameplayEntry.Instance.ServiceLocator.Get<LevelDataScriptable>().SceneName);
+            _levelRestarter = new(
+                GameplayEntry.Instance.ServiceLocator.Get<LevelDataScriptable>().SceneName,
+                AppEntry.SceneManager,
+                GameplayEntry.Instance.ServiceLocator.Get<EventBus>());
         }
 
         private void OnEnable()

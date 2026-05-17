@@ -16,7 +16,7 @@ namespace DLSample.Gameplay.Behaviours.UI
 
         private void Awake()
         {
-            _eventBus = GameplayEntry.Instance.EventBus;
+            _eventBus = GameplayEntry.Instance.ServiceLocator.Get<EventBus>();
         }
 
         private void OnEnable()

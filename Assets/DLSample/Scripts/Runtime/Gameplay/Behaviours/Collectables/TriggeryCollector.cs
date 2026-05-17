@@ -17,7 +17,7 @@ namespace DLSample.Gameplay.Behaviours
 
         protected override void OnStart()
         {
-            _evtBus = GameplayEntry.Instance.EventBus;
+            _evtBus = GameplayEntry.Instance.ServiceLocator.Get<EventBus>();
 
             _onCollectEventArgs = new OnCollectEventArgs()
             {

@@ -12,7 +12,7 @@ namespace DLSample.Gameplay.Behaviours
 
         protected override void OnInit()
         {
-            _controller = new HintLineController(hintLineGroup);
+            _controller = new HintLineController(hintLineGroup, GameplayEntry.Instance.ServiceLocator.Get<EventBus>());
 
             GameplayEntry.Instance.ServiceLocator.Register<HintLineController>(_controller);
         }

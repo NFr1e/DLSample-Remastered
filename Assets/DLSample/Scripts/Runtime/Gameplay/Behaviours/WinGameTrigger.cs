@@ -13,7 +13,7 @@ namespace DLSample.Gameplay.Behaviours
 
         private void Start()
         {
-            _eventBus = GameplayEntry.Instance.EventBus;
+            _eventBus = GameplayEntry.Instance.ServiceLocator.Get<EventBus>();
         }
 
         private void OnTriggerEnter(Collider other)

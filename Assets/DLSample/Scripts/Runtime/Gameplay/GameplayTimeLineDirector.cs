@@ -19,14 +19,14 @@ namespace DLSample.Gameplay.Stream
 
         private bool _synced = false;
 
-        public GameplayTimeLineDirector(IStreamPlayer player)
+        public GameplayTimeLineDirector(IStreamPlayer player, EventBus evtBus)
         {
             _timelinePlayer = player;
+            _evtBus = evtBus;
         }
 
         public void OnInit()
         {
-            _evtBus = GameplayEntry.Instance.EventBus;
             Subscribe();
 
             _timelinePlayer.Seek(_timelinePlayer.CurrentTime);

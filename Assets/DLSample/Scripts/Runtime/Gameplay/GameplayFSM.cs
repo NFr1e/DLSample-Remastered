@@ -15,11 +15,11 @@ namespace DLSample.Gameplay.Phase
         private GameplayEventParams.GameplayStateChangeCtx _stateChangeCtx = new();
 
         public GameplayStateBase CurrentState => _currentState;
+        public EventBus EventBus => _evtBus;
 
-        public GameplayFSM()
+        public GameplayFSM(EventBus evtBus)
         {
-            _statesCache ??= new();
-            _evtBus = GameplayEntry.Instance.EventBus;
+            _evtBus = evtBus;
         }
 
         public void Update(float deltaTime)

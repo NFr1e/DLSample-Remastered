@@ -54,10 +54,10 @@ namespace DLSample.Gameplay.Behaviours
             _serviceLocator = GameplayEntry.Instance.ServiceLocator;
             _modulesManager = GameplayEntry.Instance.ModulesManager;
 
-            _fsm = new GameplayFSM();
+            _fsm = new GameplayFSM(_eventBus);
             _stateHandler = new GameplayStateHandler(_eventBus, _fsm);
 
-            _backtrackHandler = new BacktrackablesHandler();
+            _backtrackHandler = new BacktrackablesHandler(_eventBus);
             _checkpointHandler = new CheckpointHandler(_eventBus);
 
             _timer = new GameplayTimer();
@@ -72,6 +72,7 @@ namespace DLSample.Gameplay.Behaviours
 
             _resulter = new GameplayResulter(_eventBus, levelData, _timer);
 
+            _serviceLocator.Register<EventBus>(_eventBus);
             _serviceLocator.Register<BacktrackablesHandler>(_backtrackHandler);
             _serviceLocator.Register<CheckpointHandler>(_checkpointHandler);
             _serviceLocator.Register<GameplayTimer>(_timer);
@@ -98,6 +99,7 @@ namespace DLSample.Gameplay.Behaviours
 
         protected override void OnExit()
         {
+            _serviceLocator?.Unregister<EventBus>();
             _serviceLocator?.Unregister<BacktrackablesHandler>();
             _serviceLocator?.Unregister<CheckpointHandler>();
             _serviceLocator?.Unregister<GameplayTimer>();

@@ -20,7 +20,7 @@ namespace DLSample.Gameplay.Behaviours
 
             _onCollect.collector = this;
             _onCollect.collectable = crown;
-            GameplayEntry.Instance.EventBus.Invoke(this, _onCollect);
+            GameplayEntry.Instance.ServiceLocator.Get<EventBus>().Invoke(this, _onCollect);
         }
 
         public override void Consume()

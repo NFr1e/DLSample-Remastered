@@ -35,7 +35,7 @@ namespace DLSample.Gameplay.Behaviours
 
         protected override void OnInit()
         {
-            _evtBus = GameplayEntry.Instance.EventBus;
+            _evtBus = GameplayEntry.Instance.ServiceLocator.Get<EventBus>();
         }
 
         private void OnTriggerEnter(Collider other)

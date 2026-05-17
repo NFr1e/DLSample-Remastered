@@ -56,8 +56,8 @@ namespace DLSample.Gameplay.Behaviours
         {
             GetOriginalArgs();
 
-            _controller = new StairController(player.transform, _playerOriginEuler);
-            _eventBus = GameplayEntry.Instance.EventBus;
+            _eventBus = GameplayEntry.Instance.ServiceLocator.Get<EventBus>();
+            _controller = new StairController(player.transform, _playerOriginEuler, _eventBus);
 
             _eventBus.Subscribe<StairRequests.LandRequest>(Land);
             _eventBus.Subscribe<StairRequests.RiseRequest>(Rise);

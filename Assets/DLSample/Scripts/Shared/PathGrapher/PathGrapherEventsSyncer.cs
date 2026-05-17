@@ -2,6 +2,7 @@ using UnityEngine;
 using DLSample.Gameplay;
 using DLSample.Gameplay.Stream;
 using DLSample.Gameplay.Behaviours;
+using DLSample.Facility.Events;
 using System.Collections.Generic;
 
 namespace DLSample.Editor.PathGrapher
@@ -19,10 +20,15 @@ namespace DLSample.Editor.PathGrapher
         protected override void OnStart()
         {
             _gameplayTimer = GameplayEntry.Instance.ServiceLocator.Get<GameplayTimer>();
+            var evtBus = GameplayEntry.Instance.ServiceLocator.Get<EventBus>();
 
             foreach (var evt in pathGrapherAsset.pathData.globalEvents)
             {
-                _tickEvents.Add(new GameplayTimer.TickEvent(evt.GlobalTime, evt.ResolveToGameplayEvent().Trigger));
+                var gameplayEvent = evt.ResolveToGameplayEvent();
+                _tickEvents.Add(new GameplayTimer.TickEvent(evt.GlobalTime, () =>
+                {
+                    evtBus.Invoke(this, gameplayEvent.ToEventArg());
+                }));
             }
             foreach (var tEvt in _tickEvents)
             {

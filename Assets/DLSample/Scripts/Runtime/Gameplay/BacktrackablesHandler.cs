@@ -14,12 +14,15 @@ namespace DLSample.Gameplay
 
         public double CurrentBacktrackTime { get; private set; }
 
-        private EventBus _evtBus;
+        private readonly EventBus _evtBus;
+
+        public BacktrackablesHandler(EventBus evtBus)
+        {
+            _evtBus = evtBus;
+        }
 
         public void OnInit()
         {
-            _evtBus = GameplayEntry.Instance.EventBus;
-
             _evtBus?.Subscribe<CheckpointEventParams.OnCheckpointed>(OnCheckpointed);
             _evtBus?.Subscribe<GameplayEventParams.BacktrackGameRequest>(OnBacktrack);
         }

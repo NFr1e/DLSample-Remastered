@@ -13,11 +13,11 @@ namespace DLSample.Gameplay.Behaviours
         private readonly ScenesManager _sceneManager;
         private readonly GameplayEventParams.ExitGameRequest _exitRequest = new();
 
-        public LevelRestarter(string levelScene)
+        public LevelRestarter(string levelScene, ScenesManager sceneManager, EventBus eventBus)
         {
             _sceneName = levelScene;
-            _sceneManager = AppEntry.SceneManager;
-            _eventBus = GameplayEntry.Instance.EventBus;
+            _sceneManager = sceneManager;
+            _eventBus = eventBus;
         }
 
         public void RestartLevel()

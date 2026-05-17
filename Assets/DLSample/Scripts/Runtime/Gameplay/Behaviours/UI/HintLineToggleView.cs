@@ -19,7 +19,7 @@ namespace DLSample.Gameplay.Behaviours.UI
 
         protected override void OnInit()
         {
-            _eventBus = GameplayEntry.Instance.EventBus;
+            _eventBus = GameplayEntry.Instance.ServiceLocator.Get<EventBus>();
 
             button.onClick.AddListener(OnButtonClicked);
             _eventBus.Subscribe<HintLineEventsParams.HintLineStateChanged>(OnHintLineStateChanged);

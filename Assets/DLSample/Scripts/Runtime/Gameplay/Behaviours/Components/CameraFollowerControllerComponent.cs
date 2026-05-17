@@ -1,4 +1,5 @@
 using UnityEngine;
+using DLSample.Facility.Events;
 
 namespace DLSample.Gameplay.Behaviours
 {
@@ -13,7 +14,7 @@ namespace DLSample.Gameplay.Behaviours
 
         protected override void OnInit()
         {
-            _controller = new CameraFollowerController(GameplayEntry.Instance.EventBus);
+            _controller = new CameraFollowerController(GameplayEntry.Instance.ServiceLocator.Get<EventBus>());
             _controller.ChangeFollower(follower);
 
             GameplayEntry.Instance.ModulesManager.Register<CameraFollowerController>(_controller);

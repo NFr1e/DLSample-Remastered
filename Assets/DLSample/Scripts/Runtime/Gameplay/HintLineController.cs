@@ -25,11 +25,10 @@ namespace DLSample.Gameplay
         private bool _isOn;
         public bool IsOn => _isOn;
 
-        public HintLineController(GameObject hintlineGroup)
+        public HintLineController(GameObject hintlineGroup, EventBus eventBus)
         {
-            _eventBus = GameplayEntry.Instance.EventBus;
-
             _hintlineGroup = hintlineGroup;
+            _eventBus = eventBus;
         }
 
         public void OnInit()

@@ -79,7 +79,7 @@ namespace DLSample.Gameplay.Phase
 
             public RespawnState(GameplayFSM fsm) : base(fsm)
             {
-                _evtBus = GameplayEntry.Instance.EventBus;
+                _evtBus = fsm.EventBus;
             }
 
             public override void Enter()

@@ -37,17 +37,17 @@ namespace DLSample.Gameplay
 
         private InputTask _playerInputTask, _cancelInputTask;
 
-        public StairController(Transform player, Vector3 playerOriginalRotation)
+        public StairController(Transform player, Vector3 playerOriginalRotation, EventBus evtBus)
         {
             _player = player;
             _playerOriginRotation = playerOriginalRotation;
+            _evtBus = evtBus;
         }
 
         public void OnInit()
         {
             _gameInput = AppEntry.GameInput;
             _inputManager = AppEntry.InputManager;
-            _evtBus = GameplayEntry.Instance.EventBus;
 
             _evtBus.Subscribe<GameplayEventParams.GameplayStateChangeCtx>(OnStateChange);
 
