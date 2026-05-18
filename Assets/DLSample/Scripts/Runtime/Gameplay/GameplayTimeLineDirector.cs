@@ -3,6 +3,7 @@ using DLSample.Gameplay.Phase;
 using DLSample.Facility.Events;
 using DLSample.Framework;
 using DLSample.Shared;
+using UnityEngine;
 
 namespace DLSample.Gameplay.Stream
 {
@@ -74,11 +75,17 @@ namespace DLSample.Gameplay.Stream
         public async UniTask SyncDelay()
         {
             _synced = true;
-            await UniTask.Delay(0);
+
+            var delay = PlayerPrefs.GetFloat(DLSampleConsts.SaveAndLoad.ID_SYNC_DELAY, 0f);
+            if (delay < 0f)
+            {
+                await UniTask.Delay(System.TimeSpan.FromSeconds(-delay));
+            }
         }
 
         public void Backtrack()
         {
+            _synced = false;
             _timelinePlayer.Seek(_backtrackablesHandler.CurrentBacktrackTime);
         }
         public void SetModule(BacktrackablesHandler b)

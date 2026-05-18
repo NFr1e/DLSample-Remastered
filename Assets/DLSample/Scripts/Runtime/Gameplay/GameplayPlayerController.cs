@@ -141,10 +141,13 @@ namespace DLSample.Gameplay
         }
         public async UniTask SyncDelay()
         {
-            //TODO
-
-            await UniTask.Yield();
             _synced = true;
+
+            var delay = PlayerPrefs.GetFloat(DLSampleConsts.SaveAndLoad.ID_SYNC_DELAY, 0f);
+            if (delay < 0f)
+            {
+                await UniTask.Delay(System.TimeSpan.FromSeconds(-delay));
+            }
         }
 
         private void StopPlayer()
@@ -270,6 +273,8 @@ namespace DLSample.Gameplay
         }
         public void Backtrack()
         {
+            _synced = false;
+
             foreach (var state in backtrackStates)
             {
                 state.Backtrack();

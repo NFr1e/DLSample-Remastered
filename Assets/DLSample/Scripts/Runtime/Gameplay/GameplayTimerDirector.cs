@@ -1,11 +1,13 @@
+using Cysharp.Threading.Tasks;
 using DLSample.Gameplay.Phase;
 using DLSample.Facility.Events;
 using DLSample.Framework;
 using DLSample.Shared;
+using UnityEngine;
 
 namespace DLSample.Gameplay.Stream
 {
-    public class GameplayTimerDirector : IModule, IBacktrackable
+    public class GameplayTimerDirector : IModule, IBacktrackable, ISyncable
     {
         public int Priority => DLSampleConsts.Gameplay.PRIORITY_TIMER_DIRECTOR;
 
@@ -13,6 +15,8 @@ namespace DLSample.Gameplay.Stream
         private readonly BacktrackablesHandler _backtrack;
 
         private readonly EventBus _evtBus;
+
+        private bool _synced;
 
         public int BacktrackPriority => DLSampleConsts.Gameplay.BACKTRACK_PRIORITY_TIMER;
 
@@ -40,21 +44,42 @@ namespace DLSample.Gameplay.Stream
             _timer.Tick(deltaTime);
         }
 
-        private void OnStateChange(GameplayEventParams.GameplayStateChangeCtx ctx)
+        private async void OnStateChange(GameplayEventParams.GameplayStateChangeCtx ctx)
         {
-            switch (ctx.CurrentState)
+            try
             {
-                case GameplayStates.GamingState:
-                    _timer.Play();
-                    break;
-                default:
-                    _timer.Stop();
-                    break;
+                switch (ctx.CurrentState)
+                {
+                    case GameplayStates.GamingState:
+                        if (!_synced)
+                            await SyncDelay();
+                        _timer.Play();
+                        break;
+                    default:
+                        _timer.Stop();
+                        break;
+                }
+            }
+            catch (System.Exception e)
+            {
+                Debug.LogException(e);
+            }
+        }
+
+        public async UniTask SyncDelay()
+        {
+            _synced = true;
+
+            var delay = PlayerPrefs.GetFloat(DLSampleConsts.SaveAndLoad.ID_SYNC_DELAY, 0f);
+            if (delay < 0f)
+            {
+                await UniTask.Delay(System.TimeSpan.FromSeconds(-delay));
             }
         }
 
         public void Backtrack()
         {
+            _synced = false;
             _timer.Seek(_backtrack.CurrentBacktrackTime);
         }
     }

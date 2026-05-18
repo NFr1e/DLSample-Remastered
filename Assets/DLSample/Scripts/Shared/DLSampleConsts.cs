@@ -103,6 +103,7 @@ namespace DLSample.Shared
         {
             public const string ID_SKIN = "SAVE_SKIN_ID";
             public const string ID_HINTLINE_STATE = "SAVE_HINTLINE_STATE";
+            public const string ID_SYNC_DELAY = "SAVE_SYNC_DELAY";
         }
 
         /// <summary>

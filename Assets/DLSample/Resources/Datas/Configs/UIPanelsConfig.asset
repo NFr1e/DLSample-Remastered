@@ -23,3 +23,5 @@ MonoBehaviour:
     _item: {fileID: 4841470404208347004, guid: 08072f4d1c4ed114c847af99d280250e, type: 3}
   - _itemId: gameplay.skin
     _item: {fileID: 5755813575047111048, guid: adce9b533f00e3545af75c553ca648eb, type: 3}
+  - _itemId: gameplay.sync
+    _item: {fileID: 5420172132927391815, guid: cffc81f8e2f97944b9c4fbc090f55333, type: 3}
