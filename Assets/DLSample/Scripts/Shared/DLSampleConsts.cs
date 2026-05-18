@@ -72,6 +72,7 @@ namespace DLSample.Shared
             public const int PRIORITY_HINT_LINE_CONTROLLER = 2;
             public const int PRIORITY_SKIN_HANDLER = 2;
             public const int PRIORITY_SKIN_CHANGER = 2;
+            public const int PRIORITY_AUTO_PLAY = 2;
 
             public const int PRIORITY_INITIALIZER = 10;
 
