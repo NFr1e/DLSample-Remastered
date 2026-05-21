@@ -1,12 +1,12 @@
 # DLSample
 
 ![Engine](https://img.shields.io/badge/Unity-2022-green?logo=unity&logoColor=white)
-![Platform](https://img.shields.io/badge/Platform-Windows|macOS|Linux-yellow)
+![Platform](https://img.shields.io/badge/Platform-Windows|macOS-yellow)
 ![License](https://img.shields.io/badge/License-MIT-blue)
 
 这是一个基于 [Unity2022.3 LTS](https://unity.com/) 开发的，以游戏 [跳舞的线](https://www.cheetahgames.com/)为蓝本的项目，项目包含基础的 Gameplay 运行逻辑，也内置了关卡创建、节拍数据承载、路径生成与编辑辅助等配套工具，旨在形成一套从关卡数据配置到运行时驱动表现的完整样板。
 
-## 一.开始使用💻
+## 一.开始使用
 
 克隆仓库
 ```bash
@@ -20,14 +20,9 @@ git clone https://github.com/NFr1e/DLSample-Rematered.git
 - **推荐使用Unity2022.3 LTS**
 
 
-#### 使用的插件
-- [UniTask](https://github.com/Cysharp/UniTask) 异步编程插件
-- [DOTween](https://dotween.demigiant.com/) 补间动画插件
-- [Odin Inspector](https://odininspector.com/) 编辑器拓展
+## 二.项目内容
 
-## 二.项目内容📜
-
-### 📁 项目结构
+### 项目结构
 
 ```
 DLSample/
@@ -39,7 +34,7 @@ DLSample/
    └─ Shared/           # 共享的数据结构、常量等
 ```
 
-### ✨ DLSample工作流
+### DLSample工作流
 
 #### 节拍驱动的关卡组织方式
 项目使用 `BeatmapData` 记录节拍时间点，再结合 `PathGrapherAsset` 生成和可视化关卡路径。
@@ -83,4 +78,4 @@ PathGrapher 中配置的事件可以通过 `PathGrapherEventsSyncer` 同步到�
 - 持久化、对象池等通用能力
 
 ## 三.文档✨
-教程文档:[DLSample文档站](https://nfr1e.github.io/docs/dl-sample/)
+[DLSample文档站](https://nfr1e.github.io/docs/dl-sample/)

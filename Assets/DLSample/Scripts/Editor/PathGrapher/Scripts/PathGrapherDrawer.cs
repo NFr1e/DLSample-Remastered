@@ -8,15 +8,6 @@ namespace DLSample.Editor.PathGrapher
     /// </summary>
     public class PathGrapherDrawer
     {
-        #region Configs
-        private static readonly Color SPEED_CHANGE_EVT_COLOR = Color.green;
-        private static readonly Color GRAVITY_CHANGE_EVT_COLOR = Color.magenta;
-        private static readonly Color DIRECTION_CHANGE_EVT_COLOR = Color.blue;
-        private static readonly Color FORCE_TURN_EVT_COLOR = Color.gray;
-        private static readonly Color JUMP_EVT_COLOR = Color.yellow;
-        private static readonly Color TP_EVT_COLOR = Color.red;
-        #endregion
-
         private GUIStyle _labelStyle = new();
         private Texture2D _labelBgTex;
         private Camera _sceneCamera;
@@ -162,17 +153,23 @@ namespace DLSample.Editor.PathGrapher
             foreach (var ev in pathData.globalEvents)
             {
                 var worldPos = PathMappingUtility.GetWorldPosFromTime(ev.GlobalTime, pathData, origin, profile.samplingInterval);
+                var rotation = PathMappingUtility.GetRotationAtTime(ev.GlobalTime, pathData);
 
                 if (!IsWithinDrawDistance(profile.pathDrawDistance, worldPos)) continue;
 
                 var size = 1f;
                 Handles.color = GetEventColor(ev);
-                Handles.CubeHandleCap(0, worldPos, Quaternion.identity, size, EventType.Repaint);
+                Handles.CubeHandleCap(0, worldPos, rotation, size, EventType.Repaint);
 
-                if (ev is SegmentPathEvent segEv)
+                if (ev is TeleportEvent tp)
+                {
+                    var targetWorldPos = origin.TransformPoint(tp.targetPosition);
+                    Handles.CubeHandleCap(0, targetWorldPos, rotation, size, EventType.Repaint);
+                }
+                else if (ev is SegmentPathEvent segEv)
                 {
                     var endWorldPos = PathMappingUtility.GetWorldPosFromTime(segEv.EndTime, pathData, origin, profile.samplingInterval);
-                    Handles.CubeHandleCap(0, endWorldPos, Quaternion.identity, size, EventType.Repaint);
+                    Handles.CubeHandleCap(0, endWorldPos, rotation, size, EventType.Repaint);
                 }
 
                 var info = ev.GetType().Name.Replace("Event", "");
@@ -199,18 +196,11 @@ namespace DLSample.Editor.PathGrapher
             return sqrDist <= dist * dist;
         }
 
-        private Color GetEventColor(IPathEvent ev)
+        private static Color GetEventColor(IPathEvent ev)
         {
-            return ev switch
-            {
-                SpeedChangeEvent => SPEED_CHANGE_EVT_COLOR,
-                GravityChangeEvent => GRAVITY_CHANGE_EVT_COLOR,
-                DirectionChangeEvent => DIRECTION_CHANGE_EVT_COLOR,
-                ForceTurnEvent => FORCE_TURN_EVT_COLOR,
-                JumpEvent => JUMP_EVT_COLOR,
-                TeleportEvent => TP_EVT_COLOR,
-                _ => Color.white
-            };
+            if (PathEventEditorMeta.Registry.TryGetValue(ev.GetType(), out var meta))
+                return meta.GizmoColor;
+            return Color.white;
         }
 
         private GUIStyle GetLabelStyle(PathGrapherProfile profile)

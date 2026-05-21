@@ -12,12 +12,24 @@ namespace DLSample.Editor.PathGrapher
     [CustomEditor(typeof(PathGrapherBehaviour))]
     public class PathGrapherBehaviourEditor : UnityEditor.Editor
     {
+        public static PathGrapherBehaviourEditor ActiveEditor { get; private set; }
+
         private PathGrapherBehaviour _target;
+        public PathGrapherBehaviour Target => _target;
 
         private static readonly PathGrapherDrawer _drawer = new();
 
         public IPathEvent SelectedEvent;
-        private static bool _enableEventCreation;
+        public static bool EnableEventCreation;
+
+        // 拖拽状态（实例级避免多 Behaviour 时互相干扰）
+        public IPathEvent DraggingEvent;
+        public bool IsDraggingTurn;
+        public Vector3 TempTurnWorldPos;
+        public bool IsDraggingJumpEnd;
+        public Vector3 TempJumpEndWorldPos;
+        public bool IsDraggingTeleportStart;
+        public Vector3 TempTeleportStartWorldPos;
 
         #region Caches
         private readonly GUIContent _menuSpeedChangeLabel = new("Add SpeedChange");
@@ -27,11 +39,12 @@ namespace DLSample.Editor.PathGrapher
         private readonly GUIContent _menuJumpLabel = new("Add Jump");
         private readonly GUIContent _menuTeleport = new("Add Teleport");
 
-        private readonly Dictionary<IPathEvent, PropertyTree> _evtPropertyTreesCache = new();
+        public readonly Dictionary<IPathEvent, PropertyTree> PropertyTreeCache = new();
         #endregion
 
         private void OnEnable()
         {
+            ActiveEditor = this;
             _target = (PathGrapherBehaviour)target;
         }
 
@@ -42,11 +55,12 @@ namespace DLSample.Editor.PathGrapher
 
         private void OnDisable()
         {
-            foreach (var tree in _evtPropertyTreesCache.Values)
+            if (ActiveEditor == this) ActiveEditor = null;
+            foreach (var tree in PropertyTreeCache.Values)
             {
                 tree?.Dispose();
             }
-            _evtPropertyTreesCache.Clear();
+            PropertyTreeCache.Clear();
         }
 
         public override void OnInspectorGUI()
@@ -60,8 +74,6 @@ namespace DLSample.Editor.PathGrapher
 
             EditorGUILayout.Space(10);
             DrawOperations();
-            DrawEventCreationToggle();
-            DrawSelectedEventFields();
         }
 
         private void OnSceneGUI()
@@ -104,8 +116,8 @@ namespace DLSample.Editor.PathGrapher
         private void DrawEventCreationToggle()
         {
             EditorGUILayout.BeginVertical(EditorStyles.helpBox);
-            EditorGUILayout.LabelField($"EventsCreator: {(_enableEventCreation ? "ON" : "Off")}", EditorStyles.boldLabel);
-            _enableEventCreation = EditorGUILayout.Toggle("Enable Event Creator", _enableEventCreation);
+            EditorGUILayout.LabelField($"EventsCreator: {(EnableEventCreation ? "ON" : "Off")}", EditorStyles.boldLabel);
+            EnableEventCreation = EditorGUILayout.Toggle("Enable Event Creator", EnableEventCreation);
             EditorGUILayout.EndVertical();
         }
 
@@ -132,10 +144,10 @@ namespace DLSample.Editor.PathGrapher
 
                 _target.asset.pathData.globalEvents.Remove(SelectedEvent);
 
-                if (_evtPropertyTreesCache.TryGetValue(SelectedEvent, out var tree))
+                if (PropertyTreeCache.TryGetValue(SelectedEvent, out var tree))
                 {
                     tree.Dispose();
-                    _evtPropertyTreesCache.Remove(SelectedEvent);
+                    PropertyTreeCache.Remove(SelectedEvent);
                 }
 
                 SelectedEvent = null;
@@ -145,67 +157,22 @@ namespace DLSample.Editor.PathGrapher
             EditorGUILayout.EndVertical();
         }
 
-        private void DrawEventsImgui()
+        public void DrawEventsImgui()
         {
             serializedObject.Update();
 
             EditorGUILayout.BeginVertical();
             SelectedEvent.GlobalTime = EditorGUILayout.DoubleField("Event Time", SelectedEvent.GlobalTime);
 
-            switch (SelectedEvent)
+            if (PathEventEditorMeta.Registry.TryGetValue(SelectedEvent.GetType(), out var meta))
             {
-                case PointPathEvent ptE:
-
-                    EditorGUILayout.Space(10);
-
-                    switch (ptE)
-                    {
-                        case SpeedChangeEvent s:
-                            s.newSpeed = EditorGUILayout.FloatField("New Speed", s.newSpeed);
-                            break;
-
-                        case GravityChangeEvent g:
-                            g.newGravity = EditorGUILayout.Vector3Field("New Gravity", g.newGravity);
-                            break;
-
-                        case DirectionChangeEvent d:
-                            DrawDirectionChangeEvent(d);
-                            break;
-                    }
-                    break;
-
-                case SegmentPathEvent segE:
-
-                    switch (segE)
-                    {
-                        case JumpEvent j:
-                            EditorGUILayout.BeginHorizontal();
-                            segE.EndTime = EditorGUILayout.DoubleField("End Time", segE.EndTime);
-                            if (GUILayout.Button("+ 0.1s"))
-                            {
-                                segE.EndTime += 0.1f;
-                            }
-                            if (GUILayout.Button("- 0.1s"))
-                            {
-                                segE.EndTime -= 0.1f;
-                            }
-                            EditorGUILayout.EndHorizontal();
-                            EditorGUILayout.Space(10);
-
-                            j.velocity = EditorGUILayout.Vector3Field("Velocity", j.velocity);
-                            break;
-
-                        case TeleportEvent t:
-                            t.targetPosition = EditorGUILayout.Vector3Field("Target Pos", t.targetPosition);
-                            break;
-                    }
-                    break;
+                meta.DrawInspector?.Invoke(SelectedEvent, this);
             }
 
             EditorGUILayout.EndVertical();
         }
 
-        private void DrawDirectionChangeEvent(DirectionChangeEvent evt)
+        public void DrawDirectionChangeEventInspector(DirectionChangeEvent evt)
         {
             if (evt.newDirections == null)
             {
@@ -213,10 +180,10 @@ namespace DLSample.Editor.PathGrapher
                 return;
             }
 
-            if (!_evtPropertyTreesCache.TryGetValue(evt, out var propertyTree) || propertyTree == null)
+            if (!PropertyTreeCache.TryGetValue(evt, out var propertyTree) || propertyTree == null)
             {
                 propertyTree = PropertyTree.Create(evt.newDirections);
-                _evtPropertyTreesCache[evt] = propertyTree;
+                PropertyTreeCache[evt] = propertyTree;
             }
 
             propertyTree.Draw(false);
@@ -229,7 +196,7 @@ namespace DLSample.Editor.PathGrapher
         #region CreateEvent
         private void HandleEventPlaceholder()
         {
-            if (!_enableEventCreation) return;
+            if (!EnableEventCreation) return;
 
             Event e = Event.current;
 
@@ -304,10 +271,6 @@ namespace DLSample.Editor.PathGrapher
                     double maxPossibleTime = segment.endWaypoint.time;
                     endTime = System.Math.Min(startTime + 1.0, maxPossibleTime);
                     break;
-
-                case TeleportEvent t:
-                    t.targetPosition = Vector3.zero;
-                    break;
             }
 
             evt.EndTime = endTime;
@@ -326,25 +289,11 @@ namespace DLSample.Editor.PathGrapher
         #region HandleEvent
         private void HandleEvents()
         {
-            var asset = _target.asset;
-
-            foreach (var evt in asset.pathData.globalEvents)
+            foreach (var evt in _target.asset.pathData.globalEvents)
             {
-                switch (evt)
+                if (PathEventEditorMeta.Registry.TryGetValue(evt.GetType(), out var meta))
                 {
-                    case ForceTurnEvent t:
-                        t.Handle(ref SelectedEvent, _target, this);
-                        break;
-                    case JumpEvent j:
-                        j.Handle(ref SelectedEvent, _target, this);
-                        break;
-                    case TeleportEvent t:
-                        t.Handle(ref SelectedEvent, _target, this);
-                        break;
-
-                    default:
-                        evt.Handle(ref SelectedEvent, _target, this);
-                        break;
+                    meta.DrawSceneHandles?.Invoke(evt, ref SelectedEvent, _target, this);
                 }
             }
         }

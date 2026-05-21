@@ -11,22 +11,6 @@ namespace DLSample.Editor.PathGrapher
     /// </summary>
     public static class PathSimulator
     {
-        private struct SimulationStatus
-        {
-            public Vector3 position;
-            public Quaternion rotation;
-            public float currentSpeed;
-
-            public PlayerDirections currentDirecion;
-
-            public Vector3 currentGravity;
-            public Vector3 verticalVelocity;
-            public double currentTime;
-
-            public bool isJumping;
-            public bool isTeleport;
-        }
-
         private struct TimePointInfo
         {
             public enum TimePointType
@@ -50,7 +34,7 @@ namespace DLSample.Editor.PathGrapher
                 position = asset.startPosition,
                 rotation = asset.initialDirections.StartRotation(),
                 currentSpeed = asset.initialSpeed,
-                currentDirecion = asset.initialDirections,
+                currentDirecion = asset.initialDirections.Clone(),
                 currentGravity = asset.initialGravity,
                 verticalVelocity = Vector3.zero,
                 currentTime = 0,
@@ -58,7 +42,7 @@ namespace DLSample.Editor.PathGrapher
                 isTeleport = false,
             };
 
-            ResetDirections(asset.initialDirections);
+            state.currentDirecion.Reset();
 
             asset.pathData.generatedWaypoints.Clear();
             asset.pathData.generatedSegments.Clear();
@@ -69,6 +53,7 @@ namespace DLSample.Editor.PathGrapher
             asset.pathData.generatedWaypoints.Add(prevWaypoint);
 
             List<PathSection> currentSections = new();
+            List<IPathEvent> accumulatedEvents = new();
 
             for (int i = 0; i < timePoints.Count - 1; i++)
             {
@@ -128,6 +113,10 @@ namespace DLSample.Editor.PathGrapher
 
                 ApplyEvents(nextTimePoint, ref state);
 
+                // 仅在事件的 GlobalTime（非 EndTime）将事件累积到当前段
+                if (nextTimePoint.evt != null && Math.Abs(nextTimePoint.time - nextTimePoint.evt.GlobalTime) < 0.0001)
+                    accumulatedEvents.Add(nextTimePoint.evt);
+
                 switch (nextTimePoint.type)
                 {
                     case TimePointInfo.TimePointType.Beat:
@@ -135,7 +124,8 @@ namespace DLSample.Editor.PathGrapher
                         state.currentTime = nextTimePoint.time;
                         Waypoint nextWaypoint = CreateWaypoint(state, nextTimePoint.beatIndex);
 
-                        PathSegment segment = CreateSegment(prevWaypoint, nextWaypoint, asset);
+                        PathSegment segment = CreateSegment(prevWaypoint, nextWaypoint, accumulatedEvents);
+                        accumulatedEvents = new();
                         segment.sections = new List<PathSection>(currentSections);
                         currentSections.Clear();
                         sectionPoints.Clear();
@@ -143,7 +133,6 @@ namespace DLSample.Editor.PathGrapher
                         asset.pathData.generatedSegments.Add(segment);
                         asset.pathData.generatedWaypoints.Add(nextWaypoint);
 
-                        currentSections.Clear();
                         prevWaypoint = nextWaypoint;
                     break;
 
@@ -200,7 +189,7 @@ namespace DLSample.Editor.PathGrapher
 
             foreach (var ev in asset.pathData.globalEvents)
             {
-                if (ev is ForceTurnEvent)
+                if (ev.IsWaypointBoundary)
                 {
                     points.Add(
                         new TimePointInfo
@@ -221,7 +210,7 @@ namespace DLSample.Editor.PathGrapher
                         });
                 }
 
-                if (ev is SegmentPathEvent segEv)
+                if (ev is SegmentPathEvent segEv && Math.Abs(segEv.EndTime - ev.GlobalTime) > 0.0001)
                 {
                     points.Add(
                         new TimePointInfo
@@ -238,47 +227,7 @@ namespace DLSample.Editor.PathGrapher
 
         private static void ApplyEvents(TimePointInfo timePoint, ref SimulationStatus state)
         {
-            if (timePoint.type is not TimePointInfo.TimePointType.Event) return;
-
-            switch (timePoint.evt)
-            {
-                case SpeedChangeEvent s:
-                    state.currentSpeed = s.newSpeed;
-                    break;
-
-                case GravityChangeEvent g:
-                    state.currentGravity = g.newGravity;
-                    break;
-
-                case DirectionChangeEvent d:
-                    state.currentDirecion = d.newDirections;
-                    state.currentDirecion.Reset();
-                    break;
-
-                case TeleportEvent t:
-                    if (DoubleEquals(timePoint.time, t.StartTime))
-                    {
-                        state.position = t.targetPosition;
-
-                        state.isTeleport = true;
-                    }
-                    break;
-
-                case JumpEvent j:
-                    if (DoubleEquals(timePoint.time, j.StartTime))
-                    {
-                        state.isJumping = true;
-                        state.verticalVelocity = state.rotation * j.velocity;
-                    }
-                    else if (DoubleEquals(timePoint.time, j.EndTime))
-                    {
-                        state.isJumping = false;
-                        state.verticalVelocity = Vector3.zero;
-                    }
-                    break;
-                default:
-                    break;
-            }
+            timePoint.evt?.ApplyTo(ref state, timePoint.time);
         }
 
         private static Waypoint CreateWaypoint(SimulationStatus state, int index)
@@ -292,32 +241,15 @@ namespace DLSample.Editor.PathGrapher
             };
         }
 
-        private static PathSegment CreateSegment(Waypoint start, Waypoint end, PathGrapherAsset asset)
+        private static PathSegment CreateSegment(Waypoint start, Waypoint end, List<IPathEvent> events)
         {
-            var segment = new PathSegment
+            return new PathSegment
             {
                 startWaypoint = start,
                 endWaypoint = end,
-                containedEvents = GetEventsOfInterval(asset, start.time, end.time)
+                containedEvents = events
             };
-            return segment;
         }
 
-        private static List<IPathEvent> GetEventsOfInterval(PathGrapherAsset asset, double start, double end)
-        {
-            return asset.pathData.globalEvents
-                    .Where(e => e.GlobalTime >= start && e.GlobalTime < end)
-                    .ToList();
-        }
-
-        private static void ResetDirections(PlayerDirections directions)
-        {
-            directions.Reset();
-        }
-
-        private static bool DoubleEquals(double a, double b, double epsilon = 0.0001f)
-        {
-            return Math.Abs(a - b) < epsilon;
-        }
     }
 }

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using DLSample.Shared;
 
 namespace DLSample.Editor.PathGrapher
 {
@@ -46,6 +47,26 @@ namespace DLSample.Editor.PathGrapher
         public Vector3[] points;
         public Vector3 upDir;
         public bool isJump;
+        public bool isTeleport;
+    }
+
+    /// <summary>
+    /// 模拟状态，在路径模拟过程中逐时间点推进
+    /// </summary>
+    public struct SimulationStatus
+    {
+        public Vector3 position;
+        public Quaternion rotation;
+        public float currentSpeed;
+
+        public PlayerDirections currentDirecion;
+
+        public Vector3 currentGravity;
+        public Vector3 verticalVelocity;
+        public double currentTime;
+
+        public bool isJumping;
+        public bool isTeleporting;
         public bool isTeleport;
     }
 }

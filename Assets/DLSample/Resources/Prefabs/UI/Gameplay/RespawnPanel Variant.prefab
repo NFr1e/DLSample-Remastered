@@ -2105,6 +2105,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 6051071508056586400}
     - target: {fileID: 6347813638845503361, guid: 11ac6748d108ab14d9a6090f89894014, type: 3}
+      propertyPath: managedReferences[3452229563209744415].duration
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6347813638845503361, guid: 11ac6748d108ab14d9a6090f89894014, type: 3}
       propertyPath: managedReferences[3452229630555848715].duration
       value: 0.6
       objectReference: {fileID: 0}
