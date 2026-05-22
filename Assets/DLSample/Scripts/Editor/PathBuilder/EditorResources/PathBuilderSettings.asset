@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b6724adadece57448ae667e7df26503, type: 3}
+  m_Name: PathBuilderSettings
+  m_EditorClassIdentifier: 
+  PathPrefab: {fileID: 5111705345089796464, guid: 335ddd11b1ba9b04abf6c086ee1678f9, type: 3}
+  PathWidth: 3
+  GenerateType: 1
+  HintBoxPrefab: {fileID: 8531833813905291079, guid: 1c30181b90192c64a9b8846d4e84e855, type: 3}
+  HintSegmentPrefab: {fileID: 6734870164015208076, guid: 1189a781984d42949b704d5cbc6dc59d, type: 3}

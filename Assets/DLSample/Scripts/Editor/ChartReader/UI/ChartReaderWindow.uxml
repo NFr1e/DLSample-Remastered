@@ -11,6 +11,7 @@
             </ui:VisualElement>
             <ui:VisualElement name="Content" style="flex-grow: 1; background-color: rgb(50, 50, 50); border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px; padding-left: 2px;">
                 <uie:ObjectField label="ChartFile" name="SourceField" type="UnityEngine.TextAsset, UnityEngine.CoreModule" class="source-chartfile-field" />
+                <ui:FloatField label="Offset" value="0" name="OffsetField" class="source-offset-field" />
             </ui:VisualElement>
         </ui:VisualElement>
         <ui:VisualElement name="Output" style="flex-grow: 0; background-color: rgb(75, 75, 75); padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px; border-left-color: rgb(75, 75, 75); border-right-color: rgb(75, 75, 75); border-top-color: rgb(75, 75, 75); border-bottom-color: rgb(75, 75, 75); border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; -unity-background-image-tint-color: rgba(0, 0, 0, 0); margin-bottom: 5px;">

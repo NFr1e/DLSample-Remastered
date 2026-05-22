@@ -3,3 +3,12 @@
     -unity-font-style: bold;
     color: rgb(68, 138, 255);
 }
+
+.source-chartfile-field {
+}
+
+.output-read-btn {
+}
+
+.output-beatmapdata-field {
+}

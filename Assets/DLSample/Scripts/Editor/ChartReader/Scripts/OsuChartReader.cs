@@ -6,22 +6,13 @@ using DLSample.Shared;
 
 namespace DLSample.Editor.ChartReader
 {
-    /// <summary>
-    /// Osu 格式谱面读取器，解析 osu 谱面文件中的 [HitObjects] 节拍数据。
-    /// </summary>
     public class OsuChartReader : IChartReader
     {
-        /// <summary>
-        /// 从 osu 谱面文本中读取节拍数组。
-        /// </summary>
-        /// <param name="content">谱面文件文本内容</param>
-        /// <param name="offset">时间偏移量（秒）</param>
-        /// <returns>解析出的节拍数组</returns>
         public Beat[] Read(string content, float offset)
         {
             if (string.IsNullOrEmpty(content))
             {
-                Debug.LogError("Chart content is empty.");
+                Debug.LogError("EmptyChart");
                 return Array.Empty<Beat>();
             }
 
@@ -32,7 +23,7 @@ namespace DLSample.Editor.ChartReader
             int hitObjectsIndex = lines.IndexOf("[HitObjects]");
             if (hitObjectsIndex < 0)
             {
-                Debug.LogError("Unable to find \"[HitObjects]\" section in chart file.");
+                Debug.LogError("Unable find \"HitObjects\" ��");
                 return Array.Empty<Beat>();
             }
 

@@ -72,6 +72,30 @@ namespace DLSample.Editor.PathBuilder
             UnsubscribeEvents();
         }
 
+        /// <summary>
+        /// 将已保存的设置值回填到 UI 控件。
+        /// </summary>
+        public void LoadSettings(PathBuilderSettings settings)
+        {
+            _pathPrefabField.value = settings.PathPrefab;
+            _pathWidthField.value = settings.PathWidth;
+            _pathTypeEnum.value = settings.GenerateType;
+            _hintBoxPrefabField.value = settings.HintBoxPrefab;
+            _hintSegPrefabField.value = settings.HintSegmentPrefab;
+        }
+
+        /// <summary>
+        /// 从 UI 控件读取当前值并写入设置对象。
+        /// </summary>
+        public void SaveSettings(PathBuilderSettings settings)
+        {
+            settings.PathPrefab = _pathPrefabField.value as GameObject;
+            settings.PathWidth = _pathWidthField.value;
+            settings.GenerateType = (PathGenerateType)_pathTypeEnum.value;
+            settings.HintBoxPrefab = _hintBoxPrefabField.value as GameObject;
+            settings.HintSegmentPrefab = _hintSegPrefabField.value as GameObject;
+        }
+
         private void GetElements()
         {
             _pathGrapherAssetField = _root.Q<ObjectField>(className: _class_pathGrapherAssetField);

@@ -6,6 +6,7 @@ namespace DLSample.Gameplay.Stream
     public class GameplayTimeLinePlayer : IStreamPlayer
     {
         private readonly PlayableDirector _director;
+        private bool _isStarted = false;
 
         public GameplayTimeLinePlayer(PlayableDirector playeble)
         {
@@ -19,8 +20,16 @@ namespace DLSample.Gameplay.Stream
         {
             if (IsPlaying) return;
 
-            _director.Play();
+            if (!_isStarted)
+            {
+                _director.Play();
+            }
+            else
+            {
+                _director.Resume();
+            }
             IsPlaying = true;
+            _isStarted = true;
         }
         public void Stop()
         {

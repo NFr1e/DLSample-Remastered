@@ -14,6 +14,7 @@ namespace DLSample.Editor.PathBuilder
         private VisualTreeAsset m_VisualTreeAsset = default;
 
         private PathBuilderController _controller;
+        private PathBuilderSettings _settings;
 
         /// <summary>
         /// 打开路径构建窗口。
@@ -40,15 +41,36 @@ namespace DLSample.Editor.PathBuilder
         {
             Dispose();
         }
+        private void OnDisable()
+        {
+            SaveSettings();
+        }
 
         private void Init()
         {
             _controller = new(m_VisualTreeAsset, rootVisualElement);
             _controller.Init();
+
+            LoadSettings();
         }
         private void Dispose()
         {
+            SaveSettings();
             _controller?.Dispose();
+        }
+
+        private void LoadSettings()
+        {
+            _settings = PathBuilderSettings.LoadOrCreate();
+            _controller.LoadSettings(_settings);
+        }
+        private void SaveSettings()
+        {
+            if (_settings == null || _controller == null) return;
+
+            _controller.SaveSettings(_settings);
+            _settings.MarkDirty();
+            AssetDatabase.SaveAssets();
         }
     }
 }
