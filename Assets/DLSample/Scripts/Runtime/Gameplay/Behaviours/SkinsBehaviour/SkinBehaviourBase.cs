@@ -24,7 +24,6 @@ namespace DLSample.Gameplay.Behaviours.Skin
         /// </summary>
         public virtual void OnReset()
         {
-            Debug.Log($"{gameObject.name} : I'm Resetting!");
         }
 
         /// <summary>

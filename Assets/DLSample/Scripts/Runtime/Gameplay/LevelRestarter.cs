@@ -1,6 +1,6 @@
+using System;
 using UnityEngine.SceneManagement;
 using Cysharp.Threading.Tasks;
-using DLSample.App;
 using DLSample.Shared;
 using DLSample.Facility.Events;
 using DLSample.Facility.SceneManage;

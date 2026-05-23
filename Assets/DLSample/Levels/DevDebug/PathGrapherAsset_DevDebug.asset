@@ -1,0 +1,4614 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efa1bcba87423ee4586a9ef80218563e, type: 3}
+  m_Name: PathGrapherAsset_DevDebug
+  m_EditorClassIdentifier: 
+  beatMapData: {fileID: 11400000, guid: da6179593cd48714bb332b9aa518f4ce, type: 2}
+  startPosition: {x: 0, y: 0, z: 0}
+  initialSpeed: 12
+  initialGravity: {x: 0, y: -9.81, z: 0}
+  initialDirections:
+    upwards: {x: 0, y: 1, z: 0}
+    directionsSequence:
+    - {x: 0, y: 0, z: 1}
+    - {x: 1, y: 0, z: 0}
+    _currentIndex: 0
+  pathData:
+    globalEvents:
+    - rid: 6920599464020017152
+    - rid: 6920599464020017153
+    - rid: 6920599464020017154
+    - rid: 6920599464020017156
+    - rid: 6920599464020017157
+    - rid: 6920599464020017158
+    - rid: 6920599464020017159
+    - rid: 6920599464020017160
+    - rid: 6920599464020017161
+    generatedWaypoints:
+    - position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+      time: 0
+      beatIndex: -1
+    - position: {x: 15.62392, y: 0, z: -0.0000018625162}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      time: 1.3019932992756367
+      beatIndex: 1
+    - position: {x: 15.62392, y: 0, z: 2.7288678}
+      rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+      time: 1.5293990999925882
+      beatIndex: 2
+    - position: {x: 18.600725, y: 0, z: 2.7288675}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      time: 1.7774660997092724
+      beatIndex: 3
+    - position: {x: 18.600725, y: 0, z: 14.416194}
+      rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+      time: 2.7514099997933954
+      beatIndex: 4
+    - position: {x: 21.200628, y: 0, z: 14.416194}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      time: 2.968068499583751
+      beatIndex: 5
+    - position: {x: 21.200628, y: 0, z: 17.523762}
+      rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+      time: 3.2270324979908764
+      beatIndex: 6
+    - position: {x: 33.587387, y: 0, z: 17.52376}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      time: 4.259262098465115
+      beatIndex: 7
+    - position: {x: 33.587387, y: 0, z: 20.446125}
+      rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+      time: 4.502792599378154
+      beatIndex: 8
+    - position: {x: 36.396004, y: 0, z: 20.446125}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      time: 4.7368440995924175
+      beatIndex: 9
+    - position: {x: 36.396004, y: 0, z: 23.438442}
+      rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+      time: 4.986203800421208
+      beatIndex: 10
+    - position: {x: 39.409496, y: 0, z: 23.438442}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      time: 5.237328000133857
+      beatIndex: 11
+    - position: {x: 39.409496, y: 0, z: 26.63876}
+      rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+      time: 5.504021100932732
+      beatIndex: 12
+    - position: {x: 42.458244, y: 0, z: 26.63876}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      time: 5.758083502529189
+      beatIndex: 13
+    - position: {x: 42.458244, y: 0, z: 29.623146}
+      rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+      time: 6.006782302400097
+      beatIndex: 14
+    - position: {x: 45.454685, y: 0, z: 29.623146}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      time: 6.25648560305126
+      beatIndex: 15
+    - position: {x: 45.454685, y: -1.8799496, z: 41.664364}
+      rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+      time: 7.259920300450176
+      beatIndex: 16
+    - position: {x: 48.495655, y: -1.8799496, z: 41.664364}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      time: 7.5133343995548785
+      beatIndex: 17
+    - position: {x: 48.495655, y: -1.8799496, z: 44.743195}
+      rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+      time: 7.769903799286112
+      beatIndex: 18
+    - position: {x: 59.892735, y: -0.6490405, z: 44.743195}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      time: 8.719659899361432
+      beatIndex: 19
+    - position: {x: 59.892735, y: -0.6490405, z: 47.942226}
+      rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+      time: 8.986245998181403
+      beatIndex: 20
+    - position: {x: 63.11417, y: -0.6490405, z: 47.942226}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      time: 9.254698997130617
+      beatIndex: 21
+    - position: {x: 63.11417, y: -0.6490405, z: 60.054638}
+      rotation: {x: 0, y: 0.92387956, z: 0, w: 0.38268346}
+      time: 10.264066596981138
+      beatIndex: 22
+    - position: {x: 65.18515, y: -0.6490405, z: 57.983654}
+      rotation: {x: 0, y: 0.38268346, z: 0, w: 0.92387956}
+      time: 10.508134297793731
+      beatIndex: 23
+    - position: {x: 67.24076, y: -0.6490405, z: 60.039265}
+      rotation: {x: 0, y: 0.92387956, z: 0, w: 0.38268346}
+      time: 10.75039049773477
+      beatIndex: 24
+    - position: {x: 69.31994, y: -0.6490405, z: 57.960087}
+      rotation: {x: 0, y: 0.38268346, z: 0, w: 0.92387956}
+      time: 10.995423697400838
+      beatIndex: 25
+    - position: {x: 71.46542, y: -0.6490405, z: 60.10557}
+      rotation: {x: 0, y: 0.92387956, z: 0, w: 0.38268346}
+      time: 11.248271396849304
+      beatIndex: 26
+    - position: {x: 73.54405, y: -0.6490405, z: 58.02694}
+      rotation: {x: 0, y: 0.38268346, z: 0, w: 0.92387956}
+      time: 11.493240495678037
+      beatIndex: 27
+    - position: {x: 75.65932, y: -0.6490405, z: 60.142204}
+      rotation: {x: 0, y: 0.92387956, z: 0, w: 0.38268346}
+      time: 11.742526894900948
+      beatIndex: 28
+    - position: {x: 77.89269, y: -0.6490405, z: 57.908825}
+      rotation: {x: 0, y: 0.38268346, z: 0, w: 0.92387956}
+      time: 12.005733094876632
+      beatIndex: 29
+    - position: {x: 80.02537, y: -0.6490405, z: 60.0415}
+      rotation: {x: 0, y: 0.92387956, z: 0, w: 0.38268346}
+      time: 12.257071194704622
+      beatIndex: 30
+    - position: {x: 82.27715, y: -0.6490405, z: 57.78971}
+      rotation: {x: 0, y: 0.38268346, z: 0, w: 0.92387956}
+      time: 12.52244689478539
+      beatIndex: 31
+    - position: {x: 86.29485, y: -0.6490405, z: 61.807415}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      time: 12.995937595609576
+      beatIndex: 32
+    - position: {x: 86.29485, y: -0.6490405, z: 70.510124}
+      rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+      time: 13.721163497539237
+      beatIndex: 33
+    - position: {x: 89.25617, y: -0.6490405, z: 70.510124}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      time: 13.967939797788858
+      beatIndex: 34
+    - position: {x: 89.25617, y: -0.6490405, z: 73.897804}
+      rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+      time: 14.250246297335252
+      beatIndex: 35
+    - position: {x: 59.66273, y: 4.87368, z: 8.821244}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      time: 14.771525896852836
+      beatIndex: 36
+    - position: {x: 59.66273, y: 4.87368, z: 12.069415}
+      rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+      time: 15.042206797283143
+      beatIndex: 37
+    - position: {x: 62.679634, y: 4.87368, z: 12.069415}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      time: 15.293615196365863
+      beatIndex: 38
+    - position: {x: 62.679634, y: 4.87368, z: 15.191294}
+      rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+      time: 15.553771796636283
+      beatIndex: 39
+    - position: {x: 68.865906, y: -2.46762, z: 4.392165}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      time: 16.49081899644807
+      beatIndex: 40
+    - position: {x: 68.865906, y: -2.46762, z: 10.352665}
+      rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+      time: 16.987527296179906
+      beatIndex: 41
+    - position: {x: 71.86884, y: -2.46762, z: 10.352665}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      time: 17.23777199606411
+      beatIndex: 42
+    - position: {x: 71.86884, y: -2.46762, z: 25.371788}
+      rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+      time: 18.489365597255528
+      beatIndex: 43
+    - position: {x: 77.97255, y: -2.46762, z: 25.371788}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      time: 18.998007497983053
+      beatIndex: 44
+    - position: {x: 77.97255, y: -2.46762, z: 33.8356}
+      rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+      time: 19.703325098147616
+      beatIndex: 45
+    - position: {x: 81.06609, y: -2.46762, z: 33.8356}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      time: 19.96112029789947
+      beatIndex: 46
+    - position: {x: 81.06609, y: -2.46762, z: 37.22972}
+      rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+      time: 20.24396349908784
+      beatIndex: 47
+    - position: {x: 87.631905, y: -2.46762, z: 37.22972}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      time: 20.791114601306617
+      beatIndex: 48
+    - position: {x: 87.631905, y: -2.46762, z: 40.20614}
+      rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+      time: 21.039149400778115
+      beatIndex: 49
+    - position: {x: 90.70592, y: -2.46762, z: 40.20614}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      time: 21.29531720210798
+      beatIndex: 50
+    - position: {x: 90.70592, y: -2.46762, z: 43.1108}
+      rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+      time: 21.537372401217
+      beatIndex: 51
+    - position: {x: 99.80534, y: -2.46762, z: 43.1108}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      time: 22.295658100629225
+      beatIndex: 52
+    - position: {x: 99.80534, y: -2.46762, z: 44.786095}
+      rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+      time: 22.43526599998586
+      beatIndex: 53
+    - position: {x: 101.47645, y: -2.46762, z: 44.786095}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      time: 22.574524700874463
+      beatIndex: 54
+    - position: {x: 101.47645, y: -2.46762, z: 50.628838}
+      rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+      time: 23.06141980085522
+      beatIndex: 55
+    - position: {x: 118.74006, y: -0.46761978, z: 50.628838}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      time: 24.50005590263754
+      beatIndex: 56
+    - position: {x: 118.74006, y: -0.46761978, z: 56.8487}
+      rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+      time: 25.01837790175341
+      beatIndex: 57
+    - position: {x: 127.65499, y: -0.46761978, z: 56.8487}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      time: 25.761288603767753
+      beatIndex: 58
+    - position: {x: 127.65499, y: -0.46761978, z: 59.72214}
+      rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+      time: 26.00074200402014
+      beatIndex: 59
+    - position: {x: 130.75601, y: -0.46761978, z: 59.72214}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      time: 26.259161005029455
+      beatIndex: 60
+    - position: {x: 130.75601, y: -0.46761978, z: 65.39744}
+      rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+      time: 26.73210260574706
+      beatIndex: 61
+    - position: {x: 133.78383, y: -0.46761978, z: 65.39744}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      time: 26.98442110675387
+      beatIndex: 62
+    - position: {x: 133.78383, y: -0.46761978, z: 68.45319}
+      rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+      time: 27.239067506045103
+      beatIndex: 63
+    - position: {x: 137.24568, y: -0.46761978, z: 68.45319}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      time: 27.527555705979466
+      beatIndex: 64
+    - position: {x: 137.24568, y: -0.46761978, z: 80.48884}
+      rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+      time: 28.5305262056645
+      beatIndex: 65
+    - position: {x: 143.2734, y: -0.46761978, z: 80.48884}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      time: 29.03283650521189
+      beatIndex: 66
+    - position: {x: 143.2734, y: -0.46761978, z: 83.33592}
+      rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+      time: 29.27009330666624
+      beatIndex: 67
+    - position: {x: 152.89256, y: -0.46761978, z: 83.33592}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      time: 30.071690005948767
+      beatIndex: 68
+    - position: {x: 152.89256, y: -0.46761978, z: 85.792534}
+      rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+      time: 30.276407706318423
+      beatIndex: 69
+    - position: {x: 155.99252, y: -0.46761978, z: 85.792534}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      time: 30.534737505717203
+      beatIndex: 70
+    - position: {x: 155.99252, y: -0.46761978, z: 88.44968}
+      rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+      time: 30.756166205275804
+      beatIndex: 71
+    - position: {x: 159.12643, y: -0.46761978, z: 88.44968}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      time: 31.017325605731457
+      beatIndex: 72
+    - position: {x: 159.12643, y: -0.46761978, z: 97.27717}
+      rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+      time: 31.75295010721311
+      beatIndex: 73
+    - position: {x: 162.16872, y: -0.46761978, z: 97.27717}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      time: 32.00647320761345
+      beatIndex: 74
+    - position: {x: 162.16872, y: -0.46761978, z: 100.28686}
+      rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+      time: 32.257280707359314
+      beatIndex: 75
+    - position: {x: 165.32567, y: -0.46761978, z: 100.28686}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      time: 32.52036010869779
+      beatIndex: 76
+    - position: {x: 165.32567, y: -0.46761978, z: 106.33982}
+      rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+      time: 33.02477390714921
+      beatIndex: 77
+    - position: {x: 168.21373, y: -0.46761978, z: 106.33982}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      time: 33.26544620702043
+      beatIndex: 78
+    - position: {x: 168.21373, y: -0.46761978, z: 109.44096}
+      rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+      time: 33.52387450635433
+      beatIndex: 79
+    - position: {x: 176.57791, y: -0.46761978, z: 109.44096}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      time: 34.22089010756463
+      beatIndex: 80
+    - position: {x: 176.57791, y: -0.46761978, z: 111.038605}
+      rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+      time: 34.35402700677514
+      beatIndex: 81
+    - position: {x: 178.35515, y: -0.46761978, z: 111.038605}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      time: 34.50212970608845
+      beatIndex: 82
+    - position: {x: 178.35515, y: -0.46761978, z: 117.05216}
+      rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+      time: 35.003259206190705
+      beatIndex: 83
+    - position: {x: 232.27042, y: -0.46761978, z: 117.052155}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      time: 39.49619701318443
+      beatIndex: 84
+    - position: {x: 232.27042, y: -0.46761978, z: 123.39204}
+      rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+      time: 40.02452071243897
+      beatIndex: 85
+    - position: {x: 241.16159, y: -0.46761978, z: 123.39204}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      time: 40.7654518133495
+      beatIndex: 86
+    - position: {x: 241.16159, y: -0.46761978, z: 126.4259}
+      rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+      time: 41.018274212721735
+      beatIndex: 87
+    - position: {x: 247.45273, y: -0.46761978, z: 126.4259}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      time: 41.542535511543974
+      beatIndex: 88
+    - position: {x: 247.45273, y: -0.46761978, z: 135.28363}
+      rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+      time: 42.28067981288768
+      beatIndex: 89
+    - position: {x: 250.53328, y: -0.46761978, z: 135.28363}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      time: 42.53739291266538
+      beatIndex: 90
+    - position: {x: 250.53328, y: -0.46761978, z: 141.19415}
+      rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+      time: 43.02993591083214
+      beatIndex: 91
+    - position: {x: 256.3704, y: -0.46761978, z: 141.19415}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      time: 43.51636090967804
+      beatIndex: 92
+    - position: {x: 256.3704, y: -0.46761978, z: 147.27498}
+      rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+      time: 44.02309670927934
+      beatIndex: 93
+    - position: {x: 264.71432, y: -0.46761978, z: 147.27498}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      time: 44.71842390974052
+      beatIndex: 94
+    - position: {x: 264.71432, y: -0.46761978, z: 148.941}
+      rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+      time: 44.85725830961019
+      beatIndex: 95
+    - position: {x: 266.53143, y: -0.46761978, z: 148.941}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      time: 45.00868271035142
+      beatIndex: 96
+    - position: {x: 266.53143, y: -0.46761978, z: 155.02307}
+      rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+      time: 45.51552191050723
+      beatIndex: 97
+    - position: {x: 272.73386, y: -0.46761978, z: 155.02307}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      time: 46.03239111043513
+      beatIndex: 98
+    - position: {x: 272.73386, y: -0.46761978, z: 163.7532}
+      rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+      time: 46.75990231055766
+      beatIndex: 99
+    - position: {x: 275.87933, y: -0.46761978, z: 163.7532}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      time: 47.02202601102181
+      beatIndex: 100
+    - position: {x: 275.87933, y: -0.46761978, z: 169.64906}
+      rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+      time: 47.51334711210802
+      beatIndex: 101
+    - position: {x: 281.72632, y: -0.46761978, z: 169.64906}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      time: 48.000595011981204
+      beatIndex: 102
+    - position: {x: 281.72632, y: -0.46761978, z: 175.56078}
+      rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+      time: 48.493237514048815
+      beatIndex: 103
+    - position: {x: 293.64096, y: -0.46761978, z: 175.56078}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      time: 49.486123313428834
+      beatIndex: 104
+    - position: {x: 293.64096, y: -0.46761978, z: 182.13487}
+      rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+      time: 50.0339644132182
+      beatIndex: 105
+    - position: {x: 296.2129, y: -0.46761978, z: 182.13487}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      time: 50.24829231342301
+      beatIndex: 106
+    - position: {x: 296.2129, y: -0.46761978, z: 197.46985}
+      rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+      time: 51.52620711317286
+      beatIndex: 107
+    - position: {x: 302.13895, y: -0.46761978, z: 197.46985}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      time: 52.020045711658895
+      beatIndex: 108
+    - position: {x: 302.13895, y: -0.46761978, z: 206.37425}
+      rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+      time: 52.76207961165346
+      beatIndex: 109
+    - position: {x: 305.25922, y: -0.46761978, z: 206.37425}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      time: 53.022101211128756
+      beatIndex: 110
+    - position: {x: 305.25922, y: -0.46761978, z: 212.23059}
+      rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+      time: 53.510129511822015
+      beatIndex: 111
+    - position: {x: 314.57166, y: -0.46761978, z: 212.23059}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      time: 54.28616591147147
+      beatIndex: 112
+    - position: {x: 314.57166, y: -0.46761978, z: 215.11043}
+      rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+      time: 54.52615241124295
+      beatIndex: 113
+    - position: {x: 320.5976, y: -0.46761978, z: 215.11043}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      time: 55.02831521141343
+      beatIndex: 114
+    - position: {x: 320.5976, y: -0.46761978, z: 220.98634}
+      rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+      time: 55.51797541161068
+      beatIndex: 115
+    - position: {x: 326.32956, y: -0.46761978, z: 220.98634}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      time: 55.995639911619946
+      beatIndex: 116
+    - position: {x: 326.32956, y: -0.46761978, z: 230.04257}
+      rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+      time: 56.75032601039857
+      beatIndex: 117
+    - position: {x: 328.04642, y: -0.46761978, z: 230.04257}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      time: 56.893398710293695
+      beatIndex: 118
+    - position: {x: 328.04642, y: -0.46761978, z: 231.67708}
+      rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+      time: 57.02960781008005
+      beatIndex: 119
+    - position: {x: 334.28815, y: -0.46761978, z: 231.67708}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      time: 57.5497511101421
+      beatIndex: 120
+    - position: {x: 334.28815, y: -0.46761978, z: 237.68459}
+      rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+      time: 58.05037711048499
+      beatIndex: 121
+    - position: {x: 342.89838, y: -0.46761978, z: 237.68459}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      time: 58.76789610995911
+      beatIndex: 122
+    - position: {x: 342.89838, y: -0.46761978, z: 240.54291}
+      rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+      time: 59.00609000911936
+      beatIndex: 123
+    - position: {x: 348.81586, y: -0.46761978, z: 240.54291}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      time: 59.49921230808832
+      beatIndex: 124
+    - position: {x: 348.81586, y: -0.46761978, z: 246.77734}
+      rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+      time: 60.01874820725061
+      beatIndex: 125
+    - position: {x: 354.60184, y: -0.46761978, z: 246.77734}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      time: 60.50091370730661
+      beatIndex: 126
+    - position: {x: 354.60184, y: -0.46761978, z: 249.76329}
+      rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+      time: 60.74974210746586
+      beatIndex: 127
+    - position: {x: 423.62103, y: -0.46761978, z: 249.76328}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      time: 66.50134210661054
+      beatIndex: 128
+    - position: {x: 423.62103, y: -0.46761978, z: 255.92137}
+      rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+      time: 67.01451710634865
+      beatIndex: 129
+    - position: {x: 432.36823, y: -0.46761978, z: 255.92137}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      time: 67.74344930611551
+      beatIndex: 130
+    - position: {x: 432.36823, y: -0.46761978, z: 258.7942}
+      rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+      time: 67.98284980584867
+      beatIndex: 131
+    - position: {x: 435.7161, y: -0.46761978, z: 258.7942}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      time: 68.2618381048087
+      beatIndex: 132
+    - position: {x: 435.7161, y: -0.46761978, z: 264.9875}
+      rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+      time: 68.77794700325467
+      beatIndex: 133
+    - position: {x: 438.6687, y: -0.46761978, z: 264.9875}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      time: 69.02399810333736
+      beatIndex: 134
+    - position: {x: 438.6687, y: -0.46761978, z: 268.05768}
+      rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+      time: 69.27984770387411
+      beatIndex: 135
+    - position: {x: 441.6489, y: -0.46761978, z: 268.05768}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      time: 69.52819740283303
+      beatIndex: 136
+    - position: {x: 441.6489, y: -0.46761978, z: 279.61172}
+      rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+      time: 70.49103480158374
+      beatIndex: 137
+    - position: {x: 448.24045, y: -0.46761978, z: 279.61172}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      time: 71.04033060069196
+      beatIndex: 138
+    - position: {x: 448.24045, y: -0.46761978, z: 282.11993}
+      rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+      time: 71.24934920063242
+      beatIndex: 139
+    - position: {x: 463.46542, y: -0.46761978, z: 282.11993}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      time: 72.5180972001981
+      beatIndex: 140
+    - position: {x: 463.46542, y: -0.46761978, z: 288.26212}
+      rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+      time: 73.02994580054656
+      beatIndex: 141
+    - position: {x: 471.47098, y: -0.46761978, z: 288.26212}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      time: 73.69707510084845
+      beatIndex: 142
+    - position: {x: 471.47098, y: -0.46761978, z: 291.31638}
+      rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+      time: 73.95159800024703
+      beatIndex: 143
+    - position: {x: 475.10873, y: -0.46761978, z: 291.31638}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      time: 74.25474409991875
+      beatIndex: 144
+    - position: {x: 475.10873, y: -0.46761978, z: 297.29282}
+      rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+      time: 74.752779599512
+      beatIndex: 145
+    - position: {x: 478.16864, y: -0.46761978, z: 297.29282}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      time: 75.00777059816755
+      beatIndex: 146
+    - position: {x: 478.16864, y: -0.46761978, z: 300.09393}
+      rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+      time: 75.24119820003398
+      beatIndex: 147
+    - position: {x: 481.32053, y: -0.46761978, z: 300.09393}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      time: 75.50385470106266
+      beatIndex: 148
+    - position: {x: 481.32053, y: -0.46761978, z: 308.63318}
+      rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+      time: 76.2154572007712
+      beatIndex: 149
+    - position: {x: 483.16696, y: -0.46761978, z: 308.63318}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      time: 76.36932579963468
+      beatIndex: 150
+    - position: {x: 483.16696, y: -0.46761978, z: 310.19125}
+      rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+      time: 76.49916590028442
+      beatIndex: 151
+    - position: {x: 489.2386, y: -0.46761978, z: 310.19125}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      time: 77.00513409893028
+      beatIndex: 152
+    - position: {x: 489.2386, y: -0.46761978, z: 328.30048}
+      rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+      time: 78.51423669839278
+      beatIndex: 153
+    - position: {x: 494.9932, y: -0.46761978, z: 328.30048}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      time: 78.99378769821487
+      beatIndex: 154
+    - position: {x: 494.9932, y: -0.46761978, z: 336.7294}
+      rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+      time: 79.69619869859889
+      beatIndex: 155
+    - position: {x: 498.1031, y: -0.46761978, z: 336.7294}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      time: 79.9553561990615
+      beatIndex: 156
+    - position: {x: 498.1031, y: -0.46761978, z: 339.95358}
+      rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+      time: 80.22403799882159
+      beatIndex: 157
+    - position: {x: 504.40488, y: -0.46761978, z: 339.95358}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      time: 80.74918749695644
+      beatIndex: 158
+    - position: {x: 504.40488, y: -0.46761978, z: 342.72116}
+      rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+      time: 80.97982009709813
+      beatIndex: 159
+    - position: {x: 507.50787, y: -0.46761978, z: 342.72116}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      time: 81.23840359714814
+      beatIndex: 160
+    - position: {x: 507.50787, y: -0.46761978, z: 345.8278}
+      rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+      time: 81.4972892969381
+      beatIndex: 161
+    - position: {x: 519.3982, y: -0.46761978, z: 345.8278}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      time: 82.4881473958958
+      beatIndex: 162
+    - position: {x: 519.3982, y: -0.46761978, z: 351.85822}
+      rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+      time: 82.99068159679882
+      beatIndex: 163
+    - position: {x: 531.61914, y: -0.46761978, z: 351.85822}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      time: 84.00909499707632
+      beatIndex: 164
+    - position: {x: 531.61914, y: -0.46761978, z: 354.84128}
+      rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+      time: 84.25768439727835
+      beatIndex: 165
+    - position: {x: 534.7203, y: -0.46761978, z: 354.84128}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      time: 84.51611019740812
+      beatIndex: 166
+    - position: {x: 534.7203, y: -0.46761978, z: 357.592}
+      rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+      time: 84.74533719778992
+      beatIndex: 167
+    - position: {x: 537.9559, y: -0.46761978, z: 357.592}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      time: 85.01497049769387
+      beatIndex: 168
+    - position: {x: 537.9559, y: -0.46761978, z: 366.29892}
+      rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+      time: 85.7405461971648
+      beatIndex: 169
+    - position: {x: 540.95776, y: -0.46761978, z: 366.29892}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      time: 85.99070289847441
+      beatIndex: 170
+    - position: {x: 540.95776, y: -0.46761978, z: 369.2725}
+      rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+      time: 86.23850060044788
+      beatIndex: 171
+    - position: {x: 544.4099, y: -0.46761978, z: 369.2725}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      time: 86.52618169947527
+      beatIndex: 172
+    - position: {x: 544.4099, y: -0.46761978, z: 375.348}
+      rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+      time: 87.03247439907864
+      beatIndex: 173
+    - position: {x: 547.2457, y: -0.46761978, z: 375.348}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      time: 87.26879459875636
+      beatIndex: 174
+    - position: {x: 547.2457, y: -0.46761978, z: 378.57504}
+      rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+      time: 87.53771619824693
+      beatIndex: 175
+    - position: {x: 556.01404, y: -0.46761978, z: 378.57504}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      time: 88.268410600489
+      beatIndex: 176
+    - position: {x: 556.01404, y: -0.46761978, z: 380.16605}
+      rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+      time: 88.4009935008362
+      beatIndex: 177
+    - position: {x: 557.5073, y: -0.46761978, z: 380.16605}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      time: 88.52543610055
+      beatIndex: 178
+    - position: {x: 557.5073, y: -0.46761978, z: 386.44525}
+      rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+      time: 89.04870250145905
+      beatIndex: 179
+    - position: {x: 574.8487, y: -0.46761978, z: 386.44525}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      time: 90.49381869914941
+      beatIndex: 180
+    - position: {x: 574.8487, y: -0.46761978, z: 422.57983}
+      rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+      time: 93.505032395944
+      beatIndex: 181
+    - position: {x: 614.1945, y: -0.46761978, z: 422.57983}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      time: 96.78384979511611
+      beatIndex: 182
+    generatedSegments:
+    - startWaypoint:
+        position: {x: 0, y: 0, z: 0}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 0
+        beatIndex: -1
+      endWaypoint:
+        position: {x: 15.62392, y: 0, z: -0.0000018625162}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 1.3019932992756367
+        beatIndex: 1
+      containedEvents: []
+      sections:
+      - startTime: 0
+        endTime: 1.3019932992756367
+        points:
+        - {x: 0, y: 0, z: 0}
+        - {x: 15.62392, y: 0, z: -0.0000018625162}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 15.62392, y: 0, z: -0.0000018625162}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 1.3019932992756367
+        beatIndex: 1
+      endWaypoint:
+        position: {x: 15.62392, y: 0, z: 2.7288678}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 1.5293990999925882
+        beatIndex: 2
+      containedEvents: []
+      sections:
+      - startTime: 1.3019932992756367
+        endTime: 1.5293990999925882
+        points:
+        - {x: 15.62392, y: 0, z: -0.0000018625162}
+        - {x: 15.62392, y: 0, z: 2.7288678}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 15.62392, y: 0, z: 2.7288678}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 1.5293990999925882
+        beatIndex: 2
+      endWaypoint:
+        position: {x: 18.600725, y: 0, z: 2.7288675}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 1.7774660997092724
+        beatIndex: 3
+      containedEvents: []
+      sections:
+      - startTime: 1.5293990999925882
+        endTime: 1.7774660997092724
+        points:
+        - {x: 15.62392, y: 0, z: 2.7288678}
+        - {x: 18.600725, y: 0, z: 2.7288675}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 18.600725, y: 0, z: 2.7288675}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 1.7774660997092724
+        beatIndex: 3
+      endWaypoint:
+        position: {x: 18.600725, y: 0, z: 14.416194}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 2.7514099997933954
+        beatIndex: 4
+      containedEvents: []
+      sections:
+      - startTime: 1.7774660997092724
+        endTime: 2.7514099997933954
+        points:
+        - {x: 18.600725, y: 0, z: 2.7288675}
+        - {x: 18.600725, y: 0, z: 14.416194}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 18.600725, y: 0, z: 14.416194}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 2.7514099997933954
+        beatIndex: 4
+      endWaypoint:
+        position: {x: 21.200628, y: 0, z: 14.416194}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 2.968068499583751
+        beatIndex: 5
+      containedEvents: []
+      sections:
+      - startTime: 2.7514099997933954
+        endTime: 2.968068499583751
+        points:
+        - {x: 18.600725, y: 0, z: 14.416194}
+        - {x: 21.200628, y: 0, z: 14.416194}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 21.200628, y: 0, z: 14.416194}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 2.968068499583751
+        beatIndex: 5
+      endWaypoint:
+        position: {x: 21.200628, y: 0, z: 17.523762}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 3.2270324979908764
+        beatIndex: 6
+      containedEvents: []
+      sections:
+      - startTime: 2.968068499583751
+        endTime: 3.2270324979908764
+        points:
+        - {x: 21.200628, y: 0, z: 14.416194}
+        - {x: 21.200628, y: 0, z: 17.523762}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 21.200628, y: 0, z: 17.523762}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 3.2270324979908764
+        beatIndex: 6
+      endWaypoint:
+        position: {x: 33.587387, y: 0, z: 17.52376}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 4.259262098465115
+        beatIndex: 7
+      containedEvents: []
+      sections:
+      - startTime: 3.2270324979908764
+        endTime: 4.259262098465115
+        points:
+        - {x: 21.200628, y: 0, z: 17.523762}
+        - {x: 33.587387, y: 0, z: 17.52376}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 33.587387, y: 0, z: 17.52376}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 4.259262098465115
+        beatIndex: 7
+      endWaypoint:
+        position: {x: 33.587387, y: 0, z: 20.446125}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 4.502792599378154
+        beatIndex: 8
+      containedEvents: []
+      sections:
+      - startTime: 4.259262098465115
+        endTime: 4.502792599378154
+        points:
+        - {x: 33.587387, y: 0, z: 17.52376}
+        - {x: 33.587387, y: 0, z: 20.446125}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 33.587387, y: 0, z: 20.446125}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 4.502792599378154
+        beatIndex: 8
+      endWaypoint:
+        position: {x: 36.396004, y: 0, z: 20.446125}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 4.7368440995924175
+        beatIndex: 9
+      containedEvents: []
+      sections:
+      - startTime: 4.502792599378154
+        endTime: 4.7368440995924175
+        points:
+        - {x: 33.587387, y: 0, z: 20.446125}
+        - {x: 36.396004, y: 0, z: 20.446125}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 36.396004, y: 0, z: 20.446125}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 4.7368440995924175
+        beatIndex: 9
+      endWaypoint:
+        position: {x: 36.396004, y: 0, z: 23.438442}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 4.986203800421208
+        beatIndex: 10
+      containedEvents: []
+      sections:
+      - startTime: 4.7368440995924175
+        endTime: 4.986203800421208
+        points:
+        - {x: 36.396004, y: 0, z: 20.446125}
+        - {x: 36.396004, y: 0, z: 23.438442}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 36.396004, y: 0, z: 23.438442}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 4.986203800421208
+        beatIndex: 10
+      endWaypoint:
+        position: {x: 39.409496, y: 0, z: 23.438442}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 5.237328000133857
+        beatIndex: 11
+      containedEvents: []
+      sections:
+      - startTime: 4.986203800421208
+        endTime: 5.237328000133857
+        points:
+        - {x: 36.396004, y: 0, z: 23.438442}
+        - {x: 39.409496, y: 0, z: 23.438442}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 39.409496, y: 0, z: 23.438442}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 5.237328000133857
+        beatIndex: 11
+      endWaypoint:
+        position: {x: 39.409496, y: 0, z: 26.63876}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 5.504021100932732
+        beatIndex: 12
+      containedEvents: []
+      sections:
+      - startTime: 5.237328000133857
+        endTime: 5.504021100932732
+        points:
+        - {x: 39.409496, y: 0, z: 23.438442}
+        - {x: 39.409496, y: 0, z: 26.63876}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 39.409496, y: 0, z: 26.63876}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 5.504021100932732
+        beatIndex: 12
+      endWaypoint:
+        position: {x: 42.458244, y: 0, z: 26.63876}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 5.758083502529189
+        beatIndex: 13
+      containedEvents: []
+      sections:
+      - startTime: 5.504021100932732
+        endTime: 5.758083502529189
+        points:
+        - {x: 39.409496, y: 0, z: 26.63876}
+        - {x: 42.458244, y: 0, z: 26.63876}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 42.458244, y: 0, z: 26.63876}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 5.758083502529189
+        beatIndex: 13
+      endWaypoint:
+        position: {x: 42.458244, y: 0, z: 29.623146}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 6.006782302400097
+        beatIndex: 14
+      containedEvents: []
+      sections:
+      - startTime: 5.758083502529189
+        endTime: 6.006782302400097
+        points:
+        - {x: 42.458244, y: 0, z: 26.63876}
+        - {x: 42.458244, y: 0, z: 29.623146}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 42.458244, y: 0, z: 29.623146}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 6.006782302400097
+        beatIndex: 14
+      endWaypoint:
+        position: {x: 45.454685, y: 0, z: 29.623146}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 6.25648560305126
+        beatIndex: 15
+      containedEvents: []
+      sections:
+      - startTime: 6.006782302400097
+        endTime: 6.25648560305126
+        points:
+        - {x: 42.458244, y: 0, z: 29.623146}
+        - {x: 45.454685, y: 0, z: 29.623146}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 45.454685, y: 0, z: 29.623146}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 6.25648560305126
+        beatIndex: 15
+      endWaypoint:
+        position: {x: 45.454685, y: -1.8799496, z: 41.664364}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 7.259920300450176
+        beatIndex: 16
+      containedEvents:
+      - rid: 6920599464020017152
+      sections:
+      - startTime: 6.25648560305126
+        endTime: 6.44392955111352
+        points:
+        - {x: 45.454685, y: 0, z: 29.623146}
+        - {x: 45.454685, y: 0, z: 31.872473}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+      - startTime: 6.44392955111352
+        endTime: 7.063019263600528
+        points:
+        - {x: 45.454685, y: 0, z: 31.872473}
+        - {x: 45.454685, y: -0.049050007, z: 33.07247}
+        - {x: 45.454685, y: -0.19620001, z: 34.272472}
+        - {x: 45.454685, y: -0.44145003, z: 35.472473}
+        - {x: 45.454685, y: -0.78480005, z: 36.672474}
+        - {x: 45.454685, y: -1.22625, z: 37.872475}
+        - {x: 45.454685, y: -1.7658001, z: 39.072475}
+        - {x: 45.454685, y: -1.8799496, z: 39.30155}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 1
+        isTeleport: 0
+      - startTime: 7.063019263600528
+        endTime: 7.259920300450176
+        points:
+        - {x: 45.454685, y: -1.8799496, z: 39.30155}
+        - {x: 45.454685, y: -1.8799496, z: 41.664364}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 45.454685, y: -1.8799496, z: 41.664364}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 7.259920300450176
+        beatIndex: 16
+      endWaypoint:
+        position: {x: 48.495655, y: -1.8799496, z: 41.664364}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 7.5133343995548785
+        beatIndex: 17
+      containedEvents: []
+      sections:
+      - startTime: 7.259920300450176
+        endTime: 7.5133343995548785
+        points:
+        - {x: 45.454685, y: -1.8799496, z: 41.664364}
+        - {x: 48.495655, y: -1.8799496, z: 41.664364}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 48.495655, y: -1.8799496, z: 41.664364}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 7.5133343995548785
+        beatIndex: 17
+      endWaypoint:
+        position: {x: 48.495655, y: -1.8799496, z: 44.743195}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 7.769903799286112
+        beatIndex: 18
+      containedEvents: []
+      sections:
+      - startTime: 7.5133343995548785
+        endTime: 7.769903799286112
+        points:
+        - {x: 48.495655, y: -1.8799496, z: 41.664364}
+        - {x: 48.495655, y: -1.8799496, z: 44.743195}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 48.495655, y: -1.8799496, z: 44.743195}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 7.769903799286112
+        beatIndex: 18
+      endWaypoint:
+        position: {x: 59.892735, y: -0.6490405, z: 44.743195}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 8.719659899361432
+        beatIndex: 19
+      containedEvents:
+      - rid: 6920599464020017153
+      sections:
+      - startTime: 7.769903799286112
+        endTime: 7.955789730014961
+        points:
+        - {x: 48.495655, y: -1.8799496, z: 44.743195}
+        - {x: 50.726288, y: -1.8799496, z: 44.743195}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+      - startTime: 7.955789730014961
+        endTime: 8.559430866155841
+        points:
+        - {x: 50.726288, y: -1.8799496, z: 44.743195}
+        - {x: 51.92629, y: -1.4289995, z: 44.743195}
+        - {x: 53.12629, y: -1.0761495, z: 44.743195}
+        - {x: 54.32629, y: -0.82139945, z: 44.743195}
+        - {x: 55.52629, y: -0.66474944, z: 44.743195}
+        - {x: 56.72629, y: -0.60619944, z: 44.743195}
+        - {x: 57.926292, y: -0.64574945, z: 44.743195}
+        - {x: 57.969986, y: -0.6490405, z: 44.743195}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 1
+        isTeleport: 0
+      - startTime: 8.559430866155841
+        endTime: 8.719659899361432
+        points:
+        - {x: 57.969986, y: -0.6490405, z: 44.743195}
+        - {x: 59.892735, y: -0.6490405, z: 44.743195}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 59.892735, y: -0.6490405, z: 44.743195}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 8.719659899361432
+        beatIndex: 19
+      endWaypoint:
+        position: {x: 59.892735, y: -0.6490405, z: 47.942226}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 8.986245998181403
+        beatIndex: 20
+      containedEvents: []
+      sections:
+      - startTime: 8.719659899361432
+        endTime: 8.986245998181403
+        points:
+        - {x: 59.892735, y: -0.6490405, z: 44.743195}
+        - {x: 59.892735, y: -0.6490405, z: 47.942226}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 59.892735, y: -0.6490405, z: 47.942226}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 8.986245998181403
+        beatIndex: 20
+      endWaypoint:
+        position: {x: 63.11417, y: -0.6490405, z: 47.942226}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 9.254698997130617
+        beatIndex: 21
+      containedEvents: []
+      sections:
+      - startTime: 8.986245998181403
+        endTime: 9.254698997130617
+        points:
+        - {x: 59.892735, y: -0.6490405, z: 47.942226}
+        - {x: 63.11417, y: -0.6490405, z: 47.942226}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 63.11417, y: -0.6490405, z: 47.942226}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 9.254698997130617
+        beatIndex: 21
+      endWaypoint:
+        position: {x: 63.11417, y: -0.6490405, z: 60.054638}
+        rotation: {x: 0, y: 0.92387956, z: 0, w: 0.38268346}
+        time: 10.264066596981138
+        beatIndex: 22
+      containedEvents:
+      - rid: 6920599464020017154
+      sections:
+      - startTime: 9.254698997130617
+        endTime: 9.790179687595714
+        points:
+        - {x: 63.11417, y: -0.6490405, z: 47.942226}
+        - {x: 63.11417, y: -0.6490405, z: 54.367996}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+      - startTime: 9.790179687595714
+        endTime: 10.264066596981138
+        points:
+        - {x: 63.11417, y: -0.6490405, z: 54.367996}
+        - {x: 63.11417, y: -0.6490405, z: 60.054638}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 63.11417, y: -0.6490405, z: 60.054638}
+        rotation: {x: 0, y: 0.92387956, z: 0, w: 0.38268346}
+        time: 10.264066596981138
+        beatIndex: 22
+      endWaypoint:
+        position: {x: 65.18515, y: -0.6490405, z: 57.983654}
+        rotation: {x: 0, y: 0.38268346, z: 0, w: 0.92387956}
+        time: 10.508134297793731
+        beatIndex: 23
+      containedEvents: []
+      sections:
+      - startTime: 10.264066596981138
+        endTime: 10.508134297793731
+        points:
+        - {x: 63.11417, y: -0.6490405, z: 60.054638}
+        - {x: 65.18515, y: -0.6490405, z: 57.983654}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 65.18515, y: -0.6490405, z: 57.983654}
+        rotation: {x: 0, y: 0.38268346, z: 0, w: 0.92387956}
+        time: 10.508134297793731
+        beatIndex: 23
+      endWaypoint:
+        position: {x: 67.24076, y: -0.6490405, z: 60.039265}
+        rotation: {x: 0, y: 0.92387956, z: 0, w: 0.38268346}
+        time: 10.75039049773477
+        beatIndex: 24
+      containedEvents: []
+      sections:
+      - startTime: 10.508134297793731
+        endTime: 10.75039049773477
+        points:
+        - {x: 65.18515, y: -0.6490405, z: 57.983654}
+        - {x: 67.24076, y: -0.6490405, z: 60.039265}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 67.24076, y: -0.6490405, z: 60.039265}
+        rotation: {x: 0, y: 0.92387956, z: 0, w: 0.38268346}
+        time: 10.75039049773477
+        beatIndex: 24
+      endWaypoint:
+        position: {x: 69.31994, y: -0.6490405, z: 57.960087}
+        rotation: {x: 0, y: 0.38268346, z: 0, w: 0.92387956}
+        time: 10.995423697400838
+        beatIndex: 25
+      containedEvents: []
+      sections:
+      - startTime: 10.75039049773477
+        endTime: 10.995423697400838
+        points:
+        - {x: 67.24076, y: -0.6490405, z: 60.039265}
+        - {x: 69.31994, y: -0.6490405, z: 57.960087}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 69.31994, y: -0.6490405, z: 57.960087}
+        rotation: {x: 0, y: 0.38268346, z: 0, w: 0.92387956}
+        time: 10.995423697400838
+        beatIndex: 25
+      endWaypoint:
+        position: {x: 71.46542, y: -0.6490405, z: 60.10557}
+        rotation: {x: 0, y: 0.92387956, z: 0, w: 0.38268346}
+        time: 11.248271396849304
+        beatIndex: 26
+      containedEvents: []
+      sections:
+      - startTime: 10.995423697400838
+        endTime: 11.248271396849304
+        points:
+        - {x: 69.31994, y: -0.6490405, z: 57.960087}
+        - {x: 71.46542, y: -0.6490405, z: 60.10557}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 71.46542, y: -0.6490405, z: 60.10557}
+        rotation: {x: 0, y: 0.92387956, z: 0, w: 0.38268346}
+        time: 11.248271396849304
+        beatIndex: 26
+      endWaypoint:
+        position: {x: 73.54405, y: -0.6490405, z: 58.02694}
+        rotation: {x: 0, y: 0.38268346, z: 0, w: 0.92387956}
+        time: 11.493240495678037
+        beatIndex: 27
+      containedEvents: []
+      sections:
+      - startTime: 11.248271396849304
+        endTime: 11.493240495678037
+        points:
+        - {x: 71.46542, y: -0.6490405, z: 60.10557}
+        - {x: 73.54405, y: -0.6490405, z: 58.02694}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 73.54405, y: -0.6490405, z: 58.02694}
+        rotation: {x: 0, y: 0.38268346, z: 0, w: 0.92387956}
+        time: 11.493240495678037
+        beatIndex: 27
+      endWaypoint:
+        position: {x: 75.65932, y: -0.6490405, z: 60.142204}
+        rotation: {x: 0, y: 0.92387956, z: 0, w: 0.38268346}
+        time: 11.742526894900948
+        beatIndex: 28
+      containedEvents: []
+      sections:
+      - startTime: 11.493240495678037
+        endTime: 11.742526894900948
+        points:
+        - {x: 73.54405, y: -0.6490405, z: 58.02694}
+        - {x: 75.65932, y: -0.6490405, z: 60.142204}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 75.65932, y: -0.6490405, z: 60.142204}
+        rotation: {x: 0, y: 0.92387956, z: 0, w: 0.38268346}
+        time: 11.742526894900948
+        beatIndex: 28
+      endWaypoint:
+        position: {x: 77.89269, y: -0.6490405, z: 57.908825}
+        rotation: {x: 0, y: 0.38268346, z: 0, w: 0.92387956}
+        time: 12.005733094876632
+        beatIndex: 29
+      containedEvents: []
+      sections:
+      - startTime: 11.742526894900948
+        endTime: 12.005733094876632
+        points:
+        - {x: 75.65932, y: -0.6490405, z: 60.142204}
+        - {x: 77.89269, y: -0.6490405, z: 57.908825}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 77.89269, y: -0.6490405, z: 57.908825}
+        rotation: {x: 0, y: 0.38268346, z: 0, w: 0.92387956}
+        time: 12.005733094876632
+        beatIndex: 29
+      endWaypoint:
+        position: {x: 80.02537, y: -0.6490405, z: 60.0415}
+        rotation: {x: 0, y: 0.92387956, z: 0, w: 0.38268346}
+        time: 12.257071194704622
+        beatIndex: 30
+      containedEvents: []
+      sections:
+      - startTime: 12.005733094876632
+        endTime: 12.257071194704622
+        points:
+        - {x: 77.89269, y: -0.6490405, z: 57.908825}
+        - {x: 80.02537, y: -0.6490405, z: 60.0415}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 80.02537, y: -0.6490405, z: 60.0415}
+        rotation: {x: 0, y: 0.92387956, z: 0, w: 0.38268346}
+        time: 12.257071194704622
+        beatIndex: 30
+      endWaypoint:
+        position: {x: 82.27715, y: -0.6490405, z: 57.78971}
+        rotation: {x: 0, y: 0.38268346, z: 0, w: 0.92387956}
+        time: 12.52244689478539
+        beatIndex: 31
+      containedEvents: []
+      sections:
+      - startTime: 12.257071194704622
+        endTime: 12.52244689478539
+        points:
+        - {x: 80.02537, y: -0.6490405, z: 60.0415}
+        - {x: 82.27715, y: -0.6490405, z: 57.78971}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 82.27715, y: -0.6490405, z: 57.78971}
+        rotation: {x: 0, y: 0.38268346, z: 0, w: 0.92387956}
+        time: 12.52244689478539
+        beatIndex: 31
+      endWaypoint:
+        position: {x: 86.29485, y: -0.6490405, z: 61.807415}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 12.995937595609576
+        beatIndex: 32
+      containedEvents:
+      - rid: 6920599464020017156
+      sections:
+      - startTime: 12.52244689478539
+        endTime: 12.698684866638109
+        points:
+        - {x: 82.27715, y: -0.6490405, z: 57.78971}
+        - {x: 83.77258, y: -0.6490405, z: 59.28514}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+      - startTime: 12.698684866638109
+        endTime: 12.995937595609576
+        points:
+        - {x: 83.77258, y: -0.6490405, z: 59.28514}
+        - {x: 86.29485, y: -0.6490405, z: 61.807415}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 86.29485, y: -0.6490405, z: 61.807415}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 12.995937595609576
+        beatIndex: 32
+      endWaypoint:
+        position: {x: 86.29485, y: -0.6490405, z: 70.510124}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 13.721163497539237
+        beatIndex: 33
+      containedEvents: []
+      sections:
+      - startTime: 12.995937595609576
+        endTime: 13.721163497539237
+        points:
+        - {x: 86.29485, y: -0.6490405, z: 61.807415}
+        - {x: 86.29485, y: -0.6490405, z: 70.510124}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 86.29485, y: -0.6490405, z: 70.510124}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 13.721163497539237
+        beatIndex: 33
+      endWaypoint:
+        position: {x: 89.25617, y: -0.6490405, z: 70.510124}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 13.967939797788858
+        beatIndex: 34
+      containedEvents: []
+      sections:
+      - startTime: 13.721163497539237
+        endTime: 13.967939797788858
+        points:
+        - {x: 86.29485, y: -0.6490405, z: 70.510124}
+        - {x: 89.25617, y: -0.6490405, z: 70.510124}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 89.25617, y: -0.6490405, z: 70.510124}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 13.967939797788858
+        beatIndex: 34
+      endWaypoint:
+        position: {x: 89.25617, y: -0.6490405, z: 73.897804}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 14.250246297335252
+        beatIndex: 35
+      containedEvents: []
+      sections:
+      - startTime: 13.967939797788858
+        endTime: 14.250246297335252
+        points:
+        - {x: 89.25617, y: -0.6490405, z: 70.510124}
+        - {x: 89.25617, y: -0.6490405, z: 73.897804}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 89.25617, y: -0.6490405, z: 73.897804}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 14.250246297335252
+        beatIndex: 35
+      endWaypoint:
+        position: {x: 59.66273, y: 4.87368, z: 8.821244}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 14.771525896852836
+        beatIndex: 36
+      containedEvents:
+      - rid: 6920599464020017157
+      sections:
+      - startTime: 14.250246297335252
+        endTime: 14.39
+        points:
+        - {x: 89.25617, y: -0.6490405, z: 73.897804}
+        - {x: 90.93322, y: -0.6490405, z: 73.897804}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+      - startTime: 14.39
+        endTime: 14.39
+        points:
+        - {x: 90.93322, y: -0.6490405, z: 73.897804}
+        - {x: 55.08442, y: 4.87368, z: 8.821245}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 1
+      - startTime: 14.39
+        endTime: 14.771525896852836
+        points:
+        - {x: 55.08442, y: 4.87368, z: 8.821245}
+        - {x: 59.66273, y: 4.87368, z: 8.821244}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 59.66273, y: 4.87368, z: 8.821244}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 14.771525896852836
+        beatIndex: 36
+      endWaypoint:
+        position: {x: 59.66273, y: 4.87368, z: 12.069415}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 15.042206797283143
+        beatIndex: 37
+      containedEvents: []
+      sections:
+      - startTime: 14.771525896852836
+        endTime: 15.042206797283143
+        points:
+        - {x: 59.66273, y: 4.87368, z: 8.821244}
+        - {x: 59.66273, y: 4.87368, z: 12.069415}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 59.66273, y: 4.87368, z: 12.069415}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 15.042206797283143
+        beatIndex: 37
+      endWaypoint:
+        position: {x: 62.679634, y: 4.87368, z: 12.069415}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 15.293615196365863
+        beatIndex: 38
+      containedEvents: []
+      sections:
+      - startTime: 15.042206797283143
+        endTime: 15.293615196365863
+        points:
+        - {x: 59.66273, y: 4.87368, z: 12.069415}
+        - {x: 62.679634, y: 4.87368, z: 12.069415}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 62.679634, y: 4.87368, z: 12.069415}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 15.293615196365863
+        beatIndex: 38
+      endWaypoint:
+        position: {x: 62.679634, y: 4.87368, z: 15.191294}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 15.553771796636283
+        beatIndex: 39
+      containedEvents: []
+      sections:
+      - startTime: 15.293615196365863
+        endTime: 15.553771796636283
+        points:
+        - {x: 62.679634, y: 4.87368, z: 12.069415}
+        - {x: 62.679634, y: 4.87368, z: 15.191294}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 62.679634, y: 4.87368, z: 15.191294}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 15.553771796636283
+        beatIndex: 39
+      endWaypoint:
+        position: {x: 68.865906, y: -2.46762, z: 4.392165}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 16.49081899644807
+        beatIndex: 40
+      containedEvents:
+      - rid: 6920599464020017158
+      sections:
+      - startTime: 15.553771796636283
+        endTime: 15.767
+        points:
+        - {x: 62.679634, y: 4.87368, z: 15.191294}
+        - {x: 65.23837, y: 4.87368, z: 15.191294}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+      - startTime: 15.767
+        endTime: 15.767
+        points:
+        - {x: 65.23837, y: 4.87368, z: 15.191294}
+        - {x: 60.180073, y: -2.46762, z: 4.392166}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 1
+      - startTime: 15.767
+        endTime: 16.49081899644807
+        points:
+        - {x: 60.180073, y: -2.46762, z: 4.392166}
+        - {x: 68.865906, y: -2.46762, z: 4.392165}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 68.865906, y: -2.46762, z: 4.392165}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 16.49081899644807
+        beatIndex: 40
+      endWaypoint:
+        position: {x: 68.865906, y: -2.46762, z: 10.352665}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 16.987527296179906
+        beatIndex: 41
+      containedEvents: []
+      sections:
+      - startTime: 16.49081899644807
+        endTime: 16.987527296179906
+        points:
+        - {x: 68.865906, y: -2.46762, z: 4.392165}
+        - {x: 68.865906, y: -2.46762, z: 10.352665}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 68.865906, y: -2.46762, z: 10.352665}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 16.987527296179906
+        beatIndex: 41
+      endWaypoint:
+        position: {x: 71.86884, y: -2.46762, z: 10.352665}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 17.23777199606411
+        beatIndex: 42
+      containedEvents: []
+      sections:
+      - startTime: 16.987527296179906
+        endTime: 17.23777199606411
+        points:
+        - {x: 68.865906, y: -2.46762, z: 10.352665}
+        - {x: 71.86884, y: -2.46762, z: 10.352665}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 71.86884, y: -2.46762, z: 10.352665}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 17.23777199606411
+        beatIndex: 42
+      endWaypoint:
+        position: {x: 71.86884, y: -2.46762, z: 25.371788}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 18.489365597255528
+        beatIndex: 43
+      containedEvents: []
+      sections:
+      - startTime: 17.23777199606411
+        endTime: 18.489365597255528
+        points:
+        - {x: 71.86884, y: -2.46762, z: 10.352665}
+        - {x: 71.86884, y: -2.46762, z: 25.371788}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 71.86884, y: -2.46762, z: 25.371788}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 18.489365597255528
+        beatIndex: 43
+      endWaypoint:
+        position: {x: 77.97255, y: -2.46762, z: 25.371788}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 18.998007497983053
+        beatIndex: 44
+      containedEvents: []
+      sections:
+      - startTime: 18.489365597255528
+        endTime: 18.998007497983053
+        points:
+        - {x: 71.86884, y: -2.46762, z: 25.371788}
+        - {x: 77.97255, y: -2.46762, z: 25.371788}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 77.97255, y: -2.46762, z: 25.371788}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 18.998007497983053
+        beatIndex: 44
+      endWaypoint:
+        position: {x: 77.97255, y: -2.46762, z: 33.8356}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 19.703325098147616
+        beatIndex: 45
+      containedEvents: []
+      sections:
+      - startTime: 18.998007497983053
+        endTime: 19.703325098147616
+        points:
+        - {x: 77.97255, y: -2.46762, z: 25.371788}
+        - {x: 77.97255, y: -2.46762, z: 33.8356}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 77.97255, y: -2.46762, z: 33.8356}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 19.703325098147616
+        beatIndex: 45
+      endWaypoint:
+        position: {x: 81.06609, y: -2.46762, z: 33.8356}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 19.96112029789947
+        beatIndex: 46
+      containedEvents: []
+      sections:
+      - startTime: 19.703325098147616
+        endTime: 19.96112029789947
+        points:
+        - {x: 77.97255, y: -2.46762, z: 33.8356}
+        - {x: 81.06609, y: -2.46762, z: 33.8356}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 81.06609, y: -2.46762, z: 33.8356}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 19.96112029789947
+        beatIndex: 46
+      endWaypoint:
+        position: {x: 81.06609, y: -2.46762, z: 37.22972}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 20.24396349908784
+        beatIndex: 47
+      containedEvents: []
+      sections:
+      - startTime: 19.96112029789947
+        endTime: 20.24396349908784
+        points:
+        - {x: 81.06609, y: -2.46762, z: 33.8356}
+        - {x: 81.06609, y: -2.46762, z: 37.22972}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 81.06609, y: -2.46762, z: 37.22972}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 20.24396349908784
+        beatIndex: 47
+      endWaypoint:
+        position: {x: 87.631905, y: -2.46762, z: 37.22972}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 20.791114601306617
+        beatIndex: 48
+      containedEvents: []
+      sections:
+      - startTime: 20.24396349908784
+        endTime: 20.791114601306617
+        points:
+        - {x: 81.06609, y: -2.46762, z: 37.22972}
+        - {x: 87.631905, y: -2.46762, z: 37.22972}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 87.631905, y: -2.46762, z: 37.22972}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 20.791114601306617
+        beatIndex: 48
+      endWaypoint:
+        position: {x: 87.631905, y: -2.46762, z: 40.20614}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 21.039149400778115
+        beatIndex: 49
+      containedEvents: []
+      sections:
+      - startTime: 20.791114601306617
+        endTime: 21.039149400778115
+        points:
+        - {x: 87.631905, y: -2.46762, z: 37.22972}
+        - {x: 87.631905, y: -2.46762, z: 40.20614}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 87.631905, y: -2.46762, z: 40.20614}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 21.039149400778115
+        beatIndex: 49
+      endWaypoint:
+        position: {x: 90.70592, y: -2.46762, z: 40.20614}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 21.29531720210798
+        beatIndex: 50
+      containedEvents: []
+      sections:
+      - startTime: 21.039149400778115
+        endTime: 21.29531720210798
+        points:
+        - {x: 87.631905, y: -2.46762, z: 40.20614}
+        - {x: 90.70592, y: -2.46762, z: 40.20614}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 90.70592, y: -2.46762, z: 40.20614}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 21.29531720210798
+        beatIndex: 50
+      endWaypoint:
+        position: {x: 90.70592, y: -2.46762, z: 43.1108}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 21.537372401217
+        beatIndex: 51
+      containedEvents: []
+      sections:
+      - startTime: 21.29531720210798
+        endTime: 21.537372401217
+        points:
+        - {x: 90.70592, y: -2.46762, z: 40.20614}
+        - {x: 90.70592, y: -2.46762, z: 43.1108}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 90.70592, y: -2.46762, z: 43.1108}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 21.537372401217
+        beatIndex: 51
+      endWaypoint:
+        position: {x: 99.80534, y: -2.46762, z: 43.1108}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 22.295658100629225
+        beatIndex: 52
+      containedEvents: []
+      sections:
+      - startTime: 21.537372401217
+        endTime: 22.295658100629225
+        points:
+        - {x: 90.70592, y: -2.46762, z: 43.1108}
+        - {x: 99.80534, y: -2.46762, z: 43.1108}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 99.80534, y: -2.46762, z: 43.1108}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 22.295658100629225
+        beatIndex: 52
+      endWaypoint:
+        position: {x: 99.80534, y: -2.46762, z: 44.786095}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 22.43526599998586
+        beatIndex: 53
+      containedEvents: []
+      sections:
+      - startTime: 22.295658100629225
+        endTime: 22.43526599998586
+        points:
+        - {x: 99.80534, y: -2.46762, z: 43.1108}
+        - {x: 99.80534, y: -2.46762, z: 44.786095}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 99.80534, y: -2.46762, z: 44.786095}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 22.43526599998586
+        beatIndex: 53
+      endWaypoint:
+        position: {x: 101.47645, y: -2.46762, z: 44.786095}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 22.574524700874463
+        beatIndex: 54
+      containedEvents: []
+      sections:
+      - startTime: 22.43526599998586
+        endTime: 22.574524700874463
+        points:
+        - {x: 99.80534, y: -2.46762, z: 44.786095}
+        - {x: 101.47645, y: -2.46762, z: 44.786095}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 101.47645, y: -2.46762, z: 44.786095}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 22.574524700874463
+        beatIndex: 54
+      endWaypoint:
+        position: {x: 101.47645, y: -2.46762, z: 50.628838}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 23.06141980085522
+        beatIndex: 55
+      containedEvents:
+      - rid: 6920599464020017160
+      sections:
+      - startTime: 22.574524700874463
+        endTime: 22.838073240206267
+        points:
+        - {x: 101.47645, y: -2.46762, z: 44.786095}
+        - {x: 101.47645, y: -2.46762, z: 47.948677}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+      - startTime: 22.838073240206267
+        endTime: 23.06141980085522
+        points:
+        - {x: 101.47645, y: -2.46762, z: 47.948677}
+        - {x: 101.47645, y: -2.46762, z: 50.628838}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 101.47645, y: -2.46762, z: 50.628838}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 23.06141980085522
+        beatIndex: 55
+      endWaypoint:
+        position: {x: 118.74006, y: -0.46761978, z: 50.628838}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 24.50005590263754
+        beatIndex: 56
+      containedEvents:
+      - rid: 6920599464020017159
+      - rid: 6920599464020017161
+      sections:
+      - startTime: 23.06141980085522
+        endTime: 23.245687316329228
+        points:
+        - {x: 101.47645, y: -2.46762, z: 50.628838}
+        - {x: 103.68766, y: -2.46762, z: 50.628838}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+      - startTime: 23.245687316329228
+        endTime: 24.245687316329228
+        points:
+        - {x: 103.68766, y: -2.46762, z: 50.628838}
+        - {x: 104.88766, y: -1.3676199, z: 50.628838}
+        - {x: 106.087654, y: -0.4676199, z: 50.628838}
+        - {x: 107.28765, y: 0.23238009, z: 50.628838}
+        - {x: 108.48765, y: 0.7323801, z: 50.628838}
+        - {x: 109.687645, y: 1.0323801, z: 50.628838}
+        - {x: 110.88764, y: 1.1323801, z: 50.628838}
+        - {x: 112.08764, y: 1.0323801, z: 50.628838}
+        - {x: 113.287636, y: 0.7323801, z: 50.628838}
+        - {x: 114.48763, y: 0.23238009, z: 50.628838}
+        - {x: 115.68763, y: -0.46761978, z: 50.628838}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 1
+        isTeleport: 0
+      - startTime: 24.245687316329228
+        endTime: 24.38598785055978
+        points:
+        - {x: 115.68763, y: -0.46761978, z: 50.628838}
+        - {x: 117.37124, y: -0.46761978, z: 50.628838}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+      - startTime: 24.38598785055978
+        endTime: 24.50005590263754
+        points:
+        - {x: 117.37124, y: -0.46761978, z: 50.628838}
+        - {x: 118.74006, y: -0.46761978, z: 50.628838}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 118.74006, y: -0.46761978, z: 50.628838}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 24.50005590263754
+        beatIndex: 56
+      endWaypoint:
+        position: {x: 118.74006, y: -0.46761978, z: 56.8487}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 25.01837790175341
+        beatIndex: 57
+      containedEvents: []
+      sections:
+      - startTime: 24.50005590263754
+        endTime: 25.01837790175341
+        points:
+        - {x: 118.74006, y: -0.46761978, z: 50.628838}
+        - {x: 118.74006, y: -0.46761978, z: 56.8487}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 118.74006, y: -0.46761978, z: 56.8487}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 25.01837790175341
+        beatIndex: 57
+      endWaypoint:
+        position: {x: 127.65499, y: -0.46761978, z: 56.8487}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 25.761288603767753
+        beatIndex: 58
+      containedEvents: []
+      sections:
+      - startTime: 25.01837790175341
+        endTime: 25.761288603767753
+        points:
+        - {x: 118.74006, y: -0.46761978, z: 56.8487}
+        - {x: 127.65499, y: -0.46761978, z: 56.8487}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 127.65499, y: -0.46761978, z: 56.8487}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 25.761288603767753
+        beatIndex: 58
+      endWaypoint:
+        position: {x: 127.65499, y: -0.46761978, z: 59.72214}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 26.00074200402014
+        beatIndex: 59
+      containedEvents: []
+      sections:
+      - startTime: 25.761288603767753
+        endTime: 26.00074200402014
+        points:
+        - {x: 127.65499, y: -0.46761978, z: 56.8487}
+        - {x: 127.65499, y: -0.46761978, z: 59.72214}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 127.65499, y: -0.46761978, z: 59.72214}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 26.00074200402014
+        beatIndex: 59
+      endWaypoint:
+        position: {x: 130.75601, y: -0.46761978, z: 59.72214}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 26.259161005029455
+        beatIndex: 60
+      containedEvents: []
+      sections:
+      - startTime: 26.00074200402014
+        endTime: 26.259161005029455
+        points:
+        - {x: 127.65499, y: -0.46761978, z: 59.72214}
+        - {x: 130.75601, y: -0.46761978, z: 59.72214}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 130.75601, y: -0.46761978, z: 59.72214}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 26.259161005029455
+        beatIndex: 60
+      endWaypoint:
+        position: {x: 130.75601, y: -0.46761978, z: 65.39744}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 26.73210260574706
+        beatIndex: 61
+      containedEvents: []
+      sections:
+      - startTime: 26.259161005029455
+        endTime: 26.73210260574706
+        points:
+        - {x: 130.75601, y: -0.46761978, z: 59.72214}
+        - {x: 130.75601, y: -0.46761978, z: 65.39744}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 130.75601, y: -0.46761978, z: 65.39744}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 26.73210260574706
+        beatIndex: 61
+      endWaypoint:
+        position: {x: 133.78383, y: -0.46761978, z: 65.39744}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 26.98442110675387
+        beatIndex: 62
+      containedEvents: []
+      sections:
+      - startTime: 26.73210260574706
+        endTime: 26.98442110675387
+        points:
+        - {x: 130.75601, y: -0.46761978, z: 65.39744}
+        - {x: 133.78383, y: -0.46761978, z: 65.39744}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 133.78383, y: -0.46761978, z: 65.39744}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 26.98442110675387
+        beatIndex: 62
+      endWaypoint:
+        position: {x: 133.78383, y: -0.46761978, z: 68.45319}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 27.239067506045103
+        beatIndex: 63
+      containedEvents: []
+      sections:
+      - startTime: 26.98442110675387
+        endTime: 27.239067506045103
+        points:
+        - {x: 133.78383, y: -0.46761978, z: 65.39744}
+        - {x: 133.78383, y: -0.46761978, z: 68.45319}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 133.78383, y: -0.46761978, z: 68.45319}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 27.239067506045103
+        beatIndex: 63
+      endWaypoint:
+        position: {x: 137.24568, y: -0.46761978, z: 68.45319}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 27.527555705979466
+        beatIndex: 64
+      containedEvents: []
+      sections:
+      - startTime: 27.239067506045103
+        endTime: 27.527555705979466
+        points:
+        - {x: 133.78383, y: -0.46761978, z: 68.45319}
+        - {x: 137.24568, y: -0.46761978, z: 68.45319}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 137.24568, y: -0.46761978, z: 68.45319}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 27.527555705979466
+        beatIndex: 64
+      endWaypoint:
+        position: {x: 137.24568, y: -0.46761978, z: 80.48884}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 28.5305262056645
+        beatIndex: 65
+      containedEvents: []
+      sections:
+      - startTime: 27.527555705979466
+        endTime: 28.5305262056645
+        points:
+        - {x: 137.24568, y: -0.46761978, z: 68.45319}
+        - {x: 137.24568, y: -0.46761978, z: 80.48884}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 137.24568, y: -0.46761978, z: 80.48884}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 28.5305262056645
+        beatIndex: 65
+      endWaypoint:
+        position: {x: 143.2734, y: -0.46761978, z: 80.48884}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 29.03283650521189
+        beatIndex: 66
+      containedEvents: []
+      sections:
+      - startTime: 28.5305262056645
+        endTime: 29.03283650521189
+        points:
+        - {x: 137.24568, y: -0.46761978, z: 80.48884}
+        - {x: 143.2734, y: -0.46761978, z: 80.48884}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 143.2734, y: -0.46761978, z: 80.48884}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 29.03283650521189
+        beatIndex: 66
+      endWaypoint:
+        position: {x: 143.2734, y: -0.46761978, z: 83.33592}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 29.27009330666624
+        beatIndex: 67
+      containedEvents: []
+      sections:
+      - startTime: 29.03283650521189
+        endTime: 29.27009330666624
+        points:
+        - {x: 143.2734, y: -0.46761978, z: 80.48884}
+        - {x: 143.2734, y: -0.46761978, z: 83.33592}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 143.2734, y: -0.46761978, z: 83.33592}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 29.27009330666624
+        beatIndex: 67
+      endWaypoint:
+        position: {x: 152.89256, y: -0.46761978, z: 83.33592}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 30.071690005948767
+        beatIndex: 68
+      containedEvents: []
+      sections:
+      - startTime: 29.27009330666624
+        endTime: 30.071690005948767
+        points:
+        - {x: 143.2734, y: -0.46761978, z: 83.33592}
+        - {x: 152.89256, y: -0.46761978, z: 83.33592}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 152.89256, y: -0.46761978, z: 83.33592}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 30.071690005948767
+        beatIndex: 68
+      endWaypoint:
+        position: {x: 152.89256, y: -0.46761978, z: 85.792534}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 30.276407706318423
+        beatIndex: 69
+      containedEvents: []
+      sections:
+      - startTime: 30.071690005948767
+        endTime: 30.276407706318423
+        points:
+        - {x: 152.89256, y: -0.46761978, z: 83.33592}
+        - {x: 152.89256, y: -0.46761978, z: 85.792534}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 152.89256, y: -0.46761978, z: 85.792534}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 30.276407706318423
+        beatIndex: 69
+      endWaypoint:
+        position: {x: 155.99252, y: -0.46761978, z: 85.792534}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 30.534737505717203
+        beatIndex: 70
+      containedEvents: []
+      sections:
+      - startTime: 30.276407706318423
+        endTime: 30.534737505717203
+        points:
+        - {x: 152.89256, y: -0.46761978, z: 85.792534}
+        - {x: 155.99252, y: -0.46761978, z: 85.792534}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 155.99252, y: -0.46761978, z: 85.792534}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 30.534737505717203
+        beatIndex: 70
+      endWaypoint:
+        position: {x: 155.99252, y: -0.46761978, z: 88.44968}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 30.756166205275804
+        beatIndex: 71
+      containedEvents: []
+      sections:
+      - startTime: 30.534737505717203
+        endTime: 30.756166205275804
+        points:
+        - {x: 155.99252, y: -0.46761978, z: 85.792534}
+        - {x: 155.99252, y: -0.46761978, z: 88.44968}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 155.99252, y: -0.46761978, z: 88.44968}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 30.756166205275804
+        beatIndex: 71
+      endWaypoint:
+        position: {x: 159.12643, y: -0.46761978, z: 88.44968}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 31.017325605731457
+        beatIndex: 72
+      containedEvents: []
+      sections:
+      - startTime: 30.756166205275804
+        endTime: 31.017325605731457
+        points:
+        - {x: 155.99252, y: -0.46761978, z: 88.44968}
+        - {x: 159.12643, y: -0.46761978, z: 88.44968}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 159.12643, y: -0.46761978, z: 88.44968}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 31.017325605731457
+        beatIndex: 72
+      endWaypoint:
+        position: {x: 159.12643, y: -0.46761978, z: 97.27717}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 31.75295010721311
+        beatIndex: 73
+      containedEvents: []
+      sections:
+      - startTime: 31.017325605731457
+        endTime: 31.75295010721311
+        points:
+        - {x: 159.12643, y: -0.46761978, z: 88.44968}
+        - {x: 159.12643, y: -0.46761978, z: 97.27717}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 159.12643, y: -0.46761978, z: 97.27717}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 31.75295010721311
+        beatIndex: 73
+      endWaypoint:
+        position: {x: 162.16872, y: -0.46761978, z: 97.27717}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 32.00647320761345
+        beatIndex: 74
+      containedEvents: []
+      sections:
+      - startTime: 31.75295010721311
+        endTime: 32.00647320761345
+        points:
+        - {x: 159.12643, y: -0.46761978, z: 97.27717}
+        - {x: 162.16872, y: -0.46761978, z: 97.27717}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 162.16872, y: -0.46761978, z: 97.27717}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 32.00647320761345
+        beatIndex: 74
+      endWaypoint:
+        position: {x: 162.16872, y: -0.46761978, z: 100.28686}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 32.257280707359314
+        beatIndex: 75
+      containedEvents: []
+      sections:
+      - startTime: 32.00647320761345
+        endTime: 32.257280707359314
+        points:
+        - {x: 162.16872, y: -0.46761978, z: 97.27717}
+        - {x: 162.16872, y: -0.46761978, z: 100.28686}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 162.16872, y: -0.46761978, z: 100.28686}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 32.257280707359314
+        beatIndex: 75
+      endWaypoint:
+        position: {x: 165.32567, y: -0.46761978, z: 100.28686}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 32.52036010869779
+        beatIndex: 76
+      containedEvents: []
+      sections:
+      - startTime: 32.257280707359314
+        endTime: 32.52036010869779
+        points:
+        - {x: 162.16872, y: -0.46761978, z: 100.28686}
+        - {x: 165.32567, y: -0.46761978, z: 100.28686}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 165.32567, y: -0.46761978, z: 100.28686}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 32.52036010869779
+        beatIndex: 76
+      endWaypoint:
+        position: {x: 165.32567, y: -0.46761978, z: 106.33982}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 33.02477390714921
+        beatIndex: 77
+      containedEvents: []
+      sections:
+      - startTime: 32.52036010869779
+        endTime: 33.02477390714921
+        points:
+        - {x: 165.32567, y: -0.46761978, z: 100.28686}
+        - {x: 165.32567, y: -0.46761978, z: 106.33982}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 165.32567, y: -0.46761978, z: 106.33982}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 33.02477390714921
+        beatIndex: 77
+      endWaypoint:
+        position: {x: 168.21373, y: -0.46761978, z: 106.33982}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 33.26544620702043
+        beatIndex: 78
+      containedEvents: []
+      sections:
+      - startTime: 33.02477390714921
+        endTime: 33.26544620702043
+        points:
+        - {x: 165.32567, y: -0.46761978, z: 106.33982}
+        - {x: 168.21373, y: -0.46761978, z: 106.33982}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 168.21373, y: -0.46761978, z: 106.33982}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 33.26544620702043
+        beatIndex: 78
+      endWaypoint:
+        position: {x: 168.21373, y: -0.46761978, z: 109.44096}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 33.52387450635433
+        beatIndex: 79
+      containedEvents: []
+      sections:
+      - startTime: 33.26544620702043
+        endTime: 33.52387450635433
+        points:
+        - {x: 168.21373, y: -0.46761978, z: 106.33982}
+        - {x: 168.21373, y: -0.46761978, z: 109.44096}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 168.21373, y: -0.46761978, z: 109.44096}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 33.52387450635433
+        beatIndex: 79
+      endWaypoint:
+        position: {x: 176.57791, y: -0.46761978, z: 109.44096}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 34.22089010756463
+        beatIndex: 80
+      containedEvents: []
+      sections:
+      - startTime: 33.52387450635433
+        endTime: 34.22089010756463
+        points:
+        - {x: 168.21373, y: -0.46761978, z: 109.44096}
+        - {x: 176.57791, y: -0.46761978, z: 109.44096}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 176.57791, y: -0.46761978, z: 109.44096}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 34.22089010756463
+        beatIndex: 80
+      endWaypoint:
+        position: {x: 176.57791, y: -0.46761978, z: 111.038605}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 34.35402700677514
+        beatIndex: 81
+      containedEvents: []
+      sections:
+      - startTime: 34.22089010756463
+        endTime: 34.35402700677514
+        points:
+        - {x: 176.57791, y: -0.46761978, z: 109.44096}
+        - {x: 176.57791, y: -0.46761978, z: 111.038605}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 176.57791, y: -0.46761978, z: 111.038605}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 34.35402700677514
+        beatIndex: 81
+      endWaypoint:
+        position: {x: 178.35515, y: -0.46761978, z: 111.038605}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 34.50212970608845
+        beatIndex: 82
+      containedEvents: []
+      sections:
+      - startTime: 34.35402700677514
+        endTime: 34.50212970608845
+        points:
+        - {x: 176.57791, y: -0.46761978, z: 111.038605}
+        - {x: 178.35515, y: -0.46761978, z: 111.038605}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 178.35515, y: -0.46761978, z: 111.038605}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 34.50212970608845
+        beatIndex: 82
+      endWaypoint:
+        position: {x: 178.35515, y: -0.46761978, z: 117.05216}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 35.003259206190705
+        beatIndex: 83
+      containedEvents: []
+      sections:
+      - startTime: 34.50212970608845
+        endTime: 35.003259206190705
+        points:
+        - {x: 178.35515, y: -0.46761978, z: 111.038605}
+        - {x: 178.35515, y: -0.46761978, z: 117.05216}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 178.35515, y: -0.46761978, z: 117.05216}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 35.003259206190705
+        beatIndex: 83
+      endWaypoint:
+        position: {x: 232.27042, y: -0.46761978, z: 117.052155}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 39.49619701318443
+        beatIndex: 84
+      containedEvents: []
+      sections:
+      - startTime: 35.003259206190705
+        endTime: 39.49619701318443
+        points:
+        - {x: 178.35515, y: -0.46761978, z: 117.05216}
+        - {x: 232.27042, y: -0.46761978, z: 117.052155}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 232.27042, y: -0.46761978, z: 117.052155}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 39.49619701318443
+        beatIndex: 84
+      endWaypoint:
+        position: {x: 232.27042, y: -0.46761978, z: 123.39204}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 40.02452071243897
+        beatIndex: 85
+      containedEvents: []
+      sections:
+      - startTime: 39.49619701318443
+        endTime: 40.02452071243897
+        points:
+        - {x: 232.27042, y: -0.46761978, z: 117.052155}
+        - {x: 232.27042, y: -0.46761978, z: 123.39204}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 232.27042, y: -0.46761978, z: 123.39204}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 40.02452071243897
+        beatIndex: 85
+      endWaypoint:
+        position: {x: 241.16159, y: -0.46761978, z: 123.39204}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 40.7654518133495
+        beatIndex: 86
+      containedEvents: []
+      sections:
+      - startTime: 40.02452071243897
+        endTime: 40.7654518133495
+        points:
+        - {x: 232.27042, y: -0.46761978, z: 123.39204}
+        - {x: 241.16159, y: -0.46761978, z: 123.39204}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 241.16159, y: -0.46761978, z: 123.39204}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 40.7654518133495
+        beatIndex: 86
+      endWaypoint:
+        position: {x: 241.16159, y: -0.46761978, z: 126.4259}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 41.018274212721735
+        beatIndex: 87
+      containedEvents: []
+      sections:
+      - startTime: 40.7654518133495
+        endTime: 41.018274212721735
+        points:
+        - {x: 241.16159, y: -0.46761978, z: 123.39204}
+        - {x: 241.16159, y: -0.46761978, z: 126.4259}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 241.16159, y: -0.46761978, z: 126.4259}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 41.018274212721735
+        beatIndex: 87
+      endWaypoint:
+        position: {x: 247.45273, y: -0.46761978, z: 126.4259}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 41.542535511543974
+        beatIndex: 88
+      containedEvents: []
+      sections:
+      - startTime: 41.018274212721735
+        endTime: 41.542535511543974
+        points:
+        - {x: 241.16159, y: -0.46761978, z: 126.4259}
+        - {x: 247.45273, y: -0.46761978, z: 126.4259}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 247.45273, y: -0.46761978, z: 126.4259}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 41.542535511543974
+        beatIndex: 88
+      endWaypoint:
+        position: {x: 247.45273, y: -0.46761978, z: 135.28363}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 42.28067981288768
+        beatIndex: 89
+      containedEvents: []
+      sections:
+      - startTime: 41.542535511543974
+        endTime: 42.28067981288768
+        points:
+        - {x: 247.45273, y: -0.46761978, z: 126.4259}
+        - {x: 247.45273, y: -0.46761978, z: 135.28363}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 247.45273, y: -0.46761978, z: 135.28363}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 42.28067981288768
+        beatIndex: 89
+      endWaypoint:
+        position: {x: 250.53328, y: -0.46761978, z: 135.28363}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 42.53739291266538
+        beatIndex: 90
+      containedEvents: []
+      sections:
+      - startTime: 42.28067981288768
+        endTime: 42.53739291266538
+        points:
+        - {x: 247.45273, y: -0.46761978, z: 135.28363}
+        - {x: 250.53328, y: -0.46761978, z: 135.28363}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 250.53328, y: -0.46761978, z: 135.28363}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 42.53739291266538
+        beatIndex: 90
+      endWaypoint:
+        position: {x: 250.53328, y: -0.46761978, z: 141.19415}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 43.02993591083214
+        beatIndex: 91
+      containedEvents: []
+      sections:
+      - startTime: 42.53739291266538
+        endTime: 43.02993591083214
+        points:
+        - {x: 250.53328, y: -0.46761978, z: 135.28363}
+        - {x: 250.53328, y: -0.46761978, z: 141.19415}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 250.53328, y: -0.46761978, z: 141.19415}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 43.02993591083214
+        beatIndex: 91
+      endWaypoint:
+        position: {x: 256.3704, y: -0.46761978, z: 141.19415}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 43.51636090967804
+        beatIndex: 92
+      containedEvents: []
+      sections:
+      - startTime: 43.02993591083214
+        endTime: 43.51636090967804
+        points:
+        - {x: 250.53328, y: -0.46761978, z: 141.19415}
+        - {x: 256.3704, y: -0.46761978, z: 141.19415}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 256.3704, y: -0.46761978, z: 141.19415}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 43.51636090967804
+        beatIndex: 92
+      endWaypoint:
+        position: {x: 256.3704, y: -0.46761978, z: 147.27498}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 44.02309670927934
+        beatIndex: 93
+      containedEvents: []
+      sections:
+      - startTime: 43.51636090967804
+        endTime: 44.02309670927934
+        points:
+        - {x: 256.3704, y: -0.46761978, z: 141.19415}
+        - {x: 256.3704, y: -0.46761978, z: 147.27498}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 256.3704, y: -0.46761978, z: 147.27498}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 44.02309670927934
+        beatIndex: 93
+      endWaypoint:
+        position: {x: 264.71432, y: -0.46761978, z: 147.27498}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 44.71842390974052
+        beatIndex: 94
+      containedEvents: []
+      sections:
+      - startTime: 44.02309670927934
+        endTime: 44.71842390974052
+        points:
+        - {x: 256.3704, y: -0.46761978, z: 147.27498}
+        - {x: 264.71432, y: -0.46761978, z: 147.27498}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 264.71432, y: -0.46761978, z: 147.27498}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 44.71842390974052
+        beatIndex: 94
+      endWaypoint:
+        position: {x: 264.71432, y: -0.46761978, z: 148.941}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 44.85725830961019
+        beatIndex: 95
+      containedEvents: []
+      sections:
+      - startTime: 44.71842390974052
+        endTime: 44.85725830961019
+        points:
+        - {x: 264.71432, y: -0.46761978, z: 147.27498}
+        - {x: 264.71432, y: -0.46761978, z: 148.941}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 264.71432, y: -0.46761978, z: 148.941}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 44.85725830961019
+        beatIndex: 95
+      endWaypoint:
+        position: {x: 266.53143, y: -0.46761978, z: 148.941}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 45.00868271035142
+        beatIndex: 96
+      containedEvents: []
+      sections:
+      - startTime: 44.85725830961019
+        endTime: 45.00868271035142
+        points:
+        - {x: 264.71432, y: -0.46761978, z: 148.941}
+        - {x: 266.53143, y: -0.46761978, z: 148.941}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 266.53143, y: -0.46761978, z: 148.941}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 45.00868271035142
+        beatIndex: 96
+      endWaypoint:
+        position: {x: 266.53143, y: -0.46761978, z: 155.02307}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 45.51552191050723
+        beatIndex: 97
+      containedEvents: []
+      sections:
+      - startTime: 45.00868271035142
+        endTime: 45.51552191050723
+        points:
+        - {x: 266.53143, y: -0.46761978, z: 148.941}
+        - {x: 266.53143, y: -0.46761978, z: 155.02307}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 266.53143, y: -0.46761978, z: 155.02307}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 45.51552191050723
+        beatIndex: 97
+      endWaypoint:
+        position: {x: 272.73386, y: -0.46761978, z: 155.02307}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 46.03239111043513
+        beatIndex: 98
+      containedEvents: []
+      sections:
+      - startTime: 45.51552191050723
+        endTime: 46.03239111043513
+        points:
+        - {x: 266.53143, y: -0.46761978, z: 155.02307}
+        - {x: 272.73386, y: -0.46761978, z: 155.02307}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 272.73386, y: -0.46761978, z: 155.02307}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 46.03239111043513
+        beatIndex: 98
+      endWaypoint:
+        position: {x: 272.73386, y: -0.46761978, z: 163.7532}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 46.75990231055766
+        beatIndex: 99
+      containedEvents: []
+      sections:
+      - startTime: 46.03239111043513
+        endTime: 46.75990231055766
+        points:
+        - {x: 272.73386, y: -0.46761978, z: 155.02307}
+        - {x: 272.73386, y: -0.46761978, z: 163.7532}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 272.73386, y: -0.46761978, z: 163.7532}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 46.75990231055766
+        beatIndex: 99
+      endWaypoint:
+        position: {x: 275.87933, y: -0.46761978, z: 163.7532}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 47.02202601102181
+        beatIndex: 100
+      containedEvents: []
+      sections:
+      - startTime: 46.75990231055766
+        endTime: 47.02202601102181
+        points:
+        - {x: 272.73386, y: -0.46761978, z: 163.7532}
+        - {x: 275.87933, y: -0.46761978, z: 163.7532}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 275.87933, y: -0.46761978, z: 163.7532}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 47.02202601102181
+        beatIndex: 100
+      endWaypoint:
+        position: {x: 275.87933, y: -0.46761978, z: 169.64906}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 47.51334711210802
+        beatIndex: 101
+      containedEvents: []
+      sections:
+      - startTime: 47.02202601102181
+        endTime: 47.51334711210802
+        points:
+        - {x: 275.87933, y: -0.46761978, z: 163.7532}
+        - {x: 275.87933, y: -0.46761978, z: 169.64906}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 275.87933, y: -0.46761978, z: 169.64906}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 47.51334711210802
+        beatIndex: 101
+      endWaypoint:
+        position: {x: 281.72632, y: -0.46761978, z: 169.64906}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 48.000595011981204
+        beatIndex: 102
+      containedEvents: []
+      sections:
+      - startTime: 47.51334711210802
+        endTime: 48.000595011981204
+        points:
+        - {x: 275.87933, y: -0.46761978, z: 169.64906}
+        - {x: 281.72632, y: -0.46761978, z: 169.64906}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 281.72632, y: -0.46761978, z: 169.64906}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 48.000595011981204
+        beatIndex: 102
+      endWaypoint:
+        position: {x: 281.72632, y: -0.46761978, z: 175.56078}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 48.493237514048815
+        beatIndex: 103
+      containedEvents: []
+      sections:
+      - startTime: 48.000595011981204
+        endTime: 48.493237514048815
+        points:
+        - {x: 281.72632, y: -0.46761978, z: 169.64906}
+        - {x: 281.72632, y: -0.46761978, z: 175.56078}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 281.72632, y: -0.46761978, z: 175.56078}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 48.493237514048815
+        beatIndex: 103
+      endWaypoint:
+        position: {x: 293.64096, y: -0.46761978, z: 175.56078}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 49.486123313428834
+        beatIndex: 104
+      containedEvents: []
+      sections:
+      - startTime: 48.493237514048815
+        endTime: 49.486123313428834
+        points:
+        - {x: 281.72632, y: -0.46761978, z: 175.56078}
+        - {x: 293.64096, y: -0.46761978, z: 175.56078}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 293.64096, y: -0.46761978, z: 175.56078}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 49.486123313428834
+        beatIndex: 104
+      endWaypoint:
+        position: {x: 293.64096, y: -0.46761978, z: 182.13487}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 50.0339644132182
+        beatIndex: 105
+      containedEvents: []
+      sections:
+      - startTime: 49.486123313428834
+        endTime: 50.0339644132182
+        points:
+        - {x: 293.64096, y: -0.46761978, z: 175.56078}
+        - {x: 293.64096, y: -0.46761978, z: 182.13487}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 293.64096, y: -0.46761978, z: 182.13487}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 50.0339644132182
+        beatIndex: 105
+      endWaypoint:
+        position: {x: 296.2129, y: -0.46761978, z: 182.13487}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 50.24829231342301
+        beatIndex: 106
+      containedEvents: []
+      sections:
+      - startTime: 50.0339644132182
+        endTime: 50.24829231342301
+        points:
+        - {x: 293.64096, y: -0.46761978, z: 182.13487}
+        - {x: 296.2129, y: -0.46761978, z: 182.13487}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 296.2129, y: -0.46761978, z: 182.13487}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 50.24829231342301
+        beatIndex: 106
+      endWaypoint:
+        position: {x: 296.2129, y: -0.46761978, z: 197.46985}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 51.52620711317286
+        beatIndex: 107
+      containedEvents: []
+      sections:
+      - startTime: 50.24829231342301
+        endTime: 51.52620711317286
+        points:
+        - {x: 296.2129, y: -0.46761978, z: 182.13487}
+        - {x: 296.2129, y: -0.46761978, z: 197.46985}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 296.2129, y: -0.46761978, z: 197.46985}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 51.52620711317286
+        beatIndex: 107
+      endWaypoint:
+        position: {x: 302.13895, y: -0.46761978, z: 197.46985}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 52.020045711658895
+        beatIndex: 108
+      containedEvents: []
+      sections:
+      - startTime: 51.52620711317286
+        endTime: 52.020045711658895
+        points:
+        - {x: 296.2129, y: -0.46761978, z: 197.46985}
+        - {x: 302.13895, y: -0.46761978, z: 197.46985}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 302.13895, y: -0.46761978, z: 197.46985}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 52.020045711658895
+        beatIndex: 108
+      endWaypoint:
+        position: {x: 302.13895, y: -0.46761978, z: 206.37425}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 52.76207961165346
+        beatIndex: 109
+      containedEvents: []
+      sections:
+      - startTime: 52.020045711658895
+        endTime: 52.76207961165346
+        points:
+        - {x: 302.13895, y: -0.46761978, z: 197.46985}
+        - {x: 302.13895, y: -0.46761978, z: 206.37425}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 302.13895, y: -0.46761978, z: 206.37425}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 52.76207961165346
+        beatIndex: 109
+      endWaypoint:
+        position: {x: 305.25922, y: -0.46761978, z: 206.37425}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 53.022101211128756
+        beatIndex: 110
+      containedEvents: []
+      sections:
+      - startTime: 52.76207961165346
+        endTime: 53.022101211128756
+        points:
+        - {x: 302.13895, y: -0.46761978, z: 206.37425}
+        - {x: 305.25922, y: -0.46761978, z: 206.37425}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 305.25922, y: -0.46761978, z: 206.37425}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 53.022101211128756
+        beatIndex: 110
+      endWaypoint:
+        position: {x: 305.25922, y: -0.46761978, z: 212.23059}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 53.510129511822015
+        beatIndex: 111
+      containedEvents: []
+      sections:
+      - startTime: 53.022101211128756
+        endTime: 53.510129511822015
+        points:
+        - {x: 305.25922, y: -0.46761978, z: 206.37425}
+        - {x: 305.25922, y: -0.46761978, z: 212.23059}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 305.25922, y: -0.46761978, z: 212.23059}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 53.510129511822015
+        beatIndex: 111
+      endWaypoint:
+        position: {x: 314.57166, y: -0.46761978, z: 212.23059}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 54.28616591147147
+        beatIndex: 112
+      containedEvents: []
+      sections:
+      - startTime: 53.510129511822015
+        endTime: 54.28616591147147
+        points:
+        - {x: 305.25922, y: -0.46761978, z: 212.23059}
+        - {x: 314.57166, y: -0.46761978, z: 212.23059}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 314.57166, y: -0.46761978, z: 212.23059}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 54.28616591147147
+        beatIndex: 112
+      endWaypoint:
+        position: {x: 314.57166, y: -0.46761978, z: 215.11043}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 54.52615241124295
+        beatIndex: 113
+      containedEvents: []
+      sections:
+      - startTime: 54.28616591147147
+        endTime: 54.52615241124295
+        points:
+        - {x: 314.57166, y: -0.46761978, z: 212.23059}
+        - {x: 314.57166, y: -0.46761978, z: 215.11043}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 314.57166, y: -0.46761978, z: 215.11043}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 54.52615241124295
+        beatIndex: 113
+      endWaypoint:
+        position: {x: 320.5976, y: -0.46761978, z: 215.11043}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 55.02831521141343
+        beatIndex: 114
+      containedEvents: []
+      sections:
+      - startTime: 54.52615241124295
+        endTime: 55.02831521141343
+        points:
+        - {x: 314.57166, y: -0.46761978, z: 215.11043}
+        - {x: 320.5976, y: -0.46761978, z: 215.11043}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 320.5976, y: -0.46761978, z: 215.11043}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 55.02831521141343
+        beatIndex: 114
+      endWaypoint:
+        position: {x: 320.5976, y: -0.46761978, z: 220.98634}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 55.51797541161068
+        beatIndex: 115
+      containedEvents: []
+      sections:
+      - startTime: 55.02831521141343
+        endTime: 55.51797541161068
+        points:
+        - {x: 320.5976, y: -0.46761978, z: 215.11043}
+        - {x: 320.5976, y: -0.46761978, z: 220.98634}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 320.5976, y: -0.46761978, z: 220.98634}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 55.51797541161068
+        beatIndex: 115
+      endWaypoint:
+        position: {x: 326.32956, y: -0.46761978, z: 220.98634}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 55.995639911619946
+        beatIndex: 116
+      containedEvents: []
+      sections:
+      - startTime: 55.51797541161068
+        endTime: 55.995639911619946
+        points:
+        - {x: 320.5976, y: -0.46761978, z: 220.98634}
+        - {x: 326.32956, y: -0.46761978, z: 220.98634}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 326.32956, y: -0.46761978, z: 220.98634}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 55.995639911619946
+        beatIndex: 116
+      endWaypoint:
+        position: {x: 326.32956, y: -0.46761978, z: 230.04257}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 56.75032601039857
+        beatIndex: 117
+      containedEvents: []
+      sections:
+      - startTime: 55.995639911619946
+        endTime: 56.75032601039857
+        points:
+        - {x: 326.32956, y: -0.46761978, z: 220.98634}
+        - {x: 326.32956, y: -0.46761978, z: 230.04257}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 326.32956, y: -0.46761978, z: 230.04257}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 56.75032601039857
+        beatIndex: 117
+      endWaypoint:
+        position: {x: 328.04642, y: -0.46761978, z: 230.04257}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 56.893398710293695
+        beatIndex: 118
+      containedEvents: []
+      sections:
+      - startTime: 56.75032601039857
+        endTime: 56.893398710293695
+        points:
+        - {x: 326.32956, y: -0.46761978, z: 230.04257}
+        - {x: 328.04642, y: -0.46761978, z: 230.04257}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 328.04642, y: -0.46761978, z: 230.04257}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 56.893398710293695
+        beatIndex: 118
+      endWaypoint:
+        position: {x: 328.04642, y: -0.46761978, z: 231.67708}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 57.02960781008005
+        beatIndex: 119
+      containedEvents: []
+      sections:
+      - startTime: 56.893398710293695
+        endTime: 57.02960781008005
+        points:
+        - {x: 328.04642, y: -0.46761978, z: 230.04257}
+        - {x: 328.04642, y: -0.46761978, z: 231.67708}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 328.04642, y: -0.46761978, z: 231.67708}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 57.02960781008005
+        beatIndex: 119
+      endWaypoint:
+        position: {x: 334.28815, y: -0.46761978, z: 231.67708}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 57.5497511101421
+        beatIndex: 120
+      containedEvents: []
+      sections:
+      - startTime: 57.02960781008005
+        endTime: 57.5497511101421
+        points:
+        - {x: 328.04642, y: -0.46761978, z: 231.67708}
+        - {x: 334.28815, y: -0.46761978, z: 231.67708}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 334.28815, y: -0.46761978, z: 231.67708}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 57.5497511101421
+        beatIndex: 120
+      endWaypoint:
+        position: {x: 334.28815, y: -0.46761978, z: 237.68459}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 58.05037711048499
+        beatIndex: 121
+      containedEvents: []
+      sections:
+      - startTime: 57.5497511101421
+        endTime: 58.05037711048499
+        points:
+        - {x: 334.28815, y: -0.46761978, z: 231.67708}
+        - {x: 334.28815, y: -0.46761978, z: 237.68459}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 334.28815, y: -0.46761978, z: 237.68459}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 58.05037711048499
+        beatIndex: 121
+      endWaypoint:
+        position: {x: 342.89838, y: -0.46761978, z: 237.68459}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 58.76789610995911
+        beatIndex: 122
+      containedEvents: []
+      sections:
+      - startTime: 58.05037711048499
+        endTime: 58.76789610995911
+        points:
+        - {x: 334.28815, y: -0.46761978, z: 237.68459}
+        - {x: 342.89838, y: -0.46761978, z: 237.68459}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 342.89838, y: -0.46761978, z: 237.68459}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 58.76789610995911
+        beatIndex: 122
+      endWaypoint:
+        position: {x: 342.89838, y: -0.46761978, z: 240.54291}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 59.00609000911936
+        beatIndex: 123
+      containedEvents: []
+      sections:
+      - startTime: 58.76789610995911
+        endTime: 59.00609000911936
+        points:
+        - {x: 342.89838, y: -0.46761978, z: 237.68459}
+        - {x: 342.89838, y: -0.46761978, z: 240.54291}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 342.89838, y: -0.46761978, z: 240.54291}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 59.00609000911936
+        beatIndex: 123
+      endWaypoint:
+        position: {x: 348.81586, y: -0.46761978, z: 240.54291}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 59.49921230808832
+        beatIndex: 124
+      containedEvents: []
+      sections:
+      - startTime: 59.00609000911936
+        endTime: 59.49921230808832
+        points:
+        - {x: 342.89838, y: -0.46761978, z: 240.54291}
+        - {x: 348.81586, y: -0.46761978, z: 240.54291}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 348.81586, y: -0.46761978, z: 240.54291}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 59.49921230808832
+        beatIndex: 124
+      endWaypoint:
+        position: {x: 348.81586, y: -0.46761978, z: 246.77734}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 60.01874820725061
+        beatIndex: 125
+      containedEvents: []
+      sections:
+      - startTime: 59.49921230808832
+        endTime: 60.01874820725061
+        points:
+        - {x: 348.81586, y: -0.46761978, z: 240.54291}
+        - {x: 348.81586, y: -0.46761978, z: 246.77734}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 348.81586, y: -0.46761978, z: 246.77734}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 60.01874820725061
+        beatIndex: 125
+      endWaypoint:
+        position: {x: 354.60184, y: -0.46761978, z: 246.77734}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 60.50091370730661
+        beatIndex: 126
+      containedEvents: []
+      sections:
+      - startTime: 60.01874820725061
+        endTime: 60.50091370730661
+        points:
+        - {x: 348.81586, y: -0.46761978, z: 246.77734}
+        - {x: 354.60184, y: -0.46761978, z: 246.77734}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 354.60184, y: -0.46761978, z: 246.77734}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 60.50091370730661
+        beatIndex: 126
+      endWaypoint:
+        position: {x: 354.60184, y: -0.46761978, z: 249.76329}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 60.74974210746586
+        beatIndex: 127
+      containedEvents: []
+      sections:
+      - startTime: 60.50091370730661
+        endTime: 60.74974210746586
+        points:
+        - {x: 354.60184, y: -0.46761978, z: 246.77734}
+        - {x: 354.60184, y: -0.46761978, z: 249.76329}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 354.60184, y: -0.46761978, z: 249.76329}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 60.74974210746586
+        beatIndex: 127
+      endWaypoint:
+        position: {x: 423.62103, y: -0.46761978, z: 249.76328}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 66.50134210661054
+        beatIndex: 128
+      containedEvents: []
+      sections:
+      - startTime: 60.74974210746586
+        endTime: 66.50134210661054
+        points:
+        - {x: 354.60184, y: -0.46761978, z: 249.76329}
+        - {x: 423.62103, y: -0.46761978, z: 249.76328}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 423.62103, y: -0.46761978, z: 249.76328}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 66.50134210661054
+        beatIndex: 128
+      endWaypoint:
+        position: {x: 423.62103, y: -0.46761978, z: 255.92137}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 67.01451710634865
+        beatIndex: 129
+      containedEvents: []
+      sections:
+      - startTime: 66.50134210661054
+        endTime: 67.01451710634865
+        points:
+        - {x: 423.62103, y: -0.46761978, z: 249.76328}
+        - {x: 423.62103, y: -0.46761978, z: 255.92137}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 423.62103, y: -0.46761978, z: 255.92137}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 67.01451710634865
+        beatIndex: 129
+      endWaypoint:
+        position: {x: 432.36823, y: -0.46761978, z: 255.92137}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 67.74344930611551
+        beatIndex: 130
+      containedEvents: []
+      sections:
+      - startTime: 67.01451710634865
+        endTime: 67.74344930611551
+        points:
+        - {x: 423.62103, y: -0.46761978, z: 255.92137}
+        - {x: 432.36823, y: -0.46761978, z: 255.92137}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 432.36823, y: -0.46761978, z: 255.92137}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 67.74344930611551
+        beatIndex: 130
+      endWaypoint:
+        position: {x: 432.36823, y: -0.46761978, z: 258.7942}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 67.98284980584867
+        beatIndex: 131
+      containedEvents: []
+      sections:
+      - startTime: 67.74344930611551
+        endTime: 67.98284980584867
+        points:
+        - {x: 432.36823, y: -0.46761978, z: 255.92137}
+        - {x: 432.36823, y: -0.46761978, z: 258.7942}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 432.36823, y: -0.46761978, z: 258.7942}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 67.98284980584867
+        beatIndex: 131
+      endWaypoint:
+        position: {x: 435.7161, y: -0.46761978, z: 258.7942}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 68.2618381048087
+        beatIndex: 132
+      containedEvents: []
+      sections:
+      - startTime: 67.98284980584867
+        endTime: 68.2618381048087
+        points:
+        - {x: 432.36823, y: -0.46761978, z: 258.7942}
+        - {x: 435.7161, y: -0.46761978, z: 258.7942}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 435.7161, y: -0.46761978, z: 258.7942}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 68.2618381048087
+        beatIndex: 132
+      endWaypoint:
+        position: {x: 435.7161, y: -0.46761978, z: 264.9875}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 68.77794700325467
+        beatIndex: 133
+      containedEvents: []
+      sections:
+      - startTime: 68.2618381048087
+        endTime: 68.77794700325467
+        points:
+        - {x: 435.7161, y: -0.46761978, z: 258.7942}
+        - {x: 435.7161, y: -0.46761978, z: 264.9875}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 435.7161, y: -0.46761978, z: 264.9875}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 68.77794700325467
+        beatIndex: 133
+      endWaypoint:
+        position: {x: 438.6687, y: -0.46761978, z: 264.9875}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 69.02399810333736
+        beatIndex: 134
+      containedEvents: []
+      sections:
+      - startTime: 68.77794700325467
+        endTime: 69.02399810333736
+        points:
+        - {x: 435.7161, y: -0.46761978, z: 264.9875}
+        - {x: 438.6687, y: -0.46761978, z: 264.9875}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 438.6687, y: -0.46761978, z: 264.9875}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 69.02399810333736
+        beatIndex: 134
+      endWaypoint:
+        position: {x: 438.6687, y: -0.46761978, z: 268.05768}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 69.27984770387411
+        beatIndex: 135
+      containedEvents: []
+      sections:
+      - startTime: 69.02399810333736
+        endTime: 69.27984770387411
+        points:
+        - {x: 438.6687, y: -0.46761978, z: 264.9875}
+        - {x: 438.6687, y: -0.46761978, z: 268.05768}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 438.6687, y: -0.46761978, z: 268.05768}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 69.27984770387411
+        beatIndex: 135
+      endWaypoint:
+        position: {x: 441.6489, y: -0.46761978, z: 268.05768}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 69.52819740283303
+        beatIndex: 136
+      containedEvents: []
+      sections:
+      - startTime: 69.27984770387411
+        endTime: 69.52819740283303
+        points:
+        - {x: 438.6687, y: -0.46761978, z: 268.05768}
+        - {x: 441.6489, y: -0.46761978, z: 268.05768}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 441.6489, y: -0.46761978, z: 268.05768}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 69.52819740283303
+        beatIndex: 136
+      endWaypoint:
+        position: {x: 441.6489, y: -0.46761978, z: 279.61172}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 70.49103480158374
+        beatIndex: 137
+      containedEvents: []
+      sections:
+      - startTime: 69.52819740283303
+        endTime: 70.49103480158374
+        points:
+        - {x: 441.6489, y: -0.46761978, z: 268.05768}
+        - {x: 441.6489, y: -0.46761978, z: 279.61172}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 441.6489, y: -0.46761978, z: 279.61172}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 70.49103480158374
+        beatIndex: 137
+      endWaypoint:
+        position: {x: 448.24045, y: -0.46761978, z: 279.61172}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 71.04033060069196
+        beatIndex: 138
+      containedEvents: []
+      sections:
+      - startTime: 70.49103480158374
+        endTime: 71.04033060069196
+        points:
+        - {x: 441.6489, y: -0.46761978, z: 279.61172}
+        - {x: 448.24045, y: -0.46761978, z: 279.61172}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 448.24045, y: -0.46761978, z: 279.61172}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 71.04033060069196
+        beatIndex: 138
+      endWaypoint:
+        position: {x: 448.24045, y: -0.46761978, z: 282.11993}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 71.24934920063242
+        beatIndex: 139
+      containedEvents: []
+      sections:
+      - startTime: 71.04033060069196
+        endTime: 71.24934920063242
+        points:
+        - {x: 448.24045, y: -0.46761978, z: 279.61172}
+        - {x: 448.24045, y: -0.46761978, z: 282.11993}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 448.24045, y: -0.46761978, z: 282.11993}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 71.24934920063242
+        beatIndex: 139
+      endWaypoint:
+        position: {x: 463.46542, y: -0.46761978, z: 282.11993}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 72.5180972001981
+        beatIndex: 140
+      containedEvents: []
+      sections:
+      - startTime: 71.24934920063242
+        endTime: 72.5180972001981
+        points:
+        - {x: 448.24045, y: -0.46761978, z: 282.11993}
+        - {x: 463.46542, y: -0.46761978, z: 282.11993}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 463.46542, y: -0.46761978, z: 282.11993}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 72.5180972001981
+        beatIndex: 140
+      endWaypoint:
+        position: {x: 463.46542, y: -0.46761978, z: 288.26212}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 73.02994580054656
+        beatIndex: 141
+      containedEvents: []
+      sections:
+      - startTime: 72.5180972001981
+        endTime: 73.02994580054656
+        points:
+        - {x: 463.46542, y: -0.46761978, z: 282.11993}
+        - {x: 463.46542, y: -0.46761978, z: 288.26212}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 463.46542, y: -0.46761978, z: 288.26212}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 73.02994580054656
+        beatIndex: 141
+      endWaypoint:
+        position: {x: 471.47098, y: -0.46761978, z: 288.26212}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 73.69707510084845
+        beatIndex: 142
+      containedEvents: []
+      sections:
+      - startTime: 73.02994580054656
+        endTime: 73.69707510084845
+        points:
+        - {x: 463.46542, y: -0.46761978, z: 288.26212}
+        - {x: 471.47098, y: -0.46761978, z: 288.26212}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 471.47098, y: -0.46761978, z: 288.26212}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 73.69707510084845
+        beatIndex: 142
+      endWaypoint:
+        position: {x: 471.47098, y: -0.46761978, z: 291.31638}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 73.95159800024703
+        beatIndex: 143
+      containedEvents: []
+      sections:
+      - startTime: 73.69707510084845
+        endTime: 73.95159800024703
+        points:
+        - {x: 471.47098, y: -0.46761978, z: 288.26212}
+        - {x: 471.47098, y: -0.46761978, z: 291.31638}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 471.47098, y: -0.46761978, z: 291.31638}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 73.95159800024703
+        beatIndex: 143
+      endWaypoint:
+        position: {x: 475.10873, y: -0.46761978, z: 291.31638}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 74.25474409991875
+        beatIndex: 144
+      containedEvents: []
+      sections:
+      - startTime: 73.95159800024703
+        endTime: 74.25474409991875
+        points:
+        - {x: 471.47098, y: -0.46761978, z: 291.31638}
+        - {x: 475.10873, y: -0.46761978, z: 291.31638}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 475.10873, y: -0.46761978, z: 291.31638}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 74.25474409991875
+        beatIndex: 144
+      endWaypoint:
+        position: {x: 475.10873, y: -0.46761978, z: 297.29282}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 74.752779599512
+        beatIndex: 145
+      containedEvents: []
+      sections:
+      - startTime: 74.25474409991875
+        endTime: 74.752779599512
+        points:
+        - {x: 475.10873, y: -0.46761978, z: 291.31638}
+        - {x: 475.10873, y: -0.46761978, z: 297.29282}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 475.10873, y: -0.46761978, z: 297.29282}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 74.752779599512
+        beatIndex: 145
+      endWaypoint:
+        position: {x: 478.16864, y: -0.46761978, z: 297.29282}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 75.00777059816755
+        beatIndex: 146
+      containedEvents: []
+      sections:
+      - startTime: 74.752779599512
+        endTime: 75.00777059816755
+        points:
+        - {x: 475.10873, y: -0.46761978, z: 297.29282}
+        - {x: 478.16864, y: -0.46761978, z: 297.29282}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 478.16864, y: -0.46761978, z: 297.29282}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 75.00777059816755
+        beatIndex: 146
+      endWaypoint:
+        position: {x: 478.16864, y: -0.46761978, z: 300.09393}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 75.24119820003398
+        beatIndex: 147
+      containedEvents: []
+      sections:
+      - startTime: 75.00777059816755
+        endTime: 75.24119820003398
+        points:
+        - {x: 478.16864, y: -0.46761978, z: 297.29282}
+        - {x: 478.16864, y: -0.46761978, z: 300.09393}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 478.16864, y: -0.46761978, z: 300.09393}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 75.24119820003398
+        beatIndex: 147
+      endWaypoint:
+        position: {x: 481.32053, y: -0.46761978, z: 300.09393}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 75.50385470106266
+        beatIndex: 148
+      containedEvents: []
+      sections:
+      - startTime: 75.24119820003398
+        endTime: 75.50385470106266
+        points:
+        - {x: 478.16864, y: -0.46761978, z: 300.09393}
+        - {x: 481.32053, y: -0.46761978, z: 300.09393}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 481.32053, y: -0.46761978, z: 300.09393}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 75.50385470106266
+        beatIndex: 148
+      endWaypoint:
+        position: {x: 481.32053, y: -0.46761978, z: 308.63318}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 76.2154572007712
+        beatIndex: 149
+      containedEvents: []
+      sections:
+      - startTime: 75.50385470106266
+        endTime: 76.2154572007712
+        points:
+        - {x: 481.32053, y: -0.46761978, z: 300.09393}
+        - {x: 481.32053, y: -0.46761978, z: 308.63318}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 481.32053, y: -0.46761978, z: 308.63318}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 76.2154572007712
+        beatIndex: 149
+      endWaypoint:
+        position: {x: 483.16696, y: -0.46761978, z: 308.63318}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 76.36932579963468
+        beatIndex: 150
+      containedEvents: []
+      sections:
+      - startTime: 76.2154572007712
+        endTime: 76.36932579963468
+        points:
+        - {x: 481.32053, y: -0.46761978, z: 308.63318}
+        - {x: 483.16696, y: -0.46761978, z: 308.63318}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 483.16696, y: -0.46761978, z: 308.63318}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 76.36932579963468
+        beatIndex: 150
+      endWaypoint:
+        position: {x: 483.16696, y: -0.46761978, z: 310.19125}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 76.49916590028442
+        beatIndex: 151
+      containedEvents: []
+      sections:
+      - startTime: 76.36932579963468
+        endTime: 76.49916590028442
+        points:
+        - {x: 483.16696, y: -0.46761978, z: 308.63318}
+        - {x: 483.16696, y: -0.46761978, z: 310.19125}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 483.16696, y: -0.46761978, z: 310.19125}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 76.49916590028442
+        beatIndex: 151
+      endWaypoint:
+        position: {x: 489.2386, y: -0.46761978, z: 310.19125}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 77.00513409893028
+        beatIndex: 152
+      containedEvents: []
+      sections:
+      - startTime: 76.49916590028442
+        endTime: 77.00513409893028
+        points:
+        - {x: 483.16696, y: -0.46761978, z: 310.19125}
+        - {x: 489.2386, y: -0.46761978, z: 310.19125}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 489.2386, y: -0.46761978, z: 310.19125}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 77.00513409893028
+        beatIndex: 152
+      endWaypoint:
+        position: {x: 489.2386, y: -0.46761978, z: 328.30048}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 78.51423669839278
+        beatIndex: 153
+      containedEvents: []
+      sections:
+      - startTime: 77.00513409893028
+        endTime: 78.51423669839278
+        points:
+        - {x: 489.2386, y: -0.46761978, z: 310.19125}
+        - {x: 489.2386, y: -0.46761978, z: 328.30048}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 489.2386, y: -0.46761978, z: 328.30048}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 78.51423669839278
+        beatIndex: 153
+      endWaypoint:
+        position: {x: 494.9932, y: -0.46761978, z: 328.30048}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 78.99378769821487
+        beatIndex: 154
+      containedEvents: []
+      sections:
+      - startTime: 78.51423669839278
+        endTime: 78.99378769821487
+        points:
+        - {x: 489.2386, y: -0.46761978, z: 328.30048}
+        - {x: 494.9932, y: -0.46761978, z: 328.30048}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 494.9932, y: -0.46761978, z: 328.30048}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 78.99378769821487
+        beatIndex: 154
+      endWaypoint:
+        position: {x: 494.9932, y: -0.46761978, z: 336.7294}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 79.69619869859889
+        beatIndex: 155
+      containedEvents: []
+      sections:
+      - startTime: 78.99378769821487
+        endTime: 79.69619869859889
+        points:
+        - {x: 494.9932, y: -0.46761978, z: 328.30048}
+        - {x: 494.9932, y: -0.46761978, z: 336.7294}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 494.9932, y: -0.46761978, z: 336.7294}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 79.69619869859889
+        beatIndex: 155
+      endWaypoint:
+        position: {x: 498.1031, y: -0.46761978, z: 336.7294}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 79.9553561990615
+        beatIndex: 156
+      containedEvents: []
+      sections:
+      - startTime: 79.69619869859889
+        endTime: 79.9553561990615
+        points:
+        - {x: 494.9932, y: -0.46761978, z: 336.7294}
+        - {x: 498.1031, y: -0.46761978, z: 336.7294}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 498.1031, y: -0.46761978, z: 336.7294}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 79.9553561990615
+        beatIndex: 156
+      endWaypoint:
+        position: {x: 498.1031, y: -0.46761978, z: 339.95358}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 80.22403799882159
+        beatIndex: 157
+      containedEvents: []
+      sections:
+      - startTime: 79.9553561990615
+        endTime: 80.22403799882159
+        points:
+        - {x: 498.1031, y: -0.46761978, z: 336.7294}
+        - {x: 498.1031, y: -0.46761978, z: 339.95358}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 498.1031, y: -0.46761978, z: 339.95358}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 80.22403799882159
+        beatIndex: 157
+      endWaypoint:
+        position: {x: 504.40488, y: -0.46761978, z: 339.95358}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 80.74918749695644
+        beatIndex: 158
+      containedEvents: []
+      sections:
+      - startTime: 80.22403799882159
+        endTime: 80.74918749695644
+        points:
+        - {x: 498.1031, y: -0.46761978, z: 339.95358}
+        - {x: 504.40488, y: -0.46761978, z: 339.95358}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 504.40488, y: -0.46761978, z: 339.95358}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 80.74918749695644
+        beatIndex: 158
+      endWaypoint:
+        position: {x: 504.40488, y: -0.46761978, z: 342.72116}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 80.97982009709813
+        beatIndex: 159
+      containedEvents: []
+      sections:
+      - startTime: 80.74918749695644
+        endTime: 80.97982009709813
+        points:
+        - {x: 504.40488, y: -0.46761978, z: 339.95358}
+        - {x: 504.40488, y: -0.46761978, z: 342.72116}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 504.40488, y: -0.46761978, z: 342.72116}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 80.97982009709813
+        beatIndex: 159
+      endWaypoint:
+        position: {x: 507.50787, y: -0.46761978, z: 342.72116}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 81.23840359714814
+        beatIndex: 160
+      containedEvents: []
+      sections:
+      - startTime: 80.97982009709813
+        endTime: 81.23840359714814
+        points:
+        - {x: 504.40488, y: -0.46761978, z: 342.72116}
+        - {x: 507.50787, y: -0.46761978, z: 342.72116}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 507.50787, y: -0.46761978, z: 342.72116}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 81.23840359714814
+        beatIndex: 160
+      endWaypoint:
+        position: {x: 507.50787, y: -0.46761978, z: 345.8278}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 81.4972892969381
+        beatIndex: 161
+      containedEvents: []
+      sections:
+      - startTime: 81.23840359714814
+        endTime: 81.4972892969381
+        points:
+        - {x: 507.50787, y: -0.46761978, z: 342.72116}
+        - {x: 507.50787, y: -0.46761978, z: 345.8278}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 507.50787, y: -0.46761978, z: 345.8278}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 81.4972892969381
+        beatIndex: 161
+      endWaypoint:
+        position: {x: 519.3982, y: -0.46761978, z: 345.8278}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 82.4881473958958
+        beatIndex: 162
+      containedEvents: []
+      sections:
+      - startTime: 81.4972892969381
+        endTime: 82.4881473958958
+        points:
+        - {x: 507.50787, y: -0.46761978, z: 345.8278}
+        - {x: 519.3982, y: -0.46761978, z: 345.8278}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 519.3982, y: -0.46761978, z: 345.8278}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 82.4881473958958
+        beatIndex: 162
+      endWaypoint:
+        position: {x: 519.3982, y: -0.46761978, z: 351.85822}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 82.99068159679882
+        beatIndex: 163
+      containedEvents: []
+      sections:
+      - startTime: 82.4881473958958
+        endTime: 82.99068159679882
+        points:
+        - {x: 519.3982, y: -0.46761978, z: 345.8278}
+        - {x: 519.3982, y: -0.46761978, z: 351.85822}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 519.3982, y: -0.46761978, z: 351.85822}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 82.99068159679882
+        beatIndex: 163
+      endWaypoint:
+        position: {x: 531.61914, y: -0.46761978, z: 351.85822}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 84.00909499707632
+        beatIndex: 164
+      containedEvents: []
+      sections:
+      - startTime: 82.99068159679882
+        endTime: 84.00909499707632
+        points:
+        - {x: 519.3982, y: -0.46761978, z: 351.85822}
+        - {x: 531.61914, y: -0.46761978, z: 351.85822}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 531.61914, y: -0.46761978, z: 351.85822}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 84.00909499707632
+        beatIndex: 164
+      endWaypoint:
+        position: {x: 531.61914, y: -0.46761978, z: 354.84128}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 84.25768439727835
+        beatIndex: 165
+      containedEvents: []
+      sections:
+      - startTime: 84.00909499707632
+        endTime: 84.25768439727835
+        points:
+        - {x: 531.61914, y: -0.46761978, z: 351.85822}
+        - {x: 531.61914, y: -0.46761978, z: 354.84128}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 531.61914, y: -0.46761978, z: 354.84128}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 84.25768439727835
+        beatIndex: 165
+      endWaypoint:
+        position: {x: 534.7203, y: -0.46761978, z: 354.84128}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 84.51611019740812
+        beatIndex: 166
+      containedEvents: []
+      sections:
+      - startTime: 84.25768439727835
+        endTime: 84.51611019740812
+        points:
+        - {x: 531.61914, y: -0.46761978, z: 354.84128}
+        - {x: 534.7203, y: -0.46761978, z: 354.84128}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 534.7203, y: -0.46761978, z: 354.84128}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 84.51611019740812
+        beatIndex: 166
+      endWaypoint:
+        position: {x: 534.7203, y: -0.46761978, z: 357.592}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 84.74533719778992
+        beatIndex: 167
+      containedEvents: []
+      sections:
+      - startTime: 84.51611019740812
+        endTime: 84.74533719778992
+        points:
+        - {x: 534.7203, y: -0.46761978, z: 354.84128}
+        - {x: 534.7203, y: -0.46761978, z: 357.592}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 534.7203, y: -0.46761978, z: 357.592}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 84.74533719778992
+        beatIndex: 167
+      endWaypoint:
+        position: {x: 537.9559, y: -0.46761978, z: 357.592}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 85.01497049769387
+        beatIndex: 168
+      containedEvents: []
+      sections:
+      - startTime: 84.74533719778992
+        endTime: 85.01497049769387
+        points:
+        - {x: 534.7203, y: -0.46761978, z: 357.592}
+        - {x: 537.9559, y: -0.46761978, z: 357.592}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 537.9559, y: -0.46761978, z: 357.592}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 85.01497049769387
+        beatIndex: 168
+      endWaypoint:
+        position: {x: 537.9559, y: -0.46761978, z: 366.29892}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 85.7405461971648
+        beatIndex: 169
+      containedEvents: []
+      sections:
+      - startTime: 85.01497049769387
+        endTime: 85.7405461971648
+        points:
+        - {x: 537.9559, y: -0.46761978, z: 357.592}
+        - {x: 537.9559, y: -0.46761978, z: 366.29892}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 537.9559, y: -0.46761978, z: 366.29892}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 85.7405461971648
+        beatIndex: 169
+      endWaypoint:
+        position: {x: 540.95776, y: -0.46761978, z: 366.29892}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 85.99070289847441
+        beatIndex: 170
+      containedEvents: []
+      sections:
+      - startTime: 85.7405461971648
+        endTime: 85.99070289847441
+        points:
+        - {x: 537.9559, y: -0.46761978, z: 366.29892}
+        - {x: 540.95776, y: -0.46761978, z: 366.29892}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 540.95776, y: -0.46761978, z: 366.29892}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 85.99070289847441
+        beatIndex: 170
+      endWaypoint:
+        position: {x: 540.95776, y: -0.46761978, z: 369.2725}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 86.23850060044788
+        beatIndex: 171
+      containedEvents: []
+      sections:
+      - startTime: 85.99070289847441
+        endTime: 86.23850060044788
+        points:
+        - {x: 540.95776, y: -0.46761978, z: 366.29892}
+        - {x: 540.95776, y: -0.46761978, z: 369.2725}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 540.95776, y: -0.46761978, z: 369.2725}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 86.23850060044788
+        beatIndex: 171
+      endWaypoint:
+        position: {x: 544.4099, y: -0.46761978, z: 369.2725}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 86.52618169947527
+        beatIndex: 172
+      containedEvents: []
+      sections:
+      - startTime: 86.23850060044788
+        endTime: 86.52618169947527
+        points:
+        - {x: 540.95776, y: -0.46761978, z: 369.2725}
+        - {x: 544.4099, y: -0.46761978, z: 369.2725}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 544.4099, y: -0.46761978, z: 369.2725}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 86.52618169947527
+        beatIndex: 172
+      endWaypoint:
+        position: {x: 544.4099, y: -0.46761978, z: 375.348}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 87.03247439907864
+        beatIndex: 173
+      containedEvents: []
+      sections:
+      - startTime: 86.52618169947527
+        endTime: 87.03247439907864
+        points:
+        - {x: 544.4099, y: -0.46761978, z: 369.2725}
+        - {x: 544.4099, y: -0.46761978, z: 375.348}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 544.4099, y: -0.46761978, z: 375.348}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 87.03247439907864
+        beatIndex: 173
+      endWaypoint:
+        position: {x: 547.2457, y: -0.46761978, z: 375.348}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 87.26879459875636
+        beatIndex: 174
+      containedEvents: []
+      sections:
+      - startTime: 87.03247439907864
+        endTime: 87.26879459875636
+        points:
+        - {x: 544.4099, y: -0.46761978, z: 375.348}
+        - {x: 547.2457, y: -0.46761978, z: 375.348}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 547.2457, y: -0.46761978, z: 375.348}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 87.26879459875636
+        beatIndex: 174
+      endWaypoint:
+        position: {x: 547.2457, y: -0.46761978, z: 378.57504}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 87.53771619824693
+        beatIndex: 175
+      containedEvents: []
+      sections:
+      - startTime: 87.26879459875636
+        endTime: 87.53771619824693
+        points:
+        - {x: 547.2457, y: -0.46761978, z: 375.348}
+        - {x: 547.2457, y: -0.46761978, z: 378.57504}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 547.2457, y: -0.46761978, z: 378.57504}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 87.53771619824693
+        beatIndex: 175
+      endWaypoint:
+        position: {x: 556.01404, y: -0.46761978, z: 378.57504}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 88.268410600489
+        beatIndex: 176
+      containedEvents: []
+      sections:
+      - startTime: 87.53771619824693
+        endTime: 88.268410600489
+        points:
+        - {x: 547.2457, y: -0.46761978, z: 378.57504}
+        - {x: 556.01404, y: -0.46761978, z: 378.57504}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 556.01404, y: -0.46761978, z: 378.57504}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 88.268410600489
+        beatIndex: 176
+      endWaypoint:
+        position: {x: 556.01404, y: -0.46761978, z: 380.16605}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 88.4009935008362
+        beatIndex: 177
+      containedEvents: []
+      sections:
+      - startTime: 88.268410600489
+        endTime: 88.4009935008362
+        points:
+        - {x: 556.01404, y: -0.46761978, z: 378.57504}
+        - {x: 556.01404, y: -0.46761978, z: 380.16605}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 556.01404, y: -0.46761978, z: 380.16605}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 88.4009935008362
+        beatIndex: 177
+      endWaypoint:
+        position: {x: 557.5073, y: -0.46761978, z: 380.16605}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 88.52543610055
+        beatIndex: 178
+      containedEvents: []
+      sections:
+      - startTime: 88.4009935008362
+        endTime: 88.52543610055
+        points:
+        - {x: 556.01404, y: -0.46761978, z: 380.16605}
+        - {x: 557.5073, y: -0.46761978, z: 380.16605}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 557.5073, y: -0.46761978, z: 380.16605}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 88.52543610055
+        beatIndex: 178
+      endWaypoint:
+        position: {x: 557.5073, y: -0.46761978, z: 386.44525}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 89.04870250145905
+        beatIndex: 179
+      containedEvents: []
+      sections:
+      - startTime: 88.52543610055
+        endTime: 89.04870250145905
+        points:
+        - {x: 557.5073, y: -0.46761978, z: 380.16605}
+        - {x: 557.5073, y: -0.46761978, z: 386.44525}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 557.5073, y: -0.46761978, z: 386.44525}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 89.04870250145905
+        beatIndex: 179
+      endWaypoint:
+        position: {x: 574.8487, y: -0.46761978, z: 386.44525}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 90.49381869914941
+        beatIndex: 180
+      containedEvents: []
+      sections:
+      - startTime: 89.04870250145905
+        endTime: 90.49381869914941
+        points:
+        - {x: 557.5073, y: -0.46761978, z: 386.44525}
+        - {x: 574.8487, y: -0.46761978, z: 386.44525}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 574.8487, y: -0.46761978, z: 386.44525}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 90.49381869914941
+        beatIndex: 180
+      endWaypoint:
+        position: {x: 574.8487, y: -0.46761978, z: 422.57983}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 93.505032395944
+        beatIndex: 181
+      containedEvents: []
+      sections:
+      - startTime: 90.49381869914941
+        endTime: 93.505032395944
+        points:
+        - {x: 574.8487, y: -0.46761978, z: 386.44525}
+        - {x: 574.8487, y: -0.46761978, z: 422.57983}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+    - startWaypoint:
+        position: {x: 574.8487, y: -0.46761978, z: 422.57983}
+        rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        time: 93.505032395944
+        beatIndex: 181
+      endWaypoint:
+        position: {x: 614.1945, y: -0.46761978, z: 422.57983}
+        rotation: {x: 0, y: 0, z: 0, w: 1}
+        time: 96.78384979511611
+        beatIndex: 182
+      containedEvents: []
+      sections:
+      - startTime: 93.505032395944
+        endTime: 96.78384979511611
+        points:
+        - {x: 574.8487, y: -0.46761978, z: 422.57983}
+        - {x: 614.1945, y: -0.46761978, z: 422.57983}
+        upDir: {x: 0, y: 1, z: 0}
+        isJump: 0
+        isTeleport: 0
+  references:
+    version: 2
+    RefIds:
+    - rid: 6920599464020017152
+      type: {class: JumpEvent, ns: DLSample.Editor.PathGrapher, asm: DLSample}
+      data:
+        _startTime: 6.44392955111352
+        _endTime: 7.063019263600528
+        velocity: {x: 0, y: 0, z: 0}
+    - rid: 6920599464020017153
+      type: {class: JumpEvent, ns: DLSample.Editor.PathGrapher, asm: DLSample}
+      data:
+        _startTime: 7.955789730014961
+        _endTime: 8.559430866155841
+        velocity: {x: 0, y: 5, z: 0}
+    - rid: 6920599464020017154
+      type: {class: DirectionChangeEvent, ns: DLSample.Editor.PathGrapher, asm: DLSample}
+      data:
+        _globalTime: 9.790179687595714
+        newDirections:
+          upwards: {x: 0, y: 1, z: 0}
+          directionsSequence:
+          - {x: 1, y: 0, z: -1}
+          - {x: 1, y: 0, z: 1}
+          _currentIndex: 1
+    - rid: 6920599464020017156
+      type: {class: DirectionChangeEvent, ns: DLSample.Editor.PathGrapher, asm: DLSample}
+      data:
+        _globalTime: 12.698684866638109
+        newDirections:
+          upwards: {x: 0, y: 1, z: 0}
+          directionsSequence:
+          - {x: 0, y: 0, z: 1}
+          - {x: 1, y: 0, z: 0}
+          _currentIndex: 0
+    - rid: 6920599464020017157
+      type: {class: TeleportEvent, ns: DLSample.Editor.PathGrapher, asm: DLSample}
+      data:
+        _startTime: 14.39
+        _endTime: 14.39
+        targetPosition: {x: 55.08442, y: 4.87368, z: 8.821245}
+    - rid: 6920599464020017158
+      type: {class: TeleportEvent, ns: DLSample.Editor.PathGrapher, asm: DLSample}
+      data:
+        _startTime: 15.767
+        _endTime: 15.76446796161518
+        targetPosition: {x: 60.180073, y: -2.46762, z: 4.392166}
+    - rid: 6920599464020017159
+      type: {class: JumpEvent, ns: DLSample.Editor.PathGrapher, asm: DLSample}
+      data:
+        _startTime: 23.245687316329228
+        _endTime: 24.245687316329228
+        velocity: {x: 0, y: 12, z: 0}
+    - rid: 6920599464020017160
+      type: {class: GravityChangeEvent, ns: DLSample.Editor.PathGrapher, asm: DLSample}
+      data:
+        _globalTime: 22.838073240206267
+        newGravity: {x: 0, y: -20, z: 0}
+    - rid: 6920599464020017161
+      type: {class: GravityChangeEvent, ns: DLSample.Editor.PathGrapher, asm: DLSample}
+      data:
+        _globalTime: 24.38598785055978
+        newGravity: {x: 0, y: -12, z: 0}

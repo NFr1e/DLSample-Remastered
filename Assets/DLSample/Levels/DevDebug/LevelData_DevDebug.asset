@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 313301737e4f1a5488ca5a4a179c22e5, type: 3}
+  m_Name: LevelData_DevDebug
+  m_EditorClassIdentifier: 
+  levelScene: {fileID: 102900000, guid: c5dd2846fb641bb45b570a528fe3f1f6, type: 3}
+  sceneName: DevDebug
+  levelName: DevDebug
+  soundtrackInfo: Sample
+  gemCount: 10
+  levelLength: 103.272

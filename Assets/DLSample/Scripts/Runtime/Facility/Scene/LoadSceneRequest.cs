@@ -23,7 +23,7 @@ namespace DLSample.Facility.SceneManage
             Status = SceneStatus.Loading;
             Progress = 0f;
 
-            AsyncOperation op = UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(SceneName, Mode);
+            AsyncOperation op = SceneManager.LoadSceneAsync(SceneName, Mode);
             op.allowSceneActivation = false;
 
             while (op.progress < 0.9f)

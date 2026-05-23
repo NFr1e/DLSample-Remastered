@@ -12,7 +12,7 @@ namespace DLSample.Facility.SceneManage
         {
             Status = SceneStatus.Loading;
 
-            Scene toUnload = UnityEngine.SceneManagement.SceneManager.GetSceneByName(SceneName);
+            Scene toUnload = SceneManager.GetSceneByName(SceneName);
 
             if (!toUnload.isLoaded)
             {
@@ -22,7 +22,7 @@ namespace DLSample.Facility.SceneManage
                 return;
             }
 
-            AsyncOperation op = UnityEngine.SceneManagement.SceneManager.UnloadSceneAsync(SceneName);
+            AsyncOperation op = SceneManager.UnloadSceneAsync(SceneName);
 
             while (!op.isDone)
             {

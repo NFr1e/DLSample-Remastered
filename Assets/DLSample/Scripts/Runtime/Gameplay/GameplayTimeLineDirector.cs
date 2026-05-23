@@ -13,8 +13,8 @@ namespace DLSample.Gameplay.Stream
         int IBacktrackable.BacktrackPriority => DLSampleConsts.Gameplay.BACKTRACK_PRIORITY_TIMER_DIRECTOR;
 
         private readonly IStreamPlayer _timelinePlayer;
+        private readonly EventBus _evtBus;
 
-        private EventBus _evtBus;
         private BacktrackablesHandler _backtrackablesHandler;
 
         private bool _synced = false;
