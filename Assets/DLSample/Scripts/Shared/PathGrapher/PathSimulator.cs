@@ -1,5 +1,4 @@
 using System;
-using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 using DLSample.Shared;
@@ -25,17 +24,39 @@ namespace DLSample.Editor.PathGrapher
             public IPathEvent evt;
         }
 
+        /// <summary>
+        /// 原有入口：从资产读取输入、执行模拟、写回结果（向后兼容）
+        /// </summary>
         public static void Simulate(PathGrapherAsset asset, float samplingInterval)
         {
-            if (asset.beatMapData == null || asset.initialDirections == null) return;
+            var input = asset.ToSimulationInput();
+            if (input == null) return;
+
+            var result = Simulate(input, samplingInterval);
+            asset.ApplySimulationResult(result);
+        }
+
+        /// <summary>
+        /// 核心模拟逻辑：纯数据输入 → 纯数据输出，无 ScriptableObject 依赖
+        /// </summary>
+        public static SimulationResult Simulate(SimulationInput input, float samplingInterval)
+        {
+            if (!input.IsValid)
+            {
+                if (input.BeatTimes == null || input.BeatTimes.Count == 0)
+                    return SimulationResult.Fail(SimulationError.EmptyBeatmap, "Beatmap is empty or null");
+                if (input.InitialDirections == null || !input.InitialDirections.IsValid)
+                    return SimulationResult.Fail(SimulationError.InvalidDirectionConfig, "Initial directions are invalid");
+                return SimulationResult.Fail(SimulationError.InvalidDirectionConfig, "Invalid simulation input");
+            }
 
             SimulationStatus state = new()
             {
-                position = asset.startPosition,
-                rotation = asset.initialDirections.StartRotation(),
-                currentSpeed = asset.initialSpeed,
-                currentDirecion = asset.initialDirections.Clone(),
-                currentGravity = asset.initialGravity,
+                position = input.StartPosition,
+                rotation = input.InitialDirections.StartRotation(),
+                currentSpeed = input.InitialSpeed,
+                currentDirecion = input.InitialDirections.Clone(),
+                currentGravity = input.InitialGravity,
                 verticalVelocity = Vector3.zero,
                 currentTime = 0,
                 isJumping = false,
@@ -44,13 +65,13 @@ namespace DLSample.Editor.PathGrapher
 
             state.currentDirecion.Reset();
 
-            asset.pathData.generatedWaypoints.Clear();
-            asset.pathData.generatedSegments.Clear();
+            var waypoints = new List<Waypoint>();
+            var segments = new List<PathSegment>();
 
-            var timePoints = CollectTimePoints(asset);
+            var timePoints = CollectTimePoints(input);
 
             Waypoint prevWaypoint = CreateWaypoint(state, -1);
-            asset.pathData.generatedWaypoints.Add(prevWaypoint);
+            waypoints.Add(prevWaypoint);
 
             List<PathSection> currentSections = new();
             List<IPathEvent> accumulatedEvents = new();
@@ -85,7 +106,7 @@ namespace DLSample.Editor.PathGrapher
                             tempTime += samplingInterval;
                         }
 
-                        float remainingDt = (float)(timeEnd - tempTime); // 剩余的delta
+                        float remainingDt = (float)(timeEnd - tempTime);
                         if (remainingDt > 0)
                             state = StepSimulateStatus(state, remainingDt);
 
@@ -113,7 +134,6 @@ namespace DLSample.Editor.PathGrapher
 
                 ApplyEvents(nextTimePoint, ref state);
 
-                // 仅在事件的 GlobalTime（非 EndTime）将事件累积到当前段
                 if (nextTimePoint.evt != null && Math.Abs(nextTimePoint.time - nextTimePoint.evt.GlobalTime) < 0.0001)
                     accumulatedEvents.Add(nextTimePoint.evt);
 
@@ -130,8 +150,8 @@ namespace DLSample.Editor.PathGrapher
                         currentSections.Clear();
                         sectionPoints.Clear();
 
-                        asset.pathData.generatedSegments.Add(segment);
-                        asset.pathData.generatedWaypoints.Add(nextWaypoint);
+                        segments.Add(segment);
+                        waypoints.Add(nextWaypoint);
 
                         prevWaypoint = nextWaypoint;
                     break;
@@ -153,6 +173,8 @@ namespace DLSample.Editor.PathGrapher
                     break;
                 }
             }
+
+            return SimulationResult.Ok(waypoints, segments);
         }
 
         private static SimulationStatus StepSimulateStatus(SimulationStatus state, float dt)
@@ -173,21 +195,22 @@ namespace DLSample.Editor.PathGrapher
             return state;
         }
 
-        private static List<TimePointInfo> CollectTimePoints(PathGrapherAsset asset)
+        private static List<TimePointInfo> CollectTimePoints(SimulationInput input)
         {
             var points = new List<TimePointInfo>();
 
-            for (int i = 0; i < asset.beatMapData.Beats.Count; i++)
+            var beats = input.BeatTimes;
+            for (int i = 0; i < beats.Count; i++)
             {
                 points.Add(new TimePointInfo
                 {
                     type = TimePointInfo.TimePointType.Beat,
-                    time = asset.beatMapData.Beats[i].TimeSecond,
+                    time = beats[i].TimeSecond,
                     beatIndex = i
                 });
             }
 
-            foreach (var ev in asset.pathData.globalEvents)
+            foreach (var ev in input.Events)
             {
                 if (ev.IsWaypointBoundary)
                 {
@@ -222,7 +245,8 @@ namespace DLSample.Editor.PathGrapher
                 }
             }
 
-            return points.OrderBy(p => p.time).ToList();
+            points.Sort((a, b) => a.time.CompareTo(b.time));
+            return points;
         }
 
         private static void ApplyEvents(TimePointInfo timePoint, ref SimulationStatus state)

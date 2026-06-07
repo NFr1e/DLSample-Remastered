@@ -169,24 +169,15 @@ namespace DLSample.Gameplay
         #region ApplyEvents
         private void ChangePlayerSpeed(PlayerEventsParams.SpeedChangeRequest request)
         {
-            foreach (var player in _playersList)
-            {
-                player.PlayerParams.SetSpeed(request.Speed);
-            }
+            _mainPlayer.PlayerParams.SetSpeed(request.Speed);
         }
         private void ChangePlayerGravity(PlayerEventsParams.GravityChangeRequest request)
         {
-            foreach (var player in _playersList)
-            {
-                player.PlayerParams.SetLocalGravity(request.Gravity);
-            }
+            _mainPlayer.PlayerParams.SetLocalGravity(request.Gravity);
         }
         private void ChangePlayerDirections(PlayerEventsParams.DirectionChangeRequest request)
         {
-            foreach (var player in _playersList)
-            {
-                player.PlayerParams.SetDirection(request.Directions);
-            }
+            _mainPlayer.PlayerParams.SetDirection(request.Directions);
         }
 
         private void ForceTurn(PlayerEventsParams.ForceTurnRequest request)
@@ -195,18 +186,12 @@ namespace DLSample.Gameplay
         }
         private void PlayerTeleport(PlayerEventsParams.TeleportRequest request)
         {
-            foreach (var player in _playersList)
-            {
-                player.SetGrounded(false);
-                player.transform.position = request.Position;
-            }
+            _mainPlayer.SetGrounded(false);
+            _mainPlayer.transform.position = request.Position;
         }
         private void PlayerJump(PlayerEventsParams.VelocityChangeRequest request)
         {
-            foreach (var player in _playersList)
-            {
-                player.SetVelocity(request.Velocity);
-            }
+            _mainPlayer.SetVelocity(request.Velocity);
         }
         #endregion
 

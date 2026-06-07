@@ -6,7 +6,8 @@ using UnityEngine;
 namespace DLSample.Gameplay.Skin
 {
     /// <summary>
-    /// 持有当前SkinBehaviour实例（通过SkinChanger注入），通过委托实现应用皮肤效果
+    /// 持有当前SkinBehaviour实例（通过SkinChanger注入），通过委托实现应用皮肤效果。
+    /// 每个adapter对应一个独立的SkinBehaviour实例，避免多Player间的皮肤状态竞争。
     /// </summary>
     public class SkinAdapter : IBacktrackable
     {
@@ -17,6 +18,11 @@ namespace DLSample.Gameplay.Skin
         private readonly BacktrackablesHandler _backtrackHandler;
 
         protected SkinBehaviourBase _currentSkinBehaviour;
+
+        /// <summary>
+        /// 头部容器Transform，供SkinChanger在实例化皮肤时直接设置。
+        /// </summary>
+        public Transform HeadContainer => _headContainer;
 
         public SkinAdapter(IPlayerMove player, Transform headContainer, BacktrackablesHandler backtrackHandler)
         {
@@ -46,12 +52,12 @@ namespace DLSample.Gameplay.Skin
             _backtrackHandler.Unregister(this);
         }
 
+        /// <summary>
+        /// 设置当前皮肤行为实例。HeadContainer由SkinChanger在实例化时直接设置。
+        /// </summary>
         public void SetCurrentSkin(SkinBehaviourBase skinBehaviour)
         {
             _currentSkinBehaviour = skinBehaviour;
-
-            if (_currentSkinBehaviour)
-                _currentSkinBehaviour.SetHeadContainer(_headContainer);
         }
 
         private void OnStartMove(PlayerMovingArgs arg)

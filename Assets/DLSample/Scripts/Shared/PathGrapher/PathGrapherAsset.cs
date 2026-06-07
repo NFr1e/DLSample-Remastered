@@ -28,6 +28,25 @@ namespace DLSample.Editor.PathGrapher
         public PlayerDirections initialDirections;
 
         public PathData pathData = new();
+
+        public SimulationInput ToSimulationInput()
+        {
+            return new SimulationInput
+            {
+                BeatTimes = beatMapData?.Beats,
+                StartPosition = startPosition,
+                InitialSpeed = initialSpeed,
+                InitialGravity = initialGravity,
+                InitialDirections = initialDirections,
+                Events = pathData.globalEvents
+            };
+        }
+
+        public void ApplySimulationResult(SimulationResult result)
+        {
+            pathData.generatedWaypoints = result.Waypoints ?? new();
+            pathData.generatedSegments = result.Segments ?? new();
+        }
     }
 
     /// <summary>

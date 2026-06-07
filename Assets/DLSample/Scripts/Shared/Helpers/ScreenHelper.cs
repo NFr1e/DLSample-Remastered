@@ -57,7 +57,7 @@ namespace DLSample.Shared
             mask.DOFade(1, inDuration).From(0).SetUpdate(true).OnComplete(() =>
             {
                 action.Invoke();
-                mask.DOFade(0, outDuration).SetUpdate(true).OnComplete(() => GameObject.Destroy(root.gameObject, 0.1f));
+                mask.DOFade(0, outDuration).From(1).SetUpdate(true).OnComplete(() => GameObject.Destroy(root.gameObject, 0.1f));
             });
         }
         /// <summary>
@@ -73,7 +73,7 @@ namespace DLSample.Shared
 
             await mask.DOFade(1, inDuration).From(0).SetUpdate(true).AsyncWaitForCompletion();
             await asyncAction.Invoke();
-            await mask.DOFade(0, outDuration).SetUpdate(true).AsyncWaitForCompletion();
+            await mask.DOFade(0, outDuration).From(1).SetUpdate(true).AsyncWaitForCompletion();
 
             GameObject.Destroy(root.gameObject);
         }

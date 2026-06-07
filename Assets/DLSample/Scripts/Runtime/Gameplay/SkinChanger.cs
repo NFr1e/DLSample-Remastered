@@ -7,18 +7,23 @@ using DLSample.Framework;
 namespace DLSample.Gameplay.Skin
 {
     /// <summary>
-    /// 通过实例化SkinBehaviour对象并传参给SkinAdapter实现皮肤切换功能
+    /// 管理每个SkinAdapter独立的SkinBehaviour实例，实现皮肤切换功能。
+    /// 每个adapter拥有独立的皮肤实例，避免多Player间的皮肤状态竞争。
     /// </summary>
     public class SkinChanger : IModule
     {
         public int Priority => DLSampleConsts.Gameplay.PRIORITY_SKIN_CHANGER;
 
         private readonly List<SkinAdapter> _adapters = new();
+        private readonly Dictionary<SkinAdapter, SkinBehaviourBase> _adapterSkins = new();
 
         private readonly SkinDataScriptable _skinData;
         private readonly Transform _skinContainer;
 
-        private SkinBehaviourBase _currentSkinBehaviour;
+        /// <summary>
+        /// 当前选中的皮肤ID，用于新adapter注册时应用正确的皮肤。
+        /// </summary>
+        private string _currentSkinId;
 
         public SkinChanger(SkinDataScriptable skinData, Transform skinContainer)
         {
@@ -26,58 +31,78 @@ namespace DLSample.Gameplay.Skin
             _skinContainer = skinContainer;
         }
 
+        /// <summary>
+        /// 切换皮肤。销毁所有adapter的旧实例，为每个adapter创建独立的新实例。
+        /// </summary>
         public bool ChangeSkin(string skinId)
         {
             SkinItem skin = _skinData.GetSkin(skinId);
 
             if (skin.IsValid)
             {
-                if (_currentSkinBehaviour != null)
+                _currentSkinId = skinId;
+
+                foreach (var adapter in _adapters)
                 {
-                    _currentSkinBehaviour.OnDetach();
-                    GameObject.Destroy(_currentSkinBehaviour.gameObject);
+                    DetachAndDestroySkin(adapter);
+                    InstantiateAndApplySkin(adapter, skin.Prefab);
                 }
-
-                SkinBehaviourBase behaviour = GameObject.Instantiate(skin.Prefab, _skinContainer);
-
-                _currentSkinBehaviour = behaviour;
-                RefreshAdapter(behaviour);
-
-                _currentSkinBehaviour.OnApply();
 
                 return true;
             }
 
             return false;
         }
-        private void RefreshAdapter(SkinBehaviourBase behaviour)
-        {
-            foreach (var adapter in _adapters)
-            {
-                adapter.SetCurrentSkin(behaviour);
-            }
-        }
 
         /// <summary>
-        /// 添加SkinAdapter，同时刷新状态
+        /// 添加SkinAdapter。如果已有选中皮肤，为新adapter实例化一份独立的皮肤。
         /// </summary>
-        /// <param name="adapter"></param>
         public void AddAdapter(SkinAdapter adapter)
         {
             if (_adapters.Contains(adapter)) return;
 
             _adapters.Add(adapter);
-            RefreshAdapter(_currentSkinBehaviour);
+
+            if (!string.IsNullOrEmpty(_currentSkinId))
+            {
+                SkinItem skin = _skinData.GetSkin(_currentSkinId);
+                if (skin.IsValid)
+                    InstantiateAndApplySkin(adapter, skin.Prefab);
+            }
         }
 
         /// <summary>
-        /// 移除SkinAdapter，同时刷新状态
+        /// 移除SkinAdapter，同时销毁其对应的皮肤实例。
         /// </summary>
-        /// <param name="adapter"></param>
         public void RemoveAdapter(SkinAdapter adapter)
         {
+            DetachAndDestroySkin(adapter);
             _adapters.Remove(adapter);
-            RefreshAdapter(_currentSkinBehaviour);
+        }
+
+        /// <summary>
+        /// 为指定adapter实例化皮肤prefab并应用。
+        /// </summary>
+        private void InstantiateAndApplySkin(SkinAdapter adapter, SkinBehaviourBase prefab)
+        {
+            var instance = GameObject.Instantiate(prefab, _skinContainer);
+            instance.SetHeadContainer(adapter.HeadContainer);
+            adapter.SetCurrentSkin(instance);
+            instance.OnApply();
+            _adapterSkins[adapter] = instance;
+        }
+
+        /// <summary>
+        /// 销毁指定adapter的旧皮肤实例。
+        /// </summary>
+        private void DetachAndDestroySkin(SkinAdapter adapter)
+        {
+            if (_adapterSkins.TryGetValue(adapter, out var oldSkin))
+            {
+                oldSkin.OnDetach();
+                GameObject.Destroy(oldSkin.gameObject);
+                _adapterSkins.Remove(adapter);
+            }
         }
     }
 }
